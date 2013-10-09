@@ -1,20 +1,20 @@
-
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
-<%@ page import="Details.BureauDetails"%>
+<%@ page import="Details.BureauSearchResults"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
 
 
 	<%
-		ArrayList<BureauDetails> br = (ArrayList<BureauDetails>) request
-				.getAttribute("bureau");
+		ArrayList<BureauSearchResults> br = (ArrayList<BureauSearchResults>) request
+				.getAttribute("bureauSR");
 	%>
 
 
@@ -83,15 +83,13 @@
 </div>
 
 	<div id="search" style="height: 200px; width: 365px; float: left;">
-<input type="hidden" name="fieldName" value="<%=br.get(0).getFieldName()%>">
-<br>
 		<button type="submit" value="Search">Search</button>
 
 	</div>
 
 
 	<div id="region" style="height: 200px; width: 165px; float: center;">
-		<h2>--Selected Burueas for the Related filed --</h2>
+		<h2>--Selected Burueas for Detailed Search --</h2>
 		<table width="95%" border="1">
 			<tr>
 				<%
@@ -100,8 +98,9 @@
 
 				<td width="20" align="center" class="borderdesign">
 				<td width="100" class="borderdesign">
-					<h3><%=br.get(i).getBureauName() + " "
-						+ br.get(i).getEmail() %></h3>
+					<h3><%=br.get(i).getFieldName() + " " + br.get(i).getName() + " " + br.get(i).getEmail() 
+					+ " " + br.get(i).averagePrice + " " + br.get(i).getStreet() + " " + br.get(i).postalcode 
+					+ " " + br.get(i).phoneNumber + " " + br.get(i).getCity()  %></h3>
 				</td>
 				<td width="100" class="tdnonborder"><p> </p></td>
 

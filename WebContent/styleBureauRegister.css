@@ -1,0 +1,200 @@
+@CHARSET "ISO-8859-1";
+
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #9F0000;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #9F0000;
+}
+
+img.alignleft {
+	float: left;
+	margin-right: 20px;
+}
+
+img.alignright {
+	float: right;
+}
+
+img.aligncenter {
+	margin: 0px auto;
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 0px auto;
+	background: url(images/basic.jpg) no-repeat center top;
+}
+
+/* Header */
+
+#header {
+	width: 1024px;
+	height: 100px;
+	margin: 0px auto;
+}
+
+/* Menu */
+
+#menu ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	padding: 20px 0px;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFFFFF;
+	border: none;
+}
+
+#menu .current_page_item a {
+	color: #000000;
+}
+
+/* Page */
+
+#page {
+	width: 960px;
+	padding: 0px 0px 0px 0px;
+}
+/* Content */
+
+#content {
+	float: left;
+	width: 1024px;
+	padding: 60px 0px 0px 0px;
+}
+
+.post {
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+
+.post .title {
+	letter-spacing: -1px;
+}
+
+.post .title a {
+	border: none;
+	color: #F2AE30;
+}
+
+.post .meta {
+	padding-bottom: 5px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: italic;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	text-align: justify;
+	margin-bottom: 25px;
+	padding: 10px 0px 0px 0px;
+}
+
+.links {
+	display: block;
+	width: 96px;
+	padding: 2px 0px 2px 0px;
+	background: #A53602;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	color: #000000;
+}
+
+/* Footer */
+
+#footer {
+	width: 1024px;
+	margin: 0px auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer p {
+	margin: 0;
+	padding: 20px 0px;
+	line-height: normal;
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+#footer a {
+	color: #000000;
+}
+
+#registration_form {
+  background: #f0f0f0;
+  color: #333;
+}
+#registration_form input[type="text"],
+#registration_form input[type="password"] {
+  border: 1px solid #ccc;
+  width: 200px;
+}
+#registration_form input {
+  display: block;
+  margin-bottom: 8px;
+}
+#registration_form input[type="text"]:focus,
+#registration_form input[type="password"]:focus {
+  background: #B399FB;
+}

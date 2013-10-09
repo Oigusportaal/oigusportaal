@@ -9,6 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
   <servlet>
     <description></description>
     <display-name>SearchServlet</display-name>
@@ -19,4 +21,17 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/SearchServlet</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>FieldSearchServlet</display-name>
+    <servlet-name>FieldSearchServlet</servlet-name>
+    <servlet-class>FieldSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FieldSearchServlet</servlet-name>
+    <url-pattern>/FieldSearchServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
