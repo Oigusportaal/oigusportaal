@@ -1,0 +1,20 @@
+** This is NOT WORKING at the moment, the problems are being worked on **
+
+When you finish this tutorial, you should have working Õigusportaal in your computer.
+
+-Prerequisites:
+
+	Apache Tomcat 7.02 (http://tomcat.apache.org/download-70.cgi)
+	Maven 3.1.1 (http://maven.apache.org/download.cgi)
+	PostgreSQL (http://www.postgresql.org/download/)
+	Java JDK 7 (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+	Source code of Õigusportaal(https://github.com/Oigusportaal/oigusportaal)
+	
+- Installation:
+	Unzip the Õigusportaal's package
+	Navigate to the folder with your command line
+	Import database from oigusportaal/WebContent/DB/lawportal.sql to your database with pgAdmin or with command line
+	Write "mvn install -q -DskipTests=true" and press Enter	
+	Put the war file created by Maven to your Tomcat's webapps folder
+	Start Tomcat
+	Open "localhost:8080/oigusportaal"
