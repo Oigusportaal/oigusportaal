@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html>
+<head><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub:Help" />
+  <title>Ignoring files &middot; GitHub Help</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="/assets/help/application-e184c341e347294336728b1aa2a785c1.css" media="screen" rel="stylesheet" />
+  <!--[if lt IE 8]>
+    <link href="/assets/help/ie-hacks-217cb48076da6b28188e4552942ee212.css" media="screen" rel="stylesheet" />
+  <![endif]-->
+
+  <script src="/assets/help/application-c07d6b92fe26261347ecd379ac760c3b.js"></script>
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="zDG1u9OjEmQ84hsXcgAGYPYGbrLTmxxKHMTjF1Ov1jI=" name="csrf-token" />
+</head>
+
+<body class=" platform-windows" id="com">
+<div id="not-footer">
+  <div id="header">
+    <div class="clearfix">
+        <h1 class="site-logo"><a href="/">GitHub Help</a></h1>
+
+      <ul class="top-nav">
+        <li><a href="https://github.com/contact">Contact Support</a></li>
+        <li><a href="http://www.github.com/">Return to GitHub</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div id="content-wrapper">
+    <div class="site">
+
+      <div class="content-header small">
+  <h6 class="breadcrumbs">
+    <a href="/categories/19/articles">Using Git</a>
+    /
+    Ignoring files
+  </h6>
+
+  <div class="search-form small">
+    <form accept-charset="UTF-8" action="/articles/search" id="articles-search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <div class="outer">
+    <div class="inner fade-label">
+      <input type="text" name="q" id="q" class="js-articles-quicksearch"
+        placeholder="How can we help?" data-url="/articles/quicksearch" />
+      <button><span class="mini-icon search-input"></span>Search</button>
+      <div class="autocomplete-results" style="display: none"></div>
+    </div>
+  </div>
+</form>
+  </div>
+
+  <span class="last-updated-at">Article last updated on 15-Jul-13</span>
+</div>
+
+<div class="article">
+  <h2>Ignoring files</h2>
+
+  <div id="article-platform-nav">
+    <ul>
+        <li class="platform-mac">
+          <a href="#platform-mac" data-platform=mac>
+            mac
+          </a>
+        </li>
+        <li class="platform-windows">
+          <a href="#platform-windows" data-platform=windows>
+            windows
+          </a>
+        </li>
+        <li class="platform-linux">
+          <a href="#platform-linux" data-platform=linux>
+            linux
+          </a>
+        </li>
+        <li class="platform-all">
+          <a href="#platform-all" data-platform=all>
+            all
+          </a>
+        </li>
+    </ul>
+  </div>
+
+  <div class="article-body content-body wikistyle markdown-format">
+      <p class="intro">
+From time to time there are files you don't want git to track.  There are a few methods of telling git what files to ignore.
+</p>
+
+<h3>
+<a name="gitignore" class="anchor" href="#gitignore"><span class="mini-icon mini-icon-link"></span></a>.gitignore</h3>
+
+<p>If you create a file in your repository named <code>.gitignore</code> git will use its rules when looking at files to commit.  Note that git will <strong>not</strong> ignore a file that was already tracked before a rule was added to this file to ignore it.  In such a case the file must be un-tracked, usually with <code>git rm --cached filename</code></p>
+
+<p>This file can be committed into the repository, thus sharing the rule list with any other users that clone the repository.</p>
+
+<p>Note that you can create a <code>.gitignore</code> in any subpath to have its rules applied at that path.  Sometimes an empty <code>.gitignore</code> file is used as a placeholder for an empty path, for example to force git to generate a <code>log/</code> path for your development environment to use.</p>
+
+<p>GitHub maintains an official list of recommended <em>.gitignore</em> files <a href="https://github.com/github/gitignore">at this public repository</a>.</p>
+
+<h3>
+<a name="global-gitignore" class="anchor" href="#global-gitignore"><span class="mini-icon mini-icon-link"></span></a>Global .gitignore</h3>
+
+<p>A global .gitignore file can also be very useful for ignoring files in <em>every</em> git repositories on your computer. For example, you might create the file at <em>~/.gitignore_global</em> and add some rules to it. To add this file to your cross-repository configuration, run <code>git config --global core.excludesfile ~/.gitignore_global</code></p>
+
+<p>Here are some good rules to add to this file:</p>
+
+<pre>
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+</pre>
+
+<p>You may also want to check out GitHub's <a href="https://github.com/github/gitignore">gitignore</a> repository, which contains a list of <em>.gitignore</em> files for many popular operating systems, environments, and languages.</p>
+
+<h3>
+<a name="repository-exclude" class="anchor" href="#repository-exclude"><span class="mini-icon mini-icon-link"></span></a>Repository exclude</h3>
+
+<p>Local per-repository rules can be added to the <code>.git/info/exclude</code> file in your repository.  These rules <em>are not committed</em> with the repository so they are not shared with others.  This method can be used for locally-generated files that you don't expect other users to generate, like files created by your editor.</p>
+
+<h3>
+<a name="ignoring-versioned-files" class="anchor" href="#ignoring-versioned-files"><span class="mini-icon mini-icon-link"></span></a>Ignoring versioned files</h3>
+
+<p>Some files in a repository, which are versioned (_i.e._ they can't be <code>git-ignore</code>d), are often changed, but rarely committed. Usually these are various local configuration files that are edited, but should never be committed upstream. </p>
+
+<p>Git lets you ignore those files by assuming they are unchanged. This is done by running the <code>git update-index --assume-unchanged path/to/file.txt</code> command. Once marking a file as such, git will completely ignore any changes on that file; they will not show up when running <code>git status</code> or <code>git diff</code>, nor will they ever be committed. </p>
+
+<p>To make git track the file again, simply run <code>git update-index --no-assume-unchanged path/to/file.txt</code>.</p>
+
+<h3>
+<a name="links" class="anchor" href="#links"><span class="mini-icon mini-icon-link"></span></a>Links</h3>
+
+<ul>
+<li><a href="http://git-scm.com/docs/gitignore">gitignore man page</a></li>
+<li><a href="http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository">Pro Git</a></li>
+<li><a href="https://github.com/github/gitignore">Example .gitignore files</a></li>
+</ul>
+  </div>
+
+
+  <div class="support-footer">
+    <hr />
+    <ul class="article-footer button-nav">
+      <li>
+        <a class="minibutton mini-icon discussion" href="https://github.com/contact">contact a human</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+  <div id="footer">
+    <div class="inner">
+      <a href="https://github.com" class="invertocat">
+        <img src="/assets/help/invertocat-31415ef94d6f2b601fe718a9363a7b9a.png" width="24" height="24" />
+      </a>
+      <p class="left">
+        &copy; <span id="year">year</span> GitHub Inc. All rights reserved.
+      </p>
+        <ul class="links right">
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+            <li><a href="/privacy-policy">Privacy</a></li>
+            <li><a href="/security">Security</a></li>
+          </ul>
+    </div>
+  </div> <!-- /#footer -->
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4f4d4164f5a1f5651500026c');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3769691-27']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<script type="text/javascript">if (!NREUMQ.f) { NREUMQ.f=function() {
+NREUMQ.push(["load",new Date().getTime()]);
+var e=document.createElement("script");
+e.type="text/javascript";
+e.src=(("http:"===document.location.protocol)?"http:":"https:") + "//" +
+  "js-agent.newrelic.com/nr-100.js";
+document.body.appendChild(e);
+if(NREUMQ.a)NREUMQ.a();
+};
+NREUMQ.a=window.onload;window.onload=NREUMQ.f;
+};
+NREUMQ.push(["nrfj","beacon-1.newrelic.com","5d46706dc7","1956352","TEINDQ8KRQgb",0,86524661,new Date().getTime(),"","","","",""]);</script></body>
+</html>
