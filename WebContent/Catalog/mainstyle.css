@@ -1,0 +1,142 @@
+#wrapper {
+	width: 1024px;
+	margin: 0px auto;
+	background: url(images/main_bg.png) no-repeat center top;
+}
+
+#header {
+	position: relative;
+	top: -10px;
+}
+
+#logo{
+	padding-top: 24px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 17px;
+	color: #000000;
+}
+
+a img{
+	border:none;
+}
+
+#menu {
+	position: relative;
+	float: left;
+	margin-top: 30px;
+	margin-left: 4px;
+}
+
+.page {
+	overflow: hidden;
+	width: 1024px;
+	float: right;
+	color: #AC1028;
+	font-family: Modern;
+	padding-top: 15px;
+}
+
+.content {
+	padding-left: 16px;
+	padding-bottom: 20px;
+	height: 300px;
+}
+
+.image {
+    position:relative;
+	padding-left: 16px;
+}
+
+.image .text h2 {
+	position: absolute;
+	top: -60px;
+	color: #BA0606;
+	font-size:25px;
+}
+
+.text a, .text2 a, .text3 a {
+	font-size: 18px;
+	display: block;
+	font-weight:bold;
+}
+
+.image .text {
+    position:absolute;
+    top:50px;
+    left:40px;
+    width:320px;
+	color: #363636;
+}
+
+.image .text2 {
+    position:absolute;
+    top:25px;
+    left:350px;
+    width:320px;
+	color: #363636;
+}
+
+.image .text3 {
+    position:absolute;
+    top:25px;
+    left:695px;
+    width:320px;
+	color: #363636;
+}
+
+.blog {
+	float: left;
+	width: 690px;
+	height: 300px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.contacts img {
+	margin-top: 40px;
+	float: left;
+}
+
+.contacts {
+	height: 300px;
+	width: 300px;
+	float: right;
+	margin-top: 10px;
+	margin-right: 18px;
+}
+
+.contacts h2{
+	margin-left: 25px;
+	color: #BA0606;
+	font-size:25px;
+}
+
+.contacts p {
+	margin-top: -5px;
+	padding-left: 25px;
+	color: #000000;
+	font-size: 16px;
+}
+
+#footer {
+	clear: both;
+	padding-top: 1px;
+	height: 30px;
+	width: 1024px;
+	font-family: Modern;
+	background-color: #ffffff;
+}
+
+#footer p, #footer a {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+#footer a {
+	float: right;
+}
