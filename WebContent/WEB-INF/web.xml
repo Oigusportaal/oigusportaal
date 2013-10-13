@@ -12,10 +12,10 @@
   
   
   <servlet>
-    <description></description>
+    <description> Search Servlet </description>
     <display-name>SearchServlet</display-name>
     <servlet-name>SearchServlet</servlet-name>
-    <servlet-class>SearchServlet</servlet-class>
+    <servlet-class>Search.SearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
@@ -24,10 +24,10 @@
   
   
   <servlet>
-    <description></description>
+    <description> Field Search Servlet </description>
     <display-name>FieldSearchServlet</display-name>
     <servlet-name>FieldSearchServlet</servlet-name>
-    <servlet-class>FieldSearchServlet</servlet-class>
+    <servlet-class>Search.FieldSearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FieldSearchServlet</servlet-name>
