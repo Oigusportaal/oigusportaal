@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.0
 -- Dumped by pg_dump version 9.3.0
--- Started on 2013-10-14 18:43:26
+-- Started on 2013-10-15 02:23:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -364,11 +364,11 @@ COPY bureau (bureauid, registrycode, name, email, password, averageprice, street
 COPY field (fieldid, fieldname, bureauid) FROM stdin;
 2	Robbery	6
 3	Crime	7
-4	Rape	6
 1	Divorce	5
 5	Divorce	1
 6	Divorce	2
 7	Divorce	3
+4	Divorce	6
 \.
 
 
@@ -480,7 +480,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-10-14 18:43:27
+-- Completed on 2013-10-15 02:23:10
 
 --
 -- PostgreSQL database dump complete
