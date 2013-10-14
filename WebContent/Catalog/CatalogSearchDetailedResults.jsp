@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
-<%@ page import="Details.BureauDetails"%>
+<%@ page import="Details.BureauSearchResults"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,8 +15,8 @@
 	<body>
 	
 	<%
-		ArrayList<BureauDetails> br = (ArrayList<BureauDetails>) request
-				.getAttribute("bureau");
+		ArrayList<BureauSearchResults> br = (ArrayList<BureauSearchResults>) request
+				.getAttribute("bureauSR");
 	%>
 	
 		<div id="wrapper">
@@ -35,7 +35,7 @@
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get">
 					<p>Asukoht</p>
 					<select name="regions">
-						<option value="PE" >Pıhja-Eesti</option>
+						<option value="PE">Pıhja-Eesti</option>
 						<option value="LoE">Lıuna-Eesti</option>
 						<option value="LaE">L‰‰ne-Eesti</option>
 						<option value="IE">Ida-Eesti</option>
@@ -45,10 +45,10 @@
 						<option value="Tartumaa">Tartumaa</option>
 						<option value="Viljandimaa">Viljandimaa</option>
 						<option value="Parnumaa">P‰rnumaa</option>
-					</select name="cities">
-					<select>
-						<option value="Tallinn">Tallinn</option>
-						<option value="Tartu">Tartu</option>
+					</select>
+					<select name="cities">
+						<option value="Tallinn" >Tallinn</option>
+						<option value="Tartu" >Tartu</option>
 						<option value="Viljandi">Viljandi</option>
 						<option value="Parnu">P‰rnu</option>
 					</select>
@@ -67,7 +67,7 @@
 			</div>
 			
 			<div class="page">
-			<h2>--Selected Burueas for the Related filed --</h2>
+		<h2>--Selected Burueas for Detailed Search --</h2>
 		<table width="95%" border="1">
 			<tr>
 				<%
@@ -76,8 +76,9 @@
 
 				<td width="20" align="center" class="borderdesign">
 				<td width="100" class="borderdesign">
-					<h3><%=br.get(i).getBureauName() + " "
-						+ br.get(i).getEmail() %></h3>
+					<h3><%=br.get(i).getFieldName() + " " + br.get(i).getName() + " " + br.get(i).getEmail() 
+					+ " " + br.get(i).averagePrice + " " + br.get(i).getStreet() + " " + br.get(i).postalcode 
+					+ " " + br.get(i).phoneNumber + " " + br.get(i).getCity()  %></h3>
 				</td>
 				<td width="100" class="tdnonborder"><p>†</p></td>
 

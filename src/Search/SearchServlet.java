@@ -60,8 +60,7 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		
-		fieldName = request.getParameter("fieldName");
-		System.out.println(fieldName);
+		fieldName = "Divorce";
 		
 	
 		
@@ -77,12 +76,12 @@ public class SearchServlet extends HttpServlet {
 		averagePrice = request.getParameter("averageprice");
 		System.out.println(averagePrice);
 		
-		SSDateFrom = request.getParameter("SSDateFrom").toString();
+	/*	SSDateFrom = request.getParameter("SSDateFrom").toString();
 		System.out.println(SSDateFrom);
 		
 		SSDateTo = request.getParameter("SSDateTo").toString();
 		System.out.println(SSDateTo);
-		
+		*/
 
 		ap = Integer.parseInt(averagePrice);
 		
@@ -113,8 +112,6 @@ public class SearchServlet extends HttpServlet {
 							+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
 							+ " FROM bureau, successstory, field "
 							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + fieldName + "' "
-							+ "and successstory.bureauid=bureau.bureauid "
-							+ " and successstory.date BETWEEN '" + SSDateFrom + "' and '" + SSDateTo + "' "
 									+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
 											+ " and averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
 
@@ -163,7 +160,7 @@ public class SearchServlet extends HttpServlet {
 
 			
 			request.setAttribute("bureauSR", bureauSR);
-			request.getRequestDispatcher("Catalog/CatalogDetailedSearchResults.jsp").forward(request, response);
+			request.getRequestDispatcher("Catalog/CatalogSearchDetailedResults.jsp").forward(request, response);
 			
 			rs.close();
 			stmt.close();

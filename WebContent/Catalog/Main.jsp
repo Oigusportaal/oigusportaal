@@ -28,7 +28,7 @@
 					  <div class="text">
 						<h2>Valdkonnad</h2>
 						<a href="http://www.google.com/">Ehitus- ja planeerimisõigus</a>
-						<a href="http://www.google.com/">Elamuõigus</a>
+						<a href="<%=request.getContextPath()%>/FieldSearchServlet">Lahutus</a>
 						<a href="http://www.google.com/">Erastamine</a>
 						<a href="http://www.google.com/">Inkassoteenused</a>
 						<a href="http://www.google.com/">Intellektuaalne omand</a>
