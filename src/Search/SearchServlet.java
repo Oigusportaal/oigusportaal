@@ -110,10 +110,10 @@ public class SearchServlet extends HttpServlet {
 			rs = stmt
 					.executeQuery("SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 							+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
-							+ " FROM bureau, successstory, field "
+							+ " FROM bureau, field "
 							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + fieldName + "' "
 									+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
-											+ " and averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
+											+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
 
 			while (rs.next()) {
 

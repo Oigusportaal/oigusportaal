@@ -1,10 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+	pageEncoding="utf-8" 
+ %>
+    <%
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="mainstyle.css"/>
-		<title>Õigusportaal</title>
+		<meta http-equiv="Content-Type" 
+            content="text/html; charset=utf-8">
+		<title>Ã•igusportaal</title>
 	</head>
 	
 	<body>
@@ -27,36 +33,36 @@
 					  <img alt="" src="MainImages/foe_bc.png" />
 					  <div class="text">
 						<h2>Valdkonnad</h2>
-						<a href="http://www.google.com/">Ehitus- ja planeerimisõigus</a>
+						<a href="http://www.google.com/">Ehitus- ja planeerimisÃµigus</a>
 						<a href="<%=request.getContextPath()%>/FieldSearchServlet">Lahutus</a>
 						<a href="http://www.google.com/">Erastamine</a>
 						<a href="http://www.google.com/">Inkassoteenused</a>
 						<a href="http://www.google.com/">Intellektuaalne omand</a>
-						<a href="http://www.google.com/">IT-õigus</a>
-						<a href="http://www.google.com/">Keskkonnaõigus</a>
-						<a href="http://www.google.com/">Kindlustusõigus</a>
-						<a href="http://www.google.com/">Kinnisvaraõigus</a>
+						<a href="http://www.google.com/">IT-Ãµigus</a>
+						<a href="http://www.google.com/">KeskkonnaÃµigus</a>
+						<a href="http://www.google.com/">KindlustusÃµigus</a>
+						<a href="http://www.google.com/">KinnisvaraÃµigus</a>
 					  </div>
 					  <div class="text2">
-						<a href="http://www.google.com/">Konkurentsiõigus</a>
-						<a href="http://www.google.com/">Kriminaal- ja väärteoõigus</a>
-						<a href="http://www.google.com/">Liiklusõigus</a>
-						<a href="http://www.google.com/">Majandusõigus</a>
-						<a href="http://www.google.com/">Maksuõigus</a>
+						<a href="http://www.google.com/">KonkurentsiÃµigus</a>
+						<a href="http://www.google.com/">Kriminaal- ja vÃ¤Ã¤rteoÃµigus</a>
+						<a href="http://www.google.com/">LiiklusÃµigus</a>
+						<a href="http://www.google.com/">MajandusÃµigus</a>
+						<a href="http://www.google.com/">MaksuÃµigus</a>
 						<a href="http://www.google.com/">Meditsiin ja ravimid</a>
-						<a href="http://www.google.com/">Meedia- ja telekommunikatsiooniõigus</a>
+						<a href="http://www.google.com/">Meedia- ja telekommunikatsiooniÃµigus</a>
 						<a href="http://www.google.com/">Omandireform</a>
-						<a href="http://www.google.com/">Pangandus- ja finantsõigus, kapitaliturud</a>
+						<a href="http://www.google.com/">Pangandus- ja finantsÃµigus, kapitaliturud</a>
 					  </div>
 					  <div class="text3">
-						<a href="http://www.google.com/">Perekonnaõigus</a>
-						<a href="http://www.google.com/">Pärimisõigus</a>
-						<a href="http://www.google.com/">Restruktureerimine, saneerimine ja maksejõuetus (pankrot)</a>
-						<a href="http://www.google.com/">Sotsiaalhoolekandeõigus</a>
-						<a href="http://www.google.com/">Transpordi-, kaubandus- ja mereõigus</a>
-						<a href="http://www.google.com/">Tööõigus</a>
-						<a href="http://www.google.com/">Välismaalasteõigus</a>
-						<a href="http://www.google.com/">Ühinemised- ja ülevõtmised</a>
+						<a href="http://www.google.com/">PerekonnaÃµigus</a>
+						<a href="http://www.google.com/">PÃ¤rimisÃµigus</a>
+						<a href="http://www.google.com/">Restruktureerimine, saneerimine ja maksejÃµuetus (pankrot)</a>
+						<a href="http://www.google.com/">SotsiaalhoolekandeÃµigus</a>
+						<a href="http://www.google.com/">Transpordi-, kaubandus- ja mereÃµigus</a>
+						<a href="http://www.google.com/">TÃ¶Ã¶Ãµigus</a>
+						<a href="http://www.google.com/">VÃ¤lismaalasteÃµigus</a>
+						<a href="http://www.google.com/">Ãœhinemised- ja Ã¼levÃµtmised</a>
 					  </div>
 					</div>
 				</tr>
@@ -68,12 +74,12 @@
 					<h2>Kontaktid</h2>
 					<p>Telefon: </p>
 					<p>E-mail: </p>
-					<p><strong>Õigusportaal OÜ</strong></p>
+					<p><strong>Ã•igusportaal OÃœ</strong></p>
 					<p>Reg: </p>
 				</div>
 			</div>
 			<div id="footer">
-				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+				<p>(c) 2010 OÃœ Ã•igusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>
