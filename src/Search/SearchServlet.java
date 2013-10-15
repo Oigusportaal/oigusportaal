@@ -160,7 +160,7 @@ public class SearchServlet extends HttpServlet {
 
 			
 			request.setAttribute("bureauSR", bureauSR);
-			request.getRequestDispatcher("Catalog/CatalogSearchDetailedResults.jsp").forward(request, response);
+			request.getRequestDispatcher("CatalogSearchDetailedResults.jsp").forward(request, response);
 			
 			rs.close();
 			stmt.close();

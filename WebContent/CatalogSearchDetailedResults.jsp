@@ -1,21 +1,20 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
 <%@ page import="Details.BureauSearchResults"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" 
-	pageEncoding="utf-8" 
- %>
-     <%
-request.setCharacterEncoding("UTF-8");
-%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<link type="text/css" rel="stylesheet" href="srchstyle.css"/>
-		<meta http-equiv="Content-Type" 
-            content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+	<style type="text/css">
+    <%@include file="srchstyle.css" %>
+    </style>
 		<script src="js/jquery.js"></script>
 		<script src="js/functions.js"></script>
-		<title>Ã•igusportaal</title>
+		<title>Õigusportaal</title>
 	</head>
 	
 	<body>
@@ -41,22 +40,22 @@ request.setCharacterEncoding("UTF-8");
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get">
 					<p>Asukoht</p>
 					<select name="regions">
-						<option value="PÃµhja-Eesti">PÃµhja-Eesti</option>
-						<option value="LÃµuna-Eesti">LÃµuna-Eesti</option>
-						<option value="LÃ¤Ã¤ne-Eesti">LÃ¤Ã¤ne-Eesti</option>
+						<option value="Põhja-Eesti">Põhja-Eesti</option>
+						<option value="Lõuna-Eesti">Lõuna-Eesti</option>
+						<option value="Lääne-Eesti">Lääne-Eesti</option>
 						<option value="Ida-Eesti">Ida-Eesti</option>
 					</select>
 					<select name="counties">
 						<option value="Harjumaa">Harjumaa</option>
 						<option value="Tartumaa">Tartumaa</option>
 						<option value="Viljandimaa">Viljandimaa</option>
-						<option value="PÃ¤rnumaa">PÃ¤rnumaa</option>
+						<option value="Pärnumaa">Pärnumaa</option>
 					</select>
 					<select name="cities">
 						<option value="Tallinn" >Tallinn</option>
 						<option value="Tartu" >Tartu</option>
 						<option value="Viljandi">Viljandi</option>
-						<option value="PÃ¤rnu">PÃ¤rnu</option>
+						<option value="Pärnu">Pärnu</option>
 					</select>
 					<input type="checkbox" name="dontuse" value="Bike">Kasuta otsingus
 				
@@ -86,7 +85,7 @@ request.setCharacterEncoding("UTF-8");
 					+ " " + br.get(i).averagePrice + " " + br.get(i).getStreet() + " " + br.get(i).postalcode 
 					+ " " + br.get(i).phoneNumber + " " + br.get(i).getCity()  %></h3>
 				</td>
-				<td width="100" class="tdnonborder"><p>Â </p></td>
+				<td width="100" class="tdnonborder"><p> </p></td>
 
 				<%
 					if ((i + 1) % 2 == 0) {
@@ -103,7 +102,7 @@ request.setCharacterEncoding("UTF-8");
 			</table>
 			</div>
 			<div id="footer">
-				<p>(c) 2010 OÃœ Ã•igusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>

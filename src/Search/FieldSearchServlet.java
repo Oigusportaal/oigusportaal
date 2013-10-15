@@ -100,7 +100,7 @@ ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
 			System.out.println(bureau.get(0).getBureauName());
 			
 			request.setAttribute("bureau", bureau);
-			request.getRequestDispatcher("Catalog/CatalogSearch.jsp").forward(request, response);
+			request.getRequestDispatcher("CatalogSearch.jsp").forward(request, response);
 
 			rs.close();
 			stmt.close();
