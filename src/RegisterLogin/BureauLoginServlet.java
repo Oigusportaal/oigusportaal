@@ -48,7 +48,7 @@ public class BureauLoginServlet extends HttpServlet {
 			
 			stmt = curconnection.createStatement();
 			
-			rs = stmt.executeQuery("Select email, password from users "
+			rs = stmt.executeQuery("Select email, password from bureau "
 					+ "where email ='"+email
 					+"' and password ='"+password+"'");
 					/*+"' and password = ' "+password+"'");*/

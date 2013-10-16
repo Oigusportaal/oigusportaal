@@ -17,8 +17,8 @@
 			<ul>
 				<li class="current_page_item"/>
 				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/kataloog.png" width="120" height="40"/></a></li>
-				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a></li>
-				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/red_hover.png" width="120" height="40"/></a></li>
+-				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a></li>
+-				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/red_hover.png" width="120" height="40"/></a></li>
 			</ul>
 		</div>
 		
@@ -32,21 +32,77 @@
 						  <fieldset>
 							<label for="register_email">E-mail:</label>
 							<input type="text" name="email" id="register_email" />
+							
 							<label for="register_email_confirmation">E-mail uuesti:</label>
 							<input type="text" name="register_email_confirmation" id="register_email_confirmation" />
+							
 							<label for="register_password_confirmation">Parool:</label>
 							<input type="password" name="password" id="register_password" />
+							
 							<label for="register_password_confirmation">Parool uuesti:</label>
 							<input type="password" name="register_password_confirmation" id="register_password_confirmation" />
+							
 							<label for="register_bureauname">B¸roo nimi:</label>
 							<input type="text" name="bureauname" id="register_bureauname" />
+							
 							<label for="register_regcode">Registrikood:</label>
 							<input type="text" name="regcode" id="register_regcode" />
-							<label for="register_address">Aadress:</label>
-							<input type="text" name="address" id="register_address" />
+							
+							<label for="register_street_address">T‰nav:</label>
+							<input type="text" name="street_address" id="register_street_address" />
+							
+							<label for="register_postalcode">Postiindeks:</label>
+							<input type="text" name=postal_code id="register_postalcode"/>
+							
 							<label for="register_phone">Telefoninumber:</label>
 							<input type="text" name="phone" id="register_phone" />
+							
+							<label for="register_region_name">Regioon:</label>
+							<select name="regions" id="register_region_name">
+								<option value="Pohja-Eesti">Pıhja-Eesti</option>
+  								<option value="Ida-Eesti">Ida-Eesti</option>
+  								<option value="Laane-Eesti">L‰‰ne-Eesti</option>
+  								<option value="Louna-Eesti">Lıuna-Eesti</option>
+							</select></br>
+							
+							<label for="register_city_name">Linn:</label>
+							<select name="cities" id="register_city_name">
+								<option value="Tallinn">Tallinn</option>
+  								<option value="Tartu">Tartu</option>
+  								<option value="Narva">Narva</option>
+  								<option value="Kohtla-Jarve">Kohtla-J‰rve</option>
+  								<option value="Parnu">P‰rnu</option>
+  								<option value="Viljandi">Viljandi</option>
+  								<option value="Rakvere">Rakvere</option>
+  								<option value="Sillam‰e">Sillam‰e</option>
+  								<option value="Maardu">Maardu</option>
+  								<option value="Kuressaare">Kuressaare</option>
+							</select></br>
+							
+							
+							<label for="register_county_name">Maakond:</label>
+							<select name="counties" id="register_county_name">
+								<option value="Harjumaa">Harjumaa</option>
+								<option value="Hiiumaa">Hiiumaa</option>
+								<option value="Ida-Virumaa">Ida-Virumaa</option>
+								<option value="Jogevamaa">Jıgevamaa</option>
+								<option value="Jarvamaa">J‰rvamaa</option>
+								<option value="Laanemaa">L‰‰nemaa</option>
+								<option value="Laane-Virumaa">L‰‰ne-Virumaa</option>
+								<option value="Polvamaa">Pılvamaa</option>
+								<option value="Parnumaa">P‰rnumaa</option>
+								<option value="Raplamaa">Raplamaa</option>
+								<option value="Saaremaa">Saaremaa</option>
+								<option value="Tartumaa">Tartumaa</option>
+								<option value="Valgamaa">Valgamaa</option>
+								<option value="Viljandimaa">Viljandimaa</option>
+								<option value="Vorumaa">Vırumaa</option>
+							</select></br>
+							
+							
+							
 							<input type="submit" value="Registreeru" />
+							
 						  </fieldset>
 						</form>
 					</div>

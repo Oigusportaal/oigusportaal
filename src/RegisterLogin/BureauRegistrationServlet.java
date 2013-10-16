@@ -35,31 +35,39 @@ public class BureauRegistrationServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 	
 		String email=request.getParameter("email");
+		System.out.println(email);
 		
 		String password=request.getParameter("password");
+		System.out.println(password);
 		
 		String bureauname = request.getParameter("bureauname");
-		
-		String registrycode = request.getParameter("regcode");
-		
-		String address = request.getParameter("address");
-		
-		//int tel = Integer.parseInt(request.getParameter("tel"));
-		
-		String tel = request.getParameter("tel");
-		
-		String contextpath = request.getContextPath();
-		
-		System.out.println(email);
-		System.out.println(password);
 		System.out.println(bureauname);
+		
+		int registrycode = Integer.parseInt(request.getParameter("regcode"));
 		System.out.println(registrycode);
-		System.out.println(address);
-		System.out.println(tel);
+		
+		
+		String street = request.getParameter("street_address");
+		System.out.println(street);
+		
+		int postalcode = Integer.parseInt(request.getParameter("postal_code"));
+		System.out.println(postalcode);
+		
+		
+		int phone = Integer.parseInt(request.getParameter("phone"));
+		System.out.println(phone);
+		
+		String region = request.getParameter("regions");
+		System.out.println(region);
+		
+		String city = request.getParameter("cities");
+		System.out.println(city);
+		
+		String county = request.getParameter("counties");
+		System.out.println(county);
+		
+		String contextpath = request.getContextPath();		
 		System.out.println(contextpath);
-		
-		
-		
 		
 		DBConnection dbconnection = new DBConnection();
 		
@@ -69,17 +77,20 @@ public class BureauRegistrationServlet extends HttpServlet {
 		
 		try{		
 			
-			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO users (email,password,bureauname,registrycode,address,tel) values(?,?,?,?,?,?)");
+			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO bureau (registrycode,name,email,password,averageprice,street,postalcode,phone,regionname,cityname,countyname) values(?,?,?,?,?,?,?,?,?,?,?)");
 			
-			stmt.setString(1,email);
-			stmt.setString(2,password);
-			stmt.setString(3,bureauname);
-			stmt.setString(4,registrycode);
-			stmt.setString(5,address);
-			//stmt.setInt(6, tel);
-			stmt.setString(6, tel);
-			
-			
+			stmt.setInt(1,registrycode);
+			stmt.setString(2,bureauname);
+			stmt.setString(3,email);
+			stmt.setString(4,password);
+			stmt.setInt(5,40);
+			stmt.setString(6,street);
+			stmt.setInt(7,postalcode);
+			stmt.setInt(8,phone);
+			stmt.setString(9,region);
+			stmt.setString(10,city);
+			stmt.setString(11,county);
+					
 			int i = stmt.executeUpdate();
 			
 			stmt.close();
