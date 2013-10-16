@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.0
 -- Dumped by pg_dump version 9.3.0
--- Started on 2013-10-15 02:23:10
+-- Started on 2013-10-16 22:03:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -369,6 +369,31 @@ COPY field (fieldid, fieldname, bureauid) FROM stdin;
 6	Divorce	2
 7	Divorce	3
 4	Divorce	6
+8	CivilLaw	5
+9	Privitization	6
+10	DebtCollectionServices	7
+11	IntellectualProperty	1
+12	ITLaw	2
+13	EnvironmentalLaw	3
+14	InsuranceLaw	2
+15	NonMovableProperty	3
+16	CompetitionLaw	4
+17	CriminalLaw	5
+18	TrafficLaw	6
+19	EconomicLaw	7
+20	TaxLaw	1
+21	MedicineLaw	2
+22	MediaAndTelecommunicationLaw	3
+23	PropertyReform	4
+24	BankingAndFinancialFunds	5
+25	FamilyLaw	6
+26	HeritageLaw	7
+27	RestructingLaw	1
+28	SocialWelfareLaw	2
+29	TransportTradeAndSeaLaw	3
+30	LaborLaw	4
+31	AliensLaw	5
+32	MergersAndAcquisitions	6
 \.
 
 
@@ -480,7 +505,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-10-15 02:23:10
+-- Completed on 2013-10-16 22:03:10
 
 --
 -- PostgreSQL database dump complete

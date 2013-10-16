@@ -45,13 +45,15 @@ public class SearchServlet extends HttpServlet {
 	 */
 		ArrayList<BureauSearchResults> bureauSR = new ArrayList<BureauSearchResults>();
 		
+		String fieldName;
 		String county;
 		String city;
 		String region;
 		String averagePrice;
 		String SSDateFrom;
 		String SSDateTo;
-		String fieldName = null;
+		String includeToSearchLoc;
+		String includeToSearchPrice;
 		int ap;
 		
 		
@@ -60,9 +62,16 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		
-		fieldName = "Divorce";
-		
+		fieldName = request.getParameter("fieldName");
+		System.out.println(fieldName);
 	
+		String ffs = fieldName.replaceAll("\\s", "");
+		
+		System.out.println(ffs);
+		
+		
+		
+		
 		
 		city = request.getParameter("cities");
 		System.out.println(city);
@@ -75,6 +84,12 @@ public class SearchServlet extends HttpServlet {
 		
 		averagePrice = request.getParameter("averageprice");
 		System.out.println(averagePrice);
+		
+		includeToSearchLoc = request.getParameter("includeToSearchLoc");
+		System.out.println(includeToSearchLoc);
+		
+		includeToSearchPrice = request.getParameter("includeToSearcPrice");
+		System.out.println(includeToSearchPrice);
 		
 	/*	SSDateFrom = request.getParameter("SSDateFrom").toString();
 		System.out.println(SSDateFrom);
@@ -97,6 +112,7 @@ public class SearchServlet extends HttpServlet {
 		ResultSet rs = null;
 		
 		
+		
 		/*SELECT bureau.bureauid,  name, email,  averageprice, 
        street, postalcode, phone,  cityname 
        
@@ -111,7 +127,7 @@ public class SearchServlet extends HttpServlet {
 					.executeQuery("SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 							+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
 							+ " FROM bureau, field "
-							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + fieldName + "' "
+							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
 									+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
 											+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
 
@@ -158,7 +174,7 @@ public class SearchServlet extends HttpServlet {
 			}
 
 
-			
+			request.setAttribute("fieldName", fieldName);
 			request.setAttribute("bureauSR", bureauSR);
 			request.getRequestDispatcher("CatalogSearchDetailedResults.jsp").forward(request, response);
 			

@@ -65,7 +65,7 @@
 						<output for="foo">1</output>
 						<input type="checkbox" name="dontuse" value="Car">Kasuta otsingus	
 					</div>
-					
+					<input type="hidden" name="fieldName" value="<%= request.getAttribute("fieldName") %>">					
 					<p id="success">Viimane edulugu</p>
 					<input type="submit" value="Otsi" id="searching"/>
 					</form>

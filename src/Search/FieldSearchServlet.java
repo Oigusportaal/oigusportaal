@@ -41,12 +41,11 @@ public class FieldSearchServlet extends HttpServlet {
 		
 		System.out.println("Welcome to FieldSearchServlet");
 		
-		String fieldName ="Divorce";
 		
+		String fieldName = request.getParameter("param");
 		System.out.println(fieldName);
-	
 		
-ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
+		ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
 		
 		DBConnection connect = new DBConnection();
 
@@ -87,6 +86,7 @@ ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
 
 				System.out.println("Bureau Name: " + br.getBureauName());
 				System.out.println("Email: " + br.getEmail());
+				System.out.println("Field: " + br.getFieldName());
 				/*System.out.println("Registrycode: " + br.getRegistryCode());
 				System.out.println("Postcode: " + br.getPostalcode());
 				System.out.println("Street " + br.getStreet());
@@ -99,6 +99,7 @@ ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
 			
 			System.out.println(bureau.get(0).getBureauName());
 			
+			request.setAttribute("fieldName", fieldName);
 			request.setAttribute("bureau", bureau);
 			request.getRequestDispatcher("CatalogSearch.jsp").forward(request, response);
 

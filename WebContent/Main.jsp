@@ -31,37 +31,36 @@
 					<div class="image">
 					  <img alt="" src="MainImages/foe_bc.png" />
 					  <div class="text">
-						<h2>Valdkonnad</h2>
-						<a href="http://www.google.com/">Ehitus- ja planeerimisõigus</a>
-						<a href="<%=request.getContextPath()%>/FieldSearchServlet">Lahutus</a>
-						<a href="http://www.google.com/">Erastamine</a>
-						<a href="http://www.google.com/">Inkassoteenused</a>
-						<a href="http://www.google.com/">Intellektuaalne omand</a>
-						<a href="http://www.google.com/">IT-õigus</a>
-						<a href="http://www.google.com/">Keskkonnaõigus</a>
-						<a href="http://www.google.com/">Kindlustusõigus</a>
-						<a href="http://www.google.com/">Kinnisvaraõigus</a>
-					  </div>
-					  <div class="text2">
-						<a href="http://www.google.com/">Konkurentsiõigus</a>
-						<a href="http://www.google.com/">Kriminaal- ja väärteoõigus</a>
-						<a href="http://www.google.com/">Liiklusõigus</a>
-						<a href="http://www.google.com/">Majandusõigus</a>
-						<a href="http://www.google.com/">Maksuõigus</a>
-						<a href="http://www.google.com/">Meditsiin ja ravimid</a>
-						<a href="http://www.google.com/">Meedia- ja telekommunikatsiooniõigus</a>
-						<a href="http://www.google.com/">Omandireform</a>
-						<a href="http://www.google.com/">Pangandus- ja finantsõigus, kapitaliturud</a>
-					  </div>
-					  <div class="text3">
-						<a href="http://www.google.com/">Perekonnaõigus</a>
-						<a href="http://www.google.com/">Pärimisõigus</a>
-						<a href="http://www.google.com/">Restruktureerimine, saneerimine ja maksejõuetus (pankrot)</a>
-						<a href="http://www.google.com/">Sotsiaalhoolekandeõigus</a>
-						<a href="http://www.google.com/">Transpordi-, kaubandus- ja mereõigus</a>
-						<a href="http://www.google.com/">Tööõigus</a>
-						<a href="http://www.google.com/">Välismaalasteõigus</a>
-						<a href="http://www.google.com/">Ühinemised- ja ülevõtmised</a>
+					<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw">Ehitus- ja planeerimisõigus</a> 
+						<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=Divorce">Lahutus</a>
+						<a name="Privitization" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=Privitization">Erastamine</a>
+						<a name="DebtCollectionServices" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=DebtCollectionServices">Inkassoteenused</a>
+						<a name="IntellectualProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=IntellectualProperty">Intellektuaalneomand</a> 
+						<a name="ITLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=ITLaw">IT-õigus</a>
+						<a name="EnvironmentalLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=EnvironmentalLaw">Keskkonnaõigus</a>
+						<a name="InsuranceLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=InsuranceLaw">Kindlustusõigus</a>
+						<a name="NonMovableProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=NonMovableProperty">Kinnisvaraõigus</a>
+					</div>
+					<div class="text2">
+						<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CompetitionLaw">Konkurentsiõigus</a>
+						<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=CriminalLaw">Kriminaal-ja väärteoõigus</a> 
+						<a name="TrafficLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TrafficLaw">Liiklusõigus</a> 
+						<a name="EconomicLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=EconomicLaw">Majandusõigus</a>
+						<a name="TaxLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=TaxLaw">Maksuõigus</a> 
+						<a name="MedicineLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MedicineLaw">Meditsiin ja ravimid</a> 
+						<a name="MediaAndTelecommunicationLaw" 	href="<%=request.getContextPath()%>/FieldSearchServlet?param=MediaAndTelecommunicationLaw">Meedia- ja telekommunikatsiooniõigus</a> 
+						<a name="PropertyReform" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=PropertyReform">Omandireform</a> 
+						<a name="BankingAndFinancialFunds" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=BankingAndFinancialFunds">Pangandus- ja finantsõigus, kapitaliturud</a>
+					</div>
+					<div class="text3">
+						<a name="FamilyLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=FamilyLaw">Perekonnaõigus</a> 
+						<a name="HeritageLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=HeritageLaw">Pärimisõigus</a> 
+						<a name="RestructingLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=RestructingLaw">Restruktureerimine, saneerimine ja maksejõuetus (pankrot)</a> 
+						<a name="SocialWelfareLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=SocialWelfareLaw">Sotsiaalhoolekandeõigus</a>
+						<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TransportTradeAndSeaLaw">Transpordi-, kaubandus- ja mereõigus</a> 
+						<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=LaborLaw">Tööõigus</a> 
+						<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=AliensLaw">Välismaalasteõigus</a> 
+						<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions">Ühinemised- ja ülevõtmised</a>
 					  </div>
 					</div>
 				</tr>

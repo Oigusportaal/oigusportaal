@@ -57,14 +57,15 @@
 						<option value="Viljandi">Viljandi</option>
 						<option value="Pärnu">Pärnu</option>
 					</select>
-					<input type="checkbox" name="dontuse" value="Bike">Kasuta otsingus
+					<input type="checkbox" name="includeToSearchLoc" value="IncludeLoc">Kasuta otsingus
 				
 					<p>Keskmine tunnihind</p>
 					<div id="avgprice">
 						<input name="averageprice" type="range" min=1 max=100 value=50 style="width: 40%">
 						<output for="foo">1</output>
-						<input type="checkbox" name="dontuse" value="Car">Kasuta otsingus	
+						<input type="checkbox" name="includeToSearchPrice" value="IncludePrice" >Kasuta otsingus	
 					</div>
+					<input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>">
 					
 					<p id="success">Viimane edulugu</p>
 					<input type="submit" value="Otsi" id="searching"/>
