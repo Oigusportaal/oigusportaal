@@ -28,5 +28,24 @@
     <servlet-name>FieldSearchServlet</servlet-name>
     <url-pattern>/FieldSearchServlet</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description>Bureau Registration Servlet</description>
+    <display-name>BureauRegistrationServlet</display-name>
+    <servlet-name>BureauRegistrationServlet</servlet-name>
+    <servlet-class>RegisterLogin.BureauRegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BureauRegistrationServlet</servlet-name>
+    <url-pattern>/BureauRegistrationServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description>Bureau Login Servlet</description>
+    <display-name>BureauLoginServlet</display-name>
+    <servlet-name>BureauLoginServlet</servlet-name>
+    <servlet-class>RegisterLogin.BureauLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BureauLoginServlet</servlet-name>
+    <url-pattern>/BureauLoginServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

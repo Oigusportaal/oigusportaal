@@ -26,12 +26,12 @@
 	
 		<div id="wrapper">
 			<div id="header">
-				<img id="logo" src="CatalogImages/o_logo.png" />
+				<img id="logo" src="images/o_logo.png" />
 			</div>
 			<div id="menu">
-				<a href="."> <img src="CatalogImages/kataloog_hover.png" /> </a>
-				<a href="http://www.google.com/"> <img src="CatalogImages/kiirkysimus.png" /> </a>
-				<a href="http://www.google.com/"> <img src="CatalogImages/red.png" /> </a>
+				<a href="."> <img src="images/kataloog_hover.png" /> </a>
+				<a href="http://www.google.com/"> <img src="images/kiirkysimus.png" /> </a>
+				<a href="http://www.google.com/"> <img src="images/red.png" /> </a>
 			</div>
 			
 			<div class="page">

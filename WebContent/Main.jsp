@@ -15,21 +15,21 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-				<img id="logo" src="MainImages/o_logo.png" />
+				<img id="logo" src="images/o_logo.png" />
 			</div>
 			<div id="menu">
-				<a href="." class="amenu"> <img src="MainImages/kataloog_hover.png" /> </a>
-				<a href="http://www.google.com/" class="amenu"> <img src="MainImages/kiirkysimus.png" /> </a>
-				<a href="http://www.google.com/" class="amenu"> <img src="MainImages/red.png" /> </a>
+				<a href="." class="amenu"> <img src="images/kataloog_hover.png" /> </a>
+				<a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a>
+				<a href="<%=request.getContextPath()%>/BureauLogin.jsp" class="amenu"> <img src="images/red.png" /> </a>
 			</div>
 			
 			<div class="page">
 				<div class="content">
-					<img src="MainImages/welcoming.png" />
+					<img src="images/welcoming.png" />
 				</div>
 				<tr>
 					<div class="image">
-					  <img alt="" src="MainImages/foe_bc.png" />
+					  <img alt="" src="images/foe_bc.png" />
 					  <div class="text">
 						<h2>Valdkonnad</h2>
 						<a href="http://www.google.com/">Ehitus- ja planeerimisõigus</a>
@@ -69,7 +69,7 @@
 					
 				</div>
 				<div class="contacts">
-					<img src="MainImages/contact_shadow.png" />
+					<img src="images/contact_shadow.png" />
 					<h2>Kontaktid</h2>
 					<p>Telefon: </p>
 					<p>E-mail: </p>
