@@ -3,8 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Õigusportaal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="styleBureauRegister.css" rel="stylesheet" type="text/css" media="screen" />
+<style type="text/css">
+    <%@include file="theme/style.css" %>
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -13,18 +16,15 @@
 		</div>
 		<!-- end #header -->
 			
-		<div id="menu">
-			<ul>
-				<li class="current_page_item"/>
-				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/kataloog.png" width="120" height="40"/></a></li>
--				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a></li>
--				<li><a href="http://www.google.com/" rel="nofollow"><img src="images/red_hover.png" width="120" height="40"/></a></li>
-			</ul>
+		<div id="menu">			
+				<a href="."> <img src="images/kataloog_hover.png" /> </a>
+-				<a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a>
+-				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
 		</div>
 		
 		<!-- end #menu -->
-		<div id="page">
-			<div id="content">
+		<div class="page">
+			<div class="content">
 				<h1>Registreerimine</h1>
 				<div class="post">
 					<div class="entry">

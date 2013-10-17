@@ -321,12 +321,10 @@ SELECT pg_catalog.setval('"SuccessStory_SSId_seq"', 1, false);
 -- Data for Name: attorney; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY attorney (name, bureauid, email, attorneyid) FROM stdin;
-Ingvar Snetkov	1	ingvar@ingvar.com	1
-Atilio Reenja	2	atilio@atilio.com	2
-Servet Kurt	3	servet@servet.com	3
-Helen Linn	2	helen@helen.com	4
-\.
+INSERT INTO attorney VALUES ('Ingvar Snetkov','1','ingvar@ingvar.com','1');
+INSERT INTO attorney VALUES ('Atilio Reenja','2','atilio@atilio.com','2');
+INSERT INTO attorney VALUES ('Servet Kurt','3','servet@servet.com','3');
+INSERT INTO attorney VALUES ('Helen Linn','2','helen@helen.com','4');
 
 
 --
@@ -344,16 +342,13 @@ SELECT pg_catalog.setval('attorney_attorneyid_seq', 4, true);
 -- Data for Name: bureau; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY bureau (bureauid, registrycode, name, email, password, averageprice, street, postalcode, phone, regionname, cityname, countyname) FROM stdin;
-1	289987	Firma A	firmaa@firmaa.com	12345678	40	riia	59001	3213	Põhja-Eesti	Tartu	Tartumaa
-2	321317	Firma B	firmab@firmab.com	87654321	50	rutli	44521	41241	Põhja-Eesti	Tartu	Tartumaa
-3	412312	Firma C	firmac@firmac.com	12345678	40	kuni	6370	5114	Põhja-Eesti	Tartu	Tartumaa
-4	321314	Firma D	firmad@firmad.com	32131223	40	turu	4123	435	Põhja-Eesti	Tartu	Tartumaa
-5	231233	Firma E	firmae@firmae.com	31231244	40	kana	32134	34235	Lõuna-Eesti	Viljandi	Viljandimaa
-6	412341	Firma F	firmaf@firmaf.com	99999999	40	kala	32131	5432t624	Lõuna-Eesti	Viljandi	Viljandimaa
-7	532523	Firma M	firmam@firmam.com	33331111	50	karu	3213	5522441	Lõuna-Eesti	Viljandi	Viljandimaa
-\.
-
+INSERT INTO bureau VALUES ('1','289987','Firma A','firmaa@firmaa.com','12345678','40','Riia','59001','3213','Põhja-Eesti','Tartu','Tartumaa');
+INSERT INTO bureau VALUES ('2','321317','Firma B','firmab@firmab.com','87654321','50','Rüütli','44521','41241','Põhja-Eesti','Tartu','Tartumaa');
+INSERT INTO bureau VALUES ('3','412312','Firma C','firmac@firmac.com','12345678','40','Küüni','6370','5114','Põhja-Eesti','Tartu','Tartumaa');
+INSERT INTO bureau VALUES ('4','321314','Firma D','firmad@firmad.com','32131223','40','Turu','4123','435','Põhja-Eesti','Tartu','Tartumaa');
+INSERT INTO bureau VALUES ('5','231233','Firma E','firmae@firmae.com','31231244','40','Kana','32134','34235','Lõuna-Eesti','Viljandi','Viljandimaa');
+INSERT INTO bureau VALUES ('6','412341','Firma F','firmaf@firmaf.com','99999999','40','Kala','32131','5432624','Lõuna-Eesti','Viljandi','Viljandimaa');
+INSERT INTO bureau VALUES ('7','532523','Firma M','firmam@firmam.com','33331111','50','Karu','3213','5522441','Lõuna-Eesti','Viljandi','Viljandimaa');
 
 --
 -- TOC entry 1976 (class 0 OID 49279)
@@ -361,15 +356,13 @@ COPY bureau (bureauid, registrycode, name, email, password, averageprice, street
 -- Data for Name: field; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY field (fieldid, fieldname, bureauid) FROM stdin;
-2	Robbery	6
-3	Crime	7
-1	Divorce	5
-5	Divorce	1
-6	Divorce	2
-7	Divorce	3
-4	Divorce	6
-\.
+INSERT INTO field VALUES ('2','Robbery','6');
+INSERT INTO field VALUES ('3','Crime','7');
+INSERT INTO field VALUES ('1','Divorce','5');
+INSERT INTO field VALUES ('5','Divorce','1');
+INSERT INTO field VALUES ('6','Divorce','2');
+INSERT INTO field VALUES ('7','Divorce','3');
+INSERT INTO field VALUES ('4','Divorce','6');
 
 
 --
@@ -396,14 +389,12 @@ SELECT pg_catalog.setval('region_regionid_seq', 1, false);
 -- Data for Name: successstory; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY successstory (ssid, participants, date, reference, conclusion, bureauid, fieldid) FROM stdin;
-1	Helen-Urmas	2012-02-03	http://link/hu	Ended with divorce. And Urmas Has to pay alimony.	1	1
-2	Servet-Atilio	2010-02-04	http://link/sa	6 years of prison	2	1
-3	Ieve-Kadri	2000-04-03	http://link/ik	3 years of prison	2	1
-5	Berkan-Ozan	2003-05-09	http://link/bo	Senteced to prison	6	2
-4	Anari-Suido	2001-03-07	http://link/as	Case Cleared without punishment 	5	2
-\.
 
+INSERT INTO successstory VALUES ('1','Helen-Urmas','2012-02-03','http://link/hu','Ended with divorce. And Urmas Has to pay alimony.','1','1');
+INSERT INTO successstory VALUES ('2','Servet-Atilio','2010-02-04','http://link/sa','6,years of prison','2','1');
+INSERT INTO successstory VALUES ('3','Ieve-Kadri','2000-04-03','http://link/ik','3 years of prison','2','1');
+INSERT INTO successstory VALUES ('4','Anari-Suido','2001-03-07','http://link/as','Case Cleared without punishment','5','2');
+INSERT INTO successstory VALUES ('5','Berkan-Ozan','2003-05-09','http://link/bo','Senteced to prison','6','2');
 
 --
 -- TOC entry 1854 (class 2606 OID 49190)

@@ -8,10 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <style type="text/css">
-    <%@include file="srchstyle.css" %>
-    </style>		
+    <%@include file="theme/style.css" %>
+    </style>
 		<script src="js/jquery.js"></script>
 		<script src="js/functions.js"></script>
 		<title>Õigusportaal</title>
@@ -31,7 +30,7 @@
 			<div id="menu">
 				<a href="."> <img src="images/kataloog_hover.png" /> </a>
 				<a href="http://www.google.com/"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="http://www.google.com/"> <img src="images/red.png" /> </a>
+				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
 			</div>
 			
 			<div class="page">
@@ -57,14 +56,15 @@
 						<option value="Viljandi">Viljandi</option>
 						<option value="Pärnu">Pärnu</option>
 					</select>
-					<input type="checkbox" name="dontuse" value="Bike">Kasuta otsingus
+					<input type="checkbox" name="includeToSearchLoc" value="IncludeLoc">Kasuta otsingus
 				
 					<p>Keskmine tunnihind</p>
 					<div id="avgprice">
 						<input name="averageprice" type="range" min=1 max=100 value=50 style="width: 40%">
 						<output for="foo">1</output>
-						<input type="checkbox" name="dontuse" value="Car">Kasuta otsingus	
+						<input type="checkbox" name="includeToSearchPrice" value="IncludePrice" >Kasuta otsingus
 					</div>
+					<input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>">
 					
 					<p id="success">Viimane edulugu</p>
 					<input type="submit" value="Otsi" id="searching"/>
