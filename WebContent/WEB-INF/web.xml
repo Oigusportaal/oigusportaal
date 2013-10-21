@@ -48,4 +48,14 @@
     <servlet-name>BureauLoginServlet</servlet-name>
     <url-pattern>/BureauLoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Activation Servlet</description>
+    <display-name>ActivationServlet</display-name>
+    <servlet-name>ActivationServlet</servlet-name>
+    <servlet-class>bureauActivation.ActivationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivationServlet</servlet-name>
+    <url-pattern>/ActivationServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

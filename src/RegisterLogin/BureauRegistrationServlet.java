@@ -3,6 +3,7 @@ package RegisterLogin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+
 import Search.DBConnection;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import bureauActivation.RandomHashFactory;
+import bureauActivation.SendEmail;
 
 /**
  * Servlet implementation class BureauRegistrationServlet
@@ -66,6 +70,9 @@ public class BureauRegistrationServlet extends HttpServlet {
 		String county = request.getParameter("counties");
 		System.out.println(county);
 		
+		RandomHashFactory hash = new RandomHashFactory(10);
+		String hashCode = hash.nextString();
+		
 		String contextpath = request.getContextPath();		
 		System.out.println(contextpath);
 		
@@ -77,7 +84,7 @@ public class BureauRegistrationServlet extends HttpServlet {
 		
 		try{		
 			
-			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO bureau (registrycode,name,email,password,averageprice,street,postalcode,phone,regionname,cityname,countyname) values(?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO bureau (registrycode,name,email,password,averageprice,street,postalcode,phone,regionname,cityname,countyname,hash,activated) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			
 			stmt.setInt(1,registrycode);
 			stmt.setString(2,bureauname);
@@ -90,14 +97,21 @@ public class BureauRegistrationServlet extends HttpServlet {
 			stmt.setString(9,region);
 			stmt.setString(10,city);
 			stmt.setString(11,county);
+			stmt.setString(12, hashCode);
+			stmt.setBoolean(13, false);
 					
 			int i = stmt.executeUpdate();
 			
 			stmt.close();
 			
+			// Send Activation mail to client
+			
+			SendEmail send = new SendEmail(email, hashCode);
+			send.sendMail();
+			
 			
 			if ( i >0){
-				response.sendRedirect(response.encodeRedirectURL(contextpath+"/BureauLogin.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(contextpath+"/BureauRegisterSuccess.jsp"));
 				curconnection.close();
 			}
 	      } catch (Exception e) {
