@@ -45,6 +45,12 @@ public class SearchServlet extends HttpServlet {
 	 */
 		ArrayList<BureauSearchResults> bureauSR = new ArrayList<BureauSearchResults>();
 		
+		String sql;
+		String sql2;
+		String sql3;
+		String sql4;
+		
+		
 		String fieldName;
 		String county;
 		String city;
@@ -52,14 +58,15 @@ public class SearchServlet extends HttpServlet {
 		String averagePrice;
 		String SSDateFrom;
 		String SSDateTo;
-		String includeToSearchLoc;
-		String includeToSearchPrice;
+		boolean checkBoxLoc;
+		boolean checkBoxPrice;
+		
 		int ap;
 		
 		
-		
-		
-		
+		checkBoxLoc = request.getParameter("Loc") != null;
+		checkBoxPrice = request.getParameter("Price") != null;
+
 		
 		
 		fieldName = request.getParameter("fieldName");
@@ -68,10 +75,7 @@ public class SearchServlet extends HttpServlet {
 		String ffs = fieldName.replaceAll("\\s", "");
 		
 		System.out.println(ffs);
-		
-		
-		
-		
+				
 		
 		city = request.getParameter("cities");
 		System.out.println(city);
@@ -85,11 +89,9 @@ public class SearchServlet extends HttpServlet {
 		averagePrice = request.getParameter("averageprice");
 		System.out.println(averagePrice);
 		
-		includeToSearchLoc = request.getParameter("includeToSearchLoc");
-		System.out.println(includeToSearchLoc);
-		
-		includeToSearchPrice = request.getParameter("includeToSearcPrice");
-		System.out.println(includeToSearchPrice);
+
+				
+				
 		
 	/*	SSDateFrom = request.getParameter("SSDateFrom").toString();
 		System.out.println(SSDateFrom);
@@ -111,9 +113,21 @@ public class SearchServlet extends HttpServlet {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
+	
 		
-		
-		/*SELECT bureau.bureauid,  name, email,  averageprice, 
+		/*
+		 
+		 
+		 rs = stmt
+					.executeQuery("SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
+							+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+							+ " FROM bureau, field "
+							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+									+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
+											+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
+		 
+		 
+		 SELECT bureau.bureauid,  name, email,  averageprice, 
        street, postalcode, phone,  cityname 
        
   FROM bureau,successstory where bureau.fieldid=2 and 
@@ -121,19 +135,55 @@ public class SearchServlet extends HttpServlet {
   and bureau.cityname='Tallinn' and bureau.regionname='Pohja-Eesti' 
   and averageprice=40 and bureau.countyname='Viljandiima' ;
 	 */
+		
+		
+		
+		
+		sql="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ " FROM bureau, field "
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+						+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
+								+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;" ;
+		
+		
+		sql2="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ " FROM bureau, field "
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+						+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
+								+ "  and bureau.countyname='" + county +"' ;" ;
+		
+		
+		
+		sql3="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ " FROM bureau, field "
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' and bureau.averageprice=" + ap + " ;" ;
+							
+		sql4="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ " FROM bureau, field "
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='xx' ;" ;
+		
 		try {
 			stmt = curConnection.createStatement();
-			rs = stmt
-					.executeQuery("SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
-							+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
-							+ " FROM bureau, field "
-							+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
-									+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
-											+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;");
-
+			
+			if(checkBoxLoc==true && checkBoxPrice==true)
+				rs = stmt.executeQuery(sql);
+			else if(checkBoxLoc==true && checkBoxPrice==false)
+				rs = stmt.executeQuery(sql2);
+			else if(checkBoxLoc==false && checkBoxPrice==true)
+				rs = stmt.executeQuery(sql3);
+			else if(checkBoxLoc==false && checkBoxPrice==false)
+				rs = stmt.executeQuery(sql4);
+			
+			
 			while (rs.next()) {
 
 				BureauSearchResults br = new BureauSearchResults();
+		
+				
 				
 				
 				int bureauId = rs.getInt("bureauid"); 
