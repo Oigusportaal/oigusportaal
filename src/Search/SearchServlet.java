@@ -52,9 +52,16 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		String fieldName;
-		String county;
-		String city;
-		String region;
+		
+		String county = null;
+		int countyId;
+		
+		String city = null;
+		int cityId;
+		
+		String region = null;
+		int regionId;
+		
 		String averagePrice;
 		String SSDateFrom;
 		String SSDateTo;
@@ -77,14 +84,57 @@ public class SearchServlet extends HttpServlet {
 		System.out.println(ffs);
 				
 		
-		city = request.getParameter("cities");
-		System.out.println(city);
+		cityId = Integer.parseInt(request.getParameter("cities"));
+		System.out.println(cityId);
+		  
+	        switch (cityId) {
+	            case 1:  city = "Tallinn";
+	                     break;
+	            case 2:  city = "Tartu";
+	                     break;
+	            case 3:  city = "Viljandi";
+	                     break;
+	            case 4:  city = "Pärnu";
+	                     break;
+	        }
+	        System.out.println(city);
 		
-		county = request.getParameter("counties");
-		System.out.println(county);
 		
-		region = request.getParameter("regions");
-		System.out.println(region);
+		
+		countyId = Integer.parseInt(request.getParameter("counties"));
+		System.out.println(countyId);
+		
+		switch (countyId) {
+        case 1:  county = "Harjumaa";
+                 break;
+        case 2:  county = "Tartumaa";
+                 break;
+        case 3:  county = "Viljandimaa";
+                 break;
+        case 4:  county = "Pärnumaa";
+                 break;
+    }
+    System.out.println(county);
+		
+		
+		
+		
+		regionId = Integer.parseInt(request.getParameter("regions"));
+		System.out.println(regionId);
+		
+		switch (regionId) {
+        case 1:  region = "Põhja-Eesti";
+                 break;
+        case 2:  region = "Lõuna-Eesti";
+                 break;
+        case 3:  region = "Lääne-Eesti";
+                 break;
+        case 4:  region = "Ida-Eesti";
+                 break;
+    }
+    System.out.println(region);
+		
+		
 		
 		averagePrice = request.getParameter("averageprice");
 		System.out.println(averagePrice);

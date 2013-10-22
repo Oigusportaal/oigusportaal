@@ -7,6 +7,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<script type="text/javascript" defer="defer">
+		function cascadeSelect(parent, child){
+				var childOptions = child.find('option:not(.static)');
+					child.data('options',childOptions);
+ 
+				parent.change(function(){
+					childOptions.remove();
+					child
+						.append(child.data('options').filter('.sub_' + this.value))
+						.change();
+				})
+ 
+				childOptions.not('.static, .sub_' + parent.val()).remove();
+ 
+		}
+ 
+		$(function(){
+			cascadeForm = $('.cascade');
+			orgSelect = cascadeForm.find('.regSelect');
+			terrSelect = cascadeForm.find('.countySelect');
+			locSelect = cascadeForm.find('.citySelect');
+ 
+			cascadeSelect(orgSelect, terrSelect);
+			cascadeSelect(terrSelect, locSelect);
+		});
+	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">
     <%@include file="theme/style.css" %>
@@ -36,25 +63,28 @@
 			<div class="page">
 				<h2>Otsing</h2>
 				<div class="content">
-					<form action="<%=request.getContextPath()%>/SearchServlet" method="get">
+					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
 					<p>Asukoht</p>
-					<select name="regions">
-						<option value="Pıhja-Eesti" >Pıhja-Eesti</option>
-						<option value="Lıuna-Eesti">Lıuna-Eesti</option>
-						<option value="L‰‰ne-Eesti">L‰‰ne-Eesti</option>
-						<option value="Ida-Eesti">Ida-Eesti</option>
+					<select name="regions" class="regSelect">
+						<option value="0">--Select a Region--</option>
+						<option value="1" >Pıhja-Eesti</option>
+						<option value="2">Lıuna-Eesti</option>
+						<option value="3">L‰‰ne-Eesti</option>
+						<option value="4">Ida-Eesti</option>
 					</select>
-					<select name="counties">
-						<option value="Harjumaa">Harjumaa</option>
-						<option value="Tartumaa">Tartumaa</option>
-						<option value="Viljandimaa">Viljandimaa</option>
-						<option value="Parnumaa">P‰rnumaa</option>
+					<select name="counties" class="countySelect">
+						<option value="0" class="static">--Select a County--</option>
+						<option value="1" class="sub_1">Harjumaa</option>
+						<option value="2" class="sub_2">Tartumaa</option>
+						<option value="3" class="sub_3">Viljandimaa</option>
+						<option value="4" class="sub_4">P‰rnumaa</option>
 					</select>
-					<select name="cities">
-						<option value="Tallinn">Tallinn</option>
-						<option value="Tartu">Tartu</option>
-						<option value="Viljandi">Viljandi</option>
-						<option value="P‰rnu">P‰rnu</option>
+					<select name="cities" class="citySelect">
+						<option value="0" class="static">--Select a City--</option>
+						<option value="1" class="sub_1">Tallinn</option>
+						<option value="2" class="sub_2">Tartu</option>
+						<option value="3" class="sub_3">Viljandi</option>
+						<option value="4" class="sub_4">P‰rnu</option>
 					</select>
 					<input type="checkbox" name="Loc" value="Loc" checked="checked">  Kasuta otsingus
 				
