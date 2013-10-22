@@ -118,7 +118,7 @@
 					+ " " + br.get(i).averagePrice + " " + br.get(i).getStreet() + " " + br.get(i).postalcode 
 					+ " " + br.get(i).phoneNumber + " " + br.get(i).getCity()  %></h3>
 				</td>
-				<td width="100" class="tdnonborder"><p> </p></td>
+				<td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
 
 				<%
 					if ((i + 1) % 2 == 0) {

@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.0
 -- Dumped by pg_dump version 9.3.0
--- Started on 2013-10-15 02:23:10
+-- Started on 2013-10-22 19:22:29
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -69,8 +69,7 @@ CREATE TABLE bureau (
     regionname character varying(30),
     cityname character varying(30),
     countyname character varying(30),
-	hash character varying(10),
-	activated boolean
+    image character varying(120)
 );
 
 
@@ -296,7 +295,7 @@ SELECT pg_catalog.setval('"BureauRepresentative_BureauId_seq"', 1, false);
 -- Name: Bureau_BureauId_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"Bureau_BureauId_seq"', 1, true);
+SELECT pg_catalog.setval('"Bureau_BureauId_seq"', 3, true);
 
 
 --
@@ -323,7 +322,12 @@ SELECT pg_catalog.setval('"SuccessStory_SSId_seq"', 1, false);
 -- Data for Name: attorney; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-
+COPY attorney (name, bureauid, email, attorneyid) FROM stdin;
+Ingvar Snetkov	1	ingvar@ingvar.com	1
+Atilio Reenja	2	atilio@atilio.com	2
+Servet Kurt	3	servet@servet.com	3
+Helen Linn	2	helen@helen.com	4
+\.
 
 
 --
@@ -341,6 +345,16 @@ SELECT pg_catalog.setval('attorney_attorneyid_seq', 4, true);
 -- Data for Name: bureau; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY bureau (bureauid, registrycode, name, email, password, averageprice, street, postalcode, phone, regionname, cityname, countyname, image) FROM stdin;
+8	31231	Firma L	firmal@firmal.com	3311223	40	karu	33331	2222	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+7	532523	Firma M	firmam@firmam.com	33331111	50	karu	3213	5522441	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+6	412341	Firma F	firmaf@firmaf.com	99999999	40	kala	32131	5432t624	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+5	231233	Firma E	firmae@firmae.com	31231244	40	kana	32134	34235	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+4	321314	Firma D	firmad@firmad.com	32131223	40	turu	4123	435	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+3	412312	Firma C	firmac@firmac.com	12345678	40	kuni	6370	5114	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+2	321317	Firma B	firmab@firmab.com	87654321	50	rutli	44521	41241	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+1	289987	Firma A	firmaa@firmaa.com	12345678	40	riia	59001	3213	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+\.
 
 
 --
@@ -349,7 +363,40 @@ SELECT pg_catalog.setval('attorney_attorneyid_seq', 4, true);
 -- Data for Name: field; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-
+COPY field (fieldid, fieldname, bureauid) FROM stdin;
+2	Robbery	6
+3	Crime	7
+1	Divorce	5
+5	Divorce	1
+6	Divorce	2
+7	Divorce	3
+4	Divorce	6
+8	CivilLaw	5
+9	Privitization	6
+10	DebtCollectionServices	7
+11	IntellectualProperty	1
+12	ITLaw	2
+13	EnvironmentalLaw	3
+14	InsuranceLaw	2
+15	NonMovableProperty	3
+16	CompetitionLaw	4
+17	CriminalLaw	5
+18	TrafficLaw	6
+19	EconomicLaw	7
+21	MedicineLaw	2
+22	MediaAndTelecommunicationLaw	3
+23	PropertyReform	4
+24	BankingAndFinancialFunds	5
+25	FamilyLaw	6
+26	HeritageLaw	7
+27	RestructingLaw	1
+28	SocialWelfareLaw	2
+29	TransportTradeAndSeaLaw	3
+30	LaborLaw	4
+31	AliensLaw	5
+32	MergersAndAcquisitions	6
+20	TaxLaw	8
+\.
 
 
 --
@@ -376,7 +423,13 @@ SELECT pg_catalog.setval('region_regionid_seq', 1, false);
 -- Data for Name: successstory; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-
+COPY successstory (ssid, participants, date, reference, conclusion, bureauid, fieldid) FROM stdin;
+1	Helen-Urmas	2012-02-03	http://link/hu	Ended with divorce. And Urmas Has to pay alimony.	1	1
+2	Servet-Atilio	2010-02-04	http://link/sa	6 years of prison	2	1
+3	Ieve-Kadri	2000-04-03	http://link/ik	3 years of prison	2	1
+5	Berkan-Ozan	2003-05-09	http://link/bo	Senteced to prison	6	2
+4	Anari-Suido	2001-03-07	http://link/as	Case Cleared without punishment 	5	2
+\.
 
 
 --
@@ -454,7 +507,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-10-15 02:23:10
+-- Completed on 2013-10-22 19:22:29
 
 --
 -- PostgreSQL database dump complete

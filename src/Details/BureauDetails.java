@@ -10,7 +10,14 @@ public class BureauDetails {
 	public int averagePrice;
 	public String street;
 	public int postalcode;
+	public String image;
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String fieldName;
 	public String getFieldName() {
 		return fieldName;

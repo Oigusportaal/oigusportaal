@@ -60,7 +60,7 @@ public class FieldSearchServlet extends HttpServlet {
 		try {
 			stmt = curConnection.createStatement();
 			rs = stmt
-					.executeQuery("SELECT  bureau.bureauid, bureau.name, bureau.email, field.fieldname "
+					.executeQuery("SELECT  bureau.bureauid, bureau.name, bureau.email, field.fieldname, bureau.image "
 							+ "FROM  bureau,field WHERE bureau.bureauid=field.bureauid and field.fieldname='"+ fieldName +"' ;");
 
 			while (rs.next()) {
@@ -72,6 +72,7 @@ public class FieldSearchServlet extends HttpServlet {
 				//br.setRegistryCode(rs.getInt("registrycode"));
 				br.setEmail(rs.getString("email"));
 				br.setFieldName(rs.getString("fieldname"));
+				br.setImage(rs.getString("image"));
 				
 				//br.setPassword(rs.getString("password"));
 				//br.setAveragePrice(rs.getInt("averagePrice"));
@@ -86,6 +87,7 @@ public class FieldSearchServlet extends HttpServlet {
 				System.out.println("Bureau Name: " + br.getBureauName());
 				System.out.println("Email: " + br.getEmail());
 				System.out.println("Field: " + br.getFieldName());
+				System.out.println("Image: " + br.getImage());
 				/*System.out.println("Registrycode: " + br.getRegistryCode());
 				System.out.println("Postcode: " + br.getPostalcode());
 				System.out.println("Street " + br.getStreet());

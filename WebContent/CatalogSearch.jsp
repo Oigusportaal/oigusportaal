@@ -120,7 +120,7 @@
 					<h3><%=br.get(i).getBureauName() + " "
 						+ br.get(i).getEmail() %></h3>
 				</td>
-				<td width="100" class="tdnonborder"><%=br.get(i).getBureauName() %></td>
+				<td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
 
 			
 			</tr>

@@ -11,10 +11,17 @@ public String postalcode;
 public String phoneNumber;
 public String email;
 public String name;
+public String image;
 
 
 
 
+public String getImage() {
+	return image;
+}
+public void setImage(String image) {
+	this.image = image;
+}
 public String getName() {
 	return name;
 }

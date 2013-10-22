@@ -195,7 +195,7 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		sql="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
-				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
 				+ " FROM bureau, field, successstory "
 				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "'  "
 						+ "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '" + SSDateFrom + "' and '" + SSDateTo + "' "
@@ -204,7 +204,7 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		sql2="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
-				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
 				+ " FROM bureau, field, successstory "
 				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
 + "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '" + SSDateFrom + "' and '" + SSDateTo + "' "
@@ -214,14 +214,14 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		sql3="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
-				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
 				+ " FROM bureau, field "
 				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
 						+ " and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
 								+ "  and bureau.countyname='" + county +"' and bureau.averageprice<=" + ap + " ;" ;
 							
 		sql4="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
-				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
+				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
 				+ " FROM bureau, field "
 				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
 						+ " and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
@@ -255,6 +255,7 @@ public class SearchServlet extends HttpServlet {
 				String bureauPostalcode = rs.getString("postalcode");
 				String bureauPhone = rs.getString("phone");
 				String bureauCity = rs.getString("cityname");
+				String bureauImage = rs.getString("image");
 				
 				br.setFieldName(fieldName);
 				br.setName(bureauName);
@@ -264,7 +265,7 @@ public class SearchServlet extends HttpServlet {
 				br.setPostalcode(bureauPostalcode);
 				br.setPhoneNumber(bureauPhone);
 				br.setCity(bureauCity);
-				
+				br.setImage(bureauImage);
 				
 
 				System.out.println("Bureau Id: " + bureauId);
@@ -275,6 +276,7 @@ public class SearchServlet extends HttpServlet {
 				System.out.println("Bureau Postal " + bureauPostalcode);
 				System.out.println("Bureau Phone " + bureauPhone);
 				System.out.println("Bureau Cityname " + bureauCity);
+				System.out.println("Bureau Image: " + bureauImage);
 				
 				
 				
