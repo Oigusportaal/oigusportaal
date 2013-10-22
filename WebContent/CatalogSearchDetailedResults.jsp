@@ -86,7 +86,6 @@
 						<option value="3" class="sub_3">Viljandi</option>
 						<option value="4" class="sub_4">Pärnu</option>
 					</select>
-					<input type="checkbox" name="Loc" value="Loc" checked="checked">  Kasuta otsingus
 					
 					<p>Keskmine tunnihind</p>
 					<div id="avgprice">
@@ -96,6 +95,11 @@
 					</div>
 					<input type="hidden" name="fieldName" value="<%= request.getAttribute("fieldName") %>">    
 					<p id="success">Viimane edulugu</p>
+					<div id="success_date">
+					 From: <input type="date" name="From" >
+  					 To:   <input type="date" name="To" > 
+  					<input type="checkbox" name="Date" value="Date" checked="checked">  Kasuta otsingus
+  					 </div>
 					<input type="submit" value="Otsi" id="searching"/>
 					</form>
 			</div>

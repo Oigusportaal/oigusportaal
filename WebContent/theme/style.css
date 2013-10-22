@@ -52,7 +52,7 @@ h2 {
 .content {
 	border: 2px solid #8F9297;
 	padding: 40px 0px 0px 20px;
-	height: 300px;
+	height: 350px;
 }
 
 .content2 {
@@ -149,9 +149,11 @@ h2 {
 }
 
 #searching {
+	position: absolute;
 	margin: 0px 0px 5px 160px;
-	width: 60px;
+	width: 50px;
 	height: 33px;
+	top: 590px;
 }
 
 #registration_form2{
@@ -203,6 +205,14 @@ h2 {
 	position: absolute;
 	top: 470px;
 	}
+	
+#success_date
+{
+	position: absolute;
+	top: 550px;
+	
+}
+
 
 output { 
   position: absolute;

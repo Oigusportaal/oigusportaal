@@ -65,13 +65,18 @@ public class SearchServlet extends HttpServlet {
 		String averagePrice;
 		String SSDateFrom;
 		String SSDateTo;
-		boolean checkBoxLoc;
+		boolean checkBoxDate;
 		boolean checkBoxPrice;
 		
 		int ap;
 		
+		SSDateFrom = request.getParameter("From");
+		System.out.println(SSDateFrom);
 		
-		checkBoxLoc = request.getParameter("Loc") != null;
+		SSDateTo = request.getParameter("To");
+		System.out.println(SSDateTo);
+		
+		checkBoxDate = request.getParameter("Date") != null;
 		checkBoxPrice = request.getParameter("Price") != null;
 
 		
@@ -191,16 +196,18 @@ public class SearchServlet extends HttpServlet {
 		
 		sql="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
-				+ " FROM bureau, field "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+				+ " FROM bureau, field, successstory "
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "'  "
+						+ "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '" + SSDateFrom + "' and '" + SSDateTo + "' "
 						+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
 								+ " and bureau.averageprice=" + ap + " and bureau.countyname='" + county +"' ;" ;
 		
 		
 		sql2="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
-				+ " FROM bureau, field "
+				+ " FROM bureau, field, successstory "
 				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
++ "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '" + SSDateFrom + "' and '" + SSDateTo + "' "
 						+ "and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
 								+ "  and bureau.countyname='" + county +"' ;" ;
 		
@@ -209,23 +216,27 @@ public class SearchServlet extends HttpServlet {
 		sql3="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
 				+ " FROM bureau, field "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' and bureau.averageprice=" + ap + " ;" ;
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+						+ " and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
+								+ "  and bureau.countyname='" + county +"' and bureau.averageprice<=" + ap + " ;" ;
 							
 		sql4="SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname"
 				+ " FROM bureau, field "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='xx' ;" ;
+				+ " Where bureau.bureauid=field.bureauid and field.fieldname='" + ffs + "' "
+						+ " and bureau.cityname='" + city + "' and bureau.regionname='" + region + "'"
+								+ "  and bureau.countyname='" + county +"' ;" ;
 		
 		try {
 			stmt = curConnection.createStatement();
 			
-			if(checkBoxLoc==true && checkBoxPrice==true)
+			if(checkBoxDate==true && checkBoxPrice==true)
 				rs = stmt.executeQuery(sql);
-			else if(checkBoxLoc==true && checkBoxPrice==false)
+			else if(checkBoxDate==true && checkBoxPrice==false)
 				rs = stmt.executeQuery(sql2);
-			else if(checkBoxLoc==false && checkBoxPrice==true)
+			else if(checkBoxDate==false && checkBoxPrice==true)
 				rs = stmt.executeQuery(sql3);
-			else if(checkBoxLoc==false && checkBoxPrice==false)
+			else if(checkBoxDate==false && checkBoxPrice==false)
 				rs = stmt.executeQuery(sql4);
 			
 			

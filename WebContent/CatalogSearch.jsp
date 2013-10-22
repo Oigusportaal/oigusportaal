@@ -86,7 +86,7 @@
 						<option value="3" class="sub_3">Viljandi</option>
 						<option value="4" class="sub_4">Pärnu</option>
 					</select>
-					<input type="checkbox" name="Loc" value="Loc" checked="checked">  Kasuta otsingus
+					
 				
 					<p>Keskmine tunnihind</p>
 					<div id="avgprice">
@@ -95,8 +95,12 @@
 						<input type="checkbox" name="Price" value="Price" checked="checked">   Kasuta otsingus
 					</div>
 					<input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>">
-					
 					<p id="success">Viimane edulugu</p>
+					<div id="success_date">
+					 From: <input type="date" name="From" >
+  					 To:   <input type="date" name="To" > 
+  					<input type="checkbox" name="Date" value="Date" checked="checked">  Kasuta otsingus
+  					 </div>
 					<input type="submit" value="Otsi" id="searching"/>
 					</form>
 			</div>
@@ -110,21 +114,21 @@
 				%>
 
 				<td width="20" align="center" class="borderdesign">
+				<h1><%=br.get(i).getBureauName() %></h1>
+				</td>
 				<td width="100" class="borderdesign">
 					<h3><%=br.get(i).getBureauName() + " "
 						+ br.get(i).getEmail() %></h3>
 				</td>
-				<td width="100" class="tdnonborder"><p> </p></td>
+				<td width="100" class="tdnonborder"><%=br.get(i).getBureauName() %></td>
 
-				<%
-					if ((i + 1) % 2 == 0) {
-				%>
+			
 			</tr>
 			<tr>
 				<%
 					}
 
-					}
+					
 				%>
 
 			</tr>
