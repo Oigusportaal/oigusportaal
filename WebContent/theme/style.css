@@ -52,7 +52,7 @@ h2 {
 .content {
 	border: 2px solid #8F9297;
 	padding: 40px 0px 0px 20px;
-	height: 350px;
+	/*height: 350px;*/
 }
 
 .content2 {
@@ -193,6 +193,7 @@ h2 {
 }
 
 #registration_form {
+	display: inline-block;
   background: #f0f0f0;
   color: #333;
 }
