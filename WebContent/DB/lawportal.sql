@@ -71,7 +71,9 @@ CREATE TABLE bureau (
     countyname character varying(30),
     image character varying(120),
     category integer DEFAULT 2,
-    active integer DEFAULT 1 NOT NULL
+    active integer DEFAULT 1 NOT NULL,
+    hash character varying(10),
+    activated boolean
 );
 
 

@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Servet
- *
- */
-package Details;

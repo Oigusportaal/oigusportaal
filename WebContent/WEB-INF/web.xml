@@ -10,7 +10,7 @@
     <description> Search Servlet </description>
     <display-name>SearchServlet</display-name>
     <servlet-name>SearchServlet</servlet-name>
-    <servlet-class>Search.SearchServlet</servlet-class>
+    <servlet-class>main.search.SearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
@@ -22,7 +22,7 @@
     <description> Field Search Servlet </description>
     <display-name>FieldSearchServlet</display-name>
     <servlet-name>FieldSearchServlet</servlet-name>
-    <servlet-class>Search.FieldSearchServlet</servlet-class>
+    <servlet-class>main.search.FieldSearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FieldSearchServlet</servlet-name>
@@ -32,7 +32,7 @@
     <description>Bureau Registration Servlet</description>
     <display-name>BureauRegistrationServlet</display-name>
     <servlet-name>BureauRegistrationServlet</servlet-name>
-    <servlet-class>RegisterLogin.BureauRegistrationServlet</servlet-class>
+    <servlet-class>main.registerLogin.BureauRegistrationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BureauRegistrationServlet</servlet-name>
@@ -42,7 +42,7 @@
     <description>Bureau Login Servlet</description>
     <display-name>BureauLoginServlet</display-name>
     <servlet-name>BureauLoginServlet</servlet-name>
-    <servlet-class>RegisterLogin.BureauLoginServlet</servlet-class>
+    <servlet-class>main.registerLogin.BureauLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BureauLoginServlet</servlet-name>
@@ -52,7 +52,7 @@
     <description>Activation Servlet</description>
     <display-name>ActivationServlet</display-name>
     <servlet-name>ActivationServlet</servlet-name>
-    <servlet-class>bureauActivation.ActivationServlet</servlet-class>
+    <servlet-class>main.bureauActivation.ActivationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActivationServlet</servlet-name>

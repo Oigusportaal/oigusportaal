@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Suido
- *
- */
-package bureauActivation;
