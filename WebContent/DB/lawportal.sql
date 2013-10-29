@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.0
 -- Dumped by pg_dump version 9.3.0
--- Started on 2013-10-22 19:22:29
+-- Started on 2013-10-28 12:46:22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -22,7 +22,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1989 (class 0 OID 0)
+-- TOC entry 1990 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -69,7 +69,9 @@ CREATE TABLE bureau (
     regionname character varying(30),
     cityname character varying(30),
     countyname character varying(30),
-    image character varying(120)
+    image character varying(120),
+    category integer DEFAULT 2,
+    active integer DEFAULT 1 NOT NULL
 );
 
 
@@ -91,7 +93,7 @@ CREATE SEQUENCE "Bureau_BureauId_seq"
 ALTER TABLE public."Bureau_BureauId_seq" OWNER TO postgres;
 
 --
--- TOC entry 1990 (class 0 OID 0)
+-- TOC entry 1991 (class 0 OID 0)
 -- Dependencies: 170
 -- Name: Bureau_BureauId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -148,7 +150,7 @@ CREATE SEQUENCE "SuccessStory_SSId_seq"
 ALTER TABLE public."SuccessStory_SSId_seq" OWNER TO postgres;
 
 --
--- TOC entry 1991 (class 0 OID 0)
+-- TOC entry 1992 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: SuccessStory_SSId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -187,7 +189,7 @@ CREATE SEQUENCE attorney_attorneyid_seq
 ALTER TABLE public.attorney_attorneyid_seq OWNER TO postgres;
 
 --
--- TOC entry 1992 (class 0 OID 0)
+-- TOC entry 1993 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: attorney_attorneyid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -225,7 +227,7 @@ CREATE SEQUENCE field_fieldid_seq
 ALTER TABLE public.field_fieldid_seq OWNER TO postgres;
 
 --
--- TOC entry 1993 (class 0 OID 0)
+-- TOC entry 1994 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: field_fieldid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -249,7 +251,7 @@ CREATE SEQUENCE region_regionid_seq
 ALTER TABLE public.region_regionid_seq OWNER TO postgres;
 
 --
--- TOC entry 1852 (class 2604 OID 65568)
+-- TOC entry 1853 (class 2604 OID 65568)
 -- Name: attorneyid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -257,7 +259,7 @@ ALTER TABLE ONLY attorney ALTER COLUMN attorneyid SET DEFAULT nextval('attorney_
 
 
 --
--- TOC entry 1848 (class 2604 OID 49187)
+-- TOC entry 1847 (class 2604 OID 49187)
 -- Name: bureauid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -265,7 +267,7 @@ ALTER TABLE ONLY bureau ALTER COLUMN bureauid SET DEFAULT nextval('"Bureau_Burea
 
 
 --
--- TOC entry 1851 (class 2604 OID 90130)
+-- TOC entry 1852 (class 2604 OID 90130)
 -- Name: fieldid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -273,7 +275,7 @@ ALTER TABLE ONLY field ALTER COLUMN fieldid SET DEFAULT nextval('field_fieldid_s
 
 
 --
--- TOC entry 1850 (class 2604 OID 49225)
+-- TOC entry 1851 (class 2604 OID 49225)
 -- Name: ssid; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -281,7 +283,7 @@ ALTER TABLE ONLY successstory ALTER COLUMN ssid SET DEFAULT nextval('"SuccessSto
 
 
 --
--- TOC entry 1994 (class 0 OID 0)
+-- TOC entry 1995 (class 0 OID 0)
 -- Dependencies: 172
 -- Name: BureauRepresentative_BureauId_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -290,7 +292,7 @@ SELECT pg_catalog.setval('"BureauRepresentative_BureauId_seq"', 1, false);
 
 
 --
--- TOC entry 1995 (class 0 OID 0)
+-- TOC entry 1996 (class 0 OID 0)
 -- Dependencies: 170
 -- Name: Bureau_BureauId_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -299,7 +301,7 @@ SELECT pg_catalog.setval('"Bureau_BureauId_seq"', 3, true);
 
 
 --
--- TOC entry 1996 (class 0 OID 0)
+-- TOC entry 1997 (class 0 OID 0)
 -- Dependencies: 176
 -- Name: SuccessStory_FieldId_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -308,7 +310,7 @@ SELECT pg_catalog.setval('"SuccessStory_FieldId_seq"', 1, true);
 
 
 --
--- TOC entry 1997 (class 0 OID 0)
+-- TOC entry 1998 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: SuccessStory_SSId_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -317,7 +319,7 @@ SELECT pg_catalog.setval('"SuccessStory_SSId_seq"', 1, false);
 
 
 --
--- TOC entry 1978 (class 0 OID 65556)
+-- TOC entry 1979 (class 0 OID 65556)
 -- Dependencies: 177
 -- Data for Name: attorney; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -331,7 +333,7 @@ Helen Linn	2	helen@helen.com	4
 
 
 --
--- TOC entry 1998 (class 0 OID 0)
+-- TOC entry 1999 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: attorney_attorneyid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -340,25 +342,26 @@ SELECT pg_catalog.setval('attorney_attorneyid_seq', 4, true);
 
 
 --
--- TOC entry 1972 (class 0 OID 49184)
+-- TOC entry 1973 (class 0 OID 49184)
 -- Dependencies: 171
 -- Data for Name: bureau; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY bureau (bureauid, registrycode, name, email, password, averageprice, street, postalcode, phone, regionname, cityname, countyname, image) FROM stdin;
-8	31231	Firma L	firmal@firmal.com	3311223	40	karu	33331	2222	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-7	532523	Firma M	firmam@firmam.com	33331111	50	karu	3213	5522441	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-6	412341	Firma F	firmaf@firmaf.com	99999999	40	kala	32131	5432t624	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-5	231233	Firma E	firmae@firmae.com	31231244	40	kana	32134	34235	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-4	321314	Firma D	firmad@firmad.com	32131223	40	turu	4123	435	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-3	412312	Firma C	firmac@firmac.com	12345678	40	kuni	6370	5114	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-2	321317	Firma B	firmab@firmab.com	87654321	50	rutli	44521	41241	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
-1	289987	Firma A	firmaa@firmaa.com	12345678	40	riia	59001	3213	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif
+COPY bureau (bureauid, registrycode, name, email, password, averageprice, street, postalcode, phone, regionname, cityname, countyname, image, category, active) FROM stdin;
+1	289987	Firma A	firmaa@firmaa.com	1111	40	riia	59001	3213	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+2	321317	Firma B	firmab@firmab.com	2222	50	rutli	44521	41241	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+4	321314	Firma D	firmad@firmad.com	4444	40	turu	4123	435	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+6	412341	Firma F	firmaf@firmaf.com	6666	40	kala	32131	5432t624	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+7	532523	Firma M	firmam@firmam.com	7777	50	karu	3213	5522441	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+8	31231	Firma L	firmal@firmal.com	8888	40	karu	33331	2222	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+9	1	admin	admin@admin.com	9999	\N	\N	\N	\N	\N	\N	\N	\N	1	1
+3	412312	Firma C	firmac@firmac.com	3333	40	kuni	6370	5114	Lõuna-Eesti	Tartu	Tartumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	0
+5	231233	Firma E	firmae@firmae.com	5555	40	kana	32134	34235	Lääne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	0
 \.
 
 
 --
--- TOC entry 1976 (class 0 OID 49279)
+-- TOC entry 1977 (class 0 OID 49279)
 -- Dependencies: 175
 -- Data for Name: field; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -400,7 +403,7 @@ COPY field (fieldid, fieldname, bureauid) FROM stdin;
 
 
 --
--- TOC entry 1999 (class 0 OID 0)
+-- TOC entry 2000 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: field_fieldid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -409,7 +412,7 @@ SELECT pg_catalog.setval('field_fieldid_seq', 4, true);
 
 
 --
--- TOC entry 2000 (class 0 OID 0)
+-- TOC entry 2001 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: region_regionid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -418,7 +421,7 @@ SELECT pg_catalog.setval('region_regionid_seq', 1, false);
 
 
 --
--- TOC entry 1975 (class 0 OID 49222)
+-- TOC entry 1976 (class 0 OID 49222)
 -- Dependencies: 174
 -- Data for Name: successstory; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -433,7 +436,7 @@ COPY successstory (ssid, participants, date, reference, conclusion, bureauid, fi
 
 
 --
--- TOC entry 1854 (class 2606 OID 49190)
+-- TOC entry 1855 (class 2606 OID 49190)
 -- Name: Bureau_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -442,7 +445,7 @@ ALTER TABLE ONLY bureau
 
 
 --
--- TOC entry 1856 (class 2606 OID 49227)
+-- TOC entry 1857 (class 2606 OID 49227)
 -- Name: SuccessStory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -451,7 +454,7 @@ ALTER TABLE ONLY successstory
 
 
 --
--- TOC entry 1860 (class 2606 OID 65570)
+-- TOC entry 1861 (class 2606 OID 65570)
 -- Name: attorney_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -460,7 +463,7 @@ ALTER TABLE ONLY attorney
 
 
 --
--- TOC entry 1858 (class 2606 OID 90136)
+-- TOC entry 1859 (class 2606 OID 90136)
 -- Name: field_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -469,7 +472,7 @@ ALTER TABLE ONLY field
 
 
 --
--- TOC entry 1862 (class 2606 OID 98304)
+-- TOC entry 1863 (class 2606 OID 98304)
 -- Name: bureau; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -478,7 +481,7 @@ ALTER TABLE ONLY field
 
 
 --
--- TOC entry 1863 (class 2606 OID 65559)
+-- TOC entry 1864 (class 2606 OID 65559)
 -- Name: bureauid; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -487,7 +490,7 @@ ALTER TABLE ONLY attorney
 
 
 --
--- TOC entry 1861 (class 2606 OID 65580)
+-- TOC entry 1862 (class 2606 OID 65580)
 -- Name: bureauid; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -496,7 +499,7 @@ ALTER TABLE ONLY successstory
 
 
 --
--- TOC entry 1988 (class 0 OID 0)
+-- TOC entry 1989 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -507,7 +510,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-10-22 19:22:29
+-- Completed on 2013-10-28 12:46:22
 
 --
 -- PostgreSQL database dump complete
