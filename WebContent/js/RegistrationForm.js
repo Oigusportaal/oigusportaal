@@ -13,17 +13,20 @@ function validateEmail(){
 		var email=document.forms["registration_form"]["registerEmail"].value;
 		
 		if (email==null || email==""){
-			document.getElementById("emailErrorMessage").innerHTML= "Enter email address";
+			document.getElementById("emailErrorMessage").innerHTML= "Enter email address!";
+			document.getElementById("emailErrorMessage").style.color="red";
 			/*$('#email_error_message').replaceWith("Enter correct email address");  jquery */
 			return false;
 		} else {
 			document.getElementById("emailErrorMessage").innerHTML= "";
 			var emailExp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([org\ee\com\co\.\in])+$/;
 			if (!email.match(emailExp)){
-				document.getElementById("emailErrorMessage").innerHTML = "Incorrect email";
+				document.getElementById("emailErrorMessage").innerHTML = "Incorrect email!";
+				document.getElementById("emailErrorMessage").style.color="red";
 				return false;
 			} else {
 				document.getElementById("emailErrorMessage").innerHTML= "OK";
+				document.getElementById("emailErrorMessage").style.color="green";
 				return true;
 			}
 		}
@@ -38,59 +41,38 @@ function confirmEmail(){
 	var confirmEmail=document.forms["registration_form"]["registerEmailConfirmation"].value;
 		
 	if (confirmEmail==null || confirmEmail==""){
-			document.getElementById("confirmEmailMessage").innerHTML= "Confirm email";
+			document.getElementById("confirmEmailMessage").innerHTML= "Confirm email!";
+			document.getElementById("confirmEmailMessage").style.color="red";
+			
 			return false;
 	} else {
 		
 		if (email !== confirmEmail){
-				document.getElementById("confirmEmailMessage").innerHTML = "Email doesn\'t match";
+				document.getElementById("confirmEmailMessage").innerHTML = "Email doesn\'t match!";
+				document.getElementById("confirmEmailMessage").style.color="red";
 				return false;
 		} else {
 			document.getElementById("confirmEmailMessage").innerHTML = "OK";
+			document.getElementById("confirmEmailMessage").style.color="green";
 			return true;
 		}
 	}
 }
 	
-/*
- * Functions to control password strength --- does not work
- * */
-function passwordStrength(password){
-	var counter = 0;
-	if (password.length < 6){ /*ERROR*/
-		return "LENGTH";
-	}else if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/)){
-		return "SYMBOL";
-	}else { 
-		if (password.length >=6){/*WEAK*/
-			counter++;/*counter=1*/
-			if (password.match(/[a-z]/)){ /*MEDIUM*/
-				counter++; /*counter=2*/
-				if(password.match(/\d+/)){/*STRONG*/
-					counter++; /*counter=3*/
-				}
-				if (password.match(/[A-Z]/)){/*VERY STRONG*/
-					counter++; /*counter=4*/
-				}
-		/*if (password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/\d+/)){ //VERY STRONG
-			counter++; //counter=5
-		}*/
-			}
-		}
-		return counter;
-	}
-}
 
 /*
  * Validate password.
- * Checks for empty field, length, consist lettes, numbers, capital letters, symbols
- * buggy
+ * Checks for empty field
+ * Checks if: 
+ * length is smaller than 6
+ * consist symbols
+ * consist small lettes and numbers
+ * consist capital letters and numbers
  */
 
-function validatePassword(){ /*why you no work*/
+function validatePassword(){ 
 	
 	var password=document.forms["registration_form"]["registerPassword"].value;
-	
 	
 	if (password==null || password==""){
 		document.getElementById("passwordMessage").innerHTML= "Enter password!";
@@ -106,24 +88,23 @@ function validatePassword(){ /*why you no work*/
 			document.getElementById("passwordMessage").innerHTML= "SYMBOLS are not allowed!";
 			document.getElementById("passwordMessage").style.color="red";
 			return false;
-		}else if(password.match(/[a-z]/)){
-			document.getElementById("passwordMessage").innerHTML= "Match letters";
-			document.getElementById("passwordMessage").style.color="orange";
-			return true;
-		}else if(password.match(/\d+/)){
-			document.getElementById("passwordMessage").innerHTML= "Match numbers";
-			document.getElementById("passwordMessage").style.color="black";
-			return true;
-		/*}else if(passwordstrength == n){
-			document.getElementById("passwordMessage").innerHTML= "STRONG";
-			document.getElementById("passwordMessage").style.color="GREEN";
-			return true;*/
-		}else {
-			document.getElementById("passwordMessage").innerHTML= "Match capital letters!";
-			document.getElementById("passwordMessage").innerHTML= "Match capital letters!";
-			document.getElementById("passwordMessage").style.color="GREEN";
-			return true;
-			/*document.getElementById("passwordMessage").style.color="BLUE";*/
+		}else { if(password.match(/[a-z]/)&&password.match(/\d+/)&& password.match(/[A-Z]/)){
+					document.getElementById("passwordMessage").innerHTML= "STRONG";
+					document.getElementById("passwordMessage").style.color="green";
+					return true;
+				}else if(password.match(/[0-9]/)&&password.match(/[a-z]/)){
+					document.getElementById("passwordMessage").innerHTML= "MEDIUM";
+					document.getElementById("passwordMessage").style.color="orange";
+					return true;
+				}else if(password.match(/[0-9]/)&&password.match(/[A-Z]/)){
+					document.getElementById("passwordMessage").innerHTML= "MEDIUM";
+					document.getElementById("passwordMessage").style.color="orange";
+					return true;
+				}else {
+					document.getElementById("passwordMessage").innerHTML= "WEAK";
+					document.getElementById("passwordMessage").style.color="pink";
+					return true;
+				}
 		}
 	}
 }
@@ -138,15 +119,18 @@ function confirmPassword(){
 	var confirmPassword=document.forms["registration_form"]["registerPasswordConfirmation"].value;
 		
 	if (confirmPassword==null || confirmPassword==""){
-			document.getElementById("confirmPasswordError").innerHTML= "Confirm email";
+			document.getElementById("confirmPasswordError").innerHTML= "Confirm password!";
+			document.getElementById("confirmPasswordError").style.color="red";
 			false;
 	} else {
 		
 		if (confirmPassword!==password){
-				document.getElementById("confirmPasswordError").innerHTML = "Password doesn\'t match";
+				document.getElementById("confirmPasswordError").innerHTML = "Password doesn\'t match!";
+				document.getElementById("confirmPasswordError").style.color="red";
 				return false;
 		} else {
 			document.getElementById("confirmPasswordError").innerHTML = "OK";
+			document.getElementById("confirmPasswordError").style.color="green";
 			return true;
 		}
 	}
@@ -160,9 +144,11 @@ function validateBureauName(){
 	var bureauname=document.forms["registration_form"]["registerBureauName"].value;
 	if (bureauname==null || bureauname==""){
 		document.getElementById("bureauNameMessage").innerHTML= "Enter bureauname!";
+		document.getElementById("bureauNameMessage").style.color="red";
 		return false;
 	} else {
 		document.getElementById("bureauNameMessage").innerHTML= "OK";
+		document.getElementById("bureauNameMessage").style.color="green";
 		return true;
 	}	
 }
@@ -174,19 +160,27 @@ function validateBureauName(){
 function validateRegistrycode(){	
 	var regcode=document.forms["registration_form"]["registerRegcode"].value;
 	if (regcode==null || regcode==""){
-			document.getElementById("regcodeMessage").innerHTML= "Enter regcode";
+			document.getElementById("regcodeMessage").innerHTML= "Enter regcode!";
+			document.getElementById("regcodeMessage").style.color="red";
 			return false;
 	} else {
 			var numericExpression = /^[0-9]+$/;
 			if (isNaN(regcode)){
-				document.getElementById("regcodeMessage").innerHTML = "Incorrect value! Must contain only numbers";
+				document.getElementById("regcodeMessage").innerHTML = "Incorrect value! Must contain only numbers!";
+				document.getElementById("regcodeMessage").style.color="red";
 				return false;
 			} else{
 					if (regcode.length==8){
 						document.getElementById("regcodeMessage").innerHTML = "OK";
+						document.getElementById("regcodeMessage").style.color="green";
 						return true;
+					}else if(regcode.length<8){
+						document.getElementById("regcodeMessage").innerHTML = "Too short! Must contain 8 numbers!";
+						document.getElementById("regcodeMessage").style.color="red";
+						return false;
 					}else {
-						document.getElementById("regcodeMessage").innerHTML = "Too short! Enter moaaar numbers!";
+						document.getElementById("regcodeMessage").innerHTML = "Too long! Must contain 8 numbers!";
+						document.getElementById("regcodeMessage").style.color="red";
 						return false;
 					}
 			}
@@ -202,12 +196,14 @@ function validateStreetAddress(){
 	
 	if (streetaddress==null || streetaddress==""){
 		
-		document.getElementById("streetAddressMessage").innerHTML= "Enter street address";
+		document.getElementById("streetAddressMessage").innerHTML= "Enter street address!";
+		document.getElementById("streetAddressMessage").style.color="red";
 		return false;
 		
 	} else {
 		
 		document.getElementById("streetAddressMessage").innerHTML= "OK";
+		document.getElementById("streetAddressMessage").style.color="green";
 		return true;
 	}
 }
@@ -220,19 +216,26 @@ function validatePostalCode(){
 	var postalcode = document.forms["registration_form"]["registerPostalcode"].value;
 	
 	if (postalcode==null || postalcode==""){
-		document.getElementById("postalcodeMessage").innerHTML= "Enter postal code! Must contain 5 numbers";
+		document.getElementById("postalcodeMessage").innerHTML= "Enter postal code! Must contain 5 numbers!";
+		document.getElementById("postalcodeMessage").style.color="red";
 		return false;
 	} else {
 		if (isNaN(postalcode)){
 			document.getElementById("postalcodeMessage").innerHTML = "Incorrect value! Enter 5 numbers!";
+			document.getElementById("postalcodeMessage").style.color="red";
 			return false;
 		} else{
 			if (postalcode.length==5){
 				document.getElementById("postalcodeMessage").innerHTML = "OK";
+				document.getElementById("postalcodeMessage").style.color="green";
 				return true;
-			} else {
-				document.getElementById("postalcodeMessage").innerHTML = "Incorrect postal code! Enter 5 numbers!";
+			} else if (postalcode.length<5){
+				document.getElementById("postalcodeMessage").innerHTML = "Too short! Enter 5 numbers!";
+				document.getElementById("postalcodeMessage").style.color="red";
 				return false;
+			} else {
+				document.getElementById("postalcodeMessage").innerHTML = "Too long! Enter 5 numbers!";
+				document.getElementById("postalcodeMessage").style.color="red";
 			}
 		}
 	}
@@ -245,15 +248,18 @@ function validatePhoneNumber(){
 	
 	var phone = document.forms["registration_form"]["registerPhone"].value;
 	if (phone==null || phone==""){
-		document.getElementById("phoneMessage").innerHTML="Enter phone number";
+		document.getElementById("phoneMessage").innerHTML="Enter phone number!";
+		document.getElementById("phoneMessage").style.color="red";
 		return false;
 	} else {
 		/*var numericExpression = /^[0-9]+$/;*/
 		if (isNaN(phone)){
 			document.getElementById("phoneMessage").innerHTML = "Incorrect phone number!";
+			document.getElementById("phoneMessage").style.color="red";
 			return false;
 		} else{
 			document.getElementById("phoneMessage").innerHTML = "OK";
+			document.getElementById("phoneMessage").style.color="green";
 			return true;
 		}
 	}
@@ -268,10 +274,12 @@ function validateRegion(){
 	var region  = document.forms["registration_form"]["registerRegion"].value;
 	if (region == "Region") {
 		document.getElementById("registerRegionMessage").innerHTML = "Select a region!";
+		document.getElementById("registerRegionMessage").style.color="red";
 		document.getElementById("registerCounty").disabled=true;
 		return false;
 	} else {
 		document.getElementById("registerRegionMessage").innerHTML = "OK";
+		document.getElementById("registerRegionMessage").style.color="green";
 		document.getElementById("registerCounty").disabled=false;
 		return true;
 	}
@@ -286,10 +294,12 @@ function validateCounty(){
 	var county  = document.forms["registration_form"]["registerCounty"].value;
 	if (county == "County") {
 		document.getElementById("registerCountyMessage").innerHTML = "Select a county!";
+		document.getElementById("registerCountyMessage").style.color="red";
 		document.getElementById("registerCounty").disabled=true;
 		return false;
 	} else {
 		document.getElementById("registerCountyMessage").innerHTML = "OK";
+		document.getElementById("registerCountyMessage").style.color="green";
 		document.getElementById("registerCity").disabled=false;
 		return true;
 	}
@@ -303,9 +313,11 @@ function validateCity(){
 	var city = document.forms["registration_form"]["registerCity"].value;
 	if (city == "City") {
 		document.getElementById("registerCityMessage").innerHTML = "Select a city!";
+		document.getElementById("registerCityMessage").style.color="red";
 		return false;
 	} else {
 		document.getElementById("registerCityMessage").innerHTML = "OK";
+		document.getElementById("registerCityMessage").style.color="green";
 		return true;
 	}
 }
