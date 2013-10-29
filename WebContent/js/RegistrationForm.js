@@ -19,7 +19,7 @@ function validateEmail(){
 			return false;
 		} else {
 			document.getElementById("emailErrorMessage").innerHTML= "";
-			var emailExp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([org\ee\com\co\.\in])+$/;
+			var emailExp =/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			if (!email.match(emailExp)){
 				document.getElementById("emailErrorMessage").innerHTML = "Incorrect email!";
 				document.getElementById("emailErrorMessage").style.color="red";
