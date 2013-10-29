@@ -11,7 +11,15 @@ public class BureauDetails {
 	public String street;
 	public int postalcode;
 	public String image;
+	public int active ;
 	
+	
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	public String getImage() {
 		return image;
 	}

@@ -19,7 +19,7 @@
 			<div id="menu">
 				<a href="." class="amenu"> <img src="images/kataloog2.png" /> </a>
 				<a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
+				<a href="<%=request.getContextPath()%>/Login.jsp" class="amenu"> <img src="images/red.png" /> </a>
 			</div>
 			
 			<div class="page">
