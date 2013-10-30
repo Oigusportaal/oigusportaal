@@ -57,7 +57,7 @@
 			<div id="menu">
 				<a href="."> <img src="images/kataloog_hover.png" /> </a>
 				<a href="http://www.google.com/"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
+				<a href="<%=request.getContextPath()%>/Login.jsp" class="amenu"> <img src="images/red.png" /> </a>
 			</div>
 			
 			<div class="page">

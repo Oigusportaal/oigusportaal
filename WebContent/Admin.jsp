@@ -118,7 +118,7 @@ if (!currentUser.isValid() || currentUser.getCategory() == null ){
 			</tr>
 			</table>
 			</div>
-				<a href="a.jsp" class="amenu">Click to log out</a>
+				<a href="Logout.jsp" class="amenu">Click to log out</a>
 
 			<div id="footer">
 				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
