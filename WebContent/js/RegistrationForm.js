@@ -1,5 +1,5 @@
 /**
- *Registration Form Field Valitation 
+ *Registration Form Field Validation 
  */
 
 
@@ -265,23 +265,67 @@ function validatePhoneNumber(){
 	}
 }
 
-
 /*
  * Validating Region. Checking if something else than "Region" is selected.
  * Opens county dropdown for selection.
  * */
 function validateRegion(){
+	
+	var pohi = ["Harjumaa", "Jarvamaa"," Raplamaa"];
+	var louna = ["Viljandimaa", "Tartumaa", "Polvamaa", "Valgamaa", "Vorumaa"];
+	var ida = ["Ida-Virumaa", "Laane-Virumaa", "Jogevamaa"];
+	var laas = ["Laanemaa", "Hiiumaa", "Saaremaa", "Parnumaa"];
+	
 	var region  = document.forms["registration_form"]["registerRegion"].value;
+	var county = document.getElementById("registerCounty");
+	
 	if (region == "Region") {
 		document.getElementById("registerRegionMessage").innerHTML = "Select a region!";
 		document.getElementById("registerRegionMessage").style.color="red";
-		document.getElementById("registerCounty").disabled=true;
+		county.options.length=1;
 		return false;
+		
 	} else {
 		document.getElementById("registerRegionMessage").innerHTML = "OK";
 		document.getElementById("registerRegionMessage").style.color="green";
-		document.getElementById("registerCounty").disabled=false;
-		return true;
+		
+		if (region == "Pohja-Eesti" ){
+			county.options.length=1;
+			for (var i = 0; i<pohi.length; i++){
+				 var opt = document.createElement("option");
+				    opt.value =pohi[i];
+				    opt.innerHTML =pohi[i];
+				    county.appendChild(opt);		 
+			}
+			return true;
+		}else if (region == "Louna-Eesti"){
+			county.options.length=1;
+			for (var i = 0; i<louna.length; i++){
+				 var opt = document.createElement("option");
+				    opt.value =louna[i];
+				    opt.innerHTML =louna[i];
+				    county.appendChild(opt);
+			}
+			return true;
+		}else if (region == "Laane-Eesti"){
+			county.options.length=1;
+			for (var i = 0; i<laas.length; i++){
+				 var opt = document.createElement("option");
+				    opt.value =laas[i];
+				    opt.innerHTML =laas[i];
+				    county.appendChild(opt);
+			}
+			return true;
+		}else {
+			county.options.length=1;
+			for (var i = 0; i<ida.length; i++){
+				 var opt = document.createElement('option');
+				    opt.value = ida[i];
+				    opt.innerHTML = ida[i];
+				    county.appendChild(opt);
+			}
+			return true;
+		}
 	}
 }
 
@@ -291,17 +335,170 @@ function validateRegion(){
  * Displayes all counties.
  * */
 function validateCounty(){
+	
+	var harjumaa= ["Tallinn"];
+	var jarvamaa = ["Paide"];
+	var raplamaa = ["Rapla"];
+	var viljandimaa = ["Viljandi"];
+	var tartumaa = ["Tartu"];
+	var polvamaa = ["Polva"];
+	var valgamaa = ["Valga"];
+	var vorumaa = ["Voru"];
+	var idaVirumaa= ["Johvi"];
+	var laaneVirumaa = ["Rakvere"];
+	var jogevamaa = ["Jogeva"];
+	var laanemaa = ["Haapsalu"];
+	var hiiumaa = ["Kardla"];
+	var saaremaa = ["Kuressaare"]; 
+	var parnumaa = ["Parnu"];
+	
+	var city = document.getElementById("registerCity");
 	var county  = document.forms["registration_form"]["registerCounty"].value;
 	if (county == "County") {
 		document.getElementById("registerCountyMessage").innerHTML = "Select a county!";
 		document.getElementById("registerCountyMessage").style.color="red";
-		document.getElementById("registerCounty").disabled=true;
+		city.options.length=1;
 		return false;
 	} else {
 		document.getElementById("registerCountyMessage").innerHTML = "OK";
 		document.getElementById("registerCountyMessage").style.color="green";
-		document.getElementById("registerCity").disabled=false;
-		return true;
+		if (county=="Harjumaa"){
+			city.options.length=1;
+			for (var i = 0; i<harjumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =harjumaa[i];
+				opt.innerHTML =harjumaa[i];
+				city.appendChild(opt);
+				
+			}
+			return true;
+		}else if(county == "Jarvamaa"){
+			city.options.length=1;
+			for (var i = 0; i<jarvamaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =jarvamaa[i];
+				opt.innerHTML =jarvamaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if(county == "Raplamaa"){
+			city.options.length=1;
+			for (var i = 0; i<raplamaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =raplamaa[i];
+				opt.innerHTML =raplamaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Viljandimaa"){
+			city.options.length=1;
+			for (var i = 0; i<viljandimaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =viljandimaa[i];
+				opt.innerHTML =viljandimaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Tartumaa"){
+			city.options.length=1;
+			for (var i = 0; i<tartumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =tartumaa[i];
+				opt.innerHTML =tartumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Polvamaa"){
+			city.options.length=1;
+			for (var i = 0; i<polvamaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =polvamaa[i];
+				opt.innerHTML =polvamaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Valgamaa"){
+			city.options.length=1;
+			for (var i = 0; i<valgamaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =valgamaa[i];
+				opt.innerHTML =valgamaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Vorumaa"){
+			city.options.length=1;
+			for (var i = 0; i<vorumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =vorumaa[i];
+				opt.innerHTML =vorumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Ida-Virumaa"){
+			city.options.length=1;
+			for (var i = 0; i<idaVirumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =idaVirumaa[i];
+				opt.innerHTML =idaVirumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Laane-Virumaa"){
+			city.options.length=1;
+			for (var i = 0; i<laaneVirumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =laaneVirumaa[i];
+				opt.innerHTML =laaneVirumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Jogevamaa"){
+			city.options.length=1;
+			for (var i = 0; i<jogevamaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =jogevamaa[i];
+				opt.innerHTML =jogevamaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Laanemaa"){
+			city.options.length=1;
+			for (var i = 0; i<laanemaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =laanemaa[i];
+				opt.innerHTML =laanemaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Hiiumaa"){
+			city.options.length=1;
+			for (var i = 0; i<hiiumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =hiiumaa[i];
+				opt.innerHTML =hiiumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else if (county == "Saaremaa"){
+			city.options.length=1;
+			for (var i = 0; i<saaremaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =saaremaa[i];
+				opt.innerHTML =saaremaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}else{
+			city.options.length=1;
+			for (var i = 0; i<parnumaa.length;i++){
+				var opt = document.createElement("option");
+				opt.value =parnumaa[i];
+				opt.innerHTML =parnumaa[i];
+				city.appendChild(opt);
+			}
+			return true;
+		}
 	}
 }
 
@@ -314,12 +511,15 @@ function validateCity(){
 	if (city == "City") {
 		document.getElementById("registerCityMessage").innerHTML = "Select a city!";
 		document.getElementById("registerCityMessage").style.color="red";
+		
 		return false;
 	} else {
 		document.getElementById("registerCityMessage").innerHTML = "OK";
 		document.getElementById("registerCityMessage").style.color="green";
+		/*validateForm();*/
 		return true;
 	}
+	
 }
 
 
@@ -347,13 +547,17 @@ function validateForm(){ /*do you work?*/
 									document.getElementById("confirmInput").innerHTML = "validatePostalcode";
 									if (validatePhoneNumber()){
 										document.getElementById("confirmInput").innerHTML = "validatePhoneNumber";
-										if (validateRegion()){
+										var region = document.forms["registration_form"]["registerRegion"].value;
+										if (region!="Region"){
 											document.getElementById("confirmInput").innerHTML = "validateRegion";
-											if(validateCounty()){
+											var county = document.forms["registration_form"]["registerCounty"].value;
+											if(county != "County"){
 												document.getElementById("confirmInput").innerHTML = "validateCounty";
-												if (validateCity()){
-													document.getElementById("confirmInput").innerHTML = "validateCity";
-													document.getElementById("Registreeru").disabled="";
+												/*document.getElementById("Registreeru").removeAttribute("disabled");*/
+												var city = document.forms["registration_form"]["registerCity"].value;
+												if (city!= "City"){document.getElementById("confirmInput").innerHTML = "validateCity";
+													//document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
+													return true;
 												}
 											}
 										}
@@ -365,7 +569,8 @@ function validateForm(){ /*do you work?*/
 				}
 			}
 		}
-	}else{
-		return false;
 	}
+//		document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
+//		document.getElementById("Registreeru").setAttribute("disabled", "disabled");
+	return false;
 }

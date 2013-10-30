@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
+import main.search.DBConnection;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.search.DBConnection;
 import main.bureauActivation.RandomHashFactory;
 import main.bureauActivation.SendEmail;
 
@@ -45,18 +46,20 @@ public class BureauRegistrationServlet extends HttpServlet {
 		String bureauname = request.getParameter("bureauname");
 		System.out.println(bureauname);
 		
-		int registrycode = Integer.parseInt(request.getParameter("regcode"));
+		int registrycode=0;
+		registrycode = Integer.parseInt(request.getParameter("regcode"));
 		System.out.println(registrycode);
 		
 		
 		String street = request.getParameter("street_address");
 		System.out.println(street);
 		
-		int postalcode = Integer.parseInt(request.getParameter("postal_code"));
+		int postalcode = 0;
+		postalcode = Integer.parseInt(request.getParameter("postal_code"));
 		System.out.println(postalcode);
 		
-		
-		int phone = Integer.parseInt(request.getParameter("phone"));
+		int phone =0;
+		phone = Integer.parseInt(request.getParameter("phone"));
 		System.out.println(phone);
 		
 		String region = request.getParameter("regions");
@@ -82,7 +85,7 @@ public class BureauRegistrationServlet extends HttpServlet {
 		
 		try{		
 			
-			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO bureau (registrycode,name,email,password,averageprice,street,postalcode,phone,regionname,cityname,countyname,hash,activated) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement stmt = curconnection.prepareStatement("INSERT INTO bureau (registrycode,name,email,password,averageprice,street,postalcode,phone,regionname,cityname,countyname,hash,active) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			
 			stmt.setInt(1,registrycode);
 			stmt.setString(2,bureauname);
@@ -96,7 +99,7 @@ public class BureauRegistrationServlet extends HttpServlet {
 			stmt.setString(10,city);
 			stmt.setString(11,county);
 			stmt.setString(12, hashCode);
-			stmt.setBoolean(13, false);
+			stmt.setInt(13, 0);
 					
 			int i = stmt.executeUpdate();
 			

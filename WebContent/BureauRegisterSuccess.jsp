@@ -12,14 +12,16 @@
 <body>
 <div id="wrapper">
 		<div id="header">
-			<img src="images/o_logo.png" />
-		</div>
-		<!-- end #header -->
-			
-		<div id="menu" class="successMenu">			
-				<a href="."> <img src="images/kataloog_hover.png" /> </a>
--				<a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a>
--				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
+				<div id="logo">
+					<img src="images/o_logo.png" />
+				</div>
+				<div id="menu">
+					<ul>
+						<li><a href="." ><img src="images/kataloog2.png"></a></li>
+						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red.png" /> </a></li>
+					</ul>
+				</div>
 		</div>
 		
 		<!-- end #menu -->
