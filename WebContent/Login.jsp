@@ -27,9 +27,9 @@
 				</div>
 				<div id="menu">
 					<ul>
-						<li><a href="." ><img src="images/kataloog2.png"></a></li>
+						<li><a href="." ><img src="images/kataloog.png"></a></li>
 						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
-						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red.png" /> </a></li>
+						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red_hover.png" /> </a></li>
 					</ul>
 				</div>
 			</div>

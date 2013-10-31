@@ -49,7 +49,7 @@ public class ActivationServlet extends HttpServlet {
 							+ email + "' AND hash = '" + hash + "';");
 
 			if (rs.next()) {
-				stmt.executeUpdate("UPDATE bureau SET activated = 't' WHERE hash = '" + hash + "';");
+				stmt.executeUpdate("UPDATE bureau SET activate = '1' WHERE hash = '" + hash + "';");
 				resp.sendRedirect(contextpath + "/ActivationSuccess.jsp");
 			} else {
 				resp.sendRedirect(contextpath + "/ActivationFailed.jsp");
