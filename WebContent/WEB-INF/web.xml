@@ -58,4 +58,34 @@
     <servlet-name>ActivationServlet</servlet-name>
     <url-pattern>/ActivationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Login Servlet</description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>main.login.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Bureau Edit Servlet</description>
+    <display-name>BureauEditServlet</display-name>
+    <servlet-name>BureauEditServlet</servlet-name>
+    <servlet-class>main.bureauEdit.BureauEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BureauEditServlet</servlet-name>
+    <url-pattern>/BureauEditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <description>Bureau Profile Servlet</description>
+    <display-name>BureauProfileServlet</display-name>
+    <servlet-name>BureauProfileServlet</servlet-name>
+    <servlet-class>main.bureauEdit.BureauProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BureauProfileServlet</servlet-name>
+    <url-pattern>/BureauProfileServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

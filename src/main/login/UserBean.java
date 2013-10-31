@@ -14,6 +14,7 @@ public class UserBean {
 	public String image;
 	public String category;
 	public int active;
+	public int phone;
 
 	public int getActive() {
 		return active;
@@ -21,6 +22,14 @@ public class UserBean {
 
 	public void setActive(int active) {
 		this.active = active;
+	}
+	
+	public int getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
 	public int getBureauId() {

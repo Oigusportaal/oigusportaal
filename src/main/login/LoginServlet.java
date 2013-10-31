@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 				if (Integer.parseInt(user.getCategory()) == 1)
 					request.getRequestDispatcher("AdminServlet").forward(request, response);
 				if (Integer.parseInt(user.getCategory()) == 2)
-					response.sendRedirect("Bureau.jsp");
+					request.getRequestDispatcher("BureauProfileServlet").forward(request, response);
 
 			}
 

@@ -5,26 +5,42 @@ Srchstyle
 #wrapper {
 	width: 1024px;
 	margin: 0px auto;
-	background: url(images/main_bg.png) no-repeat center top;
+	/*background: url(images/main_bg.png) no-repeat center top;*/
+	background-color:#f4f4f4;
 }
 
 #header {
 	position: relative;
-	top: -10px;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
 }
 
 #logo{
 	padding-top: 24px;
 }
 
+/*adding css to menu*/
+
 #menu {
-	position: relative;
-	float: left;
-	margin-top: 30px;
-	margin-left: 4px;
+	position: absolute;
+    bottom: 0;
+	}
+
+#menu ul {
+	position:relative;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
 }
 
-a {
+#menu ul li{
+	float:left;
+	padding-left:5px;
+	height:40px;
+}
+
+a { 
 	text-decoration: none;
 	font-size: 16px;
 	color: #000000;
@@ -46,13 +62,12 @@ h2 {
 	padding-top: 5px;
 	color: #AC1028;
 	font-family: Modern;
-	padding-top: 15px;
+	padding-top: 20 px;
 }
 
 .content {
-	border: 2px solid #8F9297;
 	padding: 40px 0px 0px 20px;
-	/*height: 350px;*/
+	border: 2px solid #8F9297;
 }
 
 .content2 {
@@ -270,4 +285,34 @@ border: none;
 	font-size: 12px;
 	color: #000000;
 	float: right;
+}
+
+
+/*login page*/
+#login{
+	height:250px;
+}
+
+#login_container{
+	width:225px;
+	height:200px;
+	margin-top:25px;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid #000;
+	border-radius:5px;
+}
+#login_container h1 {
+	border-bottom:1px solid #000000;
+}
+
+/*Bureau Profile Page*/
+
+#bureauProfileTable{
+	width:800px;
+	height:600px;
+}
+
+#bureauProfileTable td{
+	border: 1px solid #000000;
 }
