@@ -63,6 +63,9 @@ public class FieldSearchServlet extends HttpServlet {
 					.executeQuery("SELECT  bureau.bureauid, bureau.name, bureau.email, field.fieldname, bureau.image "
 							+ "FROM  bureau,field WHERE bureau.bureauid=field.bureauid and field.fieldname='"+ fieldName +"' ;");
 
+			boolean more = rs.next();
+			
+			
 			while (rs.next()) {
 
 				BureauDetails br = new BureauDetails();
@@ -97,8 +100,8 @@ public class FieldSearchServlet extends HttpServlet {
 
 			}
 			
+		
 			
-			System.out.println(bureau.get(0).getBureauName());
 			
 			request.setAttribute("fieldName", fieldName);
 			request.setAttribute("bureau", bureau);
@@ -107,6 +110,7 @@ public class FieldSearchServlet extends HttpServlet {
 			rs.close();
 			stmt.close();
 			curConnection.close();
+		
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

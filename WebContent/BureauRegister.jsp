@@ -8,7 +8,6 @@
 <style type="text/css">
     <%@include file="theme/style.css" %>
     </style>
-<script src="./js/RegistrationForm.js" type="text/javascript" ></script>
 
 </head>
 <body>
@@ -82,7 +81,7 @@
 							<span id="registerRegionMessage"></span></br>
 							
 							<label for="registerCounty">Maakond:</label>
-							<select name="counties" id="registerCounty" onchange="validateCounty()" disabled="true">
+							<select name="counties" id="registerCounty">
 								<option value="County">-- Vali Maakond--</option>
 								<option value="Harjumaa">Harjumaa</option>
 								<option value="Hiiumaa">Hiiumaa</option>
@@ -103,7 +102,7 @@
 							<span id="registerCountyMessage"></span></br>
 							
 							<label for="registerCity">Linn:</label>
-							<select name="cities" id="registerCity" onchange="validateCity()" disabled="true">
+							<select name="cities" id="registerCity" >
 								<option value="City">-- Vali Linn</option>
 								<option value="Tallinn">Tallinn</option>
   								<option value="Tartu">Tartu</option>
@@ -121,7 +120,7 @@
 							<!--  for testing disabled="", submit button available, and will submit.
 									else it should be disabled="disabled", still have to fix this
 							 -->
-							<input type="submit" value="Registreeru" name="submit" id="Registreeru" disabled=""/>
+							<input type="submit" value="Registreeru" name="submit" id="Registreeru"/>
 							<span id="confirmInput"></span>
 							
 						  </fieldset>

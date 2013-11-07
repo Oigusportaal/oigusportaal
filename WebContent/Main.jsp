@@ -30,8 +30,7 @@
 					<div class="image">
 					  <img alt="" src="images/foe_bc.png" />
 					  <div class="text">
-					<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw">Ehitus- ja planeerimisõigus</a> 
-						<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=Divorce">Lahutus</a>
+						<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw">Ehitus- ja planeerimisõigus</a> 
 						<a name="Privitization" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=Privitization">Erastamine</a>
 						<a name="DebtCollectionServices" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=DebtCollectionServices">Inkassoteenused</a>
 						<a name="IntellectualProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=IntellectualProperty">Intellektuaalneomand</a> 
@@ -39,10 +38,12 @@
 						<a name="EnvironmentalLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=EnvironmentalLaw">Keskkonnaõigus</a>
 						<a name="InsuranceLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=InsuranceLaw">Kindlustusõigus</a>
 						<a name="NonMovableProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=NonMovableProperty">Kinnisvaraõigus</a>
+						<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CompetitionLaw">Konkurentsiõigus</a>
+						
 					</div>
 					<div class="text2">
-						<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CompetitionLaw">Konkurentsiõigus</a>
 						<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=CriminalLaw">Kriminaal-ja väärteoõigus</a> 
+						<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=Divorce">Lahutus</a>
 						<a name="TrafficLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TrafficLaw">Liiklusõigus</a> 
 						<a name="EconomicLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=EconomicLaw">Majandusõigus</a>
 						<a name="TaxLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=TaxLaw">Maksuõigus</a> 
@@ -59,7 +60,7 @@
 						<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TransportTradeAndSeaLaw">Transpordi-, kaubandus- ja mereõigus</a> 
 						<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=LaborLaw">Tööõigus</a> 
 						<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=AliensLaw">Välismaalasteõigus</a> 
-						<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions">Ühinemised- ja ülevõtmised</a>
+						<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions">Ühinemised ja ülevõtmised</a>
 					  </div>
 					</div>
 				</tr>
