@@ -24,11 +24,20 @@ public class LoginServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    
+    
+    
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
 		
 		try {
 			UserBean user = new UserBean();
@@ -40,7 +49,9 @@ public class LoginServlet extends HttpServlet {
 
 			if (user.isValid()) {
 				System.out.println("logged in");
-				request.setAttribute("user", user);
+				 HttpSession session = request.getSession(true);	    
+		         session.setAttribute("user",user);
+		         session.setMaxInactiveInterval(3000);
 				System.out.println("Category: " + user.getCategory());
 				if (Integer.parseInt(user.getCategory()) == 1)
 					request.getRequestDispatcher("AdminServlet").forward(request, response);

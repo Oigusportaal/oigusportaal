@@ -71,9 +71,13 @@ public class SearchServlet extends HttpServlet {
 		int ap;
 		
 		SSDateFrom = request.getParameter("From");
+		if(SSDateFrom.isEmpty())
+		SSDateFrom="01-01-1000";
 		System.out.println(SSDateFrom);
 		
 		SSDateTo = request.getParameter("To");
+		if(SSDateTo.isEmpty())
+			SSDateTo="01-01-1010";
 		System.out.println(SSDateTo);
 		
 		checkBoxDate = request.getParameter("Date") != null;

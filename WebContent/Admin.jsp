@@ -1,5 +1,12 @@
 <%
-UserBean currentUser = (UserBean) (session.getAttribute("currentSessionUser"));
+
+String email = "admin@admin.com";
+try{
+UserBean currentUser = (UserBean) (session.getAttribute("user"));
+if (!currentUser.getEmail().equals(email)  ){ 
+	pageContext.forward("Login.jsp");
+}
+
 session.setMaxInactiveInterval(9000);
 response.setDateHeader("Expires", 0);  
 // Set standard HTTP/1.1 no-cache headers.  
@@ -8,10 +15,11 @@ response.setDateHeader("Expires", 0);
    response.addHeader("Cache-Control", "post-check=0, pre-check=0");  
 // Set standard HTTP/1.0 no-cache header.  
     response.setHeader("Pragma", "no-cache");  
-if (!currentUser.isValid() || currentUser.getCategory() == null ){ 
-	pageContext.forward("../Login.jsp");
+if (!currentUser.isValid() ){ 
+	pageContext.forward("Login.jsp");
 }
-%>
+ %>
+
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
 <%@ page import="main.details.BureauDetails"%>
@@ -131,3 +139,9 @@ if (!currentUser.isValid() || currentUser.getCategory() == null ){
 	</body>
 
 </html>
+   <%}catch(Exception e){
+	 
+	 System.out.println("ERRORR FOR SESSION");
+		pageContext.forward("Login.jsp");
+ } %>
+   

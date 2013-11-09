@@ -43,10 +43,7 @@ public class AdminServlet extends HttpServlet {
 		
 		UserBean user =  (UserBean) request.getAttribute("user");
 		
-		 HttpSession session = request.getSession(true);	    
-         session.setAttribute("currentSessionUser",user);
-         session.setMaxInactiveInterval(3000);
-		
+	
 		
 		DBConnection connect = new DBConnection();
 
