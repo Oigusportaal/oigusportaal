@@ -111,7 +111,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 							</tr>
 							
 							<tr>
-								<%
+								<%									
 									for (int i = 0; i < att.size(); i++) {
 								%>
 				
@@ -131,6 +131,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 									}
 				
 									}
+									
 								%>
 				
 							</tr>
@@ -144,7 +145,8 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 							
 							<tr>
 								<%
-									for (int i = 0; i < att.size(); i++) {
+									
+									for (int i = 0; i < stor.size(); i++) {
 								%>
 				
 								<td width="20" align="center" class="borderdesign">

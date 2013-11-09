@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 			if (user.isValid()) {
 				System.out.println("logged in");
 				request.setAttribute("user", user);
+				System.out.println("Category: " + user.getCategory());
 				if (Integer.parseInt(user.getCategory()) == 1)
 					request.getRequestDispatcher("AdminServlet").forward(request, response);
 				if (Integer.parseInt(user.getCategory()) == 2)

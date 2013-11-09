@@ -40,7 +40,9 @@ public class UserDAO {
 			currentCon = connect.getConnection();
 			stmt = currentCon.createStatement();
 			rs = stmt.executeQuery(credentialQuery);
-			boolean more = rs.next();
+			System.out.println(credentialQuery);
+			boolean more = rs.next();	
+			System.out.println(more);
 
 			// if user does not exist set the isValid variable to false
 			if (!more) {
@@ -51,7 +53,7 @@ public class UserDAO {
 			}
 
 			// if user exists set the isValid variable to true
-			else if (more) {
+			else {
 
 				bean.setValid(true);
 				if (bean.getCategory().equals(1))
@@ -59,6 +61,8 @@ public class UserDAO {
 				else if (bean.getCategory().equals(2))
 					System.out.println("Welcome Bureau");
 			}
+			
+			System.out.println("Jõudsin siia..");
 		} catch (Exception ex) {
 			System.out.println("Log In failed: An Exception has occurred! "
 					+ ex);
@@ -69,7 +73,7 @@ public class UserDAO {
 		finally {
 			if (rs != null) {
 				try {
-					System.out.println("DB shutdown");
+					System.out.println("DB shutdown");					
 					rs.close();
 
 				} catch (Exception e) {
