@@ -22,32 +22,57 @@
 	<body>
 		<div id="wrapper">
 			<div id="header">
-				<img id="logo" src="images/o_logo.png" />
+				<div id="logo">
+					<img src="images/o_logo.png" />
+				</div>
+				<div id="menu">
+					<ul>
+						<li><a href="." ><img src="images/kataloog.png"></a></li>
+						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red_hover.png" /> </a></li>
+					</ul>
+				</div>
 			</div>
-		<div id="menu">
-				<a href="." class="amenu"> <img src="images/kataloog2.png" /> </a>
-				<a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="http://www.google.com/" class="amenu"> <img src="images/red.png" /> </a>
-		</div>
 		
 			<div class="page">
-				<div class="content4">
-					<h2>Logi sisse</h2>
-					<form action="<%=request.getContextPath()%>/LoginServlet" method="get" id="registration_form2">
-						E-mail: <input type="text" name="email"><br>
-						Parool: <input type="password" name="password"><br>
-					<select name="userCategories" class="citySelect">
-						<option value="0" class="static">--Select User Type--</option>
-						<option value="1" class="sub_1">Admin</option>
-						<option value="2" class="sub_2">Bureau</option>
-					</select>
+							<!--  login  -->
+			<div id="login">
+				<h2>Logi sisse</h2>
+				<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
+					<tabel>
 					
-				<input type="submit" value="Logi sisse" id="registering"/>
-					</form>
+						<tr>
+							<td><input type="text" name="email" value="Email" class="loginInput"><br></td>
+						</tr>
+							
+						<tr>
+							<td><input type="password" name="password" value="Password" class="loginInput"><br></td>
+						</tr>
+							
+						<tr>
+							<td>
+								<select name="userCategories" class="loginInputSpecial" >
+									<option value="0" class="static">--Select User Type--</option>
+									<option value="1" class="sub_1">Admin</option>
+									<option value="2" class="sub_2">Bureau</option>
+								</select>
+							</td>
+						</tr>
 					
-					<p><a href="http://www.google.com/">Unustasid parooli?</a>
-					<a href="<%=request.getContextPath()%>/BureauRegister.jsp">Registreeru</a></p>
-				</div>
+						<tr>
+							<td><input type="submit" value="Logi sisse"  class="loginInputSpecial"/></td>
+						</tr>
+								
+						<tr>
+							<td colspan="2"><a href="<%=request.getContextPath()%>/ForgotPassword.jsp" style="">Unustasid parooli?</a>
+							<a href="<%=request.getContextPath()%>/BureauRegister.jsp">Registreeru</a></td>
+						</tr>
+				</tabel>
+				</form>
+			</div>
+			</div>
+			<div id="footer">
+				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>

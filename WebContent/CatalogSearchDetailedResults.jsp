@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
-<%@ page import="Details.BureauSearchResults"%>
+<%@ page import="main.details.BureauSearchResults"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
@@ -52,13 +52,17 @@
 	
 		<div id="wrapper">
 			<div id="header">
-				<img id="logo" src="images/o_logo.png" />
-			</div>
-			<div id="menu">
-				<a href="."> <img src="images/kataloog_hover.png" /> </a>
-				<a href="http://www.google.com/"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="<%=request.getContextPath()%>/Login.jsp" class="amenu"> <img src="images/red.png" /> </a>
-			</div>
+			    <div id="logo">
+			     <img src="images/o_logo.png" />
+			    </div>
+			    <div id="menu">
+			     <ul>
+			      <li><a href="." ><img src="images/kataloog2.png"></a></li>
+			      <li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+			      <li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red.png" /> </a></li>
+			     </ul>
+			    </div>
+			  </div>
 			
 			<div class="page">
 				<h2>Otsing</h2>
@@ -135,7 +139,7 @@
 			</table>
 			</div>
 			<div id="footer">
-				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+				<p>(c) 2013 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>

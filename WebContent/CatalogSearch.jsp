@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
-<%@ page import="Details.BureauDetails"%>
+<%@ page import="main.details.BureauDetails"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
@@ -52,18 +52,23 @@
 	
 		<div id="wrapper">
 			<div id="header">
-				<img id="logo" src="images/o_logo.png" />
-			</div>
-			<div id="menu">
-				<a href="."> <img src="images/kataloog_hover.png" /> </a>
-				<a href="http://www.google.com/"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="<%=request.getContextPath()%>/Login.jsp" class="amenu"> <img src="images/red.png" /> </a>
-			</div>
+			    <div id="logo">
+			     <img src="images/o_logo.png" />
+			    </div>
+			    <div id="menu">
+			     <ul>
+			      <li><a href="." ><img src="images/kataloog2.png"></a></li>
+			      <li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+			      <li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red.png" /> </a></li>
+			     </ul>
+			    </div>
+			  </div>
 			
 			<div class="page">
 				<h2>Otsing</h2>
-				<div class="content">
+				<div class="content" style="background-color:#f0f0f0;">
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
+						<table>
 					<p>Asukoht</p>
 					<select name="regions" class="regSelect">
 						<option value="0">--Select a Region--</option>
@@ -107,35 +112,10 @@
 			
 			<div class="page">
 			<h2>--Selected Burueas for the Related filed --</h2>
-		<table width="95%" border="1">
-			<tr>
-				<%
-					for (int i = 0; i < br.size(); i++) {
-				%>
-
-				<td width="20" align="center" class="borderdesign">
-				<h1><%=br.get(i).getBureauName() %></h1>
-				</td>
-				<td width="100" class="borderdesign">
-					<h3><%=br.get(i).getBureauName() + " "
-						+ br.get(i).getEmail() %></h3>
-				</td>
-				<td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
-
 			
-			</tr>
-			<tr>
-				<%
-					}
-
-					
-				%>
-
-			</tr>
-			</table>
 			</div>
 			<div id="footer">
-				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+				<p>(c) 2013 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>

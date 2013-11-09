@@ -12,16 +12,19 @@
 	</head>
 	
 	<body>
-		<div id="wrapper">
+		<div id="wrapper" style="clear:both;">
 			<div id="header">
-				<img id="logo" src="images/o_logo.png" />
+				<div id="logo">
+					<img src="images/o_logo.png" />
+				</div>
+				<div id="menu">
+					<ul>
+						<li><a href="." ><img src="images/kataloog2.png"></a></li>
+						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red.png" /> </a></li>
+					</ul>
+				</div>
 			</div>
-			<div id="menu">
-				<a href="." class="amenu"> <img src="images/kataloog2.png" /> </a>
-				<a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a>
-				<a href="<%=request.getContextPath()%>/Login.jsp" class="amenu"> <img src="images/red.png" /> </a>
-			</div>
-			
 			<div class="page">
 				<div class="content">
 					<img src="images/welcoming.png" />
@@ -30,7 +33,7 @@
 					<div class="image">
 					  <img alt="" src="images/foe_bc.png" />
 					  <div class="text">
-						<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw">Ehitus- ja planeerimisõigus</a> 
+					<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw">Ehitus- ja planeerimisõigus</a> 
 						<a name="Privitization" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=Privitization">Erastamine</a>
 						<a name="DebtCollectionServices" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=DebtCollectionServices">Inkassoteenused</a>
 						<a name="IntellectualProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=IntellectualProperty">Intellektuaalneomand</a> 
@@ -39,10 +42,10 @@
 						<a name="InsuranceLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=InsuranceLaw">Kindlustusõigus</a>
 						<a name="NonMovableProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=NonMovableProperty">Kinnisvaraõigus</a>
 						<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CompetitionLaw">Konkurentsiõigus</a>
-						
 					</div>
 					<div class="text2">
-						<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=CriminalLaw">Kriminaal-ja väärteoõigus</a> 
+						
+						<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=CriminalLaw">Kriminaal-ja väärteoõigus</a>
 						<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=Divorce">Lahutus</a>
 						<a name="TrafficLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TrafficLaw">Liiklusõigus</a> 
 						<a name="EconomicLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=EconomicLaw">Majandusõigus</a>
@@ -60,7 +63,7 @@
 						<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TransportTradeAndSeaLaw">Transpordi-, kaubandus- ja mereõigus</a> 
 						<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=LaborLaw">Tööõigus</a> 
 						<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=AliensLaw">Välismaalasteõigus</a> 
-						<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions">Ühinemised ja ülevõtmised</a>
+						<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions">Ühinemised- ja ülevõtmised</a>
 					  </div>
 					</div>
 				</tr>
@@ -77,7 +80,7 @@
 				</div>
 			</div>
 			<div id="footer">
-				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+				<p>(c) 2013 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
 			</div>
 		</div>
 	</body>

@@ -1,3 +1,12 @@
+<% response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");  
+// Set IE extended HTTP/1.1 no-cache headers (use addHeader).  
+   response.addHeader("Cache-Control", "post-check=0, pre-check=0");  
+// Set standard HTTP/1.0 no-cache header.  
+    response.setHeader("Pragma", "no-cache");  
+    %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,134 +17,198 @@
 <style type="text/css">
     <%@include file="theme/style.css" %>
     </style>
+<script src="./js/RegistrationForm.js" type="text/javascript" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" defer="defer">
+		function cascadeSelect(parent, child){
+				var childOptions = child.find('option:not(.static)');
+					child.data('options',childOptions);
+ 
+				parent.change(function(){
+					childOptions.remove();
+					child
+						.append(child.data('options').filter('.sub_' + this.value))
+						.change();
+				})
+ 
+				childOptions.not('.static, .sub_' + parent.val()).remove();
+ 
+		}
+ 
+		$(function(){
+			cascadeForm = $('.cascade');
+			orgSelect = cascadeForm.find('.regSelect');
+			terrSelect = cascadeForm.find('.countySelect');
+			locSelect = cascadeForm.find('.citySelect');
+ 
+			cascadeSelect(orgSelect, terrSelect);
+			cascadeSelect(terrSelect, locSelect);
+		});
+	</script>
 
 </head>
+
+<!-- Keha -->
 <body>
 <div id="wrapper">
+		<!-- P‰is -->
 		<div id="header">
-			<img src="images/o_logo.png" />
-		</div>
-		<!-- end #header -->
-			
-		<div id="menu">			
-				<a href="."> <img src="images/kataloog_hover.png" /> </a>
--				<a href="http://www.google.com/" rel="nofollow"><img src="images/kiirkysimus.png" width="140" height="40"/></a>
--				<a href="<%=request.getContextPath()%>/BureauRegister.jsp" class="amenu"> <img src="images/red.png" /> </a>
+				<div id="logo">
+					<img src="images/o_logo.png" />
+				</div>
+				<div id="menu">
+					<ul>
+						<li><a href="." ><img src="images/kataloog.png"></a></li>
+						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
+						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red_hover.png" /> </a></li>
+					</ul>
+				</div>
 		</div>
 		
 		<!-- end #menu -->
-		<div class="page">
-			<div class="content">
+		<div class="page" >
+			<div id="registering" >
 				<h1>Registreerimine</h1>
-				<div class="post">
-					<div class="entry">
+					<form action="BureauRegistrationServlet" method="get" class="cascade" id="registration_form" onsubmit="return validateForm()">
+					 	<table>
+						  	<tr>
+						  		<td class="registerColumnName"><label for="registerEmail">E-mail:</label></td>
+								<td><input type="text" name="email" id='registerEmail' onkeyup="validateEmail()"/></td>
+								<td><span id ="emailErrorMessage"></span></td> 
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerEmailConfirmation">Kinnita E-mail:</label></td>
+								<td><input type="text" name="registerEmailConfirmation" id="registerEmailConfirmation" onkeyup="confirmEmail()"/></td>
+								<td><span id ="confirmEmailMessage"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerPassword">Parool:</label></td>
+								<td><input type="password" name="password" id="registerPassword" onkeyup="validatePassword()" /></td>
+								<td><span id = "passwordMessage"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerPasswordConfirmation">Parool uuesti:</label></td>
+								<td><input type="password" name="register_password_confirmation" id="registerPasswordConfirmation" onkeyup="confirmPassword()" /></td>
+								<td><span id="confirmPasswordError"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerBureauName">B¸roo nimi:</label></td>
+								<td><input type="text" name="bureauname" id="registerBureauName" onkeyup="validateBureauName()"/></td>
+								<td><span id="bureauNameMessage"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerRegcode">Registrikood:</label></td>
+								<td><input type="text" name="regcode" id="registerRegcode" onkeyup="validateRegistrycode()"/></td>
+								<td><span id="regcodeMessage"></span> </td>
+							</tr>
+	
+							<tr>
+								<td class="registerColumnName"><label for="registerStreetAddress">T‰nav:</label></td>
+								<td><input type="text" name="street_address"
+									id="registerStreetAddress" onkeyup="validateStreetAddress()" /></td>
+								<td><span id="streetAddressMessage"></span></td>
+							</tr>
+	
+							<tr>
+								<td class="registerColumnName"><label for="registerPostalcode">Postiindeks:</label></td>
+								<td><input type="text" name="postal_code" id="registerPostalcode" onkeyup="validatePostalCode()"/></td>
+								<td><span id="postalcodeMessage"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerPhone">Telefoninumber:</label></td>
+								<td><input type="text" name="phone" id="registerPhone" onkeyup="validatePhoneNumber()"/></td>
+								<td><span id="phoneMessage"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerRegion">Regioon:</label></td>
+								<td>
+									<select name="regions" id="registerRegion" class="regSelect" onchange="validateRegion()" >
+										<option value="0">-- Vali regioon --</option>
+										<option value="1">Pıhja-Eesti</option> <!-- /*Harjumaa, , J‰rvamaa, Raplamaa */ -->
+	 										<option value="2">Ida-Eesti</option>    <!-- Ida-Virumaa, L‰‰ne-Virumaa, Jıgevamaa -->
+	 										<option value="3">L‰‰ne-Eesti</option> <!--  L‰‰nemaa, Hiiumaa, Saaremaa, P‰rnumaa -->
+	 										<option value="4">Lıuna-Eesti</option> <!--  Viljandimaa, Tartumaa, Pılvamaa, Valgamaa, Vırumaa -->
+									</select>
+								</td>
+								<td><span id="registerRegionMessage"></span></td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerCounty">Maakond:</label></td>
+								<td>
+									<select name="counties" id="registerCounty" class="countySelect" onchange="validateCounty()" >
+										<option value="0" class="static">--Vali maakond--</option>
+										<option value="1" class="sub_1">Harjumaa</option>
+										<option value="2" class="sub_1">J‰rvamaa</option>
+										<option value="3" class="sub_1">Raplamaa</option>
+										<option value="4" class="sub_2">Ida-Virumaa</option>
+										<option value="5" class="sub_2">Jıgevamaa</option>
+										<option value="6" class="sub_2">L‰‰ne-Virumaa</option>
+										<option value="7" class="sub_3">Hiiumaa</option>
+										<option value="8" class="sub_3">L‰‰nemaa</option>
+										<option value="9" class="sub_3">P‰rnumaa</option>
+										<option value="10" class="sub_3">Saaremaa</option>
+										<option value="11" class="sub_4">Pılvamaa</option>
+										<option value="12" class="sub_4">Tartumaa</option>
+										<option value="13" class="sub_4">Valgamaa</option>
+										<option value="14" class="sub_4">Viljandimaa</option>
+										<option value="15" class="sub_4">Vırumaa</option>
+   									</select>
+								</td>
+								<td><span id="registerCountyMessage"></span></td>
+							</tr>
+							
+							<tr>
+								<td class="registerColumnName"><label for="registerCity">Linn:</label></td>
+								<td>
+									<select name="cities" id="registerCity" class="citySelect" onblur="validateForm()" onchange="validateCity()" >
+										<option value="0" class="static">--Vali linn--</option>
+										<option value="1" class="sub_1">Tallinn</option>
+										<option value="2" class="sub_2">Paide</option>
+										<option value="3" class="sub_3">Rapla</option>
+										<option value="4" class="sub_4">Jıhvi</option>
+										<option value="5" class="sub_5">Jıgeva</option>
+										<option value="6" class="sub_6">Rakvere</option>
+										<option value="7" class="sub_7">K‰rdla</option>
+										<option value="8" class="sub_8">Haapsalu</option>
+										<option value="9" class="sub_9">P‰rnu</option>
+										<option value="10" class="sub_10">Kuressaare</option>
+										<option value="11" class="sub_11">Pılva</option>
+										<option value="12" class="sub_12">Tartu</option>
+										<option value="13" class="sub_13">Valga</option>
+										<option value="14" class="sub_14">Viljandi</option>
+										<option value="15" class="sub_15">Vıru</option> 
+									</select>
+								</td>
+								<td><span id = "registerCityMessage"></span></td>
+							</tr>								
 						
-						<form action="BureauRegistrationServlet" method="get" id="registration_form" onkeyup= "validateForm()" >
-						  <fieldset>
-						  
-							<label for="registerEmail">E-mail:</label>
-							<input type="text" name="email" id='registerEmail' onkeyup="validateEmail()"/>
-							<span id ="emailErrorMessage"></span> </br>
-							
-							<label for="registerEmailConfirmation">Kinnita E-mail:</label>
-							<input type="text" name="registerEmailConfirmation" id="registerEmailConfirmation" onkeyup="confirmEmail()"/>
-							<span id ="confirmEmailMessage"></span> </br>
-							
-							<label for="registerPassword">Parool:</label>
-							<input type="password" name="password" id="registerPassword" onkeyup="validatePassword()" />
-							<span id = "passwordMessage"></span> </br>
-							
-							<label for="registerPasswordConfirmation">Parool uuesti:</label>
-							<input type="password" name="register_password_confirmation" id="registerPasswordConfirmation" onkeyup="confirmPassword()" />
-							<span id="confirmPasswordError"></span> </br>
-							
-							<label for="registerBureauName">B¸roo nimi:</label>
-							<input type="text" name="bureauname" id="registerBureauName" onkeyup="validateBureauName()"/>
-							<span id="bureauNameMessage"></span> </br>
-							
-							<label for="registerRegcode">Registrikood:</label>
-							<input type="text" name="regcode" id="registerRegcode" onkeyup="validateRegistrycode()"/>
-							<span id="regcodeMessage"></span> </br>
-							
-							<label for="registerStreetAddress">T‰nav:</label>
-							<input type="text" name="street_address" id="registerStreetAddress" onkeyup="validateStreetAddress()" />
-							<span id="streetAddressMessage"></span> </br>
-							
-							<label for="registerPostalcode">Postiindeks:</label>
-							<input type="text" name="postal_code" id="registerPostalcode" onkeyup="validatePostalCode()"/>
-							<span id="postalcodeMessage"></span> </br>
-							
-							
-							<label for="registerPhone">Telefoninumber:</label>
-							<input type="text" name="phone" id="registerPhone" onkeyup="validatePhoneNumber()"/>
-							<span id="phoneMessage"></span> </br>
-							
-							<label for="registerRegion">Regioon:</label>
-							<select name="regions" id="registerRegion" onchange="validateRegion()" >
-								<option value="Region">-- Vali regioon --</option>
-								<option value="Pohja-Eesti">Pıhja-Eesti</option> <!-- /*Harjumaa, L‰‰ne-Virumaa, Ida-Virumaa, J‰rvamaa, Raplamaa */ -->
-  								<option value="Ida-Eesti">Ida-Eesti</option>
-  								<option value="Laane-Eesti">L‰‰ne-Eesti</option> 
-  								<option value="Louna-Eesti">Lıuna-Eesti</option>
-							</select>
-							<span id="registerRegionMessage"></span></br>
-							
-							<label for="registerCounty">Maakond:</label>
-							<select name="counties" id="registerCounty">
-								<option value="County">-- Vali Maakond--</option>
-								<option value="Harjumaa">Harjumaa</option>
-								<option value="Hiiumaa">Hiiumaa</option>
-								<option value="Ida-Virumaa">Ida-Virumaa</option>
-								<option value="Jogevamaa">Jıgevamaa</option>
-								<option value="Jarvamaa">J‰rvamaa</option>
-								<option value="Laanemaa">L‰‰nemaa</option>
-								<option value="Laane-Virumaa">L‰‰ne-Virumaa</option>
-								<option value="Polvamaa">Pılvamaa</option>
-								<option value="Parnumaa">P‰rnumaa</option>
-								<option value="Raplamaa">Raplamaa</option>
-								<option value="Saaremaa">Saaremaa</option>
-								<option value="Tartumaa">Tartumaa</option>
-								<option value="Valgamaa">Valgamaa</option>
-								<option value="Viljandimaa">Viljandimaa</option>
-								<option value="Vorumaa">Vırumaa</option>
-							</select>
-							<span id="registerCountyMessage"></span></br>
-							
-							<label for="registerCity">Linn:</label>
-							<select name="cities" id="registerCity" >
-								<option value="City">-- Vali Linn</option>
-								<option value="Tallinn">Tallinn</option>
-  								<option value="Tartu">Tartu</option>
-  								<option value="Narva">Narva</option>
-  								<option value="Kohtla-Jarve">Kohtla-J‰rve</option>
-  								<option value="Parnu">P‰rnu</option>
-  								<option value="Viljandi">Viljandi</option>
-  								<option value="Rakvere">Rakvere</option>
-  								<option value="Sillam‰e">Sillam‰e</option>
-  								<option value="Maardu">Maardu</option>
-  								<option value="Kuressaare">Kuressaare</option>
-							</select>
-							<span id = "registerCityMessage"></span></br>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="Registreeru" name="submit" id="Registreeru" /></td>
 								
-							<!--  for testing disabled="", submit button available, and will submit.
-									else it should be disabled="disabled", still have to fix this
-							 -->
-							<input type="submit" value="Registreeru" name="submit" id="Registreeru"/>
-							<span id="confirmInput"></span>
-							
-						  </fieldset>
-						</form>
-					</div>
-				</div>
+								<td><span id="confirmInput"></span></tr>
+							<tr>
+						</table>
+					</form>
+				
 		</div>
 		<!-- end #content -->
-		<div style="clear: both;">&nbsp;</div>
+		<!-- <div style="clear: both;">&nbsp;</div> -->
 		<!-- end #page -->
-		<div id="footer">
-			<p>(c) 2010 O‹ ’igusportaal <a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kontakt</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
-		</div>
+		
 		<!-- end #footer -->
 	</div>
+	<div id="footer" style="clear:both;">
+			<p>(c) 2010 O‹ ’igusportaal <a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kontakt</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
+		</div>
 </div>
 </body>
 

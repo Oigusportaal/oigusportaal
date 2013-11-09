@@ -5,26 +5,42 @@ Srchstyle
 #wrapper {
 	width: 1024px;
 	margin: 0px auto;
-	background: url(images/main_bg.png) no-repeat center top;
+	/*background: url(images/main_bg.png) no-repeat center top;*/
+	background-color:#f4f4f4;
 }
 
 #header {
 	position: relative;
-	top: -10px;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
 }
 
 #logo{
 	padding-top: 24px;
 }
 
+/*adding css to menu*/
+
 #menu {
-	position: relative;
-	float: left;
-	margin-top: 30px;
-	margin-left: 4px;
+	position: absolute;
+    bottom: 0;
+	}
+
+#menu ul {
+	position:relative;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
 }
 
-a {
+#menu ul li{
+	float:left;
+	padding-left:5px;
+	height:40px;
+}
+
+a { 
 	text-decoration: none;
 	font-size: 16px;
 	color: #000000;
@@ -46,14 +62,14 @@ h2 {
 	padding-top: 5px;
 	color: #AC1028;
 	font-family: Modern;
-	padding-top: 15px;
+	padding-top: 20 px;
 }
 
 .content {
-	border: 2px solid #8F9297;
+	/*border: 2px solid #8F9297;*/
 	padding: 40px 0px 0px 20px;
-	/*height: 350px;*/
 }
+
 
 .content2 {
 	padding-left: 16px;
@@ -148,9 +164,8 @@ h2 {
 	padding-top: 90px;
 }
 
-#searching {
-	position: absolute;
-	margin: 0px 0px 5px 160px;
+#searching {	
+	margin: 0px 10px 5px 160px;
 	width: 50px;
 	height: 33px;
 	top: 590px;
@@ -186,7 +201,7 @@ h2 {
   border: 1px solid #8F9297;
 }
 
-#registering {
+/*#registering {
 	margin: 0px 0px 5px 66px;
 	width: 100px;
 	height: 33px;
@@ -201,15 +216,14 @@ h2 {
 #registration_form input {
   margin-bottom: 8px;
 }
-
+*/
 #avgprice {
 	position: absolute;
 	top: 470px;
 	}
 	
 #success_date
-{
-	position: absolute;
+{	
 	top: 550px;
 	
 }
@@ -270,4 +284,80 @@ border: none;
 	font-size: 12px;
 	color: #000000;
 	float: right;
+}
+
+/*Login/Registering page*/
+#registering{
+	background-color:#f0f0f0; 
+	width:450px; 
+	margin:50px 50px 50px; 
+	padding:25px 25px 25px 25px;	
+}
+
+#registering input{
+	height:25px; 
+	width:200px;
+}
+
+#registering select {
+	height:25px;
+	width:205px;
+}
+
+.registerColumnName{
+	
+	width:auto;
+}
+input#Registreeru{
+	height:25px;
+	width:205px;
+}
+
+/*login page*/
+
+#login{
+	float:left;
+	width:250px; 
+	padding-left:50px;  
+	padding-bottom:20px;  
+	margin-top:50px; 
+	margin-left:50px;
+	margin-right:25px;
+	margin-bottom:50px;
+	background: #f0f0f0;
+}
+
+.loginInput{
+	height:25px; 
+	width:200px;
+}
+
+.loginInputSpecial{
+	height:25px;
+	width:205px;
+	margin-left:0px;
+}
+
+#login select{
+	
+}
+
+#login_container{
+	width:225px;
+	height:200px;
+	margin-top:25px;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid #000;
+	border-radius:5px;
+}
+/*Bureau Profile Page*/
+
+#bureauProfileTable{
+	width:800px;
+	height:600px;
+}
+
+#bureauProfileTable td{
+	/*border: 1px solid #000000;*/
 }
