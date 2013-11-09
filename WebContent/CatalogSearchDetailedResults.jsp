@@ -77,18 +77,40 @@
 						<option value="4">Ida-Eesti</option>
 					</select>
 					<select name="counties" class="countySelect">
-						<option value="0" class="static">--Select a County--</option>
-						<option value="1" class="sub_1">Harjumaa</option>
-						<option value="2" class="sub_2">Tartumaa</option>
-						<option value="3" class="sub_3">Viljandimaa</option>
-						<option value="4" class="sub_4">P‰rnumaa</option>
+						<option value="0" class="static">--Vali maakond--</option>
+										<option value="1" class="sub_1">Harjumaa</option>
+										<option value="2" class="sub_1">J‰rvamaa</option>
+										<option value="3" class="sub_1">Raplamaa</option>
+										<option value="4" class="sub_2">Ida-Virumaa</option>
+										<option value="5" class="sub_2">Jıgevamaa</option>
+										<option value="6" class="sub_2">L‰‰ne-Virumaa</option>
+										<option value="7" class="sub_3">Hiiumaa</option>
+										<option value="8" class="sub_3">L‰‰nemaa</option>
+										<option value="9" class="sub_3">P‰rnumaa</option>
+										<option value="10" class="sub_3">Saaremaa</option>
+										<option value="11" class="sub_4">Pılvamaa</option>
+										<option value="12" class="sub_4">Tartumaa</option>
+										<option value="13" class="sub_4">Valgamaa</option>
+										<option value="14" class="sub_4">Viljandimaa</option>
+										<option value="15" class="sub_4">Vırumaa</option>
 					</select>
 					<select name="cities" class="citySelect">
-						<option value="0" class="static">--Select a City--</option>
-						<option value="1" class="sub_1">Tallinn</option>
-						<option value="2" class="sub_2">Tartu</option>
-						<option value="3" class="sub_3">Viljandi</option>
-						<option value="4" class="sub_4">P‰rnu</option>
+						<option value="0" class="static">--Vali linn--</option>
+										<option value="1" class="sub_1">Tallinn</option>
+										<option value="2" class="sub_2">Paide</option>
+										<option value="3" class="sub_3">Rapla</option>
+										<option value="4" class="sub_4">Jıhvi</option>
+										<option value="5" class="sub_5">Jıgeva</option>
+										<option value="6" class="sub_6">Rakvere</option>
+										<option value="7" class="sub_7">K‰rdla</option>
+										<option value="8" class="sub_8">Haapsalu</option>
+										<option value="9" class="sub_9">P‰rnu</option>
+										<option value="10" class="sub_10">Kuressaare</option>
+										<option value="11" class="sub_11">Pılva</option>
+										<option value="12" class="sub_12">Tartu</option>
+										<option value="13" class="sub_13">Valga</option>
+										<option value="14" class="sub_14">Viljandi</option>
+										<option value="15" class="sub_15">Vıru</option> 
 					</select>
 					
 					<p>Keskmine tunnihind</p>
