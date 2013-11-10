@@ -21,18 +21,8 @@
 	
 	<body>
 		<div id="wrapper">
-			<div id="header">
-				<div id="logo">
-					<img src="images/o_logo.png" />
-				</div>
-				<div id="menu">
-					<ul>
-						<li><a href="." ><img src="images/kataloog.png"></a></li>
-						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
-						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red_hover.png" /> </a></li>
-					</ul>
-				</div>
-			</div>
+			<!-- include header -->
+			<%@include file='/header.jsp'%>
 		
 			<div class="page">
 							<!--  login  -->
@@ -42,11 +32,11 @@
 					<tabel>
 					
 						<tr>
-							<td><input type="text" name="email" value="Email" class="loginInput"><br></td>
+							<td><input type="text" name="email" placeholder="email@email.com" class="loginInput"><br></td>
 						</tr>
 							
 						<tr>
-							<td><input type="password" name="password" value="Password" class="loginInput"><br></td>
+							<td><input type="password" name="password" placeholder="Parool" class="loginInput"><br></td>
 						</tr>
 							
 						<tr>
@@ -71,9 +61,8 @@
 				</form>
 			</div>
 			</div>
-			<div id="footer">
-				<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/">|&nbsp;&nbsp;Kontakt&nbsp;|</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
-			</div>
+			<!-- include footer -->
+			<%@include file='/footer.jsp'%>
 		</div>
 	</body>
 </html>

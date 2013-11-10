@@ -52,18 +52,8 @@
 <body>
 <div id="wrapper">
 		<!-- Päis -->
-		<div id="header">
-				<div id="logo">
-					<img src="images/o_logo.png" />
-				</div>
-				<div id="menu">
-					<ul>
-						<li><a href="." ><img src="images/kataloog.png"></a></li>
-						<li><a href="http://www.google.com/" class="amenu"> <img src="images/kiirkysimus.png" /> </a></li>
-						<li><a href="<%=request.getContextPath()%>/Login.jsp"> <img src="images/red_hover.png" /> </a></li>
-					</ul>
-				</div>
-		</div>
+		<!-- include header -->
+		<%@include file='/header.jsp'%>
 		
 		<!-- end #menu -->
 		<div class="page" >
@@ -72,64 +62,53 @@
 					<form action="BureauRegistrationServlet" method="get" class="cascade" id="registration_form" onsubmit="return validateForm()">
 					 	<table>
 						  	<tr>
-						  		<td class="registerColumnName"><label for="registerEmail">E-mail:</label></td>
-								<td><input type="text" name="email" id='registerEmail' onkeyup="validateEmail()"/></td>
+						 		<td><input type="text" name="email" id='registerEmail' placeholder="email@email.com" onkeyup="validateEmail()"/></td>
 								<td><span id ="emailErrorMessage"></span></td> 
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerEmailConfirmation">Kinnita E-mail:</label></td>
-								<td><input type="text" name="registerEmailConfirmation" id="registerEmailConfirmation" onkeyup="confirmEmail()"/></td>
+								<td><input type="text" name="registerEmailConfirmation" placeholder="Kinnita E-mail!" id="registerEmailConfirmation" onkeyup="confirmEmail()"/></td>
 								<td><span id ="confirmEmailMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerPassword">Parool:</label></td>
-								<td><input type="password" name="password" id="registerPassword" onkeyup="validatePassword()" /></td>
+								<td><input type="password" name="password" id="registerPassword" placeholder="Parool" onkeyup="validatePassword()" /></td>
 								<td><span id = "passwordMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerPasswordConfirmation">Parool uuesti:</label></td>
-								<td><input type="password" name="register_password_confirmation" id="registerPasswordConfirmation" onkeyup="confirmPassword()" /></td>
+								<td><input type="password" name="register_password_confirmation" placeholder="Parool uuesti" id="registerPasswordConfirmation" onkeyup="confirmPassword()" /></td>
 								<td><span id="confirmPasswordError"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerBureauName">Büroo nimi:</label></td>
-								<td><input type="text" name="bureauname" id="registerBureauName" onkeyup="validateBureauName()"/></td>
+								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büronimi" onkeyup="validateBureauName()"/></td>
 								<td><span id="bureauNameMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerRegcode">Registrikood:</label></td>
-								<td><input type="text" name="regcode" id="registerRegcode" onkeyup="validateRegistrycode()"/></td>
+								<td><input type="text" name="regcode" id="registerRegcode" placeholder="Registrikood" onkeyup="validateRegistrycode()"/></td>
 								<td><span id="regcodeMessage"></span> </td>
 							</tr>
 	
 							<tr>
-								<td class="registerColumnName"><label for="registerStreetAddress">Tänav:</label></td>
-								<td><input type="text" name="street_address"
-									id="registerStreetAddress" onkeyup="validateStreetAddress()" /></td>
+								<td><input type="text" name="street_address" id="registerStreetAddress"  placeholder="Tänav" onkeyup="validateStreetAddress()" /></td>
 								<td><span id="streetAddressMessage"></span></td>
 							</tr>
 	
 							<tr>
-								<td class="registerColumnName"><label for="registerPostalcode">Postiindeks:</label></td>
-								<td><input type="text" name="postal_code" id="registerPostalcode" onkeyup="validatePostalCode()"/></td>
+								<td><input type="text" name="postal_code" id="registerPostalcode" placeholder="Postiindeks" onkeyup="validatePostalCode()"/></td>
 								<td><span id="postalcodeMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerPhone">Telefoninumber:</label></td>
-								<td><input type="text" name="phone" id="registerPhone" onkeyup="validatePhoneNumber()"/></td>
+								<td><input type="text" name="phone" id="registerPhone" placeholder="Telefoninumber" onkeyup="validatePhoneNumber()"/></td>
 								<td><span id="phoneMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerRegion">Regioon:</label></td>
 								<td>
-									<select name="regions" id="registerRegion" class="regSelect" onchange="validateRegion()" >
+									<select name="regions" id="registerRegion" class="regSelect" placeholder="Regioon" onchange="validateRegion()" >
 										<option value="0">-- Vali regioon --</option>
 										<option value="1">Põhja-Eesti</option> <!-- /*Harjumaa, , Järvamaa, Raplamaa */ -->
 	 										<option value="2">Ida-Eesti</option>    <!-- Ida-Virumaa, Lääne-Virumaa, Jõgevamaa -->
@@ -141,9 +120,8 @@
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerCounty">Maakond:</label></td>
 								<td>
-									<select name="counties" id="registerCounty" class="countySelect" onchange="validateCounty()" >
+									<select name="counties" id="registerCounty" class="countySelect" placeholder="Maakond" onchange="validateCounty()" >
 										<option value="0" class="static">--Vali maakond--</option>
 										<option value="1" class="sub_1">Harjumaa</option>
 										<option value="2" class="sub_1">Järvamaa</option>
@@ -166,9 +144,8 @@
 							</tr>
 							
 							<tr>
-								<td class="registerColumnName"><label for="registerCity">Linn:</label></td>
 								<td>
-									<select name="cities" id="registerCity" class="citySelect" onblur="validateForm()" onchange="validateCity()" >
+									<select name="cities" id="registerCity" class="citySelect" onblur="validateForm()" placeholder="Linn" onchange="validateCity()" >
 										<option value="0" class="static">--Vali linn--</option>
 										<option value="1" class="sub_1">Tallinn</option>
 										<option value="2" class="sub_2">Paide</option>
@@ -191,9 +168,7 @@
 							</tr>								
 						
 							<tr>
-								<td></td>
 								<td><input type="submit" value="Registreeru" name="submit" id="Registreeru" /></td>
-								
 								<td><span id="confirmInput"></span></tr>
 							<tr>
 						</table>
@@ -206,9 +181,8 @@
 		
 		<!-- end #footer -->
 	</div>
-	<div id="footer" style="clear:both;">
-			<p>(c) 2010 OÜ Õigusportaal <a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kontakt</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Kasutajatingimused</a><a href="http://www.google.com/" rel="nofollow">&nbsp;|&nbsp;&nbsp;Konfidentsiaalsus</a></p>
-		</div>
+	<!-- include footer -->
+		<%@include file='/footer.jsp'%>
 </div>
 </body>
 

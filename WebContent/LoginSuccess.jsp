@@ -7,9 +7,12 @@
 <title>Õigusportaal</title>
 </head>
 <body>
-
-Welcome!
-<a href='logout.jsp'>Log out</a>
+	<!-- include header -->
+	<%@include file='/header.jsp'%>
+	Welcome!
+	<a href='logout.jsp'>Log out</a>
+	<!-- include footer -->
+	<%@include file='/footer.jsp'%>
 
 </body>
 </html>

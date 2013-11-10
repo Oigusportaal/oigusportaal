@@ -289,9 +289,9 @@ border: none;
 /*Login/Registering page*/
 #registering{
 	background-color:#f0f0f0; 
-	width:450px; 
+	width:250px; 
 	margin:50px 50px 50px; 
-	padding:25px 25px 25px 25px;	
+	padding:15px 0px 25px 25px;	
 }
 
 #registering input{
@@ -303,15 +303,11 @@ border: none;
 	height:25px;
 	width:205px;
 }
-
-.registerColumnName{
-	
-	width:auto;
-}
 input#Registreeru{
 	height:25px;
 	width:205px;
 }
+
 
 /*login page*/
 
