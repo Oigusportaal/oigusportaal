@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,13 +37,16 @@ public class BureauProfileServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		Enumeration<String> params = request.getParameterNames();
 		
-		UserBean user =  (UserBean) request.getAttribute("user");
+		
 		
 		ArrayList<AttorneyDetails> attorneys = new ArrayList<AttorneyDetails>();
 		ArrayList<SuccessStoryDetails> successStories = new ArrayList<SuccessStoryDetails>();
 		
-		HttpSession session = request.getSession(true);	    
+		HttpSession session = request.getSession(true);	         
+        
+        UserBean user =  (UserBean) session.getAttribute("user");
         session.setAttribute("currentSessionUser",user);
         session.setMaxInactiveInterval(3000);
         
@@ -61,6 +65,8 @@ public class BureauProfileServlet extends HttpServlet {
 		
 		Statement statementStories = null;
 		ResultSet resultSetStories = null;
+		
+		
 		
 		String email = user.getEmail();
 		String password = user.getPassword();

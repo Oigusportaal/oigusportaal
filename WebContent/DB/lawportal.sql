@@ -70,7 +70,8 @@ CREATE TABLE bureau (
     countyname character varying(30),
     image character varying(120),
     category integer DEFAULT 2,
-    active integer DEFAULT 1 NOT NULL
+    active integer DEFAULT 1 NOT NULL,
+    hash character varying(10)
 );
 
 
@@ -531,4 +532,6 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
+ALTER SEQUENCE "Bureau_BureauId_seq" RESTART WITH 17;
 

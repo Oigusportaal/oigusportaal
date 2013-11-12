@@ -36,7 +36,7 @@ import java.sql.SQLException;
 	 
 				connection = DriverManager.getConnection(
 						"jdbc:postgresql://127.0.0.1:5432/lawportal", "postgres",
-						"9999");
+						"1234Abcd");
 	 
 			} catch (SQLException e) {
 	 
