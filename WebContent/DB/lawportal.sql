@@ -202,10 +202,17 @@ ALTER SEQUENCE attorney_attorneyid_seq OWNED BY attorney.attorneyid;
 -- Name: field; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
+
+CREATE TABLE fieldbureaujunction (
+	bureauid integer NOT NULL,
+	fieldid integer NOT NULL
+);
+
+ALTER TABLE public.fieldbureaujunction OWNER TO postgres;
+
 CREATE TABLE field (
     fieldid integer NOT NULL,
-    fieldname character varying(30),
-    bureauid integer
+    fieldname character varying(100)
 );
 
 
@@ -376,54 +383,6 @@ COPY bureau (bureauid, registrycode, name, email, password, averageprice, street
 
 
 --
--- TOC entry 2232 (class 0 OID 16586)
--- Dependencies: 176
--- Data for Name: field; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY field (fieldid, fieldname, bureauid) FROM stdin;
-4	Divorce	1
-18	TrafficLaw	6
-23	PropertyReform	4
-25	FamilyLaw	6
-30	LaborLaw	4
-32	MergersAndAcquisitions	6
-20	TaxLaw	8
-21	HeritageLaw	4
-1	CivilLaw	1
-3	DebtCollectionServices	2
-7	EnvironmentalLaw	3
-8	InsuranceLaw	4
-11	NonMovableProperty	5
-12	CompetitionLaw	6
-13	CriminalLaw	7
-15	Divorce	8
-19	EconomicLaw	10
-22	TaxLaw	11
-24	MedicineLaw	12
-26	MediaAndTelecommunicationLaw	13
-27	PropertyReform	14
-28	BankingAndFinancialFunds	15
-29	FamilyLaw	16
-17	TrafficLaw	1
-31	HeritageLaw	1
-33	RestructingLaw	2
-34	SocialWelfareLaw	3
-35	TransportTradeAndSeaLaw	4
-36	LaborLaw	5
-37	AliensLaw	6
-38	MergersAndAcquisitions	7
-2	Robbery	14
-5	IntellectualProperty	12
-6	ITLaw	11
-9	Privitization	10
-10	InsuranceLaw	8
-14	SocialWelfareLaw	7
-16	CompetitionLaw	5
-\.
-
-
---
 -- TOC entry 2252 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: field_fieldid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
@@ -493,10 +452,6 @@ ALTER TABLE ONLY field
 -- Name: bureau; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY field
-    ADD CONSTRAINT bureau FOREIGN KEY (bureauid) REFERENCES bureau(bureauid);
-
-
 --
 -- TOC entry 2222 (class 2606 OID 16610)
 -- Name: bureauid; Type: FK CONSTRAINT; Schema: public; Owner: postgres
@@ -534,4 +489,31 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 
 ALTER SEQUENCE "Bureau_BureauId_seq" RESTART WITH 17;
+
+COPY field (fieldname) FROM stdin;
+Ehitus- ja planeerimisõigus
+Erastamine
+Inkassoteenused
+IT-õigus
+Keskkonnaõigus
+Kindlustusõigus
+Kinnisvaraõigus
+Kriminaal- ja väärteoõigus
+Lahutus
+Liiklusõigus
+Majandusõigus
+Maksuõigus
+Meditsiin ja ravimid
+Meedia- ja telekommunikatsiooniõigus
+Omandireform
+Pangandus- ja finantsõigus, kapitaliturud
+Perekonnaõigus
+Pärimisõigus
+Restruktueerimine, saneerimine ja maksujõuetus (pankrot)
+Sotsiaalhoolekandeõigus
+Transpordi-, kaubandus- ja mereõigus
+Tööõigus
+Välismaalasteõigus
+Ühinemised ja ülevõtmised
+\.
 

@@ -29,11 +29,13 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">
-    <%@include file="theme/style.css" %>
+    <%@include file="theme/style.css" %>    
     </style>
 		<script src="js/jquery.js"></script>
-		<script src="js/functions.js"></script>
-		<title>Õigusportaal</title>
+		<script src="js/functions.js"></script>		
+		<title>Õigusportaal</title>	
+		
+		
 	</head>
 	
 	<body>
@@ -48,16 +50,19 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 				<div class="post">
 					<div class="entry">
 						<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">
-						  <table id="bureauProfileTable" style="border: 1px solid black">
+						
+						  <table id="bureauProfileTable">
+						  	
+						  	<tr id="logo">
+						  	<td><p>Lae üles uus logo: <input type="file" name="img"></p></td>
+						  	<td><img src="<%= currentUser.getImage() %>" height="150px"></td>						  	
+						 	</tr>
+						  	
 						  	<tr>
 						  		<td><label for="profileBureauName">Firma nimi:</label></td>
 						  		<td> <%= currentUser.getBureauName() %> </td>
-						  		<td id="logo" rowspan="6" >
-						  			<img src="<%= currentUser.getImage() %>" height="150px" ><br>
-						  			Lae üles uus logo: <input type="file" name="img">
-								</td>
 						  	</tr>
-						  	
+						  							  	
 						  	<tr>
 						  		<td><label for="profileBureauPhone">Telefon:</label></td>
 						  		<td style="border: 1pz solid #000"><input type="text" id="profileBureauPhone" name="profileBureauPhone" value="<%=currentUser.getPhone()%>">
@@ -75,7 +80,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 						  	<tr>
 						  		<td><label for="profileBureauAveragePrize">Keskmine tunnihind:</label></td>
 						 	  	<td><input type="text" id="profileBureauAveragePrize" name="profileBureauAveragePrize" value="<%= currentUser.getAveragePrice()%>">
-						 	  	<input type="hidden" id="oldPrice" name="oldPrice" value="<%=currentUser.getAveragePrice()%>">
+						 	  	<input type="hidden" id="oldPrice" name="oldPrice" value="<%=currentUser.getAveragePrice()%>">						 	 
 						 	  	</td>
 						  	</tr>
 						  	
@@ -173,7 +178,24 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 							</tr>
 							<% session.setAttribute("currentSessionUser", currentUser); %>
 						  </table>
-						  <input type="submit" value="Muuda" id="searchingEdit"/>						  
+						  
+							<div id="fieldsCheckBox">
+						
+							<p><b>Valdkonnad</b></p>
+							
+							<%
+								ArrayList<String> fields = (ArrayList<String>) request
+									.getAttribute("fieldRows");
+							
+								for (int i=0; i<fields.size(); i++){
+							%>
+							
+							<%= fields.get(i) %>
+							
+							<% }%>										  
+							
+						</div>
+						 <input type="submit" value="Muuda" id="searchingEdit"/> 						  
 						</form>
 					</div>
 				</div>

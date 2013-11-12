@@ -75,11 +75,11 @@
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
 					<p>Asukoht</p>
 					<select name="regions" class="regSelect">
-						<option value="0">--Select a Region--</option>
-						<option value="1" >Pıhja-Eesti</option>
-						<option value="2">Lıuna-Eesti</option>
-						<option value="3">L‰‰ne-Eesti</option>
-						<option value="4">Ida-Eesti</option>
+						<option value="0">-- Vali regioon --</option>
+										<option value="1">Pıhja-Eesti</option> <!-- /*Harjumaa, , J‰rvamaa, Raplamaa */ -->
+	 									<option value="2">Ida-Eesti</option>    <!-- Ida-Virumaa, L‰‰ne-Virumaa, Jıgevamaa -->
+	 									<option value="3">L‰‰ne-Eesti</option> <!--  L‰‰nemaa, Hiiumaa, Saaremaa, P‰rnumaa -->
+	 									<option value="4">Lıuna-Eesti</option> <!--  Viljandimaa, Tartumaa, Pılvamaa, Valgamaa, Vırumaa -->
 					</select>
 					<select name="counties" class="countySelect">
 						<option value="0" class="static">--Vali maakond--</option>

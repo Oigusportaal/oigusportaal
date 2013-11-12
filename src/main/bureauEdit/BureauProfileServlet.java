@@ -37,9 +37,7 @@ public class BureauProfileServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Enumeration<String> params = request.getParameterNames();
-		
-		
+				
 		
 		ArrayList<AttorneyDetails> attorneys = new ArrayList<AttorneyDetails>();
 		ArrayList<SuccessStoryDetails> successStories = new ArrayList<SuccessStoryDetails>();
@@ -70,13 +68,16 @@ public class BureauProfileServlet extends HttpServlet {
 		
 		String email = user.getEmail();
 		String password = user.getPassword();
+		int bureauId = 0;
+		
+		
 		
 		
 		try {
 			statementUser = curConnection.createStatement();
 			resultSetUser = statementUser.executeQuery("SELECT * FROM bureau WHERE email='" + email + "' AND password='" + password + "';" );
 			
-			int bureauId = 0;
+			
 			
 			while (resultSetUser.next()){
 			user.setAveragePrice(resultSetUser.getInt("averageprice"));
@@ -90,13 +91,14 @@ public class BureauProfileServlet extends HttpServlet {
 			user.setRegistryCode(resultSetUser.getInt("registrycode"));
 			bureauId = (Integer) resultSetUser.getInt("bureauid");
 			
-			System.out.println("User attributes are set");
+//			System.out.println("User attributes are set");
 			
 			}
 			
 			
 			resultSetUser.close();
-			statementUser.close();
+			statementUser.close();	
+			
 			
 			statementAttorneys = curConnection.createStatement();
 			resultSetAttorneys = statementAttorneys.executeQuery("SELECT * FROM attorney WHERE bureauid='" + bureauId + "';");
@@ -111,8 +113,8 @@ public class BureauProfileServlet extends HttpServlet {
 				
 				attorneys.add(attorney);
 				
-				System.out.println(attorney.getEmail());
-				System.out.println(attorney.getName());
+//				System.out.println(attorney.getEmail());
+//				System.out.println(attorney.getName());
 				
 			}
 			
@@ -132,10 +134,10 @@ public class BureauProfileServlet extends HttpServlet {
 				
 				successStories.add(story);
 				
-				System.out.println(story.getConclusion());
-				System.out.println(story.getFieldid());
-				System.out.println(story.getParticipants());
-				System.out.println(story.getReference());
+//				System.out.println(story.getConclusion());
+//				System.out.println(story.getFieldid());
+//				System.out.println(story.getParticipants());
+//				System.out.println(story.getReference());
 				
 				
 			}
@@ -146,6 +148,10 @@ public class BureauProfileServlet extends HttpServlet {
 			
 			curConnection.close();
 			
+			FieldsMaker fieldMaker = new FieldsMaker(bureauId);
+			ArrayList<String> fieldRows = fieldMaker.getCheckBoxCode();
+			
+			request.setAttribute("fieldRows", fieldRows);
 			request.setAttribute("user", user);
 			request.setAttribute("attorneys", attorneys);
 			request.setAttribute("successStories", successStories);

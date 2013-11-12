@@ -350,10 +350,22 @@ input#Registreeru{
 /*Bureau Profile Page*/
 
 #bureauProfileTable{
-	width:800px;
+	width:600px;
 	height:600px;
 }
 
 #bureauProfileTable td{
 	/*border: 1px solid #000000;*/
 }
+
+#fieldsCheckBox{
+	position: relative;
+	left: 600px;
+	top: -600px;
+	margin-left: 20px;
+}
+
+.entry{
+	border: 1px solid #EDEDED;
+}
+
