@@ -51,11 +51,86 @@ a img
   border:none;
 }
 
-h2 {
-	padding-top: 10px;
-	padding-left: 20px;
+/*Main page welcoming content*/
+#firstPageWelcome{
+	background-image: url("./images/welcoming.png") ;
+	background-repeat:no-repeat;
+	height:288px;
+	margin-top:20px;
 }
 
+#firstPageWelcomeText{
+	float:left;
+	color:#ffffff;
+	margin-top:0px;
+	margin-left:50px;
+	padding-top:50px;
+}
+
+#firstPageWelcomeText p:FIRST-CHILD{
+	font-size:20px;
+}
+#firstPageWelcomeText2{
+	color: #ffffff;
+	float:right;
+	margin-right:110px;
+	margin-top: 145px;
+}
+/*Main page fields*/
+.image div{
+	float:left;
+}
+.image {
+	background-image:url("images/foe_bc.png");
+	background-repeat: no-repeat;
+	height:350px;
+	margin-left:17px;
+}
+
+
+.image .text ul {
+	list-style-type:none;
+}
+#valdkonnad1{
+	margin-top:0px;
+}
+#valdkonnad1 h2 {
+	
+	padding-top:10px;
+	margin-left:40px;
+	color: #BA0606;
+	font-size:25px;
+}
+#valdkonnad2{
+	margin-top:30px;
+}
+#valdkonnad3{
+	margin-top:30px;
+}
+/*Main page fields END*/
+
+/*Catalog Search*/
+#catalogSearch select{
+	width:155px;
+	height:25px;	
+}
+.column_height{
+	height:120px;
+}
+td.column_height p {
+	margin-top:37px;
+}
+#searching{
+	width:155px;
+	height:25px;
+	margin-right:0px;
+}
+.catalogCheckbox{
+	margin-top:25px;
+}
+#success{
+	margin-top:37px;
+}
 .page {
 	overflow: hidden;
 	width: 1024px;
@@ -64,6 +139,7 @@ h2 {
 	font-family: Modern;
 	padding-top: 20 px;
 }
+
 
 .content {
 	/*border: 2px solid #8F9297;*/
@@ -83,17 +159,6 @@ h2 {
 	height: 600px;
 }
 
-.image {
-    position:relative;
-	padding-left: 16px;
-}
-
-.image .text h2 {
-	position: absolute;
-	top: -60px;
-	color: #BA0606;
-	font-size:25px;
-}
 
 .text a, .text2 a, .text3 a {
 	font-size: 18px;
@@ -102,15 +167,11 @@ h2 {
 }
 
 .image .text {
-    position:absolute;
-    top:50px;
-    left:40px;
     width:320px;
 	color: #363636;
 }
 
 .image .text2 {
-    position:absolute;
     top:25px;
     left:350px;
     width:320px;
@@ -118,7 +179,6 @@ h2 {
 }
 
 .image .text3 {
-    position:absolute;
     top:25px;
     left:695px;
     width:320px;
@@ -160,16 +220,10 @@ h2 {
 	font-size: 16px;
 }
 
-#success {
+/*#success {
 	padding-top: 90px;
-}
+}*/
 
-#searching {	
-	margin: 0px 10px 5px 160px;
-	width: 50px;
-	height: 33px;
-	top: 590px;
-}
 
 #registration_form2{
 	font-size: 15px;
@@ -215,18 +269,19 @@ h2 {
 
 #registration_form input {
   margin-bottom: 8px;
-}
-*/
+}*/
 #avgprice {
 	position: absolute;
-	top: 470px;
 	}
-	
-#success_date
+
+#avgprice input {
+	width: 155px;
+}
+/*#success_date
 {	
 	top: 550px;
 	
-}
+}*/
 
 
 output { 

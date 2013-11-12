@@ -7,23 +7,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="js/jquery.js"></script>
-		<script src="js/functions.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
-  <script>
-  $(function() {
+<script>
+	$(function() {
     $( "#datepicker" ).datepicker();
-  });
-  </script>
-  <script>
-  $(function() {
+ });
+</script>
+<script>
+	$(function() {
     $( "#datepickerTwo" ).datepicker();
-  });
-  </script>
+ });
+ </script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 	<script type="text/javascript" defer="defer">
 		function cascadeSelect(parent, child){
 				var childOptions = child.find('option:not(.static)');
@@ -54,7 +48,8 @@
 <style type="text/css">
     <%@include file="theme/style.css" %>
     </style>
-		
+		<script src="js/jquery.js"></script>
+		<script src="js/functions.js"></script>
 		<title>Õigusportaal</title>
 	</head>
 	
@@ -73,17 +68,26 @@
 				<h2>Otsing</h2>
 				<div class="content" style="background-color:#f0f0f0;">
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
-						<table>
-					<p>Asukoht</p>
-					<select name="regions" class="regSelect">
-						<option value="0">-- Vali regioon --</option>
-										<option value="1">Põhja-Eesti</option> <!-- /*Harjumaa, , Järvamaa, Raplamaa */ -->
-	 									<option value="2">Ida-Eesti</option>    <!-- Ida-Virumaa, Lääne-Virumaa, Jõgevamaa -->
-	 									<option value="3">Lääne-Eesti</option> <!--  Läänemaa, Hiiumaa, Saaremaa, Pärnumaa -->
-	 									<option value="4">Lõuna-Eesti</option> <!--  Viljandimaa, Tartumaa, Põlvamaa, Valgamaa, Võrumaa -->
-					</select>
-					<select name="counties" class="countySelect">
-						<option value="0" class="static">--Vali maakond--</option>
+						<table id="catalogSearch">
+							<tr>
+								<td>
+									<p>Asukoht: </p>
+								</td>
+								
+								
+								<td>
+									<select name="regions" class="regSelect">
+										<option value="0">--Vali regioon--</option>
+										<option value="1" >Põhja-Eesti</option>
+										<option value="2">Ida-Eesti</option>
+										<option value="3">Lääne-Eesti</option>
+										<option value="4">Lõuna-Eesti</option>
+									</select>
+								</td>
+								
+								<td>
+									<select name="counties" class="countySelect" >
+										<option value="0" class="static">--Vali maakond--</option>
 										<option value="1" class="sub_1">Harjumaa</option>
 										<option value="2" class="sub_1">Järvamaa</option>
 										<option value="3" class="sub_1">Raplamaa</option>
@@ -99,9 +103,11 @@
 										<option value="13" class="sub_4">Valgamaa</option>
 										<option value="14" class="sub_4">Viljandimaa</option>
 										<option value="15" class="sub_4">Võrumaa</option>
-					</select>
-					<select name="cities" class="citySelect">
-						<option value="0" class="static">--Vali linn--</option>
+									</select>
+								</td>
+								<td>
+									<select name="cities" class="citySelect" >
+										<option value="0" class="static">--Vali linn--</option>
 										<option value="1" class="sub_1">Tallinn</option>
 										<option value="2" class="sub_2">Paide</option>
 										<option value="3" class="sub_3">Rapla</option>
@@ -117,53 +123,56 @@
 										<option value="13" class="sub_13">Valga</option>
 										<option value="14" class="sub_14">Viljandi</option>
 										<option value="15" class="sub_15">Võru</option> 
-					</select>
-					
-				
-					<p>Keskmine tunnihind</p>
-					<div id="avgprice">
-						<input name="averageprice" type="range" min=1 max=100 value=50 style="width: 40%">
-						<output for="foo">1</output>
-						<input type="checkbox" name="Price" value="Price" checked="checked">   Kasuta otsingus
-					</div>
-					<input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>">
-					<p id="success">Viimane edulugu</p>
-					<div id="success_date">
-					<p>From: <input type="text" id="datepicker" name="From"/></p>
-  					<p>To: <input type="text" id="datepickerTwo" name="To" /></p>
-  					<input type="checkbox" name="Date" value="Date" checked="checked">  Kasuta otsingus
-  					 </div>
-					<input type="submit" value="Otsi" id="searching"/>
+									</select>		
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="column_height">
+									<p>Keskmine tunnihind:</p>
+								</td>
+								
+								<td class="column_height">
+									<div id="avgprice">
+										<input name="averageprice" type="range" min=1 max=100 value=50 >
+										<output for="foo">1</output>
+									</div>
+								</td>
+								
+								<td class="column_height" id="column_checkbox">
+									<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
+								</td>
+							</tr>
+							
+							<tr>
+								<!-- td><input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>"> -->
+								<td>
+									<p id="success">Viimane edulugu:</p>
+								</td>
+								
+								<td width="150">
+									<div id="success_date">
+										 Alates: <input type="date" name="From" >
+										 Kuni:   <input type="date" name="To" >
+									</div>
+								</td>
+								
+								<td>
+									<input type="checkbox" name="Date" value="Date" checked="checked" class="catalogCheckbox">  Kasuta otsingus
+								</td>
+							</tr>
+							
+							<tr>
+								<td colspan="4" align="right" ><input type="submit" value="Otsi" id="searching"/></td>
+							</tr>
+						</table>
 					</form>
+				</div>
 			</div>
 			
 			<div class="page">
-		<h2>--Selected Burueas Related Search --</h2>
-		<table width="95%" border="1">
-			<tr>
-				<%
-					for (int i = 0; i < br.size(); i++) {
-				%>
-
-				<td width="20" align="center" class="borderdesign">
-				<td width="100" class="borderdesign">
-					<h3><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></h3>
-				</td>
-				<td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
-
-				<%
-					if ((i + 1) % 2 == 0) {
-				%>
-			</tr>
-			<tr>
-				<%
-					}
-
-					}
-				%>
-
-			</tr>
-			</table>
+			<h2>Kõik leitud bürood:</h2>
+			
 			</div>
 			<!-- include footer -->
 			<%@include file='/footer.jsp'%>
