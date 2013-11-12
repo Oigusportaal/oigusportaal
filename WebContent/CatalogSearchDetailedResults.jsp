@@ -7,7 +7,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="js/jquery.js"></script>
+		<script src="js/functions.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+  <script>
+  $(function() {
+    $( "#datepickerTwo" ).datepicker();
+  });
+  </script>
 	<script type="text/javascript" defer="defer">
 		function cascadeSelect(parent, child){
 				var childOptions = child.find('option:not(.static)');
@@ -38,8 +54,7 @@
 <style type="text/css">
     <%@include file="theme/style.css" %>
     </style>
-		<script src="js/jquery.js"></script>
-		<script src="js/functions.js"></script>
+		
 		<title>Õigusportaal</title>
 	</head>
 	
@@ -112,8 +127,8 @@
 					<input type="hidden" name="fieldName" value="<%= request.getAttribute("fieldName") %>">    
 					<p id="success">Viimane edulugu</p>
 					<div id="success_date">
-					 From: <input type="date" name="From" >
-  					 To:   <input type="date" name="To" > 
+				<p>From: <input type="text" id="datepicker" name="From"/></p>
+  					<p>To: <input type="text" id="datepickerTwo" name="To" /></p>
   					<input type="checkbox" name="Date" value="Date" checked="checked">  Kasuta otsingus
   					 </div>
 					<input type="submit" value="Otsi" id="searching"/>

@@ -57,7 +57,9 @@ public class SearchServlet extends HttpServlet {
 
 		String averagePrice;
 		String SSDateFrom;
+		String SSDateFromFix;
 		String SSDateTo;
+		String SSDateToFix;
 		boolean checkBoxDate;
 		boolean checkBoxPrice;
 
@@ -65,13 +67,29 @@ public class SearchServlet extends HttpServlet {
 
 		SSDateFrom = request.getParameter("From");
 		if (SSDateFrom.isEmpty())
+		{
 			SSDateFrom = "01-01-1000";
-		System.out.println(SSDateFrom);
-
+			System.out.println(SSDateFrom);
+		}
+		else 
+		{
+		SSDateFromFix = SSDateFrom.replaceAll("/", "-");
+		System.out.println(SSDateFromFix);
+		}
+		
 		SSDateTo = request.getParameter("To");
 		if (SSDateTo.isEmpty())
+		{
 			SSDateTo = "01-01-1010";
-		System.out.println(SSDateTo);
+			System.out.println(SSDateTo);
+		}
+		else 
+		{
+		SSDateToFix = SSDateTo.replaceAll("/", "-");
+		System.out.println(SSDateToFix);
+		}
+		
+	
 
 		checkBoxDate = request.getParameter("Date") != null;
 		checkBoxPrice = request.getParameter("Price") != null;
