@@ -71,68 +71,104 @@
                         
                         <div class="page">
                                 <h2>Otsing</h2>
-                                <div class="content">
-                                        <form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
-                                        <p>Asukoht</p>
-                                        <select name="regions" class="regSelect">
-                                                <option value="0">--Select a Region--</option>
-                                                <option value="1" >Pıhja-Eesti</option>
-                                                <option value="2">Lıuna-Eesti</option>
-                                                <option value="3">L‰‰ne-Eesti</option>
-                                                <option value="4">Ida-Eesti</option>
-                                        </select>
-                                        <select name="counties" class="countySelect">
-                                                <option value="0" class="static">--Vali maakond--</option>
-                                                                                <option value="1" class="sub_1">Harjumaa</option>
-                                                                                <option value="2" class="sub_1">J‰rvamaa</option>
-                                                                                <option value="3" class="sub_1">Raplamaa</option>
-                                                                                <option value="4" class="sub_2">Ida-Virumaa</option>
-                                                                                <option value="5" class="sub_2">Jıgevamaa</option>
-                                                                                <option value="6" class="sub_2">L‰‰ne-Virumaa</option>
-                                                                                <option value="7" class="sub_3">Hiiumaa</option>
-                                                                                <option value="8" class="sub_3">L‰‰nemaa</option>
-                                                                                <option value="9" class="sub_3">P‰rnumaa</option>
-                                                                                <option value="10" class="sub_3">Saaremaa</option>
-                                                                                <option value="11" class="sub_4">Pılvamaa</option>
-                                                                                <option value="12" class="sub_4">Tartumaa</option>
-                                                                                <option value="13" class="sub_4">Valgamaa</option>
-                                                                                <option value="14" class="sub_4">Viljandimaa</option>
-                                                                                <option value="15" class="sub_4">Vırumaa</option>
-                                        </select>
-                                        <select name="cities" class="citySelect">
-                                                <option value="0" class="static">--Vali linn--</option>
-                                                                                <option value="1" class="sub_1">Tallinn</option>
-                                                                                <option value="2" class="sub_2">Paide</option>
-                                                                                <option value="3" class="sub_3">Rapla</option>
-                                                                                <option value="4" class="sub_4">Jıhvi</option>
-                                                                                <option value="5" class="sub_5">Jıgeva</option>
-                                                                                <option value="6" class="sub_6">Rakvere</option>
-                                                                                <option value="7" class="sub_7">K‰rdla</option>
-                                                                                <option value="8" class="sub_8">Haapsalu</option>
-                                                                                <option value="9" class="sub_9">P‰rnu</option>
-                                                                                <option value="10" class="sub_10">Kuressaare</option>
-                                                                                <option value="11" class="sub_11">Pılva</option>
-                                                                                <option value="12" class="sub_12">Tartu</option>
-                                                                                <option value="13" class="sub_13">Valga</option>
-                                                                                <option value="14" class="sub_14">Viljandi</option>
-                                                                                <option value="15" class="sub_15">Vıru</option> 
-                                        </select>
-                                        
-                                        <p>Keskmine tunnihind</p>
-                                        <div id="avgprice">
-                                                <input name="averageprice" type="range" min=1 max=100 value=50 style="width: 40%">
-                                                <output for="foo">1</output>
-                                                <input type="checkbox" name="Price" value="Price" checked="checked">   Kasuta otsingus
-                                        </div>
-                                        <input type="hidden" name="fieldName" value="<%= request.getAttribute("fieldName") %>">    
-                                        <p id="success">Viimane edulugu</p>
-                                        <div id="success_date">
-                                <p>From: <input type="text" id="datepicker" name="From"/></p>
-                                          <p>To: <input type="text" id="datepickerTwo" name="To" /></p>
-                                          <input type="checkbox" name="Date" value="Date" checked="checked">  Kasuta otsingus
-                                           </div>
-                                        <input type="submit" value="Otsi" id="searching"/>
-                                        </form>
+                                <div class="content" style="background-color:#f0f0f0;">
+					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
+						<table id="catalogSearch">
+							<tr>
+								<td>
+									<p>Asukoht: </p>
+								</td>
+								
+								
+								<td>
+									<select name="regions" class="regSelect">
+										<option value="0">--Vali regioon--</option>
+										<option value="1" >Pıhja-Eesti</option>
+										<option value="2">Ida-Eesti</option>
+										<option value="3">L‰‰ne-Eesti</option>
+										<option value="4">Lıuna-Eesti</option>
+									</select>
+								</td>
+								
+								<td>
+									<select name="counties" class="countySelect" >
+										<option value="0" class="static">--Vali maakond--</option>
+										<option value="1" class="sub_1">Harjumaa</option>
+										<option value="2" class="sub_1">J‰rvamaa</option>
+										<option value="3" class="sub_1">Raplamaa</option>
+										<option value="4" class="sub_2">Ida-Virumaa</option>
+										<option value="5" class="sub_2">Jıgevamaa</option>
+										<option value="6" class="sub_2">L‰‰ne-Virumaa</option>
+										<option value="7" class="sub_3">Hiiumaa</option>
+										<option value="8" class="sub_3">L‰‰nemaa</option>
+										<option value="9" class="sub_3">P‰rnumaa</option>
+										<option value="10" class="sub_3">Saaremaa</option>
+										<option value="11" class="sub_4">Pılvamaa</option>
+										<option value="12" class="sub_4">Tartumaa</option>
+										<option value="13" class="sub_4">Valgamaa</option>
+										<option value="14" class="sub_4">Viljandimaa</option>
+										<option value="15" class="sub_4">Vırumaa</option>
+									</select>
+								</td>
+								<td>
+									<select name="cities" class="citySelect" >
+										<option value="0" class="static">--Vali linn--</option>
+										<option value="1" class="sub_1">Tallinn</option>
+										<option value="2" class="sub_2">Paide</option>
+										<option value="3" class="sub_3">Rapla</option>
+										<option value="4" class="sub_4">Jıhvi</option>
+										<option value="5" class="sub_5">Jıgeva</option>
+										<option value="6" class="sub_6">Rakvere</option>
+										<option value="7" class="sub_7">K‰rdla</option>
+										<option value="8" class="sub_8">Haapsalu</option>
+										<option value="9" class="sub_9">P‰rnu</option>
+										<option value="10" class="sub_10">Kuressaare</option>
+										<option value="11" class="sub_11">Pılva</option>
+										<option value="12" class="sub_12">Tartu</option>
+										<option value="13" class="sub_13">Valga</option>
+										<option value="14" class="sub_14">Viljandi</option>
+										<option value="15" class="sub_15">Vıru</option> 
+									</select>		
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="column_height">
+									<p>Keskmine tunnihind:</p>
+								</td>
+								
+								<td>
+                                	<div id="avgprice">
+                                    	<input name="averageprice" type="range" min=1 max=100 value=50 >
+                                        <output for="foo">1</output>
+                                    </div>
+                                </td>    
+                          		<td class="column_height" id="column_checkbox">
+									<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
+								</td>
+							</tr>
+							<tr>
+                                <td><input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>"></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>
+                            		<p id="success">Viimane edulugu</p>
+                            	</td>
+                                <td> 
+                                	<div id="success_date">
+                                    	<p>Alates:<br> <input type="text" id="datepicker" name="From"/></p>
+                                   		<p>Kuni:<br> <input type="text" id="datepickerTwo" name="To" /></p>
+                                    </div>
+                                </td>
+                                <td>
+                                	<input type="checkbox" name="Date" value="Date" checked="checked" class="catalogCheckbox">  Kasuta otsingus
+                                </td>
+                             <tr>
+                             	<td colspan="4" align="right" ><input type="submit" value="Otsi" id="searching"/></td>
+                           	</tr>
+                       	</table>
+                        </form>
                         </div>
                         
                         <div class="page">

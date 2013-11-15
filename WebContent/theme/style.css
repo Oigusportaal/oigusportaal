@@ -276,11 +276,11 @@ td.column_height p {
 
 #avgprice input {
 	width: 155px;
+	margin-left:0px;
 }
 /*#success_date
 {	
 	top: 550px;
-	
 }*/
 
 
