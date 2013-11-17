@@ -39,6 +39,9 @@ public class SearchServlet extends HttpServlet {
 
 		ArrayList<BureauSearchResults> bureauSR = new ArrayList<BureauSearchResults>();
 
+		int fieldId = 1;
+
+		
 		String sql;
 		String sql2;
 		String sql3;
@@ -98,6 +101,96 @@ public class SearchServlet extends HttpServlet {
 		System.out.println(fieldName);
 
 		String ffs = fieldName.replaceAll("\\s", "");
+		
+		
+		switch (ffs) {
+		case "CivilLaw":
+			fieldId = 1;
+			break;
+		case "Privitization":
+			fieldId = 2;
+			break;
+		case "DebtCollectionServices":
+			fieldId = 3;
+			break;
+		case "IntellectualProperty":
+			fieldId = 4;
+			break;
+		case "ITLaw":
+			fieldId = 5;
+			break;
+		case "EnvironmentalLaw":
+			fieldId = 6;
+			break;
+		case "InsuranceLaw":
+			fieldId = 7;
+			break;
+		case "NonMovableProperty":
+			fieldId = 8;
+			break;
+		case "CompetitionLaw":
+			fieldId = 9;
+			break;
+		case "CriminalLaw":
+			fieldId = 10;
+			break;
+		case "Divorce":
+			fieldId = 11;
+			break;
+		case "TrafficLaw":
+			fieldId = 12;
+			break;
+		case "EconomicLaw":
+			fieldId = 13;
+			break;
+		case "TaxLaw":
+			fieldId = 14;
+			break;
+		case "MedicineLaw":
+			fieldId = 15;
+			break;
+		case "MediaAndTelecommunicationLaw":
+			fieldId = 16;
+			break;
+		case "PropertyReform":
+			fieldId = 17;
+			break;
+		case "BankingAndFinancialFunds":
+			fieldId = 18;
+			break;
+		case "FamilyLaw":
+			fieldId = 19;
+			break;
+		case "HeritageLaw":
+			fieldId = 20;
+			break;
+		case "RestructingLaw":
+			fieldId = 21;
+			break;
+		case "SocialWelfareLaw":
+			fieldId = 22;
+			break;
+		case "TransportTradeAndSeaLaw":
+			fieldId = 23;
+			break;
+		case "LaborLaw":
+			fieldId = 24;
+			break;
+		case "AliensLaw":
+			fieldId = 25;
+			break;
+		case "MergersAndAcquisitions":
+			fieldId = 26;
+			break;
+		}
+		
+		
+	System.out.println(fieldId);
+		
+		
+		
+		
+		
 
 		System.out.println(ffs);
 
@@ -242,10 +335,8 @@ public class SearchServlet extends HttpServlet {
 
 		sql = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
-				+ " FROM bureau, field, successstory "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='"
-				+ ffs
-				+ "'  "
+				+ " FROM bureau, fieldbureaujunction, successstory "
+				+ " Where fieldbureaujunction.bureauid=bureau.bureauid and fieldbureaujunction.fieldid="+ fieldId +""
 				+ "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '"
 				+ SSDateFrom
 				+ "' and '"
@@ -262,10 +353,8 @@ public class SearchServlet extends HttpServlet {
 
 		sql2 = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
-				+ " FROM bureau, field, successstory "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='"
-				+ ffs
-				+ "' "
+				+ " FROM bureau, fieldbureaujunction, successstory "
+				+ " Where fieldbureaujunction.bureauid=bureau.bureauid and fieldbureaujunction.fieldid="+ fieldId +""
 				+ "and  successstory.bureauid=bureau.bureauid and successstory.date BETWEEN '"
 				+ SSDateFrom
 				+ "' and '"
@@ -278,10 +367,8 @@ public class SearchServlet extends HttpServlet {
 
 		sql3 = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
-				+ " FROM bureau, field "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='"
-				+ ffs
-				+ "' "
+				+ " FROM bureau, fieldbureaujunction "
+				+ " Where fieldbureaujunction.bureauid=bureau.bureauid and fieldbureaujunction.fieldid="+ fieldId +""
 				+ " and bureau.cityname='"
 				+ city
 				+ "' and bureau.regionname='"
@@ -293,10 +380,8 @@ public class SearchServlet extends HttpServlet {
 
 		sql4 = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
-				+ " FROM bureau, field "
-				+ " Where bureau.bureauid=field.bureauid and field.fieldname='"
-				+ ffs
-				+ "' "
+				+ " FROM bureau, fieldbureaujunction "
+				+ " Where fieldbureaujunction.bureauid=bureau.bureauid and fieldbureaujunction.fieldid="+ fieldId +""
 				+ " and bureau.cityname='"
 				+ city
 				+ "' and bureau.regionname='"

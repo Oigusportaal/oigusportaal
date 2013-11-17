@@ -52,7 +52,7 @@ public class DeleteBureauServlet extends HttpServlet {
 		System.out.println(bureauId);
 		
 		
-		sqlDelete= " DELETE from field Where bureauid=" + bureauId + "; "
+		sqlDelete= " DELETE from fieldbureaujunction Where bureauid=" + bureauId + "; "
 				+ "Delete from attorney where bureauid=" + bureauId + ";"
 				+ "Delete from successstory where bureauid=" + bureauId + ";"
 				+ "DELETE FROM bureau  WHERE email = '" + bureauEmail + "' ;" ;

@@ -45,6 +45,97 @@ public class FieldSearchServlet extends HttpServlet {
 		String fieldName = request.getParameter("param");
 		System.out.println(fieldName);
 		
+		int fieldId = 0;
+		
+		
+		switch (fieldName) {
+		case "CivilLaw":
+			fieldId = 1;
+			break;
+		case "Privitization":
+			fieldId = 2;
+			break;
+		case "DebtCollectionServices":
+			fieldId = 3;
+			break;
+		case "IntellectualProperty":
+			fieldId = 4;
+			break;
+		case "ITLaw":
+			fieldId = 5;
+			break;
+		case "EnvironmentalLaw":
+			fieldId = 6;
+			break;
+		case "InsuranceLaw":
+			fieldId = 7;
+			break;
+		case "NonMovableProperty":
+			fieldId = 8;
+			break;
+		case "CompetitionLaw":
+			fieldId = 9;
+			break;
+		case "CriminalLaw":
+			fieldId = 10;
+			break;
+		case "Divorce":
+			fieldId = 11;
+			break;
+		case "TrafficLaw":
+			fieldId = 12;
+			break;
+		case "EconomicLaw":
+			fieldId = 13;
+			break;
+		case "TaxLaw":
+			fieldId = 14;
+			break;
+		case "MedicineLaw":
+			fieldId = 15;
+			break;
+		case "MediaAndTelecommunicationLaw":
+			fieldId = 16;
+			break;
+		case "PropertyReform":
+			fieldId = 17;
+			break;
+		case "BankingAndFinancialFunds":
+			fieldId = 18;
+			break;
+		case "FamilyLaw":
+			fieldId = 19;
+			break;
+		case "HeritageLaw":
+			fieldId = 20;
+			break;
+		case "RestructingLaw":
+			fieldId = 21;
+			break;
+		case "SocialWelfareLaw":
+			fieldId = 22;
+			break;
+		case "TransportTradeAndSeaLaw":
+			fieldId = 23;
+			break;
+		case "LaborLaw":
+			fieldId = 24;
+			break;
+		case "AliensLaw":
+			fieldId = 25;
+			break;
+		case "MergersAndAcquisitions":
+			fieldId = 26;
+			break;
+		}
+		
+		
+	System.out.println(fieldId);	
+		
+			
+		
+		
+		
 		ArrayList<BureauDetails> bureau = new ArrayList<BureauDetails>();
 		
 		DBConnection connect = new DBConnection();
@@ -61,8 +152,8 @@ public class FieldSearchServlet extends HttpServlet {
 		try {
 			stmt = curConnection.createStatement();
 			rs = stmt
-					.executeQuery("SELECT  bureau.bureauid, bureau.name, bureau.email, field.fieldname, bureau.image "
-							+ "FROM  bureau,field WHERE bureau.bureauid=field.bureauid and field.fieldname='"+ fieldName +"' ;");
+					.executeQuery("SELECT bureau.bureauid, bureau.name, bureau.email, bureau.image FROM bureau, fieldbureaujunction "
+							+ "Where fieldbureaujunction.bureauid=bureau.bureauid and fieldbureaujunction.fieldid="+fieldId+";");
 
 			while (rs.next()) {
 
@@ -72,9 +163,9 @@ public class FieldSearchServlet extends HttpServlet {
 				br.setBureauName(rs.getString("name"));
 				//br.setRegistryCode(rs.getInt("registrycode"));
 				br.setEmail(rs.getString("email"));
-				br.setFieldName(rs.getString("fieldname"));
 				br.setImage(rs.getString("image"));
-				
+				br.setFieldName(fieldName);
+
 				//br.setPassword(rs.getString("password"));
 				//br.setAveragePrice(rs.getInt("averagePrice"));
 				//br.setStreet(rs.getString("street"));
