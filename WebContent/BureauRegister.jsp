@@ -62,12 +62,12 @@
 					<form action="BureauRegistrationServlet" method="get" class="cascade" id="registration_form" onsubmit="return validateForm()">
 					 	<table>
 						  	<tr>
-						 		<td><input type="text" name="email" id='registerEmail' placeholder="email@email.com" onkeyup="validateEmail()"/></td>
+						 		<td><input type="text" name="email" id='registerEmail' placeholder="email@email.com" onchange="validateEmail()" onkeyup="validateEmail()"/></td>
 								<td><span id ="emailErrorMessage"></span></td> 
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="registerEmailConfirmation" placeholder="Kinnita E-mail!" id="registerEmailConfirmation" onkeyup="confirmEmail()"/></td>
+								<td><input type="text" name="registerEmailConfirmation" placeholder="Kinnita E-mail!" id="registerEmailConfirmation" onkeyup="confirmEmail()" autocomplete="off"/></td>
 								<td><span id ="confirmEmailMessage"></span> </td>
 							</tr>
 							
@@ -82,27 +82,27 @@
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büronimi" onkeyup="validateBureauName()"/></td>
+								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büronimi" onkeyup="validateBureauName()" autocomplete= "off"/></td>
 								<td><span id="bureauNameMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="regcode" id="registerRegcode" placeholder="Registrikood" onkeyup="validateRegistrycode()"/></td>
+								<td><input type="text" name="regcode" id="registerRegcode" placeholder="Registrikood" onkeyup="validateRegistrycode()" autocomplete="off"/></td>
 								<td><span id="regcodeMessage"></span> </td>
 							</tr>
 	
 							<tr>
-								<td><input type="text" name="street_address" id="registerStreetAddress"  placeholder="Tänav" onkeyup="validateStreetAddress()" /></td>
+								<td><input type="text" name="street_address" id="registerStreetAddress"  placeholder="Tänav" onkeyup="validateStreetAddress()" autocomplete="off"/></td>
 								<td><span id="streetAddressMessage"></span></td>
 							</tr>
 	
 							<tr>
-								<td><input type="text" name="postal_code" id="registerPostalcode" placeholder="Postiindeks" onkeyup="validatePostalCode()"/></td>
+								<td><input type="text" name="postal_code" id="registerPostalcode" placeholder="Postiindeks" onkeyup="validatePostalCode()" autocomplete="off"/></td>
 								<td><span id="postalcodeMessage"></span> </td>
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="phone" id="registerPhone" placeholder="Telefoninumber" onkeyup="validatePhoneNumber()"/></td>
+								<td><input type="text" name="phone" id="registerPhone" placeholder="Telefoninumber" onkeyup="validatePhoneNumber()" autocomplete="off"/></td>
 								<td><span id="phoneMessage"></span> </td>
 							</tr>
 							
