@@ -126,4 +126,24 @@
     <servlet-name>LostPassServlet</servlet-name>
     <url-pattern>/LostPassServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Lawyer Profile Servlet</description>
+    <display-name>LawyerProfileServlet</display-name>
+    <servlet-name>LawyerProfileServlet</servlet-name>
+    <servlet-class>main.bureauEdit.LawyerProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LawyerProfileServlet</servlet-name>
+    <url-pattern>/LawyerProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+     <description>Lawyer Edit Servlet</description>
+    <display-name>LawyerEditServlet</display-name>
+    <servlet-name>LawyerEditServlet</servlet-name>
+    <servlet-class>main.bureauEdit.LawyerEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LawyerEditServlet</servlet-name>
+    <url-pattern>/LawyerEditServlet</url-pattern>
+  </servlet-mapping>  
 </web-app>

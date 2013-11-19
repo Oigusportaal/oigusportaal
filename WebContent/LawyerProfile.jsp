@@ -51,6 +51,10 @@
 		<%
 			AttorneyDetails attorney = (AttorneyDetails) request
 					.getAttribute("attorney");
+			boolean isNew = false;
+			if (attorney == null) {
+				isNew = true;
+			}
 		%>
 
 		<!-- end #menu -->
@@ -62,20 +66,22 @@
 					<table id="lawyerProfileTable">
 						<tr>
 							<td><label for="lawyerName">Nimi:</label></td>
-							<td style="border: 1px solid #000"><input type="text"
-								id="newName" name="newName"
-								value="<%=attorney.getName()%>"></td>
+							<td><input type="text" id="newName" name="newName"
+								value="<%if (!isNew)
+				attorney.getName();%>"></td>
 						</tr>
 						<tr>
 							<td><label for="lawyerEmail">E-mail:</label></td>
-							<td style="border: 1px solid #000"><input type="text"
-								id="newEmail" name="newEmail"
-								value="<%=attorney.getEmail()%>"></td>
+							<td><input type="text" id="newEmail" name="newEmail"
+								value="<%if (!isNew)
+				attorney.getEmail();%>"></td>
 						</tr>
 
 					</table>
-					<input type="submit" value="Muuda" id="searchingEdit"/> 
-					</form>
+					<input type="submit"
+						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
+						id="searchingEdit" />
+				</form>
 			</div>
 		</div>
 	</div>
