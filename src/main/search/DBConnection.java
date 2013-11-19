@@ -12,8 +12,8 @@ import java.sql.SQLException;
 	
 	 public Connection getConnection()  {
 			
-		 System.out.println("-------- PostgreSQL "
-					+ "JDBC Connection Testing ------------");
+//		 System.out.println("-------- PostgreSQL "
+//					+ "JDBC Connection Testing ------------");
 	 
 			try {
 	 
@@ -28,15 +28,15 @@ import java.sql.SQLException;
 	 
 			}
 	 
-			System.out.println("PostgreSQL JDBC Driver Registered!");
+//			System.out.println("PostgreSQL JDBC Driver Registered!");
 	 
 			Connection connection = null;
 	 
 			try {
 	 
 				connection = DriverManager.getConnection(
-						"jdbc:postgresql://127.0.0.1:5432/lp", "postgres",
-						"9999");
+						"jdbc:postgresql://127.0.0.1:5432/lawportal", "postgres",
+						"1234Abcd");
 	 
 			} catch (SQLException e) {
 	 
@@ -47,7 +47,7 @@ import java.sql.SQLException;
 			}
 	 
 			if (connection != null) {
-				System.out.println("You made it, take control your database now!");
+//				System.out.println("You made it, take control your database now!");
 			} else {
 				System.out.println("Failed to make connection!");
 			}
