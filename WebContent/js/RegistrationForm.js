@@ -259,7 +259,7 @@ function validateCounty(){
 		return false;
 	} else {
 		document.getElementById("registerCountyMessage").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
-			return true;
+		return true;
 	}
 	
 }
@@ -308,14 +308,14 @@ function validateForm(){ /*do you work?*/
 									if (validatePhoneNumber()){
 										document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 										var region = document.forms["registration_form"]["registerRegion"].value;
-										if (region!="Region"){
+										if (region != 0){
 											document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 											var county = document.forms["registration_form"]["registerCounty"].value;
-											if(county != "County"){
+											if(county != 0){
 												document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 												/*document.getElementById("Registreeru").removeAttribute("disabled");*/
 												var city = document.forms["registration_form"]["registerCity"].value;
-												if (city!= "City"){
+												if (city!= 0){
 													document.getElementById("confirmInput").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
 													//document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
 													return true;
@@ -330,7 +330,7 @@ function validateForm(){ /*do you work?*/
 				}
 			}
 		}
-	}
+	} 
 //		document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
 //		document.getElementById("Registreeru").setAttribute("disabled", "disabled");
 	return false;
