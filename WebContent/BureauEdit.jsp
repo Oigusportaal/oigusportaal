@@ -47,6 +47,13 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 		<div class="page">
 			<div class="content">
 				<h1>Redigeerimine</h1>
+				<% if (request.getAttribute("passChanged") != null){ %>
+				<div class="passChanged">
+				<p>Teie parool on edukalt muudetud!</p>
+				</div>
+				<%
+				}
+				%>
 				<div class="post">
 					<div class="entry">
 						<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">

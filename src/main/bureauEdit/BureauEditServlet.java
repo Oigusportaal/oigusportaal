@@ -229,6 +229,7 @@ public class BureauEditServlet extends HttpServlet {
 					user.setPassword(newPassword);
 					statement = statement.concat("password='" + newPassword
 							+ "', ");
+					request.setAttribute("passChanged", true);
 				}
 			}
 
@@ -261,9 +262,11 @@ public class BureauEditServlet extends HttpServlet {
 			statementUser.close();
 
 			curConnection.close();
-
-			FieldsDBEdit fieldsToDB = new FieldsDBEdit(fields, bureauId);
-			fieldsToDB.addToDatabase();
+			
+			if (fields.size() != 0 ){
+				FieldsDBEdit fieldsToDB = new FieldsDBEdit(fields, bureauId);
+				fieldsToDB.addToDatabase();
+			}
 			request.setAttribute("user", user);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/BureauProfileServlet");
