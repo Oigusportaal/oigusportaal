@@ -5,9 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+    <%@include file="theme/style.css" %>
+</style>
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper" >
 		<!-- include header -->
 		<%@include file='/header.jsp'%>
 		
