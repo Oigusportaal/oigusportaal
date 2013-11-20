@@ -151,6 +151,8 @@ public class BureauProfileServlet extends HttpServlet {
 			FieldsMaker fieldMaker = new FieldsMaker(bureauId);
 			ArrayList<String> fieldRows = fieldMaker.getCheckBoxCode();
 			
+			
+			request.setAttribute("bureauId", bureauId);
 			request.setAttribute("fieldRows", fieldRows);
 			request.setAttribute("user", user);
 			request.setAttribute("attorneys", attorneys);

@@ -178,8 +178,14 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 							%>
 							<table>
 						  	<tr>
-								<td><label for="profileBureauLawyers">Juristid:</label></td>
-								<td><a href="<%=request.getContextPath()%>/LawyerProfile.jsp">Lisa uus jurist</a>
+								<td><label for="profileBureauLawyers">Juristid:</label></td>								
+								<td>
+								<form action="<%=request.getContextPath()%>/LawyerAddbIdServlet" method="post" id="lawyerAddbId">
+								<input type="hidden" name="bureauId" value="<%= request.getAttribute("bureauId") %>" >
+								<% session.setAttribute("bureauId", request.getAttribute("bureauId")); %>
+								<input type="submit" value="Lisa uus jurist" id="lawyer">
+								</form>
+								</td>								
 							</tr>
 							
 							<tr>
@@ -192,6 +198,10 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 									<h3><%=att.get(i).getName()  %></h3>
 									<p><%=att.get(i).getEmail() %> </p>
 									<form action="<%=request.getContextPath()%>/LawyerProfileServlet" method="post" id="lawyerProfile">
+									<input type="hidden" name="attorneyName" value="<%=att.get(i).getName() %>"/>
+									<input type="hidden" name="attorneyMail" value="<%=att.get(i).getEmail() %>"/>
+									<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId() %>"/>
+									<input type="hidden" name="bureauId" value="<%= currentUser.getBureauId() %>" />									
 									<input type="submit" value="Muuda" id="lawyer">
 									</form>
 								</td>

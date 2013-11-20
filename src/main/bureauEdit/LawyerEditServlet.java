@@ -20,13 +20,11 @@ import main.search.DBConnection;
 
 public class LawyerEditServlet extends HttpServlet {
 
-	
 	private static final long serialVersionUID = 3749700411746807213L;
 	/**
 	 * 
 	 */
-	
-	
+
 	AttorneyDetails attorney = new AttorneyDetails();
 
 	@Override
@@ -34,64 +32,67 @@ public class LawyerEditServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
-		
+
 		// Get attorney's ID from request
 		int attorneyId = (int) req.getAttribute("attorneyid");
-		
+
 		// Get HTTP session
-		HttpSession session = req.getSession(true);	
-		
-		UserBean user =  (UserBean) session.getAttribute("user");
-        session.setAttribute("currentSessionUser",user);
-        session.setMaxInactiveInterval(3000);
-        
-        //Get new details
-        String newName = (String) req.getAttribute("newName");
-        String newEmail = (String) req.getAttribute("newEmail");        
-		
+		HttpSession session = req.getSession(true);
+
+		UserBean user = (UserBean) session.getAttribute("user");
+		session.setAttribute("currentSessionUser", user);
+		session.setMaxInactiveInterval(3000);
+
+		// Get new details
+		String newName = (String) req.getAttribute("newName");
+		String newEmail = (String) req.getAttribute("newEmail");
+
 		// Initiate database connection
-		
-        DBConnection connect = new DBConnection();
+
+		DBConnection connect = new DBConnection();
 
 		Connection curConnection = null;
 
 		curConnection = connect.getConnection();
-		
+
 		Statement statement = null;
 		ResultSet resultSet = null;
-		
+
 		try {
-			statement=curConnection.createStatement();
-			
+			statement = curConnection.createStatement();
+
 			// Select the right attorney from database
-			resultSet = statement.executeQuery("SELECT * FROM attorney WHERE attorneyid = " + attorneyId + ";" );
-			
+			resultSet = statement
+					.executeQuery("SELECT * FROM attorney WHERE attorneyid = "
+							+ attorneyId + ";");
+
 			// Get the details and put them to attorney variable
-			while (resultSet.next()){
+			while (resultSet.next()) {
 				attorney.setName(resultSet.getString("name"));
 				attorney.setEmail(resultSet.getString("email"));
-				// Later attorney.setPicturePath(resultSet.getString("imgpath"));
+				// Later
+				// attorney.setPicturePath(resultSet.getString("imgpath"));
 			}
-			
+
 			// Close all connections BUT database connection
 			resultSet.close();
 			statement.close();
-			
+
 			// Set booleans if things have changed or not
 			boolean nameChanged = false;
 			boolean emailChanged = false;
-			
+
 			// See if email or name have changed
-			if (!attorney.getName().equals(newName)){
+			if (!attorney.getName().equals(newName)) {
 				nameChanged = true;
 				attorney.setName(newName);
 			}
-			if (!attorney.getEmail().equals(newEmail)){
+			if (!attorney.getEmail().equals(newEmail)) {
 				emailChanged = true;
 				attorney.setEmail(newEmail);
 			}
-			//Initiate prepared statement and update (if needed)
-			if (nameChanged || emailChanged){
+			// Initiate prepared statement and update (if needed)
+			if (nameChanged || emailChanged) {
 				PreparedStatement prepsmt = null;
 				String sql = "UPDATE attorney SET ";
 				if (nameChanged)
@@ -102,22 +103,21 @@ public class LawyerEditServlet extends HttpServlet {
 					sql = sql.substring(0, sql.length() - 2);
 				}
 				sql = sql.concat(" WHERE attorneyid='" + attorneyId + "';");
-				
+
 				prepsmt = curConnection.prepareStatement(sql);
 				prepsmt.executeUpdate();
 			}
 			curConnection.close();
-			
-			// Add attributes to request and dispatch the request to LawyerProfile
-			
-			req.setAttribute("attorney", attorney);			
+
+			// Add attributes to request and dispatch the request to
+			// LawyerProfile
+
+			req.setAttribute("attorney", attorney);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/LawyerProfileServlet");
 			rd.forward(req, resp);
-			
-			
-		}
-		catch(SQLException e){
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

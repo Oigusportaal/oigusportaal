@@ -75,8 +75,11 @@ public class BureauEditServlet extends HttpServlet {
 		int bureauId = 0;
 
 		String oldCBoxes = request.getParameter("oldCBoxes");
-		ArrayList<String> oldCBoxesList = new ArrayList<String>(
+		ArrayList<String> oldCBoxesList = new ArrayList<String>();
+		if (oldCBoxes.length()>0){
+		oldCBoxesList = new ArrayList<String>(
 				Arrays.asList(oldCBoxes.split(";")));
+		}
 		ArrayList<Integer> oldCBoxesListInt = new ArrayList<Integer>();
 		for (int i = 0; i < oldCBoxesList.size(); i++) {
 			int oldCBox = Integer.parseInt(oldCBoxesList.get(i));

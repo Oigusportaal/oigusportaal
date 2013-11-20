@@ -61,7 +61,7 @@
 		<div class="page">
 			<h1>Redigeerimine</h1>
 			<div class="entry">
-				<form action="<%=request.getContextPath()%>/LawyerEditServlet"
+				<form action="<%=request.getContextPath()%><% if (isNew) {%>/LawyerAddServlet<%} else {%>/LawyerEditServlet<%} %>"
 					method="post" id="edit_form">
 					<table id="lawyerProfileTable">
 						<tr>
@@ -78,6 +78,7 @@
 						</tr>
 
 					</table>
+					<input type="hidden" name="bureauId" value="<% session.getAttribute("bureauId"); %>"/>
 					<input type="submit"
 						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
 						id="searchingEdit" />

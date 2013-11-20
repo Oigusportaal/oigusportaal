@@ -2,10 +2,12 @@ package main.bureauEdit;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +18,12 @@ import main.details.AttorneyDetails;
 import main.login.UserBean;
 import main.search.DBConnection;
 
-public class LawyerProfileServlet extends HttpServlet {
+public class LawyerAddServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3532116354674784931L;
+	private static final long serialVersionUID = -8493362497025095811L;
 
 	AttorneyDetails attorney = new AttorneyDetails();
 
@@ -31,8 +33,10 @@ public class LawyerProfileServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 
-		// Get attorney's ID from request
-		int attorneyId = (int) req.getAttribute("attorneyId");
+		// Get attributes
+		String name = (String) req.getAttribute("newName");
+		String email = (String) req.getAttribute("newEmail");
+		int bureauId = (int) req.getAttribute("bureauId");
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -49,27 +53,19 @@ public class LawyerProfileServlet extends HttpServlet {
 
 		curConnection = connect.getConnection();
 
-		Statement statement = null;
-		ResultSet resultSet = null;
+		PreparedStatement statement = null;
 
 		try {
-			statement = curConnection.createStatement();
+			String sql = "INSERT INTO attorney (name, email, bureauid) VALUES ('"
+					+ name + "','" + email + "'," + bureauId + ")";
+			statement = curConnection.prepareStatement(sql);
+			statement.executeUpdate();
 
-			// Select the right attorney from database
-			resultSet = statement
-					.executeQuery("SELECT * FROM attorney WHERE attorneyid = "
-							+ attorneyId + ";");
+			attorney.setBureauId(bureauId);
+			;
+			attorney.setName(name);
+			attorney.setEmail(email);
 
-			// Get the details and put them to attorney variable
-			while (resultSet.next()) {
-				attorney.setName(resultSet.getString("name"));
-				attorney.setEmail(resultSet.getString("email"));
-				// Later
-				// attorney.setPicturePath(resultSet.getString("imgpath"));
-			}
-
-			// Close connections
-			resultSet.close();
 			statement.close();
 			curConnection.close();
 
@@ -77,11 +73,14 @@ public class LawyerProfileServlet extends HttpServlet {
 			// LawyerProfile
 
 			req.setAttribute("attorney", attorney);
-			req.getRequestDispatcher("LawyerProfile.jsp").forward(req, resp);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(
+					"/LawyerProfileServlet");
+			rd.forward(req, resp);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
