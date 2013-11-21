@@ -15,7 +15,7 @@ $(function() {
    newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
    
    // Janky value to get pointer to line up better
-   offset = -1.3;
+   offset = -7;
    
    // Prevent bubble from going beyond left or right (unsupported browsers)
    if (newPoint < 0) { newPlace = 0; }
