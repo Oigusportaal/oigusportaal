@@ -91,7 +91,7 @@ public class BureauEditServlet extends HttpServlet {
 		ArrayList<Integer> newCBoxesList = new ArrayList<Integer>();
 
 		// HARDCODED; change it when need to add/delete fields
-		final int LIST_LENGTH = 22;
+		final int LIST_LENGTH = 26;
 
 		for (int i = 1; i < LIST_LENGTH + 1; i++) {
 			String argument = "cbox" + i;

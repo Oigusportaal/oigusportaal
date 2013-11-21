@@ -25,6 +25,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -104,42 +105,6 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 						  		<input type="hidden" id="oldEmail" name="oldEmail" value="<%=currentUser.getEmail()%>">
 						  		</td>
 						  	</tr>
-						  	
-							<%
-								ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
-									.getAttribute("successStories");
-							%>
-							<tr>
-								<td><label for="profileBureauSuccessStory">Edulood:</label></td>
-							</tr>
-							
-							<tr>
-								<%
-									
-									for (int i = 0; i < stor.size(); i++) {
-								%>
-				
-								<td width="20" align="center" class="borderdesign">
-								<td width="100" class="borderdesign">
-									<h3><%=stor.get(i).getParticipants() %></h3>
-									<p><%=stor.get(i).getReference() %> </p>
-									<p><%=stor.get(i).getConclusion() %> </p>
-								</td>
-								
-				
-								<%
-									if ((i + 1) % 2 == 0) {
-								%>
-							</tr>
-							<tr>
-								<%
-									}
-				
-									}
-								%>
-				
-							</tr>
-							
 							<tr>
 								<td><label for="profileNewBureauPassword">Uus parool:</label></td>
 								<td><input type="password" id="profileNewBureauProfile" name="profileNewBureauProfile" value="" >
@@ -180,9 +145,8 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 						  	<tr>
 								<td><label for="profileBureauLawyers">Juristid:</label></td>								
 								<td>
-								<form action="<%=request.getContextPath()%>/LawyerAddbIdServlet" method="post" id="lawyerAddbId">
-								<input type="hidden" name="bureauId" value="<%= request.getAttribute("bureauId") %>" >
-								<% session.setAttribute("bureauId", request.getAttribute("bureauId")); %>
+								<form action="<%=request.getContextPath()%>/LawyerProfile.jsp" method="post" id="lawyerAddbId">
+								<input type="hidden" name="bureauId" id="bureauId" value="<%= request.getAttribute("bureauId") %>" />								
 								<input type="submit" value="Lisa uus jurist" id="lawyer">
 								</form>
 								</td>								
@@ -197,18 +161,15 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 								<td width="100" class="borderdesign">
 									<h3><%=att.get(i).getName()  %></h3>
 									<p><%=att.get(i).getEmail() %> </p>
-									<form action="<%=request.getContextPath()%>/LawyerProfileServlet" method="post" id="lawyerProfile">
-									<input type="hidden" name="attorneyName" value="<%=att.get(i).getName() %>"/>
-									<input type="hidden" name="attorneyMail" value="<%=att.get(i).getEmail() %>"/>
-									<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId() %>"/>
-									<input type="hidden" name="bureauId" value="<%= currentUser.getBureauId() %>" />									
+									<form action="<%=request.getContextPath()%>/LawyerProfileServlet" method="post" id="lawyerProfile">									
+									<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId() %>"/>																	
 									<input type="submit" value="Muuda" id="lawyer">
 									</form>
 								</td>
 								
 				
 								<%
-									if ((i + 1) % 2 == 0) {
+									if ((i + 1) % 3 == 0) {
 								%>
 							</tr>
 							<tr>
@@ -217,6 +178,52 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 				
 									}
 									
+								%>
+				
+							</tr>
+							</table>
+							<%
+								ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
+									.getAttribute("successStories");
+							%>
+							<table>
+							<tr>
+								<td><label for="profileBureauSuccessStory">Edulood:</label></td>
+								<td>
+								<form action="<%=request.getContextPath()%>/StoryInitServlet" method="post" id="storyAdd">
+								<input type="hidden" name="bureauId" id="bureauId" value="<%= request.getAttribute("bureauId") %>" />								
+								<input type="submit" value="Lisa uus edulugu" id="lawyer">
+								</form>
+								</td>	
+							</tr>
+							
+							<tr>
+								<%
+									
+									for (int i = 0; i < stor.size(); i++) {
+								%>
+				
+								<td width="20" align="center" class="borderdesign">
+								<td width="100" class="borderdesign">
+									<h3><%=stor.get(i).getParticipants() %></h3>
+									<p><%=stor.get(i).getReference() %> </p>
+									<p><%=stor.get(i).getConclusion() %> </p>
+									<form action="<%=request.getContextPath()%>/StoryProfileServlet" method="post" id="storyProfile">									
+									<input type="hidden" name="storyId" value="<%=stor.get(i).getSuccessStoryId() %>"/>																	
+									<input type="submit" value="Muuda" id="successStory">
+									</form>
+								</td>
+								
+				
+								<%
+									if ((i + 1) % 3 == 0) {
+								%>
+							</tr>
+							<tr>
+								<%
+									}
+				
+									}
 								%>
 				
 							</tr>

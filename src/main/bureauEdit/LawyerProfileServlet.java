@@ -28,11 +28,11 @@ public class LawyerProfileServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 
 		// Get attorney's ID from request
-		int attorneyId = (int) req.getAttribute("attorneyId");
+		int attorneyId = Integer.parseInt(req.getParameter("attorneyId"));
+		System.out.println("Attorney's id: " + attorneyId);
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -64,9 +64,16 @@ public class LawyerProfileServlet extends HttpServlet {
 			while (resultSet.next()) {
 				attorney.setName(resultSet.getString("name"));
 				attorney.setEmail(resultSet.getString("email"));
+				attorney.setBureauId(resultSet.getInt("bureauid"));
+				attorney.setAttorneyId(resultSet.getInt("attorneyid"));
 				// Later
 				// attorney.setPicturePath(resultSet.getString("imgpath"));
 			}
+			attorney.setAttorneyId(attorneyId);
+			
+			System.out.println("Attorney email: " + attorney.getEmail());
+			System.out.println("Attorney name: " + attorney.getName());
+			System.out.println("Attorney bureauId: " + attorney.getBureauId());
 
 			// Close connections
 			resultSet.close();

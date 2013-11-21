@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import main.login.UserBean;
 import main.search.DBConnection;
 
-public class LawyerDeleteServlet extends HttpServlet {
+public class StoryDeleteServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class LawyerDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// Get attorney's ID from request
-				int attorneyId = Integer.parseInt(req.getParameter("attorneyId"));
+				int storyId = Integer.parseInt(req.getParameter("storyId"));
 
 				// Get HTTP session
 				HttpSession session = req.getSession(true);
@@ -45,7 +45,7 @@ public class LawyerDeleteServlet extends HttpServlet {
 				PreparedStatement statement = null;
 				
 				try{
-					String sql = "DELETE FROM attorney WHERE attorneyid='" + attorneyId + "';";
+					String sql = "DELETE FROM successstory WHERE ssid='" + storyId + "';";
 					statement = curConnection.prepareStatement(sql);
 					statement.executeUpdate();
 					

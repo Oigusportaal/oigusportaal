@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Enumeration;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -110,6 +108,7 @@ public class BureauProfileServlet extends HttpServlet {
 				
 				attorney.setName(resultSetAttorneys.getString("name"));
 				attorney.setEmail(resultSetAttorneys.getString("email"));
+				attorney.setAttorneyId(resultSetAttorneys.getInt("attorneyid"));
 				
 				attorneys.add(attorney);
 				
@@ -131,6 +130,7 @@ public class BureauProfileServlet extends HttpServlet {
 				story.setFieldId(resultSetStories.getInt("fieldid"));
 				story.setParticipants(resultSetStories.getString("participants"));
 				story.setReference(resultSetStories.getString("reference"));
+				story.setSuccessStoryId(resultSetStories.getInt("ssid"));
 				
 				successStories.add(story);
 				
@@ -148,7 +148,7 @@ public class BureauProfileServlet extends HttpServlet {
 			
 			curConnection.close();
 			
-			FieldsMaker fieldMaker = new FieldsMaker(bureauId);
+			FieldsMaker fieldMaker = new FieldsMaker(bureauId, false);			
 			ArrayList<String> fieldRows = fieldMaker.getCheckBoxCode();
 			
 			

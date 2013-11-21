@@ -52,7 +52,7 @@
 			AttorneyDetails attorney = (AttorneyDetails) request
 					.getAttribute("attorney");
 			boolean isNew = false;
-			if (attorney == null) {
+			if (attorney == null) {				
 				isNew = true;
 			}
 		%>
@@ -67,29 +67,30 @@
 						<tr>
 							<td><label for="lawyerName">Nimi:</label></td>
 							<td><input type="text" id="newName" name="newName"
-								value="<%if (!isNew)
-				attorney.getName();%>"></td>
+								value="<%if (!isNew) {%><%=attorney.getName() %><% } %>"></td>
 						</tr>
 						<tr>
 							<td><label for="lawyerEmail">E-mail:</label></td>
 							<td><input type="text" id="newEmail" name="newEmail"
-								value="<%if (!isNew)
-				attorney.getEmail();%>"></td>
+								value="<%if (!isNew) {%><%=attorney.getEmail() %><% } %>"></td>
 						</tr>
 
 					</table>
-					<input type="hidden" name="bureauId" value="<% session.getAttribute("bureauId"); %>"/>
+					<input type="hidden" name="bureauId" value="<%= attorney.getBureauId() %>"/>
+					<input type="hidden" name="attorneyId" value="<%= attorney.getAttorneyId() %>"/>					
 					<input type="submit"
 						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
-						id="searchingEdit" />
+						id="addEdit" />
+					<input type="submit" value="Kustuta" id="delete" onclick="form.action='<%=request.getContextPath()%>/LawyerDeleteServlet';">
 				</form>
 			</div>
 		</div>
+		<!-- include footer -->
+		<%@include file='/footer.jsp'%>
 	</div>
 
 
-	<!-- include footer -->
-	<%@include file='/footer.jsp'%>
+	
 
 </body>
 </html>

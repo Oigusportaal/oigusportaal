@@ -1,4 +1,4 @@
---
+Ôªø--
 -- PostgreSQL database dump
 --
 
@@ -365,21 +365,21 @@ SELECT pg_catalog.setval('attorney_attorneyid_seq', 4, true);
 
 COPY bureau (bureauid, registrycode, name, email, password, averageprice, street, postalcode, phone, regionname, cityname, countyname, image, category, active) FROM stdin;
 9	1	admin	admin@admin.com	9999	\N	\N	\N	\N	\N	\N	\N	\N	1	1
-5	21356	Firma E	firmae@firmae.com	5555	50	vabandame	23145	13299	L√µuna-Eesti	J√µhv√§	Ida-Virumaa	\N	2	1
-7	111142	Firma G	firmag@firmag.com	7777	10	raatuse	32145	12310	L√µuna-Eesti	J√µgeva	J√µgevamaa	\N	2	1
-6	412341	Firma F	firmaf@firmaf.com	6666	40	kala	32131	5432t624	L√§√§ne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
-11	231177	Firma M	firmam@firmam.com	1111	30	hakkan	23125	112356	L√§√§ne-Eesti	Haapsalu	L√§√§nemaa	\N	2	1
-10	312456	Firma H	firmah@firmah.com	1010	20	piik	132188	112245	L√µuna-Eesti	Rakvere	L√§√§ne-Virumaa	\N	2	1
-12	32145	Firma N	firman@firman.com	1212	22	turu	23145	123145	Ida-Eesti	P√µlva	P√µlvamaa	\N	2	1
+5	21356	Firma E	firmae@firmae.com	5555	50	vabandame	23145	13299	Lıuna-Eesti	Jıhv‰	Ida-Virumaa	\N	2	1
+7	111142	Firma G	firmag@firmag.com	7777	10	raatuse	32145	12310	Lıuna-Eesti	Jıgeva	Jıgevamaa	\N	2	1
+6	412341	Firma F	firmaf@firmaf.com	6666	40	kala	32131	5432t624	L‰‰ne-Eesti	Viljandi	Viljandimaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+11	231177	Firma M	firmam@firmam.com	1111	30	hakkan	23125	112356	L‰‰ne-Eesti	Haapsalu	L‰‰nemaa	\N	2	1
+10	312456	Firma H	firmah@firmah.com	1010	20	piik	132188	112245	Lıuna-Eesti	Rakvere	L‰‰ne-Virumaa	\N	2	1
+12	32145	Firma N	firman@firman.com	1212	22	turu	23145	123145	Ida-Eesti	Pılva	Pılvamaa	\N	2	1
 13	29001	Firma R	firmar@firmar.com	1313	33	kala	24588	778899	Ida-Eesti	Tartu	Tartumaa	\N	2	1
-4	321314	Firma D	firmad@firmad.com	4444	40	turu	4123	435	L√§√§ne-Eesti	K√§rdla	Hiiumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+4	321314	Firma D	firmad@firmad.com	4444	40	turu	4123	435	L‰‰ne-Eesti	K‰rdla	Hiiumaa	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
 14	249901	Firma K 	firmak@firmak.com	1414	44	karu	241931	99810	Ida-Eesti	Valga	Valgamaa	\N	2	1
-8	31231	Firma L	firmal@firmal.com	8888	40	karu	33331	2222	L√§√§ne-Eesti	Saaremaa	Kuresaare	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
-15	231245	Firma S 	firmas@firmas.com	1515	55	r√ºtli	241245	91892	Ida-Eesti	Viljandi	Viljandimaa	\N	2	1
-16	145991	Firma V	firmav@firmav.com	1616	66	raatuse	139900	13450	Ida-Eesti	V√µru	V√µrumaa	\N	2	1
-1	213413	Firma A	firmaa@firmaa.com	1111	80	r√ºtli	33124	32131	P√µhja-Eesti	Tallinn	Harjumaa	\N	2	1
-2	55555	Firma B	firmab@firmab.com	2222	70	riia	12345	54321	P√µhja-Eesti	Paide	J√§rvamaa	\N	2	1
-3	134561	Firma C	firmac@firmac.com	3333	60	uus	31567	98201	P√µhja-Eesti	Rapla	Raplamaa	\N	2	1
+8	31231	Firma L	firmal@firmal.com	8888	40	karu	33331	2222	L‰‰ne-Eesti	Saaremaa	Kuresaare	C:/Users/Servet/git/portal/WebContent/bureauLogos/FirmaAlogo.gif	2	1
+15	231245	Firma S 	firmas@firmas.com	1515	55	r¸tli	241245	91892	Ida-Eesti	Viljandi	Viljandimaa	\N	2	1
+16	145991	Firma V	firmav@firmav.com	1616	66	raatuse	139900	13450	Ida-Eesti	Vıru	Vırumaa	\N	2	1
+1	213413	Firma A	firmaa@firmaa.com	1111	80	r¸tli	33124	32131	Pıhja-Eesti	Tallinn	Harjumaa	\N	2	1
+2	55555	Firma B	firmab@firmab.com	2222	70	riia	12345	54321	Pıhja-Eesti	Paide	J‰rvamaa	\N	2	1
+3	134561	Firma C	firmac@firmac.com	3333	60	uus	31567	98201	Pıhja-Eesti	Rapla	Raplamaa	\N	2	1
 \.
 
 
@@ -492,29 +492,31 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 ALTER SEQUENCE "Bureau_BureauId_seq" RESTART WITH 17;
 
 COPY field (fieldname) FROM stdin;
-Ehitus- ja planeerimis√µigus
+Ehitus- ja planeerimisıigus
 Erastamine
 Inkassoteenused
-IT-√µigus
-Keskkonna√µigus
-Kindlustus√µigus
-Kinnisvara√µigus
-Kriminaal- ja v√§√§rteo√µigus
+Intellektuaalne omand
+IT-ıigus
+Keskkonnaıigus
+Kindlustusıigus
+Kinnisvaraıigus
+Konkurentsiıigus
+Kriminaal- ja v‰‰rteoıigus
 Lahutus
-Liiklus√µigus
-Majandus√µigus
-Maksu√µigus
+Liiklusıigus
+Majandusıigus
+Maksuıigus
 Meditsiin ja ravimid
-Meedia- ja telekommunikatsiooni√µigus
+Meedia- ja telekommunikatsiooniıigus
 Omandireform
-Pangandus- ja finants√µigus, kapitaliturud
-Perekonna√µigus
-P√§rimis√µigus
-Restruktueerimine, saneerimine ja maksuj√µuetus (pankrot)
-Sotsiaalhoolekande√µigus
-Transpordi-, kaubandus- ja mere√µigus
-T√∂√∂√µigus
-V√§lismaalaste√µigus
-√úhinemised ja √ºlev√µtmised
+Pangandus- ja finantsıigus, kapitaliturud
+Perekonnaıigus
+P‰rimisıigus
+Restruktueerimine, saneerimine ja maksujıuetus (pankrot)
+Sotsiaalhoolekandeıigus
+Transpordi-, kaubandus- ja mereıigus
+Tˆˆıigus
+V‰lismaalasteıigus
+‹hinemised ja ¸levıtmised
 \.
 

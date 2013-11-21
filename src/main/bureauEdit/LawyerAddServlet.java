@@ -3,11 +3,7 @@ package main.bureauEdit;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,13 +26,13 @@ public class LawyerAddServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 
 		// Get attributes
-		String name = (String) req.getAttribute("newName");
-		String email = (String) req.getAttribute("newEmail");
-		int bureauId = (int) req.getAttribute("bureauId");
+		String name = req.getParameter("newName");
+		String email = req.getParameter("newEmail");
+		int bureauId = Integer.parseInt(req.getParameter("bureauId"));
+		System.out.println("New lawyer name:" + name);
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -66,16 +62,16 @@ public class LawyerAddServlet extends HttpServlet {
 			attorney.setName(name);
 			attorney.setEmail(email);
 
-			statement.close();
-			curConnection.close();
+			
 
 			// Add attributes to request and dispatch the request to
 			// LawyerProfile
 
 			req.setAttribute("attorney", attorney);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/LawyerProfileServlet");
-			rd.forward(req, resp);
+			req.getRequestDispatcher("BureauProfileServlet").forward(req, resp);
+			
+			statement.close();
+			curConnection.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

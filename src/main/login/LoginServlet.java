@@ -48,11 +48,11 @@ public class LoginServlet extends HttpServlet {
 			user = UserDAO.login(user);
 
 			if (user.isValid()) {
-				System.out.println("logged in");
+//				System.out.println("logged in");
 				 HttpSession session = request.getSession(true);	    
 		         session.setAttribute("user",user);
 		         session.setMaxInactiveInterval(3000);
-				System.out.println("Category: " + user.getCategory());
+//				System.out.println("Category: " + user.getCategory());
 				if (Integer.parseInt(user.getCategory()) == 1)
 					request.getRequestDispatcher("AdminServlet").forward(request, response);
 				if (Integer.parseInt(user.getCategory()) == 2)
@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			else {
-				System.out.println("not logged in");
+//				System.out.println("not logged in");
 				response.sendRedirect("invalidLogin.jsp");
 			}
 		} catch (Throwable theException) {

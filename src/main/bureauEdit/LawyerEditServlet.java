@@ -30,11 +30,10 @@ public class LawyerEditServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 
 		// Get attorney's ID from request
-		int attorneyId = (int) req.getAttribute("attorneyid");
+		int attorneyId = Integer.parseInt(req.getParameter("attorneyId"));
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -44,8 +43,8 @@ public class LawyerEditServlet extends HttpServlet {
 		session.setMaxInactiveInterval(3000);
 
 		// Get new details
-		String newName = (String) req.getAttribute("newName");
-		String newEmail = (String) req.getAttribute("newEmail");
+		String newName = req.getParameter("newName");
+		String newEmail = req.getParameter("newEmail");
 
 		// Initiate database connection
 
