@@ -61,6 +61,22 @@
 		<div class="page">
 			<h1>Redigeerimine</h1>
 			<div class="entry">
+			<% if (!isNew) { %>
+			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
+			<table>
+			<tr id="logo">			
+			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
+			  	<input type="submit" value="Lae üles" id="upladIt">
+			  	<input type="hidden" name="generalId" value="<%= attorney.getAttorneyId() %>">
+			  	<input type="hidden" name="isBureau" value="0">						  	
+			  	</td>
+			  	<td><img src="<%if (!isNew) {%><%=attorney.getPicturePath() %><% } %>" height="150px" alt="Pilti ei leitud"></td>						  	
+			 </tr>
+			 </table>
+			 </form>
+			 <% } else { %>
+			 <p> Pildi saate lisada peale juristi lisamist </p>
+			 <%} %>
 				<form action="<%=request.getContextPath()%><% if (isNew) {%>/LawyerAddServlet<%} else {%>/LawyerEditServlet<%} %>"
 					method="post" id="edit_form">
 					<table id="lawyerProfileTable">
@@ -74,10 +90,9 @@
 							<td><input type="text" id="newEmail" name="newEmail"
 								value="<%if (!isNew) {%><%=attorney.getEmail() %><% } %>"></td>
 						</tr>
-
 					</table>
-					<input type="hidden" name="bureauId" value="<%= attorney.getBureauId() %>"/>
-					<input type="hidden" name="attorneyId" value="<%= attorney.getAttorneyId() %>"/>					
+					<input type="hidden" name="bureauId" value="<%= request.getParameter("bureauId") %>"/>
+					<input type="hidden" name="attorneyId" value="<% if(!isNew) {%><%=attorney.getAttorneyId()%><%}%>"/>					
 					<input type="submit"
 						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
 						id="addEdit" />

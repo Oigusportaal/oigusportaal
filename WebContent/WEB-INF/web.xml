@@ -212,4 +212,14 @@
     <servlet-name>StoryInitServlet</servlet-name>
     <url-pattern>/StoryInitServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Image Upload Servlet</description>
+    <display-name>ImageUploadServlet</display-name>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <servlet-class>main.fileUpload.ImageUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <url-pattern>/ImageUploadServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

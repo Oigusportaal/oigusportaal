@@ -29,9 +29,14 @@ public class LawyerProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-
+		int attorneyId = 0;
 		// Get attorney's ID from request
-		int attorneyId = Integer.parseInt(req.getParameter("attorneyId"));
+		try{
+			attorneyId = Integer.parseInt(req.getParameter("attorneyId"));
+		}
+		catch (NumberFormatException e){
+			attorneyId = (int) req.getAttribute("attorneyId");
+		}
 		System.out.println("Attorney's id: " + attorneyId);
 
 		// Get HTTP session
@@ -65,9 +70,8 @@ public class LawyerProfileServlet extends HttpServlet {
 				attorney.setName(resultSet.getString("name"));
 				attorney.setEmail(resultSet.getString("email"));
 				attorney.setBureauId(resultSet.getInt("bureauid"));
-				attorney.setAttorneyId(resultSet.getInt("attorneyid"));
-				// Later
-				// attorney.setPicturePath(resultSet.getString("imgpath"));
+				attorney.setAttorneyId(resultSet.getInt("attorneyid"));				
+				attorney.setPicturePath(resultSet.getString("imgpath"));
 			}
 			attorney.setAttorneyId(attorneyId);
 			

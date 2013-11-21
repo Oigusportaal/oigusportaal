@@ -57,15 +57,22 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 				%>
 				<div class="post">
 					<div class="entry">
-						<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">
 						
-						  <table id="bureauProfileTable">
+							<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
+						  	<table id="bureauImageTable">
 						  	
 						  	<tr id="logo">
-						  	<td><p>Lae üles uus logo: <input type="file" name="img"></p></td>
-						  	<td><img src="<%= currentUser.getImage() %>" height="150px"></td>						  	
+						  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
+						  	<input type="submit" value="Lae üles" id="upladIt">						  	
+						  	<input type="hidden" name="generalId" value="<%= request.getAttribute("bureauId") %>">
+						  	<input type="hidden" name="isBureau" value="1">
+						  	</td>
+						  	<td><img src="<%= currentUser.getImage() %>" height="150px" alt="Pilti ei leitud"></td>						  	
 						 	</tr>
-						  	
+						  	</form>
+						  	</table>
+						  	<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">
+						  	<table id="bureauProfileTable">
 						  	<tr>
 						  		<td><label for="profileBureauName">Firma nimi:</label></td>
 						  		<td> <%= currentUser.getBureauName() %> </td>
