@@ -59,6 +59,7 @@ public class BureauEditServlet extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("oldPrice"));
 		String address = (String) request.getParameter("oldAddress");
 		int regCode = Integer.parseInt(request.getParameter("oldRegistryCode"));
+		int zipCode = Integer.parseInt(request.getParameter("oldPostalCode"));		
 
 		user.setEmail(email);
 		user.setPassword(password);
@@ -68,10 +69,10 @@ public class BureauEditServlet extends HttpServlet {
 
 		boolean phoneChanged = false;
 		boolean addressChanged = false;
-		boolean priceChanged = false;
-		boolean regCodeChanged = false;
+		boolean priceChanged = false;		
 		boolean emailChanged = false;
 		boolean passChanged = false;
+		boolean zipCodeChanged = false;
 		int bureauId = 0;
 
 		String oldCBoxes = request.getParameter("oldCBoxes");
@@ -169,13 +170,13 @@ public class BureauEditServlet extends HttpServlet {
 //				System.out.println("Price: " + price + " " + newPrice);
 
 			}
-
-			int newRegCode = Integer.parseInt(request
-					.getParameter("profileBureauRegistrycode"));
-			if (newRegCode != regCode) {
-				regCodeChanged = true;
-//				System.out.println("RegCode: " + regCode + " " + newRegCode);
+			
+			int newZipCode = Integer.parseInt(request.getParameter("profilePostalCode"));			
+			if (newZipCode != zipCode){
+				zipCodeChanged = true;
 			}
+
+
 
 			String newEmail = (String) request
 					.getParameter("profileBureauEmail");
@@ -195,44 +196,42 @@ public class BureauEditServlet extends HttpServlet {
 			String statement = "";
 
 			if (!phoneChanged && !addressChanged && !priceChanged
-					&& !regCodeChanged && !emailChanged && !passChanged) {
+					&& !emailChanged && !passChanged && !zipCodeChanged) {
 //				System.out.println("Made it to nothing changed");
 			} else {
 				statement = "UPDATE bureau SET ";
-				if (phoneChanged == true) {
+				if (phoneChanged) {
 //					System.out.println("Made it to phonechange");
 					user.setPhone(newPhone);
 					statement = statement.concat("phone='" + newPhone + "', ");
 				}
-				if (addressChanged == true) {
+				if (addressChanged) {
 //					System.out.println("Made it to addresschange");
 					user.setStreet(newAddress);
 					statement = statement.concat("street='" + newAddress
 							+ "', ");
 				}
-				if (priceChanged == true) {
+				if (priceChanged) {
 //					System.out.println("Made it to pricechange");
 					user.setAveragePrice(newPrice);
 					statement = statement.concat("averageprice='" + newPrice
 							+ "', ");
-				}
-				if (regCodeChanged == true) {
-//					System.out.println("Made it to regcodechange");
-					user.setRegistryCode(newRegCode);
-					statement = statement.concat("registrycode='" + newRegCode
-							+ "', ");
-				}
-				if (emailChanged == true) {
+				}				
+				if (emailChanged) {
 //					System.out.println("Made it to emailchange");
 					user.setEmail(newEmail);
 					statement = statement.concat("email='" + newEmail + "', ");
 				}
-				if (passChanged == true) {
+				if (passChanged) {
 //					System.out.println("Made it to passwordchange");
 					user.setPassword(newPassword);
 					statement = statement.concat("password='" + newPassword
 							+ "', ");
 					request.setAttribute("passChanged", true);
+				}
+				if (zipCodeChanged) {
+					user.setPostalcode(newZipCode);
+					statement = statement.concat("postalcode='" + newZipCode + "', ");
 				}
 			}
 

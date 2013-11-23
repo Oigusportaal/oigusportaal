@@ -82,7 +82,7 @@
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büronimi" onkeyup="validateBureauName()" autocomplete= "off"/></td>
+								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büroo nimi" onkeyup="validateBureauName()" autocomplete= "off"/></td>
 								<td><span id="bureauNameMessage"></span> </td>
 							</tr>
 							

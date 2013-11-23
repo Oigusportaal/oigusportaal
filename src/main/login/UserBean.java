@@ -15,6 +15,9 @@ public class UserBean {
 	public String category;
 	public int active;
 	public int phone;
+	public String regionName;
+	public String cityName;
+	public String countyName;
 
 	public int getActive() {
 		return active;
@@ -118,6 +121,30 @@ public class UserBean {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getRegionName() {
+		return regionName;
+	}
+
+	public void setRegionName(String regionName) {
+		this.regionName = regionName;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	public String getCountyName() {
+		return countyName;
+	}
+
+	public void setCountyName(String countyName) {
+		this.countyName = countyName;
 	}
 
 }

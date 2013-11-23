@@ -57,94 +57,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 				%>
 				<div class="post">
 					<div class="entry">
-						
-							<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
-						  	<table id="bureauImageTable">
-						  	
-						  	<tr id="logo">
-						  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
-						  	<input type="submit" value="Lae üles" id="upladIt">						  	
-						  	<input type="hidden" name="generalId" value="<%= request.getAttribute("bureauId") %>">
-						  	<input type="hidden" name="isBureau" value="1">
-						  	</td>
-						  	<td><img src="<%= currentUser.getImage() %>" height="150px" alt="Pilti ei leitud"></td>						  	
-						 	</tr>
-						  	</form>
-						  	</table>
-						  	<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">
-						  	<table id="bureauProfileTable">
-						  	<tr>
-						  		<td><label for="profileBureauName">Firma nimi:</label></td>
-						  		<td> <%= currentUser.getBureauName() %> </td>
-						  	</tr>
-						  							  	
-						  	<tr>
-						  		<td><label for="profileBureauPhone">Telefon:</label></td>
-						  		<td style="border: 1pz solid #000"><input type="text" id="profileBureauPhone" name="profileBureauPhone" value="<%=currentUser.getPhone()%>">
-						  		<input type="hidden" id="oldPhone" name="oldPhone" value="<%=currentUser.getPhone()%>">
-						  		</td>
-						  	</tr>
-						  	
-						  	<tr>
-						  		<td><label for="profileBureauAddress">Aadress:</label></td>
-						  		<td><input type="profileBureauAddress" id="profileBureauAddress" name="profileBureauAddress" value="<%=currentUser.getStreet()%>">
-						  		<input type="hidden" id="oldAddress" name="oldAddress" value="<%=currentUser.getStreet()%>">
-						  		</td>
-						  	</tr>	
-						  	
-						  	<tr>
-						  		<td><label for="profileBureauAveragePrize">Keskmine tunnihind:</label></td>
-						 	  	<td><input type="text" id="profileBureauAveragePrize" name="profileBureauAveragePrize" value="<%= currentUser.getAveragePrice()%>">
-						 	  	<input type="hidden" id="oldPrice" name="oldPrice" value="<%=currentUser.getAveragePrice()%>">						 	 
-						 	  	</td>
-						  	</tr>
-						  	
-						  	<tr>
-						  		<td><label for="profileBureauRegistycode">Registrikood:</label></td>
-						  		<td><input type="text" id="profileBureauRegistrycode" name="profileBureauRegistrycode" value="<%= currentUser.getRegistryCode() %>">
-						  		<input type="hidden" id="oldRegistryCode" name="oldRegistryCode" value="<%=currentUser.getRegistryCode()%>">
-						  		</td>
-						  	</tr>
-						  	
-						  	<tr>
-						  		<td><label for="profileBureauEmail">E-mail:</label></td>
-						  		<td><input type="text" id="profileBureauEmail" name="profileBureauEmail" value="<%= currentUser.getEmail() %>" >
-						  		<input type="hidden" id="oldEmail" name="oldEmail" value="<%=currentUser.getEmail()%>">
-						  		</td>
-						  	</tr>
-							<tr>
-								<td><label for="profileNewBureauPassword">Uus parool:</label></td>
-								<td><input type="password" id="profileNewBureauProfile" name="profileNewBureauProfile" value="" >
-								<input type="hidden" id="oldPassword" name="oldPassword" value="<%=currentUser.getPassword()%>">
-								</td>
-							</tr>
-							
-							<tr>
-								<td><label for="profileConfirmBureauPassword">Parool uuesti:</label></td>
-								<td><input type="password" id="profileConfirmBureauProfile" name="profileConfirmBureauProfile" value=""></td>
-							</tr>
-							<% session.setAttribute("currentSessionUser", currentUser); %>
-						  </table>
-						  
-							<div id="fieldsCheckBox">
-						
-							<p><b>Valdkonnad</b></p>
-							
-							<%
-								ArrayList<String> fields = (ArrayList<String>) request
-									.getAttribute("fieldRows");
-							
-								for (int i=0; i<fields.size(); i++){
-							%>
-							
-							<%= fields.get(i) %>
-							
-							<% }%>										  
-							
-						</div>
-						 <input type="submit" value="Muuda" id="searchingEdit"/> 						  
-						</form>
-						<%
+					<%
 								ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
 									.getAttribute("attorneys");
 							%>
@@ -235,6 +148,185 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 				
 							</tr>
 							</table>
+						
+							<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
+						  	<table id="bureauImageTable">
+						  	
+						  	<tr id="logo">
+						  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
+						  	<input type="submit" value="Lae üles" id="upladIt">						  	
+						  	<input type="hidden" name="generalId" value="<%= request.getAttribute("bureauId") %>">
+						  	<input type="hidden" name="isBureau" value="1">
+						  	</td>
+						  	<td><img src="<%= currentUser.getImage() %>" height="150px" alt="Pilti ei leitud"></td>						  	
+						 	</tr>
+						  	</form>
+						  	</table>
+						  	<form action="<%=request.getContextPath()%>/BureauEditServlet" method="post" id="edit_form">
+						  	<table id="bureauProfileTable">
+						  	<tr>
+						  		<td><label for="profileBureauName">Firma nimi:</label></td>
+						  		<td> <%= currentUser.getBureauName() %> </td>
+						  	</tr>
+						  	
+						  	<tr>
+						  		<td><label for="profileBureauRegistycode">Registrikood:</label></td>
+						  		<td><%= currentUser.getRegistryCode() %>	
+						  		<input type="hidden" id="oldPhone" name="oldRegistryCode" value="<%=currentUser.getRegistryCode()%>">					  		
+						  		</td>
+						  	</tr>
+						  							  	
+						  	<tr>
+						  		<td><label for="profileBureauPhone">Telefon:</label></td>
+						  		<td style="border: 1pz solid #000"><input type="text" id="profileBureauPhone" name="profileBureauPhone" value="<%=currentUser.getPhone()%>">
+						  		<input type="hidden" id="oldPhone" name="oldPhone" value="<%=currentUser.getPhone()%>">
+						  		</td>
+						  	</tr>
+						  	
+						  	<tr>
+						  		<td><label for="profileBureauEmail">E-mail:</label></td>
+						  		<td><input type="text" id="profileBureauEmail" name="profileBureauEmail" value="<%= currentUser.getEmail() %>" >
+						  		<input type="hidden" id="oldEmail" name="oldEmail" value="<%=currentUser.getEmail()%>">
+						  		</td>
+						  	</tr>
+						  	
+						  	<tr>
+						  		<td><label for="profileBureauAddress">Aadress:</label></td>
+						  		<td><input type="text" id="profileBureauAddress" name="profileBureauAddress" value="<%=currentUser.getStreet()%>">
+						  		<input type="hidden" id="oldAddress" name="oldAddress" value="<%=currentUser.getStreet()%>">
+						  		</td>
+						  	</tr>	
+						  	<tr>
+						  		<td><label for="profilePostalCode">Postiindeks:</label>
+								<td><input type="text" name="profilePostalCode" id="profilePostalCode" value="<%=currentUser.getPostalcode() %>" />
+								<input type="hidden" id="oldPostalCode" name="oldPostalCode" value="<%=currentUser.getPostalcode() %>">
+								</td>
+								
+							</tr>						
+							
+							<tr>
+								<td><label for="profileRegion">Regioon:</label>
+								<td>
+									<%									
+									int region = (Integer) request.getAttribute("regionValue");
+									%>
+									<select name="regions" id="registerRegion" class="regSelect">
+										<option value="0">-- Vali regioon --</option>
+										<option value="1" <%if (region == 1){%>selected<%}%>>Põhja-Eesti</option> <!-- /*Harjumaa, , Järvamaa, Raplamaa */ -->
+	 										<option value="2" <%if (region == 2){%>selected<%}%>>Ida-Eesti</option>    <!-- Ida-Virumaa, Lääne-Virumaa, Jõgevamaa -->
+	 										<option value="3" <%if (region == 3){%>selected<%}%>>Lääne-Eesti</option> <!--  Läänemaa, Hiiumaa, Saaremaa, Pärnumaa -->
+	 										<option value="4" <%if (region == 4){%>selected<%}%>>Lõuna-Eesti</option> <!--  Viljandimaa, Tartumaa, Põlvamaa, Valgamaa, Võrumaa -->
+									</select>
+									<input type="hidden" name="oldRegion" value="<%= request.getAttribute("regionValue") %>">
+								</td>
+								
+							</tr>
+							
+							<tr>
+								<td><label for="profileCounties">Maakond:</label></td>
+								<td>
+									<%									
+									int county = (Integer) request.getAttribute("countyValue");
+									%>
+									<select name="counties" id="registerCounty" class="countySelect" placeholder="Maakond" onchange="validateCounty()" >
+										<option value="0" class="static">--Vali maakond--</option>
+										<option value="1" class="sub_1" <%if (county == 1){%>selected<%}%>>Harjumaa</option>
+										<option value="2" class="sub_1" <%if (county == 2){%>selected<%}%>>Järvamaa</option>
+										<option value="3" class="sub_1" <%if (county == 3){%>selected<%}%>>Raplamaa</option>
+										<option value="4" class="sub_2" <%if (county == 4){%>selected<%}%>>Ida-Virumaa</option>
+										<option value="5" class="sub_2" <%if (county == 5){%>selected<%}%>>Jõgevamaa</option>
+										<option value="6" class="sub_2" <%if (county == 6){%>selected<%}%>>Lääne-Virumaa</option>
+										<option value="7" class="sub_3" <%if (county == 7){%>selected<%}%>>Hiiumaa</option>
+										<option value="8" class="sub_3" <%if (county == 8){%>selected<%}%>>Läänemaa</option>
+										<option value="9" class="sub_3" <%if (county == 9){%>selected<%}%>>Pärnumaa</option>
+										<option value="10" class="sub_3" <%if (county == 10){%>selected<%}%>>Saaremaa</option>
+										<option value="11" class="sub_4" <%if (county == 11){%>selected<%}%>>Põlvamaa</option>
+										<option value="12" class="sub_4" <%if (county == 12){%>selected<%}%>>Tartumaa</option>
+										<option value="13" class="sub_4" <%if (county == 13){%>selected<%}%>>Valgamaa</option>
+										<option value="14" class="sub_4" <%if (county == 14){%>selected<%}%>>Viljandimaa</option>
+										<option value="15" class="sub_4" <%if (county == 15){%>selected<%}%>>Võrumaa</option>
+   									</select>
+   									<input type="hidden" name="oldCounty" value="<%= request.getAttribute("countyValue") %>">
+								</td>								
+							</tr>
+							
+							<tr>
+								<td><label for="profileCities">Linn:</label>
+								<td>
+									<%
+									int city = (Integer) request.getAttribute("cityValue");
+									%>
+									<select name="cities" id="registerCity" class="citySelect" onblur="validateForm()" placeholder="Linn" onchange="validateCity()" >
+										<option value="0" class="static">--Vali linn--</option>
+										<option value="1" class="sub_1" <%if (city == 1){%>selected<%}%>>Tallinn</option>
+										<option value="2" class="sub_2" <%if (city == 2){%>selected<%}%>>Paide</option>
+										<option value="3" class="sub_3" <%if (city == 3){%>selected<%}%>>Rapla</option>
+										<option value="4" class="sub_4" <%if (city == 4){%>selected<%}%>>Jõhvi</option>
+										<option value="5" class="sub_5" <%if (city == 5){%>selected<%}%>>Jõgeva</option>
+										<option value="6" class="sub_6" <%if (city == 6){%>selected<%}%>>Rakvere</option>
+										<option value="7" class="sub_7" <%if (city == 7){%>selected<%}%>>Kärdla</option>
+										<option value="8" class="sub_8" <%if (city == 8){%>selected<%}%>>Haapsalu</option>
+										<option value="9" class="sub_9" <%if (city == 9){%>selected<%}%>>Pärnu</option>
+										<option value="10" class="sub_10" <%if (city == 10){%>selected<%}%>>Kuressaare</option>
+										<option value="11" class="sub_11" <%if (city == 11){%>selected<%}%>>Põlva</option>
+										<option value="12" class="sub_12" <%if (city == 12){%>selected<%}%>>Tartu</option>
+										<option value="13" class="sub_13" <%if (city == 13){%>selected<%}%>>Valga</option>
+										<option value="14" class="sub_14" <%if (city == 14){%>selected<%}%>>Viljandi</option>
+										<option value="15" class="sub_15" <%if (city == 15){%>selected<%}%>>Võru</option> 
+									</select>
+									<input type="hidden" name="oldCity" value="<%= request.getAttribute("cityValue") %>">
+								</td>								
+							</tr>
+						  	
+						  	<tr>
+						  		<td><label for="profileBureauAveragePrize">Keskmine tunnihind:</label></td>
+						 	  	<td><input type="text" id="profileBureauAveragePrize" name="profileBureauAveragePrize" value="<%= currentUser.getAveragePrice()%>">
+						 	  	<input type="hidden" id="oldPrice" name="oldPrice" value="<%=currentUser.getAveragePrice()%>">						 	 
+						 	  	</td>
+						  	</tr>
+						  	
+						  	
+						  	
+						  	
+							<tr>
+								<td><label for="profileNewBureauPassword">Uus parool:</label></td>
+								<td><input type="password" id="profileNewBureauProfile" name="profileNewBureauProfile" value="" >
+								<input type="hidden" id="oldPassword" name="oldPassword" value="<%=currentUser.getPassword()%>">
+								</td>
+							</tr>
+							
+							<tr>
+								<td><label for="profileConfirmBureauPassword">Parool uuesti:</label></td>
+								<td><input type="password" id="profileConfirmBureauProfile" name="profileConfirmBureauProfile" value=""></td>
+							</tr>
+							<% session.setAttribute("currentSessionUser", currentUser); %>
+						  </table>
+						  
+							<div id="fieldsCheckBox">
+						
+							<p><b>Valdkonnad</b></p>
+							<table>
+							<tr>
+							<td>
+							<%
+								ArrayList<String> fields = (ArrayList<String>) request
+									.getAttribute("fieldRows");
+							
+								for (int i=0; i<fields.size(); i++){
+							%>
+							
+							<%= fields.get(i) %>
+							<% if ((i+1) == (fields.size()/2)) { %>
+							</td>
+							<td>
+							<% }} %>
+							</td>	
+							</tr>								  
+							</table>
+						</div>
+						 <input type="submit" value="Muuda" id="searchingEdit"/> 						  
+						</form>
+						
 					</div>
 				</div>
 			</div>

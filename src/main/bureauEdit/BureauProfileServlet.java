@@ -88,7 +88,9 @@ public class BureauProfileServlet extends HttpServlet {
 			user.setPostalcode(resultSetUser.getInt("postalcode"));
 			user.setRegistryCode(resultSetUser.getInt("registrycode"));
 			bureauId = (Integer) resultSetUser.getInt("bureauid");
-			
+			user.setRegionName(resultSetUser.getString("regionname"));
+			user.setCountyName(resultSetUser.getString("countyname"));
+			user.setCityName(resultSetUser.getString("cityname"));
 //			System.out.println("User attributes are set");
 			
 			}
@@ -96,7 +98,10 @@ public class BureauProfileServlet extends HttpServlet {
 			
 			resultSetUser.close();
 			statementUser.close();	
-			
+			NameToValueDecrypter placeValues = new NameToValueDecrypter(user.getCityName(), user.getRegionName(), user.getCountyName());
+			int cityValue = placeValues.getCityValue();
+			int regionValue = placeValues.getRegionValue();
+			int countyValue  = placeValues.getCountyValue();
 			
 			statementAttorneys = curConnection.createStatement();
 			resultSetAttorneys = statementAttorneys.executeQuery("SELECT * FROM attorney WHERE bureauid='" + bureauId + "';");
@@ -151,7 +156,9 @@ public class BureauProfileServlet extends HttpServlet {
 			FieldsMaker fieldMaker = new FieldsMaker(bureauId, false);			
 			ArrayList<String> fieldRows = fieldMaker.getCheckBoxCode();
 			
-			
+			request.setAttribute("cityValue", cityValue);
+			request.setAttribute("countyValue", countyValue);
+			request.setAttribute("regionValue", regionValue);
 			request.setAttribute("bureauId", bureauId);
 			request.setAttribute("fieldRows", fieldRows);
 			request.setAttribute("user", user);

@@ -88,27 +88,12 @@
 						<tr>
 							<td><label for="storyConclusion">Kokkuvõte:</label>
 							<td>
-							<textarea rows="4" cols="3" name="newConclusion"><%if (!isNew) {%><%=story.getConclusion()%><%}%></textarea>
+							<textarea rows="4" cols="50" name="newConclusion"><%if (!isNew) {%><%=story.getConclusion()%><%}%></textarea>
 							</td>
 						</tr>
 							 
 						</table>
-						<div id="fieldsCheckBox">
-						
-							<p><b>Valdkonnad</b></p>
-							
-							<%
-								ArrayList<String> fields = (ArrayList<String>) request
-									.getAttribute("fieldRows");
-							
-								for (int i=0; i<fields.size(); i++){
-							%>
-							
-							<%= fields.get(i) %>
-							
-							<% }%>	
-					</div>
-					
+											
 					<input type="hidden" name="bureauId"
 						value="<%=request.getParameter("bureauId")%>" /> <input type="hidden"
 						name="storyId" value="<%if (!isNew) {%><%=story.getSuccessStoryId()%><%}%>" /> <input
