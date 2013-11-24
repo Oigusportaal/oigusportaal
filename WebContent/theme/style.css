@@ -299,7 +299,7 @@ output {
   display: inline-block; 
   font: bold 15px/30px Georgia;
   bottom: 175%;
-  left: 0;
+  left: 35%;
   margin-left: -1%;
 }
 output:after { 
@@ -315,7 +315,9 @@ output:after {
   margin-left: -5px;
   margin-top: -1px;
 }
-
+#averageprice output{
+	margin-left:35%;
+}
 fieldset {
 border: none;
 }

@@ -131,22 +131,40 @@
 									</select>		
 								</td>
 							</tr>
-							
-							<tr>
-								<td class="column_height">
-									<p>Keskmine tunnihind:</p>
-								</td>
+							<!--[if IE]>
+								<tr>
+									<td class="column_height">
+										<p>Keskmine tunnihind:</p>
+									</td>
 								
-								<td>
-                                	<div id="avgprice">
-                                    	<input name="averageprice" type="range" min=1 max=100 value=50 >
-                                        <output for="foo">1</output>
-                                    </div>
-                                </td>    
-                          		<td class="column_height" id="column_checkbox">
-									<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
-								</td>
-							</tr>
+									<td>
+                                		<div id="avgprice">
+                                    		<input name="averageprice" type="text" value="50" >
+	                                    </div>
+	                                </td>    
+	                          		<td class="column_height" id="column_checkbox">
+										<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
+									</td>
+								</tr>
+							<![endif]-->
+							
+							<!--[if !IE]> -->
+								<tr>
+									<td class="column_height">
+										<p>Keskmine tunnihind:</p>
+									</td>
+								
+									<td>
+                                		<div id="avgprice">
+                                    		<input name="averageprice" type="range" min=1 max=100 value=50 >
+	                                        <output for="foo">1</output>
+	                                    </div>
+	                                </td>    
+	                          		<td class="column_height" id="column_checkbox">
+										<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
+									</td>
+								</tr>
+							<!-- <![endif]-->
 							<tr>
                                 <td><input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>"></td>
                             </tr>
@@ -172,7 +190,7 @@
                         </div>
                         
                         <div class="page">
-                <h2>--Selected Burueas for Detailed Search --</h2>
+                <h2>-- Kõik leitud bürood --</h2>
                 <table width="95%" border="1">
                         <tr>
                                 <%
