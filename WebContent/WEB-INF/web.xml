@@ -222,4 +222,14 @@
     <servlet-name>ImageUploadServlet</servlet-name>
     <url-pattern>/ImageUploadServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description>Bureau View Servlet</description>
+    <display-name>BureauViewServlet</display-name>
+    <servlet-name>BureauViewServlet</servlet-name>
+    <servlet-class>main.bureauView.BureauViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BureauViewServlet</servlet-name>
+    <url-pattern>/BureauViewServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

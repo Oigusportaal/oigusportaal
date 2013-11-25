@@ -12,6 +12,7 @@ public String phoneNumber;
 public String email;
 public String name;
 public String image;
+public int bureauId;
 
 
 
@@ -76,6 +77,12 @@ public String getFieldName() {
 }
 public void setFieldName(String fieldName) {
 	this.fieldName = fieldName;
+}
+public int getBureauId() {
+	return bureauId;
+}
+public void setBureauId(int bureauId) {
+	this.bureauId = bureauId;
 }
 
 

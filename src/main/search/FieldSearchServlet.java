@@ -159,7 +159,7 @@ public class FieldSearchServlet extends HttpServlet {
 
 				BureauDetails br = new BureauDetails();
 				
-				//br.setBureauId(rs.getInt("bureauid"));
+				br.setBureauId(rs.getInt("bureauid"));
 				br.setBureauName(rs.getString("name"));
 				//br.setRegistryCode(rs.getInt("registrycode"));
 				br.setEmail(rs.getString("email"));

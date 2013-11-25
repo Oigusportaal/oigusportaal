@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.bureauEdit.NameToValueDecrypter;
 import main.details.BureauSearchResults;
 
 /**
@@ -195,128 +196,14 @@ public class SearchServlet extends HttpServlet {
 		System.out.println(ffs);
 
 		cityId = Integer.parseInt(request.getParameter("cities"));
-		System.out.println(cityId);
-
-		switch (cityId) {
-		case 1:
-			city = "Tallinn";
-			break;
-		case 2:
-			city = "Paide";
-			break;
-		case 3:
-			city = "Rapla";
-			break;
-		case 4:
-			city = "Jõhvi";
-			break;
-		case 5:
-			city = "Jõgeva";
-			break;
-		case 6:
-			city = "Rakvere";
-			break;
-		case 7:
-			city = "Kärdla";
-			break;
-		case 8:
-			city = "Haapsalu";
-			break;
-		case 9:
-			city = "Pärnu";
-			break;
-		case 10:
-			city = "Kuressaare";
-			break;
-		case 11:
-			city = "Põlva";
-			break;
-		case 12:
-			city = "Tartu";
-			break;
-		case 13:
-			city = "Valga";
-			break;
-		case 14:
-			city = "Viljandi";
-			break;
-		case 15:
-			city = "Võru";
-			break;
-		}
-		System.out.println(city);
-
 		countyId = Integer.parseInt(request.getParameter("counties"));
-		System.out.println(countyId);
-
-		switch (countyId) {
-		case 1:
-			county = "Harjumaa";
-			break;
-		case 2:
-			county = "Järvamaa";
-			break;
-		case 3:
-			county = "Viljandimaa";
-			break;
-		case 4:
-			county = "Ida-Virumaa";
-			break;
-		case 5:
-			county = "Jõgevamaa";
-			break;
-		case 6:
-			county = "Lääne-Virumaa";
-			break;
-		case 7:
-			county = "Hiiumaa";
-			break;
-		case 8:
-			county = "Läänemaa";
-			break;
-		case 9:
-			county = "Pärnumaa";
-			break;
-		case 10:
-			county = "Saaremaa";
-			break;
-		case 11:
-			county = "Põlvamaa";
-			break;
-		case 12:
-			county = "Tartumaa";
-			break;
-		case 13:
-			county = "Valgamaa";
-			break;
-		case 14:
-			county = "Viljandimaa";
-			break;
-		case 15:
-			county = "Võrumaa";
-			break;
-
-		}
-		System.out.println(county);
-
 		regionId = Integer.parseInt(request.getParameter("regions"));
-		System.out.println(regionId);
-
-		switch (regionId) {
-		case 1:
-			region = "Põhja-Eesti";
-			break;
-		case 2:
-			region = "Lõuna-Eesti";
-			break;
-		case 3:
-			region = "Lääne-Eesti";
-			break;
-		case 4:
-			region = "Ida-Eesti";
-			break;
-		}
-		System.out.println(region);
+		
+		NameToValueDecrypter names = new NameToValueDecrypter(cityId, regionId, countyId);
+		city = names.getCityName();
+		county = names.getCountyName();
+		region = names.getRegionName();
+		
 
 		averagePrice = request.getParameter("averageprice");
 		System.out.println(averagePrice);
@@ -414,7 +301,8 @@ public class SearchServlet extends HttpServlet {
 				String bureauPhone = rs.getString("phone");
 				String bureauCity = rs.getString("cityname");
 				String bureauImage = rs.getString("image");
-
+				
+				
 				br.setFieldName(fieldName);
 				br.setName(bureauName);
 				br.setEmail(bureauEmail);
@@ -424,6 +312,7 @@ public class SearchServlet extends HttpServlet {
 				br.setPhoneNumber(bureauPhone);
 				br.setCity(bureauCity);
 				br.setImage(bureauImage);
+				br.setBureauId(bureauId);
 
 				System.out.println("Bureau Id: " + bureauId);
 				System.out.println("Bureau Name: " + bureauName);

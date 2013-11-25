@@ -201,8 +201,8 @@
 
                                 <td width="20" align="center" class="borderdesign">
                                 <td width="100" class="borderdesign">
-                                        <h3><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></h3>
-                                </td>
+                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></a></h3>
+                                </td>                                
                                 <td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
 
                                 <%
