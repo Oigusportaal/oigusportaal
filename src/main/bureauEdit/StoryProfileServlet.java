@@ -39,12 +39,14 @@ public class StoryProfileServlet extends HttpServlet {
 			storyId = Integer.parseInt(req.getParameter("storyId"));
 		}
 		catch(NumberFormatException e){
-			System.out.println("Story gotten instead");
+//			System.out.println("Story gotten instead");
 			gotStory = true;
 			story = (SuccessStoryDetails) req.getAttribute("story");
 		}
-		if (!gotStory)
-			System.out.println("Story's id: " + storyId);
+		if (!gotStory){
+			
+		}
+//			System.out.println("Story's id: " + storyId);
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);

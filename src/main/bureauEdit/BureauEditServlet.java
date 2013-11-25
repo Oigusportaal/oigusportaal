@@ -59,7 +59,10 @@ public class BureauEditServlet extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("oldPrice"));
 		String address = (String) request.getParameter("oldAddress");
 		int regCode = Integer.parseInt(request.getParameter("oldRegistryCode"));
-		int zipCode = Integer.parseInt(request.getParameter("oldPostalCode"));		
+		int zipCode = Integer.parseInt(request.getParameter("oldPostalCode"));
+		int region = Integer.parseInt(request.getParameter("oldRegion"));
+		int county = Integer.parseInt(request.getParameter("oldCounty"));
+		int city = Integer.parseInt(request.getParameter("oldCity"));
 
 		user.setEmail(email);
 		user.setPassword(password);
@@ -73,6 +76,9 @@ public class BureauEditServlet extends HttpServlet {
 		boolean emailChanged = false;
 		boolean passChanged = false;
 		boolean zipCodeChanged = false;
+		boolean regionChanged = false;
+		boolean countyChanged = false;
+		boolean cityChanged = false;
 		int bureauId = 0;
 
 		String oldCBoxes = request.getParameter("oldCBoxes");
@@ -186,17 +192,41 @@ public class BureauEditServlet extends HttpServlet {
 			}
 
 			String newPassword = (String) request
-					.getParameter("profileNewBureauProfile");
-			if (!newPassword.equals(password) && !newPassword.equals("")
-					&& newPassword != null) {
-				passChanged = true;
-//				System.out.println("Password: " + password + " " + newPassword);
+					.getParameter("newPass");
+			String newPasswordConfirm = (String) request.getParameter("newPassConfirm");
+			if (newPassword.equals(newPasswordConfirm)){
+				if (!newPassword.equals(password) && !newPassword.equals("")
+						&& newPassword != null) {
+					passChanged = true;	
+				}
 			}
+			
+			int newRegion = Integer.parseInt(request.getParameter("regions"));
+			
+			if (region != newRegion){
+				regionChanged = true;
+			}
+			
+			int newCounty = Integer.parseInt(request.getParameter("counties"));
+			
+			if (county != newCounty){
+				countyChanged = true;
+			}
+			
+			int newCity = Integer.parseInt(request.getParameter("cities"));
+			
+			if (city != newCity){
+				cityChanged = true;
+			}
+			
+			
+			NameToValueDecrypter areaNames = new NameToValueDecrypter(newCity, newRegion, newCounty);
+			
 
 			String statement = "";
 
 			if (!phoneChanged && !addressChanged && !priceChanged
-					&& !emailChanged && !passChanged && !zipCodeChanged) {
+					&& !emailChanged && !passChanged && !zipCodeChanged && !regionChanged && !countyChanged && !cityChanged) {
 //				System.out.println("Made it to nothing changed");
 			} else {
 				statement = "UPDATE bureau SET ";
@@ -233,6 +263,22 @@ public class BureauEditServlet extends HttpServlet {
 					user.setPostalcode(newZipCode);
 					statement = statement.concat("postalcode='" + newZipCode + "', ");
 				}
+				if (regionChanged) {
+					String regionName = areaNames.getRegionName();
+					user.setRegionName(regionName);
+					statement = statement.concat("regionname='" + regionName + "', ");
+				}
+				if (countyChanged) {
+					String countyName = areaNames.getCountyName();
+					user.setCountyName(countyName);
+					statement = statement.concat("countyname='" + countyName + "', ");
+				}
+				if (cityChanged) {
+					String cityName = areaNames.getCityName();
+					user.setCityName(cityName);
+					statement = statement.concat("cityname='" + cityName + "', ");
+				}
+				
 			}
 
 			if (statement.endsWith(", ")) {

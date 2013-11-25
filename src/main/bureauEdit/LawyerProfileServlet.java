@@ -37,7 +37,7 @@ public class LawyerProfileServlet extends HttpServlet {
 		catch (NumberFormatException e){
 			attorneyId = (int) req.getAttribute("attorneyId");
 		}
-		System.out.println("Attorney's id: " + attorneyId);
+//		System.out.println("Attorney's id: " + attorneyId);
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -75,9 +75,9 @@ public class LawyerProfileServlet extends HttpServlet {
 			}
 			attorney.setAttorneyId(attorneyId);
 			
-			System.out.println("Attorney email: " + attorney.getEmail());
-			System.out.println("Attorney name: " + attorney.getName());
-			System.out.println("Attorney bureauId: " + attorney.getBureauId());
+//			System.out.println("Attorney email: " + attorney.getEmail());
+//			System.out.println("Attorney name: " + attorney.getName());
+//			System.out.println("Attorney bureauId: " + attorney.getBureauId());
 
 			// Close connections
 			resultSet.close();

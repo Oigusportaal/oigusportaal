@@ -1,20 +1,33 @@
 package main.bureauEdit;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.commons.collections.BidiMap;
+import org.apache.commons.collections.bidimap.DualHashBidiMap;
+
 
 public class NameToValueDecrypter {
 	
 	String cityName;
 	String regionName;
 	String countyName;
-	Map<String,Integer> cityMap = new HashMap<String,Integer>();
-	Map<String,Integer> regionMap = new HashMap<String,Integer>();
-	Map<String,Integer> countyMap = new HashMap<String,Integer>();
+	int cityValue;
+	int regionValue;
+	int countyValue;
+	BidiMap cityMap = new DualHashBidiMap();
+	BidiMap regionMap = new DualHashBidiMap();
+	BidiMap countyMap = new DualHashBidiMap();	
 	public NameToValueDecrypter(String cityName, String regionName, String countyName) {
 		this.cityName = cityName;
 		this.regionName = regionName;
 		this.countyName = countyName;
+		populateRegionMap();
+		populateCountyMap();
+		populateCityMap();
+	}
+	
+	public NameToValueDecrypter(int cityValue, int regionValue, int countyValue){
+		this.cityValue = cityValue;
+		this.regionValue = regionValue;
+		this.countyValue = countyValue;
 		populateRegionMap();
 		populateCountyMap();
 		populateCityMap();
@@ -64,15 +77,33 @@ public class NameToValueDecrypter {
 	}
 	
 	public int getRegionValue(){
-		return regionMap.get(regionName).intValue();
+		Integer region = (Integer) regionMap.get(regionName);
+		return region.intValue();
 	}
 	
 	public int getCountyValue(){
-		return countyMap.get(countyName).intValue();
+		Integer county = (Integer) countyMap.get(countyName);
+		return county.intValue();
 	}
 	
 	public int getCityValue(){
-		return cityMap.get(cityName).intValue();
+		Integer county = (Integer) cityMap.get(cityName);
+		return county.intValue();
+	}
+	
+	public String getRegionName(){
+		BidiMap regionNames = regionMap.inverseBidiMap();
+		return (String) regionNames.get(regionValue);		
+	}
+	
+	public String getCountyName(){
+		BidiMap countyNames = countyMap.inverseBidiMap();
+		return (String) countyNames.get(countyValue);
+	}
+	
+	public String getCityName(){
+		BidiMap cityNames = cityMap.inverseBidiMap();
+		return (String) cityNames.get(cityValue);
 	}
 						
 }

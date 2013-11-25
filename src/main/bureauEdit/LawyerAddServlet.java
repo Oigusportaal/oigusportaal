@@ -32,7 +32,7 @@ public class LawyerAddServlet extends HttpServlet {
 		String name = req.getParameter("newName");
 		String email = req.getParameter("newEmail");
 		int bureauId = Integer.parseInt(req.getParameter("bureauId"));
-		System.out.println("New lawyer name:" + name);
+//		System.out.println("New lawyer name:" + name);
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);

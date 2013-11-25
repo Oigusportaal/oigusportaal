@@ -35,14 +35,14 @@ public class ImageUploadServlet extends HttpServlet {
         String absolutePath = "/var/lib/oigusportaal/";
         String contextPath = "/oigusportaal/photos/";
         
-        System.out.println("Context Path = " + contextPath);
+//        System.out.println("Context Path = " + contextPath);
        
         
         boolean isBureau = false;
         int generalId = 0;
         boolean isMultipart = ServletFileUpload.isMultipartContent(
                 request);
-        System.out.println("request: " + request);
+//        System.out.println("request: " + request);
         if (!isMultipart) {
             System.out.println("File Not Uploaded");
         } else {
@@ -66,16 +66,16 @@ public class ImageUploadServlet extends HttpServlet {
                 FileItem item = (FileItem) itr.next();
                 if (item.isFormField()) {
                     String name = item.getFieldName();
-                    System.out.println("name: " + name);
+//                    System.out.println("name: " + name);
                     String value = item.getString();
-                    System.out.println("value: " + value);                    
+//                    System.out.println("value: " + value);                    
                     if (name.equals("generalId")){                    	
                     	generalId = Integer.parseInt(value);
-                    	System.out.println("Generaalne id: " + generalId);
+//                    	System.out.println("Generaalne id: " + generalId);
                     }
                     if (name.equals("isBureau")){
                     	int bureau = Integer.parseInt(value);
-                    	System.out.println("On ta büroo? " + bureau);
+//                    	System.out.println("On ta büroo? " + bureau);
                     	if (bureau == 0){
                     		isBureau = false;
                     	}
@@ -125,7 +125,7 @@ public class ImageUploadServlet extends HttpServlet {
 		PreparedStatement smt = null;
 		curConnection = conn.getConnection();
 		String finalPath = contextPath + imageName;
-		System.out.println("Final path: " + finalPath);
+//		System.out.println("Final path: " + finalPath);
 		if (!isBureau){
 			request.setAttribute("attorneyId", generalId);
 		}
@@ -149,7 +149,7 @@ public class ImageUploadServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			else{
-				System.out.println("Yupp");
+//				System.out.println("Yupp");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
 						"/LawyerProfileServlet");
 				rd.forward(request, response);

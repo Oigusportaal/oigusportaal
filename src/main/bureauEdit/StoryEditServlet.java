@@ -102,8 +102,8 @@ public class StoryEditServlet extends HttpServlet {
 			}
 			
 			if (story.getFieldId() != fieldId){
-				System.out.println("Old field id: " + story.getFieldId());
-				System.out.println("New field id: " + fieldId);
+//				System.out.println("Old field id: " + story.getFieldId());
+//				System.out.println("New field id: " + fieldId);
 				fieldIdChanged = true;
 				story.setFieldId(fieldId);
 			}

@@ -60,7 +60,7 @@ public class SendEmail {
 			finally {
 				t.close();
 			}
-			System.out.println("Message sent");
+//			System.out.println("Message sent");
 		}
 		catch (MessagingException mex) {
 			mex.printStackTrace();

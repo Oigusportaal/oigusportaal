@@ -64,7 +64,7 @@ public class StoryAddServlet extends HttpServlet {
 			String sql = "INSERT INTO successstory (participants, reference, date, conclusion, bureauid, fieldid) VALUES ('"
 					+ participants + "','" + reference + "','" + date + "','" + conclusion + "','" + bureauId + "','" + fieldId + "');";
 			statement = curConnection.prepareStatement(sql);
-			System.out.println(statement);
+//			System.out.println(statement);
 			statement.executeUpdate();
 
 			story.setBureauId(bureauId);

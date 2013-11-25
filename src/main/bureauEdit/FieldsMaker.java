@@ -83,10 +83,10 @@ public class FieldsMaker {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Codes size: " + codes.size());
-		System.out.println("Names size: " + names.size());
+//		System.out.println("Codes size: " + codes.size());
+//		System.out.println("Names size: " + names.size());
 		for (int i = 0; i < codes.size(); i++) {
-			System.out.println("Sellised numbrid: " + codes.get(i));
+//			System.out.println("Sellised numbrid: " + codes.get(i));
 		}
 		if (!isStory) {
 			for (int i = 1; i < names.size()+1; i++) {
@@ -99,7 +99,7 @@ public class FieldsMaker {
 				row = row.concat(">" + names.get(i-1) + "<br>");
 				codes.add(row);
 				// Debugging
-				System.out.println(row);
+//				System.out.println(row);
 
 			}
 
@@ -115,7 +115,7 @@ public class FieldsMaker {
 			}
 
 			oldCBoxes = oldCBoxes.concat("\">");
-			System.out.println(oldCBoxes);
+//			System.out.println(oldCBoxes);
 			codes.add(oldCBoxes);
 		}
 		
