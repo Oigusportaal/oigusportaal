@@ -87,7 +87,8 @@ CREATE TABLE successstory (
     reference character varying(30),
     conclusion character varying(300),
     bureauid integer,
-    fieldid integer
+    fieldid integer,
+    filepath character varying(200)
 );
 
 

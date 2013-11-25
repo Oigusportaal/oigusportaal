@@ -38,7 +38,7 @@ public class ImageUploadServlet extends HttpServlet {
 //        System.out.println("Context Path = " + contextPath);
        
         
-        boolean isBureau = false;
+        int action = 0;
         int generalId = 0;
         boolean isMultipart = ServletFileUpload.isMultipartContent(
                 request);
@@ -73,16 +73,8 @@ public class ImageUploadServlet extends HttpServlet {
                     	generalId = Integer.parseInt(value);
 //                    	System.out.println("Generaalne id: " + generalId);
                     }
-                    if (name.equals("isBureau")){
-                    	int bureau = Integer.parseInt(value);
-//                    	System.out.println("On ta büroo? " + bureau);
-                    	if (bureau == 0){
-                    		isBureau = false;
-                    	}
-                    	if (bureau == 1){
-                    		isBureau = true;
-                    	}
-                    	
+                    if (name.equals("action")){
+                    	action = Integer.parseInt(value); 
                     }
                 } else {
                     try {
@@ -126,32 +118,43 @@ public class ImageUploadServlet extends HttpServlet {
 		curConnection = conn.getConnection();
 		String finalPath = contextPath + imageName;
 //		System.out.println("Final path: " + finalPath);
-		if (!isBureau){
+		if (action == 2){
 			request.setAttribute("attorneyId", generalId);
+		}
+		if (action == 3){
+			request.setAttribute("storyId", generalId);
 		}
 		
 		try{
 			String sql = "";
-			if (isBureau){
+			if (action == 1){
 				sql = "UPDATE bureau SET image='" + finalPath + "' WHERE bureauid='" + generalId + "';";
 			}
-			else {
+			else if (action == 2) {
 				sql = "UPDATE attorney SET imgpath='" + finalPath + "' WHERE attorneyid='" + generalId + "';";
 			}
+			else if (action == 3) {
+				sql = "UPDATE successstory SET filepath='" + finalPath + "' WHERE ssid='" + generalId + "';";
+			}
+			System.out.println(finalPath);
 			smt = curConnection.prepareStatement(sql);
 			smt.executeUpdate();
 			smt.close();
 			curConnection.close();
 			
-			if (isBureau){
+			if (action == 1){
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
 						"/BureauProfileServlet");
 				rd.forward(request, response);
 			}
-			else{
+			else if (action == 2){
 //				System.out.println("Yupp");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
 						"/LawyerProfileServlet");
+				rd.forward(request, response);
+			}
+			else if (action ==3){
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/StoryProfileServlet");
 				rd.forward(request, response);
 			}
 		}

@@ -46,8 +46,8 @@ public class StoryEditServlet extends HttpServlet {
 		String participants = req.getParameter("newParticipants");
 		String reference = req.getParameter("newReference");
 		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
-		String conclusion = req.getParameter("newConclusion");		
-		int fieldId = Integer.valueOf(req.getParameter("fields"));
+		String conclusion = req.getParameter("newConclusion");	
+		
 		story.setSuccessStoryId(storyId);
 		// Initiate database connection
 
@@ -101,13 +101,7 @@ public class StoryEditServlet extends HttpServlet {
 				story.setDate(date);
 			}
 			
-			if (story.getFieldId() != fieldId){
-//				System.out.println("Old field id: " + story.getFieldId());
-//				System.out.println("New field id: " + fieldId);
-				fieldIdChanged = true;
-				story.setFieldId(fieldId);
-			}
-			
+						
 			if (!story.getParticipants().equals(participants)){
 				participantsChanged = true;
 				story.setParticipants(participants);
@@ -124,9 +118,7 @@ public class StoryEditServlet extends HttpServlet {
 				if (conclusionChanged)
 					sql = sql.concat("conclusion='" + conclusion + "', ");
 				if (dateChanged)
-					sql = sql.concat("date='" + date + "'");
-				if (fieldIdChanged)
-					sql = sql.concat("fieldid='" + fieldId + "'");
+					sql = sql.concat("date='" + date + "'");				
 				if (participantsChanged)
 					sql = sql.concat("participants='" + participants + "'");
 				if (referenceChanged)

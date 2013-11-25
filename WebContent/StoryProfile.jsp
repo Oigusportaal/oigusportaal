@@ -29,6 +29,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
@@ -64,6 +65,22 @@
 		<!-- end #menu -->
 		<div class="page">
 			<h1>Redigeerimine</h1>
+			<% if (!isNew) { %>
+			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
+			<table>
+			<tr id="logo">			
+			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
+			  	<input type="submit" value="Lae üles" id="upladIt">
+			  	<input type="hidden" name="generalId" value="<%= story.getSuccessStoryId()%>">
+			  	<input type="hidden" name="action" value="3">						  	
+			  	</td>
+			  	<td><a href="<%=story.getFilepath()%>">Lae alla</a></td>						  	
+			 </tr>
+			 </table>
+			 </form>
+			 <% } else { %>
+			 <p> Faili saate lisada peale eduloo lisamist. </p>
+			 <% } %>
 			<div class="entry">
 				<form
 					action="<%=request.getContextPath()%><%if (isNew) {%>/StoryAddServlet<%} else {%>/StoryEditServlet<%}%>"

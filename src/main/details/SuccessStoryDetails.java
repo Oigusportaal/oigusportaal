@@ -12,6 +12,7 @@ public class SuccessStoryDetails {
 	String conclusion;
 	int bureauId;
 	int fieldid;
+	String filepath;
 	
 	public int getSuccessStoryId() {
 		return SuccessStoryId;
@@ -60,6 +61,12 @@ public class SuccessStoryDetails {
 	}
 	public void setConclusion(String conclusion) {
 		this.conclusion = conclusion;
+	}
+	public String getFilepath() {
+		return filepath;
+	}
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 
 }

@@ -181,7 +181,7 @@ include file="theme/style.css"
 								<tr id="logo">
 									<td><p>
 											Lae üles uus logo: <input type="file" name="img">
-										</p> <br> <input type="submit" value="Lae üles" id="upladIt"> <input type="hidden" name="generalId" value="<%=request.getAttribute("bureauId")%>"> <input type="hidden" name="isBureau" value="1"></td>
+										</p> <br> <input type="submit" value="Lae üles" id="upladIt"> <input type="hidden" name="generalId" value="<%=request.getAttribute("bureauId")%>"> <input type="hidden" name="action" value="1"></td>
 									<td><img src="<%=currentUser.getImage()%>" height="150px" alt="Pilti ei leitud"></td>
 								</tr>
 								</form>
