@@ -131,6 +131,44 @@ td.column_height p {
 #success{
 	margin-top:37px;
 }
+
+/*Search results*/
+#searchHeader2{
+	margin-left:auto; 
+	margin-right:auto; 
+	width: 300px
+}
+#searchResults{
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	border-collapse:separate;
+	border-spacing:0px 10px;
+}
+.borderdesign{
+	height:100px;
+}
+.firstColumn{
+	border-top: 1px solid #BA0606;
+	border-bottom: 1px solid #BA0606;
+	border-left: 1px solid #BA0606;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	
+}
+.middleColumn{
+	border-top: 1px solid #BA0606;
+	border-bottom: 1px solid #BA0606;
+}
+.lastColumn{
+	border-top: 1px solid #BA0606;
+	border-bottom: 1px solid #BA0606;
+	border-right: 1px solid #BA0606;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+/*END search results*/
+
 .page {
 	overflow: hidden;
 	width: 1024px;
@@ -377,7 +415,7 @@ input#Registreeru{
 	margin-left:50px;
 	margin-right:25px;
 	margin-bottom:50px;
-	background: #f0f0f0;
+	/*background: #f0f0f0;*/
 }
 
 .loginInput{

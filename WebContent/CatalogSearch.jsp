@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <script src="js/jquery.js"></script>
                 <script src="js/functions.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
@@ -71,7 +72,7 @@
 			
 			<div class="page">
 				<h2>Otsing</h2>
-				<div class="content" style="background-color:#f0f0f0;">
+				<div class="content" >
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
 						<table id="catalogSearch">
 							<tr>
@@ -191,24 +192,22 @@
                         
                         <div class="page">
                   
-                			<h2 style="margin-left:auto; margin-right:auto; width: 300px">-- Kõik leitud bürood --</h2>
-                			<table width="95%" border="1" style="margin-left:auto;margin-right:auto;">
-                			
-                        <tr>
+                			<h2 id="searchHeader2" style="margin-left:auto; margin-right:auto; width: 300px">-- Kõik leitud bürood --</h2>
+                			<table id="searchResults" width="95%"  >                        
                                 <%
                                         for (int i = 0; i < br.size(); i++) {
                                 %>
-
-                                <td width="20" align="center" class="borderdesign">
-                                <td width="100" class="borderdesign">
-                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></a></h3>
-                                </td>                                
-                                <td width="100" class="tdnonborder"><img src="<%=br.get(i).getImage()%>"/></td>
-
+								<tr class="borderdesign" style="border:1x solid black;" >
+	                                <td width="20" align="center" class="firstColumn">
+	                                	<td width="100" class="middleColumn">
+	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></a></h3>
+	                                	</td>                                
+	                                <td width="100" class="lastColumn"><img src="<%=br.get(i).getImage()%>"/></td>
+								</tr>
                                 <%
                                         if ((i + 1) % 2 == 0) {
                                 %>
-                        </tr>
+                        
                         <tr>
                                 <%
                                         }
