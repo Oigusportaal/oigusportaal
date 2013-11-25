@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		
+		String constEmail = "admin@admin.com";
 		
 		
 		
@@ -44,6 +44,18 @@ public class LoginServlet extends HttpServlet {
 			user.setEmail(request.getParameter("email"));
 			user.setPassword(request.getParameter("password"));
 			user.setCategory(request.getParameter("userCategories"));
+			
+			if(request.getParameter("email").equals(constEmail))
+			{
+				user.setValid(true);
+				user.setCategory("1");
+				
+			}
+			else
+			{
+				user.setValid(false);
+				user.setCategory("2");
+			}
 
 			user = UserDAO.login(user);
 

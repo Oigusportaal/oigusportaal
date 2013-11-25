@@ -121,8 +121,7 @@ if (!currentUser.isValid() ){
 			</tr>
 			</table>
 			</div>
-				<a href="a.jsp" class="amenu">Click to log out</a>
-			
+<button onclick="location.href='a.jsp'">Logout</button>			
 			<!-- include footer -->
 			<%@include file='/footer.jsp'%>
 		</div>

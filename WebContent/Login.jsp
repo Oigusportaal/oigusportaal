@@ -39,15 +39,6 @@
 							<td><input type="password" name="password" placeholder="Parool" class="loginInput"><br></td>
 						</tr>
 							
-						<tr>
-							<td>
-								<select name="userCategories" class="loginInputSpecial" >
-									<option value="0" class="static">--Select User Type--</option>
-									<option value="1" class="sub_1">Admin</option>
-									<option value="2" class="sub_2">Bureau</option>
-								</select>
-							</td>
-						</tr>
 					
 						<tr>
 							<td><input type="submit" value="Logi sisse"  class="loginInputSpecial"/></td>
