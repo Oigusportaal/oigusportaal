@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -37,15 +38,19 @@ public class StoryProfileServlet extends HttpServlet {
 		boolean gotStory = false;
 		try{
 			storyId = Integer.parseInt(req.getParameter("storyId"));
-		}
-		catch(NumberFormatException e){
-//			System.out.println("Story gotten instead");
-			gotStory = true;
-			story = (SuccessStoryDetails) req.getAttribute("story");
-		}
-		if (!gotStory){
 			
 		}
+		catch(NumberFormatException e){
+			try{
+				storyId = (Integer) req.getAttribute("storyId");
+			}
+			catch (NumberFormatException i){
+				gotStory = true;
+				story = (SuccessStoryDetails) req.getAttribute("story");
+			}
+			
+		}
+
 //			System.out.println("Story's id: " + storyId);
 
 		// Get HTTP session
@@ -83,7 +88,8 @@ public class StoryProfileServlet extends HttpServlet {
 				story.setReference(resultSet.getString("reference"));
 				story.setConclusion(resultSet.getString("conclusion"));
 				story.setBureauId(resultSet.getInt("bureauid"));
-				story.setFieldId(resultSet.getInt("fieldid"));				
+				story.setFieldId(resultSet.getInt("fieldid"));
+				story.setFilepath(resultSet.getString("filepath"));
 			}
 			// Close connections
 			resultSet.close();

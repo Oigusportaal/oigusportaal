@@ -37,8 +37,7 @@ public class StoryAddServlet extends HttpServlet {
 		String reference = req.getParameter("newReference");
 		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
 		String conclusion = req.getParameter("newConclusion");
-		int bureauId = Integer.valueOf(req.getParameter("bureauId"));
-		int fieldId = Integer.valueOf(req.getParameter("fields"));
+		int bureauId = Integer.valueOf(req.getParameter("bureauId"));		
 
 		// Get HTTP session
 		HttpSession session = req.getSession(true);
@@ -61,8 +60,8 @@ public class StoryAddServlet extends HttpServlet {
 		ResultSet rst  =null;
 
 		try {
-			String sql = "INSERT INTO successstory (participants, reference, date, conclusion, bureauid, fieldid) VALUES ('"
-					+ participants + "','" + reference + "','" + date + "','" + conclusion + "','" + bureauId + "','" + fieldId + "');";
+			String sql = "INSERT INTO successstory (participants, reference, date, conclusion, bureauid) VALUES ('"
+					+ participants + "','" + reference + "','" + date + "','" + conclusion + "','" + bureauId + "');";
 			statement = curConnection.prepareStatement(sql);
 //			System.out.println(statement);
 			statement.executeUpdate();
@@ -70,7 +69,6 @@ public class StoryAddServlet extends HttpServlet {
 			story.setBureauId(bureauId);
 			story.setConclusion(conclusion);
 			story.setDate(date);
-			story.setFieldId(fieldId);
 			story.setParticipants(participants);
 			story.setReference(reference);
 			

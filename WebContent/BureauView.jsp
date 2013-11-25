@@ -37,6 +37,8 @@
 						%>
 						<table>
 						<tr>
+						<td><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>
+						<tr>
 							<td><label for="profileBureauName">Firma nimi:</label></td>
 							<td><%=user.getBureauName()%></td>
 						</tr>
@@ -83,11 +85,26 @@
 							<td><label for="profileBureauAveragePrize">Keskmine tunnihind:</label></td>
 							<td><%=user.getAveragePrice()%></td>
 						</tr>
+						<tr>
+						<td>Valdkonnad:</td>						
+												
+												
+						<%
+						ArrayList<String> fields = (ArrayList<String>) request.getAttribute("fields");
+						%>
+						
+						<td>
+						<% for (int i = 0; i < fields.size(); i++) { %>
+						<%=fields.get(i)%><br>
+						<% } %>
+						</td>
+						</tr>
 						</table>
 						<%
 							ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
 									.getAttribute("attorneys");
 						%>
+						
 						<table>
 							<tr>
 								<td><label for="profileBureauLawyers">Juristid:</label></td>

@@ -11,10 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import main.bureauEdit.FieldsMaker;
-import main.bureauEdit.NameToValueDecrypter;
 import main.details.AttorneyDetails;
 import main.details.SuccessStoryDetails;
 import main.login.UserBean;
@@ -42,7 +38,7 @@ public class BureauViewServlet extends HttpServlet {
 		
 		ArrayList<AttorneyDetails> attorneys = new ArrayList<AttorneyDetails>();
 		ArrayList<SuccessStoryDetails> successStories = new ArrayList<SuccessStoryDetails>();
-		
+		ArrayList<String> fields = new ArrayList<String>();
 		
         
         DBConnection connect = new DBConnection();
@@ -60,6 +56,9 @@ public class BureauViewServlet extends HttpServlet {
 		
 		Statement statementStories = null;
 		ResultSet resultSetStories = null;
+		
+		Statement statementFields = null;
+		ResultSet resultSetFields = null;
 		
 		UserBean user = new UserBean();
 		
@@ -96,7 +95,9 @@ public class BureauViewServlet extends HttpServlet {
 			
 			
 			resultSetUser.close();
-			statementUser.close();			
+			statementUser.close();
+			
+			
 			
 			statementAttorneys = curConnection.createStatement();
 			resultSetAttorneys = statementAttorneys.executeQuery("SELECT * FROM attorney WHERE bureauid='" + bureauId + "';");
@@ -109,6 +110,7 @@ public class BureauViewServlet extends HttpServlet {
 				attorney.setName(resultSetAttorneys.getString("name"));
 				attorney.setEmail(resultSetAttorneys.getString("email"));
 				attorney.setAttorneyId(resultSetAttorneys.getInt("attorneyid"));
+				attorney.setPicturePath(resultSetAttorneys.getString("imgpath"));
 				
 				attorneys.add(attorney);
 				
@@ -116,6 +118,17 @@ public class BureauViewServlet extends HttpServlet {
 			
 			statementAttorneys.close();
 			resultSetAttorneys.close();
+			
+			statementFields = curConnection.createStatement();
+			resultSetFields = statementFields.executeQuery("SELECT field.fieldname FROM field, fieldbureaujunction WHERE field.fieldid = fieldbureaujunction.fieldid AND"
+					+ " fieldbureaujunction.bureauid = '" + bureauId + "';");
+			
+			while (resultSetFields.next()){				
+				fields.add(resultSetFields.getString("fieldname"));				
+			}
+			
+			statementFields.close();
+			resultSetFields.close();
 			
 			statementStories = curConnection.createStatement();
 			resultSetStories = statementStories.executeQuery("SELECT * FROM successstory WHERE bureauid='" + bureauId + "';");
@@ -138,7 +151,7 @@ public class BureauViewServlet extends HttpServlet {
 			
 			curConnection.close();
 			
-			
+			request.setAttribute("fields", fields);
 			request.setAttribute("user", user);
 			request.setAttribute("attorneys", attorneys);
 			request.setAttribute("successStories", successStories);
