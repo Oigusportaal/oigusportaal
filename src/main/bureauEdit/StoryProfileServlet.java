@@ -44,7 +44,7 @@ public class StoryProfileServlet extends HttpServlet {
 			try{
 				storyId = (Integer) req.getAttribute("storyId");
 			}
-			catch (NumberFormatException i){
+			catch (NullPointerException i){
 				gotStory = true;
 				story = (SuccessStoryDetails) req.getAttribute("story");
 			}
