@@ -10,11 +10,9 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <script src="js/jquery.js"></script>
                 <script src="js/functions.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/widgetstyle.css" />
   <script>
   $(function() {
     $( "#datepicker" ).datepicker();
@@ -196,22 +194,26 @@
                         </div>
                         
                         <div class="page">
-                <h2 id="searchHeader2">-- Kõik leitud bürood --</h2>
-                <table id="searchResults" width="95%"  >     
-                	<%for (int i = 0; i < br.size(); i++) {%>
-                		<tr class="borderdesign" style="border:1x solid black;" >
-	                    	<td width="20" align="center" class="firstColumn">
-                                <td width="100" class="middleColumn">
-                                        <h3><%=br.get(i).getFieldName() + " " + br.get(i).getName() + " " + br.get(i).getEmail() 
-                                        + " " + br.get(i).averagePrice + " " + br.get(i).getStreet() + " " + br.get(i).postalcode 
-                                        + " " + br.get(i).phoneNumber + " " + br.get(i).getCity()  %></h3>
-                                </td>
-                                <td width="100" class="lastColumn"><img src="<%=br.get(i).getImage()%>"/></td>
-
+                  
+                			<h2 id="searchHeader2" >-- Kõik leitud bürood --</h2>
+                			<table id="searchResults" width="95%"  >                        
+                                <%
+                                        for (int i = 0; i < br.size(); i++) {
+                                %>
+                                
+								<tr class="borderdesign"  >								
+								<td width="100" class="firstColumn"><img src="<%=br.get(i).getImage()%>"/></td>
+	                                <td width="20" align="center" class="middleColumn">
+	                                	<td width="100" class="lastColumn">
+	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getName()%></a></h3>
+	                                        <p><a href="mailto:<%=br.get(i).getEmail()%>"><%=br.get(i).getEmail()%></a></p>
+	                                        <p><b>Aadress: </b> <%=br.get(i).getStreet()%></p>
+	                                	</td>
+								</tr>
                                 <%
                                         if ((i + 1) % 2 == 0) {
                                 %>
-                        </tr>
+                        
                         <tr>
                                 <%
                                         }

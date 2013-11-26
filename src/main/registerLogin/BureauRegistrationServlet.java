@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.bureauActivation.RandomHashFactory;
 import main.bureauActivation.SendEmail;
+import main.bureauEdit.NameToValueDecrypter;
 
 /**
  * Servlet implementation class BureauRegistrationServlet
@@ -60,14 +61,20 @@ public class BureauRegistrationServlet extends HttpServlet {
 		phone = Integer.parseInt(request.getParameter("phone"));
 		System.out.println(phone);
 		
-		String region = request.getParameter("regions");
+		int region = Integer.parseInt(request.getParameter("regions"));
 		System.out.println(region);
 		
-		String city = request.getParameter("cities");
+		int city = Integer.parseInt(request.getParameter("cities"));
 		System.out.println(city);
 		
-		String county = request.getParameter("counties");
+		int county = Integer.parseInt(request.getParameter("counties"));
 		System.out.println(county);
+		
+		NameToValueDecrypter areas = new NameToValueDecrypter(city, region, county);
+		
+		String reg = areas.getRegionName();
+		String cit = areas.getCityName();
+		String cou = areas.getCountyName();
 		
 		RandomHashFactory hash = new RandomHashFactory(10);
 		String hashCode = hash.nextString();
@@ -109,9 +116,9 @@ public class BureauRegistrationServlet extends HttpServlet {
 			stmt.setString(6,street);
 			stmt.setInt(7,postalcode);
 			stmt.setInt(8,phone);
-			stmt.setString(9,region);
-			stmt.setString(10,city);
-			stmt.setString(11,county);
+			stmt.setString(9,reg);
+			stmt.setString(10,cit);
+			stmt.setString(11,cou);
 			stmt.setString(12, hashCode);
 			stmt.setInt(13, 0);
 					

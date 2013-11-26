@@ -232,4 +232,24 @@
     <servlet-name>BureauViewServlet</servlet-name>
     <url-pattern>/BureauViewServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description>Delete Bureau Servlet</description>
+    <display-name>DeleteBureauServlet</display-name>
+    <servlet-name>DeleteBureauServlet</servlet-name>
+    <servlet-class>main.admin.DeleteBureauServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBureauServlet</servlet-name>
+    <url-pattern>/DeleteBureauServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description>Activate InActivate Servlet</description>
+    <display-name>ActivateInActivateServlet</display-name>
+    <servlet-name>ActivateInActivateServlet</servlet-name>
+    <servlet-class>main.admin.ActivateInActivateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivateInActivateServlet</servlet-name>
+    <url-pattern>/ActivateInActivateServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

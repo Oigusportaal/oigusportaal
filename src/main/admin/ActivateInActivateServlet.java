@@ -19,7 +19,6 @@ import main.details.BureauDetails;
 /**
  * Servlet implementation class ActivateInActivateServlet
  */
-@WebServlet("/ActivateInActivateServlet")
 public class ActivateInActivateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

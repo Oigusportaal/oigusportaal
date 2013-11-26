@@ -30,9 +30,9 @@
 <html>
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/widgetstyle.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
 	<style type="text/css">
@@ -42,13 +42,13 @@
 	height:150px;
 	}
 	</style>
-<script src="js/jquery.js"></script>
-<script src="js/functions.js"></script>
 <script>
-	$(function() {
-		$("#datepickerTwo").datepicker();
-	});
-</script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  
+
+ </script>
 <title>Õigusportaal</title>
 
 
@@ -57,7 +57,7 @@
 <body>
 	<div id="wrapper">
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		<%
 			SuccessStoryDetails story = (SuccessStoryDetails) request
 					.getAttribute("story");
@@ -104,7 +104,7 @@
 						</tr>						
 						<tr>
 							<td><label for="storyDate">Kuupäev:</label></td>
-							<td><input type="date" name="newDate" value="<%if (!isNew) {%><%=story.getDate()%><%}%>"></td>
+							<td><input type="text" name="newDate" id="datepicker" value="<%if (!isNew) {%><%=story.getDate()%><%}%>"></td>
 						</tr>
 						
 						<tr>

@@ -28,7 +28,7 @@
 	<body>
 		<div id="wrapper">
 			<!-- include header -->
-			<%@include file='/header.jsp'%>
+			<%@include file='/header2.jsp'%>
 		
 			<div class="page">
 				<div class="content4">

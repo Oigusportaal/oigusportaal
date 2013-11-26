@@ -19,7 +19,7 @@
 <div id="wrapper">
 
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		
 		<!-- end #menu -->
 		<div class="page">

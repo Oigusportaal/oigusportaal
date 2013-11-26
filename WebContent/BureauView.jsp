@@ -3,6 +3,7 @@
 <%@ page import="main.login.UserBean"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%>
 <%@ page import="main.details.BureauDetails"%>
 <%@ page import="main.details.AttorneyDetails"%>
 <%@ page import="main.details.SuccessStoryDetails"%>
@@ -12,18 +13,24 @@
 <html>
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/widgetstyle.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
-	<style type="text/css">
-	#header {
+<style type="text/css">
+#header {
 	position: relative;
 	background: url(images/main_header_bg.png) no-repeat center top;
-	height:150px;
-	}
-	</style>
+	height: 150px;
+}
+</style>
 <title>Õigusportaal</title>
+<script>
+	$(function() {
+		$("#accordion").accordion();
+	});
+</script>
 </head>
 
 <body>
@@ -33,143 +40,138 @@
 
 		<!-- end #menu -->
 		<div class="page">
-		<%
-						UserBean user = (UserBean) (request.getAttribute("user"));						
-						%>
+			<%
+				UserBean user = (UserBean) (request.getAttribute("user"));
+			%>
 			<div class="content">
 				<h1 class="centerHeading"><%=user.getBureauName()%></h1>
-				<div class="post">
-					<div class="entry">
-					<section>
-						<div class="viewProfile">					
+				<div class="entry">
+					<div class="viewProfile">
 						<table>
-						<tr>
-						<td colspan="2"><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>	
-						</tr>					
-						<tr>
-							<td><label for="profileBureauRegistycode">Registrikood:</label></td>
-							<td><%=user.getRegistryCode()%></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileBureauPhone">Telefon:</label></td>
-							<td><%=user.getPhone()%></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileBureauEmail">E-mail:</label></td>
-							<td><a href="mailto:<%=user.getEmail()%>"><%=user.getEmail()%></a></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileBureauAddress">Aadress:</label></td>
-							<td><%=user.getStreet()%></td>
-						<tr>
-							<td><label for="profilePostalCode">Postiindeks:</label>
-							<td><%=user.getPostalcode()%>
-						</tr>
-
-						<tr>
-							<td><label for="profileRegion">Regioon:</label>
-							<td><%=user.getRegionName()%></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileCounties">Maakond:</label></td>
-							<td><%=user.getCountyName()%></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileCities">Linn:</label>
-							<td><%=user.getCityName()%></td>
-						</tr>
-
-						<tr>
-							<td><label for="profileBureauAveragePrize">Keskmine tunnihind:</label></td>
-							<td><%=user.getAveragePrice()%></td>
-						</tr>
-						<tr>
-						<td>Valdkonnad:</td>						
-												
-												
-						<%
-						ArrayList<String> fields = (ArrayList<String>) request.getAttribute("fields");
-						%>
-						
-						<td>
-						<% for (int i = 0; i < fields.size(); i++) { %>
-						<%=fields.get(i)%><br>
+						<% if (user.getImage() != null) { %>
+							<tr>
+								<td colspan="2"><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>
+							</tr>
 						<% } %>
-						</td>
-						</tr>
+							<tr>
+								<td><label for="profileBureauRegistycode"><b>Registrikood:</b></label></td>
+								<td><%=user.getRegistryCode()%></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileBureauPhone"><b>Telefon:</b></label></td>
+								<td><%=user.getPhone()%></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileBureauEmail"><b>E-mail:</b></label></td>
+								<td><a href="mailto:<%=user.getEmail()%>"><%=user.getEmail()%></a></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileBureauAddress"><b>Aadress:</b></label></td>
+								<td><%=user.getStreet()%></td>
+							<tr>
+								<td><label for="profilePostalCode"><b>Postiindeks:</b></label>
+								<td><%=user.getPostalcode()%>
+							</tr>
+
+							<tr>
+								<td><label for="profileRegion"><b>Regioon:</b></label>
+								<td><%=user.getRegionName()%></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileCounties"><b>Maakond:</b></label></td>
+								<td><%=user.getCountyName()%></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileCities"><b>Linn:</b></label>
+								<td><%=user.getCityName()%></td>
+							</tr>
+
+							<tr>
+								<td><label for="profileBureauAveragePrize"><b>Keskmine tunnihind:</b></label></td>
+								<td><%=user.getAveragePrice()%></td>
+							</tr>
+							<tr>
+								<td><b>Valdkonnad:</b></td>
+
+
+								<%
+									ArrayList<String> fields = (ArrayList<String>) request
+											.getAttribute("fields");
+								%>
+
+								<td>
+									<%
+										for (int i = 0; i < fields.size(); i++) {
+									%> <%=fields.get(i)%><br> 
+									<% } %>
+								</td>
+							</tr>
 						</table>
-						</div>
-						<%
-							ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
-									.getAttribute("attorneys");
-						%>
-						<div class="viewAttorneys">
+					</div>
+					<%
+						ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
+								.getAttribute("attorneys");
+					%>
+					<div class="viewAttorneys">
 						<table>
 							<tr>
 								<td><h2 class="noMargins">Juristid:</h2></td>
 							</tr>
 
-							
-								<%
-									for (int i = 0; i < att.size(); i++) {
-								%>
-								<tr>								
-								<td width="100" class="borderdesign">
-									<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
+
+							<%
+								for (int i = 0; i < att.size(); i++) {
+							%>
+							<tr>
+							<td>
+							<% if (att.get(i).getPicturePath() != null) { %> 
+								<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
+								<% } %>
 									<h3><%=att.get(i).getName()%></h3>
-									<p><a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a></p>									
-								</td>
-
-								</tr>
-								<% } %>							
-						</table>
-						</div>
-						<section>						
-						<%
-							ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
-									.getAttribute("successStories");
-						%>
-						<div class="viewStories">
-						<table>
-							<tr>
-								<td><h2>Edulood:</h2></td>
+									<p><a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a></p></td>
 							</tr>
-
-							<tr>
-								<%
-									for (int i = 0; i < stor.size(); i++) {
-								%>
-
-								<td width="20" align="center" class="borderdesign">
-								<td width="100" class="borderdesign">
-									<h3><%=stor.get(i).getParticipants()%></h3>
-									<p><%=stor.get(i).getReference()%></p>
-									<p><%=stor.get(i).getConclusion()%></p>
-								</td>
-
-
-								<%
-									if ((i + 1) % 3 == 0) {
-								%>
-							</tr>
-							<tr>
-								<%
-									}
-
-									}
-								%>
-
-							</tr>
+							<%
+								}
+							%>
 						</table>
 					</div>
+				</div>
+				<%
+				ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
+						.getAttribute("successStories");				
+			%>
+			<div class="stories">
+				<p>
+				<h2 class="centerHeading">Edulood:</h2>
+				</p>
+				<div class="viewStories" id="accordion">
+
+					<%
+						for (int i = 0; i < stor.size(); i++) {
+					%>
+					<h3><%=stor.get(i).getParticipants()%></h3>
+					<div>
+						<p>
+							<b>Kuupäev: </b>
+							<%=stor.get(i).getDateString()%></p>
+						<p>
+							<b>Kokkuvõte: </b>
+							<%=stor.get(i).getConclusion()%></p>
+						<p>
+							<b>Fail:</b> <a href="<%=stor.get(i).getFilepath()%>">Lae alla</a>
+						</p>
 					</div>
-					</div>
+					<%
+						}
+					%>
+				</div>
 			</div>
+			</div>			
 		</div>
 
 

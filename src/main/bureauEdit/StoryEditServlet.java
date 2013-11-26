@@ -45,7 +45,16 @@ public class StoryEditServlet extends HttpServlet {
 		// Get new details
 		String participants = req.getParameter("newParticipants");
 		String reference = req.getParameter("newReference");
-		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
+		String date = req.getParameter("newDate");
+		System.out.println("Selline ta näeb välja: " + date);
+		String year = date.substring(6);
+		String day = date.substring(3,5);
+		String month = date.substring(0,2);
+		System.out.println("Aasta: " + year);
+		System.out.println("Kuu: " + month);
+		System.out.println("Päev: " + day);
+		String dateFix = year + "-" + month + "-" + day;
+//		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
 		String conclusion = req.getParameter("newConclusion");	
 		
 		story.setSuccessStoryId(storyId);
@@ -98,7 +107,7 @@ public class StoryEditServlet extends HttpServlet {
 			
 			if (!story.getDate().equals(date)){
 				dateChanged = true;
-				story.setDate(date);
+				story.setDate(java.sql.Date.valueOf(dateFix));
 			}
 			
 						

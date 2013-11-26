@@ -13,6 +13,7 @@ public String email;
 public String name;
 public String image;
 public int bureauId;
+public String bureauName;
 
 
 
@@ -83,6 +84,12 @@ public int getBureauId() {
 }
 public void setBureauId(int bureauId) {
 	this.bureauId = bureauId;
+}
+public String getBureauName() {
+	return bureauName;
+}
+public void setBureauName(String bureauName) {
+	this.bureauName = bureauName;
 }
 
 

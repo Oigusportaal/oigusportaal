@@ -56,7 +56,7 @@ if (!currentUser.isValid() ){
 	
 	<div id="wrapper">
 		<!-- inlude header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		
 		
 		<div class="page">

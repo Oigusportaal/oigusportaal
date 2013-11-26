@@ -38,7 +38,6 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 	}
 	</style>
 <script src="./js/BureauEdit.js" type="text/javascript"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript" defer="defer">
 	function cascadeSelect(parent, child) {
 		var childOptions = child.find('option:not(.static)');
@@ -72,7 +71,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 <body>
 	<div id="wrapper">
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 
 		<!-- end #menu -->
 		<div class="page">

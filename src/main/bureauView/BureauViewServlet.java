@@ -141,6 +141,7 @@ public class BureauViewServlet extends HttpServlet {
 				story.setParticipants(resultSetStories.getString("participants"));
 				story.setReference(resultSetStories.getString("reference"));
 				story.setSuccessStoryId(resultSetStories.getInt("ssid"));
+				story.setDate(resultSetStories.getDate("date"));
 				
 				successStories.add(story);
 			}

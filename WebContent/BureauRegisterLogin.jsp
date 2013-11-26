@@ -20,7 +20,7 @@
 	<div id="wrapper">
 		<!-- Päis -->
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		
 		<!-- content -->
 		<div >

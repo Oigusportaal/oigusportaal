@@ -18,7 +18,7 @@
 <body>
 	<div id="wrapper" >
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		
 		<div class="page">
 			<p>Sellist kasutajat ei leitud või sisestati vale parool. Palun proovige uuesti või <a href="<%=request.getContextPath()%>/BureauRegister.jsp">registreeruge.</a></p>

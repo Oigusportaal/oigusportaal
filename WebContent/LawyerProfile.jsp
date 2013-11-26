@@ -53,7 +53,7 @@
 <body>
 	<div id="wrapper">
 		<!-- include header -->
-		<%@include file='/header.jsp'%>
+		<%@include file='/header2.jsp'%>
 		<%
 			AttorneyDetails attorney = (AttorneyDetails) request
 					.getAttribute("attorney");
@@ -102,7 +102,10 @@
 					<input type="submit" class="button"
 						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
 						id="addEdit" />
-					<input type="submit" class="button" value="Kustuta" id="delete" onclick="form.action='<%=request.getContextPath()%>/LawyerDeleteServlet';">
+					<% if (!isNew) {%>
+						 <input type="submit" class="button" value="Kustuta" id="delete"
+						onclick="form.action='<%=request.getContextPath()%>/LawyerDeleteServlet';">
+						<%} %>
 				</form>
 			</div>
 		</div>

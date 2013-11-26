@@ -1,6 +1,8 @@
 package main.details;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class SuccessStoryDetails {
 	
@@ -13,7 +15,8 @@ public class SuccessStoryDetails {
 	int bureauId;
 	int fieldid;
 	String filepath;
-	
+	String dateString;
+		
 	public int getSuccessStoryId() {
 		return SuccessStoryId;
 	}
@@ -67,6 +70,12 @@ public class SuccessStoryDetails {
 	}
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
+	}
+	public String getDateString(){
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		System.out.println(date.toString());
+		String text = df.format(date);
+		return text;
 	}
 
 }

@@ -19,7 +19,6 @@ import main.details.BureauDetails;
 /**
  * Servlet implementation class DeleteBureauServlet
  */
-@WebServlet("/DeleteBureauServlet")
 public class DeleteBureauServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

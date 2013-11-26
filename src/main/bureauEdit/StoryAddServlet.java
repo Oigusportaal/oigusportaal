@@ -35,7 +35,12 @@ public class StoryAddServlet extends HttpServlet {
 		// Get attributes
 		String participants = req.getParameter("newParticipants");
 		String reference = req.getParameter("newReference");
-		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
+		String date = req.getParameter("newDate");
+		String year = date.substring(6);
+		String day = date.substring(3,5);
+		String month = date.substring(0,2);
+		String dateFix = year + "-" + month + "-" + day;
+		Date realDate = java.sql.Date.valueOf(dateFix);
 		String conclusion = req.getParameter("newConclusion");
 		int bureauId = Integer.valueOf(req.getParameter("bureauId"));		
 
@@ -61,14 +66,14 @@ public class StoryAddServlet extends HttpServlet {
 
 		try {
 			String sql = "INSERT INTO successstory (participants, reference, date, conclusion, bureauid) VALUES ('"
-					+ participants + "','" + reference + "','" + date + "','" + conclusion + "','" + bureauId + "');";
+					+ participants + "','" + reference + "','" + realDate + "','" + conclusion + "','" + bureauId + "');";
 			statement = curConnection.prepareStatement(sql);
 //			System.out.println(statement);
 			statement.executeUpdate();
 
 			story.setBureauId(bureauId);
 			story.setConclusion(conclusion);
-			story.setDate(date);
+			story.setDate(realDate);
 			story.setParticipants(participants);
 			story.setReference(reference);
 			
