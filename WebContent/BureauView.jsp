@@ -15,9 +15,14 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-<%@ include file="theme/style.css"%>
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 <title>Õigusportaal</title>
 </head>
 

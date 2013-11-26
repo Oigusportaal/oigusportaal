@@ -29,11 +29,14 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-<%@
-include file="theme/style.css"
-%>
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 <script src="./js/BureauEdit.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript" defer="defer">
@@ -92,10 +95,10 @@ include file="theme/style.css"
 						%>
 						<table>
 							<tr>
-								<td><label for="profileBureauLawyers">Juristid:</label></td>
+								<td><label for="profileBureauLawyers"><b>Juristid:</b></label></td>
 								<td>
 									<form action="<%=request.getContextPath()%>/LawyerProfile.jsp" method="post" id="lawyerAddbId">
-										<input type="hidden" name="bureauId" id="bureauId" value="<%=request.getAttribute("bureauId")%>" /> <input type="submit" value="Lisa uus jurist" id="lawyer">
+										<input type="hidden" name="bureauId" id="bureauId" value="<%=request.getAttribute("bureauId")%>" /> <input type="submit" class="button" value="Lisa uus jurist" id="lawyer">
 									</form>
 								</td>
 							</tr>
@@ -111,13 +114,13 @@ include file="theme/style.css"
 									<h3><%=att.get(i).getName()%></h3>
 									<p><%=att.get(i).getEmail()%></p>
 									<form action="<%=request.getContextPath()%>/LawyerProfileServlet" method="post" id="lawyerProfile">
-										<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId()%>" /> <input type="submit" value="Muuda" id="lawyer">
+										<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId()%>" /> <input class="button" type="submit" value="Muuda" id="lawyer">
 									</form>
 								</td>
 
 
 								<%
-									if ((i + 1) % 3 == 0) {
+									if ((i + 1) % 5 == 0) {
 								%>
 							</tr>
 							<tr>
@@ -133,12 +136,14 @@ include file="theme/style.css"
 							ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
 									.getAttribute("successStories");
 						%>
+						<br>
+						<br>
 						<table>
 							<tr>
-								<td><label for="profileBureauSuccessStory">Edulood:</label></td>
+								<td><label for="profileBureauSuccessStory"><b>Edulood:</b></label></td>
 								<td>
 									<form action="<%=request.getContextPath()%>/StoryInitServlet" method="post" id="storyAdd">
-										<input type="hidden" name="bureauId" id="bureauId" value="<%=request.getAttribute("bureauId")%>" /> <input type="submit" value="Lisa uus edulugu" id="lawyer">
+										<input type="hidden" name="bureauId" id="bureauId" value="<%=request.getAttribute("bureauId")%>" /> <input type="submit" class="button" value="Lisa uus edulugu" id="lawyer">
 									</form>
 								</td>
 							</tr>
@@ -156,13 +161,13 @@ include file="theme/style.css"
 									<p><%=stor.get(i).getConclusion()%>
 									</p>
 									<form action="<%=request.getContextPath()%>/StoryProfileServlet" method="post" id="storyProfile">
-										<input type="hidden" name="storyId" value="<%=stor.get(i).getSuccessStoryId()%>" /> <input type="submit" value="Muuda" id="successStory">
+										<input type="hidden" name="storyId" value="<%=stor.get(i).getSuccessStoryId()%>" /> <input type="submit" class="button" value="Muuda" id="successStory">
 									</form>
 								</td>
 
 
 								<%
-									if ((i + 1) % 3 == 0) {
+									if ((i + 1) % 5 == 0) {
 								%>
 							</tr>
 							<tr>
@@ -181,7 +186,7 @@ include file="theme/style.css"
 								<tr id="logo">
 									<td><p>
 											Lae üles uus logo: <input type="file" name="img">
-										</p> <br> <input type="submit" value="Lae üles" id="upladIt"> <input type="hidden" name="generalId" value="<%=request.getAttribute("bureauId")%>"> <input type="hidden" name="action" value="1"></td>
+										</p> <br> <input type="submit" class="button" value="Lae üles" id="upladIt"> <input type="hidden" name="generalId" value="<%=request.getAttribute("bureauId")%>"> <input type="hidden" name="action" value="1"></td>
 									<td><img src="<%=currentUser.getImage()%>" height="150px" alt="Pilti ei leitud"></td>
 								</tr>
 								</form>
@@ -353,7 +358,7 @@ include file="theme/style.css"
 										</tr>
 									</table>
 								</div>
-								<input type="submit" value="Muuda" id="searchingEdit" />
+								<input type="submit" class="button" value="Muuda" id="searchingEdit" />
 							</form>
 					</div>
 				</div>

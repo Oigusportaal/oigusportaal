@@ -34,9 +34,14 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-<%@include file="theme/style.css"%>
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 <script src="js/jquery.js"></script>
 <script src="js/functions.js"></script>
 <script>
@@ -70,7 +75,7 @@
 			<table>
 			<tr id="logo">			
 			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
-			  	<input type="submit" value="Lae üles" id="upladIt">
+			  	<input type="submit" class="button" value="Lae üles" id="upladIt">
 			  	<input type="hidden" name="generalId" value="<%= story.getSuccessStoryId()%>">
 			  	<input type="hidden" name="action" value="3">						  	
 			  	</td>
@@ -114,10 +119,10 @@
 					<input type="hidden" name="bureauId"
 						value="<%=request.getParameter("bureauId")%>" /> <input type="hidden"
 						name="storyId" value="<%if (!isNew) {%><%=story.getSuccessStoryId()%><%}%>" /> <input
-						type="submit" value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
+						type="submit" class="button" value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
 						id="addEdit" />
 						<% if (!isNew) {%>
-						 <input type="submit" value="Kustuta" id="delete"
+						 <input type="submit" class="button" value="Kustuta" id="delete"
 						onclick="form.action='<%=request.getContextPath()%>/StoryDeleteServlet';">
 						<%} %>
 				</form>

@@ -9,11 +9,6 @@ Srchstyle
 	background-color:#f4f4f4;
 }
 
-#header {
-	position: relative;
-	background: url(images/main_header_bg.png) no-repeat center top;
-	height:150px;
-}
 
 #logo{
 	padding-top: 24px;
@@ -51,13 +46,6 @@ a img
   border:none;
 }
 
-/*Main page welcoming content*/
-#firstPageWelcome{
-	background-image: url("./images/welcoming.png") ;
-	background-repeat:no-repeat;
-	height:288px;
-	margin-top:20px;
-}
 
 #firstPageWelcomeText{
 	float:left;
@@ -492,5 +480,53 @@ input#Registreeru{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.button {
+	-moz-box-shadow:inset 0px 1px 6px 0px #cf7d76;
+	-webkit-box-shadow:inset 0px 1px 6px 0px #cf7d76;
+	box-shadow:inset 0px 1px 6px 0px #cf7d76;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cc372d), color-stop(1, #a6261b) );
+	background:-moz-linear-gradient( center top, #cc372d 5%, #a6261b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc372d', endColorstr='#a6261b');
+	background-color:#cc372d;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:1px solid #a81c12;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Times New Roman;
+	font-size:12px;
+	font-weight:normal;
+	font-style:normal;
+	height:20px;
+	line-height:20px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 2px 0px #780800;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a6261b), color-stop(1, #cc372d) );
+	background:-moz-linear-gradient( center top, #a6261b 5%, #cc372d 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6261b', endColorstr='#cc372d');
+	background-color:#a6261b;
+}.button:active {
+	position:relative;
+	top:1px;
+}
+
+
+
 
 

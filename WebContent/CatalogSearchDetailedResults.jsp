@@ -52,9 +52,14 @@
                 });
         </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-    <%@include file="theme/style.css" %>
-    </style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
                 
                 <title>Õigusportaal</title>
         </head>
@@ -184,7 +189,7 @@
                                 	<input type="checkbox" name="Date" value="Date" checked="checked" class="catalogCheckbox">  Kasuta otsingus
                                 </td>
                              <tr>
-                             	<td colspan="4" align="right" ><input type="submit" value="Otsi" id="searching"/></td>
+                             	<td colspan="4" align="right" ><input type="submit" class="button" value="Otsi" id="searching"/></td>
                            	</tr>
                        	</table>
                         </form>

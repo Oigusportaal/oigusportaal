@@ -6,9 +6,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Õigusportaal</title>
-<style type="text/css">
-    <%@include file="theme/style.css" %>
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 </head>
 <body>
 	<div id="wrapper" >

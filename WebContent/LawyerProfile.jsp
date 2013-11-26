@@ -35,9 +35,14 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-<%@include file="theme/style.css"%>
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 <script src="js/jquery.js"></script>
 <script src="js/functions.js"></script>
 <title>Õigusportaal</title>
@@ -67,7 +72,7 @@
 			<table>
 			<tr id="logo">			
 			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
-			  	<input type="submit" value="Lae üles" id="upladIt">
+			  	<input type="submit" class="button" value="Lae üles" id="upladIt">
 			  	<input type="hidden" name="generalId" value="<%= attorney.getAttorneyId() %>">
 			  	<input type="hidden" name="action" value="2">						  	
 			  	</td>
@@ -94,10 +99,10 @@
 					</table>
 					<input type="hidden" name="bureauId" value="<%= request.getParameter("bureauId") %>"/>
 					<input type="hidden" name="attorneyId" value="<% if(!isNew) {%><%=attorney.getAttorneyId()%><%}%>"/>					
-					<input type="submit"
+					<input type="submit" class="button"
 						value="<%if (isNew) {%>Lisa<%} else%>Muuda<%;%>"
 						id="addEdit" />
-					<input type="submit" value="Kustuta" id="delete" onclick="form.action='<%=request.getContextPath()%>/LawyerDeleteServlet';">
+					<input type="submit" class="button" value="Kustuta" id="delete" onclick="form.action='<%=request.getContextPath()%>/LawyerDeleteServlet';">
 				</form>
 			</div>
 		</div>

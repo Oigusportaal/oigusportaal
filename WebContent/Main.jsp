@@ -6,9 +6,29 @@
 	<head>
 	<link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
 	<style type="text/css">
-    <%@include file="theme/style.css" %>
-    </style>
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	
+	/*Main page welcoming content*/
+	#firstPageWelcome{
+	background-image: url("./images/welcoming.png") ;
+	background-repeat:no-repeat;
+	height:288px;
+	margin-top:20px;
+	}
+
+	.image {
+	background-image:url("images/foe_bc.png");
+	background-repeat: no-repeat;
+	height:350px;
+	margin-left:17px;
+	}
+	</style>
 		<title>Õigusportaal</title>
 	</head>
 	

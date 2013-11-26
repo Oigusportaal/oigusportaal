@@ -13,11 +13,15 @@
 	<head>
 	<link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-    <%@include file="theme/style.css" %>
-    </style>		
-		<title>Õigusportaal</title>
-		
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
+	<title>Õigusportaal</title>
 	</head>
 	
 	<body>
@@ -42,9 +46,9 @@
 							
 					
 						<tr>
-							<td><input type="submit" value="Logi sisse"  class="loginInputSpecial"/></td>
+							<td><input type="submit" class="button" value="Logi sisse"  class="loginInputSpecial"/></td>
 						</tr>
-								
+						<br>		
 						<tr>
 							<td colspan="2"><a href="<%=request.getContextPath()%>/ForgotPassword.jsp" style="">Unustasid parooli?</a>
 							<a href="<%=request.getContextPath()%>/BureauRegister.jsp">Registreeru</a></td>

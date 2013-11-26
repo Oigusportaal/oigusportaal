@@ -15,9 +15,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <title>Õigusportaal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-    <%@include file="theme/style.css" %>
-    </style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 <script src="./js/RegistrationForm.js" type="text/javascript" ></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 <script type="text/javascript" defer="defer">
@@ -169,7 +174,7 @@
 							</tr>								
 						
 							<tr>
-								<td><input type="submit" value="Registreeru" name="submit" id="Registreeru" /></td>
+								<td><input type="submit" value="Registreeru" class="button" name="submit" id="Registreeru" /></td>
 								<td><span id="confirmInput"></span></tr>
 							<tr>
 						</table>

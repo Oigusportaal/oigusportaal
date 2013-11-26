@@ -34,9 +34,14 @@ if (!currentUser.isValid() ){
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-    <%@include file="theme/style.css" %>
-    </style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
+	<style type="text/css">
+	#header {
+	position: relative;
+	background: url(images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
+	</style>
 		<script src="js/jquery.js"></script>
 		<script src="js/functions.js"></script>
 		<title>Õigusportaal</title>
@@ -55,10 +60,10 @@ if (!currentUser.isValid() ){
 		
 		
 		<div class="page">
-			<h2>Otsing</h2>
+			
 	
 			<div class="page">
-			<h2>--Bureaus--</h2>
+			<h2 class="centerHeading">Bürood</h2>
 			<table width="95%" id="adminSearchResults">
 				<tr height="10%">
 				  <td class="firstColumn" align="center">Bureau Name</td>
@@ -72,7 +77,7 @@ if (!currentUser.isValid() ){
 					%>
 
 					<td width="20" align="center" class="firstColumn">
-						<h1> <%=br.get(i).getBureauName() %></h1>
+						<h1><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getBureauName() %></a></h1>
 					</td>
 					 
 					<td width="100" class="middleColumn">
