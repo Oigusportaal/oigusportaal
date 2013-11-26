@@ -202,7 +202,7 @@
                                 %>
                                 
 								<tr class="borderdesign"  >								
-								<td width="100" class="firstColumn"><img src="<%=br.get(i).getImage()%>"/></td>
+								<td width="100" class="firstColumn"><img height="150px" src="<%=br.get(i).getImage()%>"/></td>
 	                                <td width="20" align="center" class="middleColumn">
 	                                	<td width="100" class="lastColumn">
 	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getName()%></a></h3>
