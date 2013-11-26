@@ -192,12 +192,12 @@
                         
                         <div class="page">
                   
-                			<h2 id="searchHeader2" style="margin-left:auto; margin-right:auto; width: 300px">-- Kõik leitud bürood --</h2>
+                			<h2 id="searchHeader2" >-- Kõik leitud bürood --</h2>
                 			<table id="searchResults" width="95%"  >                        
                                 <%
                                         for (int i = 0; i < br.size(); i++) {
                                 %>
-								<tr class="borderdesign" style="border:1x solid black;" >
+								<tr class="borderdesign"  >
 	                                <td width="20" align="center" class="firstColumn">
 	                                	<td width="100" class="middleColumn">
 	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getFieldName() + " " + br.get(i).getBureauName()+ " " + br.get(i).getEmail() %></a></h3>

@@ -40,86 +40,77 @@ if (!currentUser.isValid() ){
 		<script src="js/jquery.js"></script>
 		<script src="js/functions.js"></script>
 		<title>Õigusportaal</title>
-	</head>
+</head>
 	
-	<body>
+<body>
 	
 	<%
 		ArrayList<BureauDetails> br = (ArrayList<BureauDetails>) request
 				.getAttribute("bureau");
-	
-
-
 	%>
 	
-		<div id="wrapper">
-			<!-- inlude header -->
-			<%@include file='/header.jsp'%>
-			
-			
-			<div class="page">
-				<h2>Otsing</h2>
+	<div id="wrapper">
+		<!-- inlude header -->
+		<%@include file='/header.jsp'%>
 		
+		
+		<div class="page">
+			<h2>Otsing</h2>
+	
 			<div class="page">
 			<h2>--Bureaus--</h2>
-		<table width="95%" border="1">
-		
-		<tr>
-  <td class="borderdesign">Bureau Name</td>
-  <td class="borderdesign">Status</td>
-  <td class="borderdesign">Manage</td>
-</tr>
-			<tr>
-				<%
-					for (int i = 0; i < br.size(); i++) {
+			<table width="95%" id="adminSearchResults">
+				<tr height="10%">
+				  <td class="firstColumn" align="center">Bureau Name</td>
+				  <td class="middleColumn">Status</td>
+				  <td class="lastColumn">Manage</td>
+				</tr>
+				
+				<tr>
+					<%
+						for (int i = 0; i < br.size(); i++) {
+					%>
+
+					<td width="20" align="center" class="firstColumn">
+						<h1> <%=br.get(i).getBureauName() %></h1>
+					</td>
+					
+					<td width="100" class="middleColumn">
+						<%  String dummy=null;	
+							if(br.get(i).active==1)
+								dummy="Active";
+							else if(br.get(i).active==0)
+								dummy="Inactive";
+						 %>
+						<h3><%=dummy %> </h3>
+					</td>
+				
+					<td width="100" class="lastColumn">				
+						<a href="<%=request.getContextPath()%>/DeleteBureauServlet?param=<%=br.get(i).getEmail() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#FE062F;">Delete <%=br.get(i).getBureauName() %></span></a>
+				
+						<% 	
+							if(br.get(i).active==1) {
+							dummy="Active";
+						%>
 						
-					
-				%>
+						<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#4C06FE;">Inactivate</span></a>
+				
+						<% } %>
+				
+						<%	if(br.get(i).active==0) {
+							dummy="Inactive";
+				 		%>		
+				 		<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#12FE06;">Activate</span></a>
+						<% } %>
+						 
+					</td>
+				</tr>
+				<tr>
+					<%
+						}
+					%>
 
-				<td width="20" align="center" class="borderdesign">
-				<h1> <%=br.get(i).getBureauName() %></h1>
-				</td>
-				<td width="100" class="borderdesign"><%  String dummy=null;	
-	if(br.get(i).active==1)
-		dummy="Active";
-	else if(br.get(i).active==0)
-		dummy="Inactive";
- %>
-					<h3><%=dummy %> </h3>
-				</td>
-				
-				
-			
-					
-				<td width="100" class="tdnonborder">				<a href="<%=request.getContextPath()%>/DeleteBureauServlet?param=<%=br.get(i).getEmail() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#FE062F;">Delete <%=br.get(i).getBureauName() %></span></a>
-				
-				<% 	
-	if(br.get(i).active==1) {
-		dummy="Active";
-%>
-				<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#4C06FE;">Inactivate</span></a>
-				
-				<% } %>
-				
-			<%	if(br.get(i).active==0) {
-		dummy="Inactive";
-				 %>		
-				 
-				 				<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#12FE06;">Activate</span></a>
-				 <% } %>
-				 
-				</td>
-
-			
-			</tr>
-			<tr>
-				<%
-					}
-
-					
-				%>
-
-			</tr>
+				</tr>
 			</table>
 			</div>
 <button onclick="location.href='a.jsp'">Logout</button>			

@@ -138,13 +138,17 @@ td.column_height p {
 	margin-right:auto; 
 	width: 300px
 }
-#searchResults{
+#searchResults{ /*CatalogSearch, CatalogSearchDetailed*/
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:20px;
 	border-collapse:separate;
 	border-spacing:0px 10px;
 }
+
+
+
+
 .borderdesign{
 	height:100px;
 }
@@ -168,6 +172,18 @@ td.column_height p {
 	border-bottom-right-radius:10px;
 }
 /*END search results*/
+
+/*admin page*/
+#adminSearchResults{
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	border-collapse:separate;
+	border-spacing:0px 10px;
+}
+#adminSearchResults tr:FIRST-CHILD{
+	font-size: 25px;
+}
 
 .page {
 	overflow: hidden;
