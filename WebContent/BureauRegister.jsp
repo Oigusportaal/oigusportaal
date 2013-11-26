@@ -60,7 +60,7 @@
 		<div class="page" >
 			<div id="registering" >
 				<h1>Registreerimine</h1>
-					<form action="BureauRegistrationServlet" method="get" class="cascade" id="registration_form" onsubmit="return validateForm()">
+					<form action="BureauRegistrationServlet" method="post" class="cascade" id="registration_form" onsubmit="return validateForm()">
 					 	<table>
 						  	<tr>
 						 		<td><input type="text" name="email" id='registerEmail' placeholder="email@email.com" onchange="validateEmail()" onkeyup="validateEmail()"/></td>
