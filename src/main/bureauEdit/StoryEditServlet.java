@@ -138,7 +138,7 @@ public class StoryEditServlet extends HttpServlet {
 			
 			req.setAttribute("story", story);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/StoryProfileServlet");
+					"/BureauProfileServlet");
 			rd.forward(req, resp);
 
 		} catch (SQLException e) {

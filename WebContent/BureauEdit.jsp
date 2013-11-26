@@ -107,9 +107,9 @@ include file="theme/style.css"
 
 								<td width="20" align="center" class="borderdesign">
 								<td width="100" class="borderdesign">
+									<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud">
 									<h3><%=att.get(i).getName()%></h3>
-									<p><%=att.get(i).getEmail()%>
-									</p>
+									<p><%=att.get(i).getEmail()%></p>
 									<form action="<%=request.getContextPath()%>/LawyerProfileServlet" method="post" id="lawyerProfile">
 										<input type="hidden" name="attorneyId" value="<%=att.get(i).getAttorneyId()%>" /> <input type="submit" value="Muuda" id="lawyer">
 									</form>

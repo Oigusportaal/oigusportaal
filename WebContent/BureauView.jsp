@@ -28,21 +28,19 @@
 
 		<!-- end #menu -->
 		<div class="page">
-			<div class="content">
-				<h1>Firma profiil</h1>
-				<div class="post">
-					<div class="entry">
-											<%
+		<%
 						UserBean user = (UserBean) (request.getAttribute("user"));						
 						%>
+			<div class="content">
+				<h1 class="centerHeading"><%=user.getBureauName()%></h1>
+				<div class="post">
+					<div class="entry">
+					<section>
+						<div class="viewProfile">					
 						<table>
 						<tr>
-						<td><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>
-						<tr>
-							<td><label for="profileBureauName">Firma nimi:</label></td>
-							<td><%=user.getBureauName()%></td>
-						</tr>
-
+						<td colspan="2"><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>	
+						</tr>					
 						<tr>
 							<td><label for="profileBureauRegistycode">Registrikood:</label></td>
 							<td><%=user.getRegistryCode()%></td>
@@ -55,7 +53,7 @@
 
 						<tr>
 							<td><label for="profileBureauEmail">E-mail:</label></td>
-							<td><%=user.getEmail()%></td>
+							<td><a href="mailto:<%=user.getEmail()%>"><%=user.getEmail()%></a></td>
 						</tr>
 
 						<tr>
@@ -100,48 +98,41 @@
 						</td>
 						</tr>
 						</table>
+						</div>
 						<%
 							ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
 									.getAttribute("attorneys");
 						%>
-						
+						<div class="viewAttorneys">
 						<table>
 							<tr>
-								<td><label for="profileBureauLawyers">Juristid:</label></td>
+								<td><h2 class="noMargins">Juristid:</h2></td>
 							</tr>
 
-							<tr>
+							
 								<%
 									for (int i = 0; i < att.size(); i++) {
 								%>
-
-								<td width="20" align="center" class="borderdesign">
+								<tr>								
 								<td width="100" class="borderdesign">
+									<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
 									<h3><%=att.get(i).getName()%></h3>
-									<p><%=att.get(i).getEmail()%></p> <img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
+									<p><a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a></p>									
 								</td>
 
-
-								<%
-									if ((i + 1) % 3 == 0) {
-								%>
-							</tr>
-							<tr>
-								<%
-									}
-
-									}
-								%>
-
-							</tr>
-						</table>						
+								</tr>
+								<% } %>							
+						</table>
+						</div>
+						<section>						
 						<%
 							ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
 									.getAttribute("successStories");
 						%>
+						<div class="viewStories">
 						<table>
 							<tr>
-								<td><label for="profileBureauSuccessStory">Edulood:</label></td>
+								<td><h2>Edulood:</h2></td>
 							</tr>
 
 							<tr>
@@ -170,9 +161,9 @@
 
 							</tr>
 						</table>
-
 					</div>
-				</div>
+					</div>
+					</div>
 			</div>
 		</div>
 

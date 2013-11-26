@@ -113,7 +113,7 @@ public class LawyerEditServlet extends HttpServlet {
 
 			req.setAttribute("attorney", attorney);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/LawyerProfileServlet");
+					"/BureauProfileServlet");
 			rd.forward(req, resp);
 
 		} catch (SQLException e) {

@@ -452,3 +452,29 @@ input#Registreeru{
 #bureauProfileTable td{
 	/*border: 1px solid #000000;*/
 }
+
+.viewProfile{
+	margin-left: 7%;
+	width: 50%; 
+    float: left;
+}
+
+.viewAttorneys{	
+	margin-left: 50%;	
+}
+
+.centerHeading{
+	text-align: center;
+}
+
+.noMargins{
+	margin-top: -8px;
+}
+
+.entry{
+	width: 124%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
