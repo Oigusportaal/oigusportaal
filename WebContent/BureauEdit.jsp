@@ -95,7 +95,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 								ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request.getAttribute("attorneys");
 							%>
 							<table>
-								<tr>
+								<tr>									
 									<td><label for="profileBureauLawyers"><b>Juristid:</b></label></td>
 									<td>
 										<form action="<%=request.getContextPath()%>/LawyerProfile.jsp" method="post" id="lawyerAddbId">
@@ -109,7 +109,8 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 										for (int i = 0; i < att.size(); i++) {
 									%>
 
-									<td width="20" align="center" class="borderdesign">
+									
+									<td width="20" align="center" class="borderdesign"></td>
 									<td width="200px" class="borderdesign">
 										<%
 											if (att.get(i).getPicturePath() != null) {
@@ -144,7 +145,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 							%>
 							<br> <br>
 							<table>
-								<tr>
+								<tr>									
 									<td><label for="profileBureauSuccessStory"><b>Edulood:</b></label></td>
 									<td>
 										<form action="<%=request.getContextPath()%>/StoryInitServlet" method="post" id="storyAdd">
@@ -158,8 +159,8 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 										for (int i = 0; i < stor.size(); i++) {
 									%>
 
-									<td width="20" align="center" class="borderdesign">
-									<td width="100" class="borderdesign">
+									<td width="20" align="center" class="borderdesign"></td>
+									<td width="200px" class="borderdesign">
 										<h3><%=stor.get(i).getParticipants()%></h3>
 										<p><%=stor.get(i).getReference()%>
 										</p>
