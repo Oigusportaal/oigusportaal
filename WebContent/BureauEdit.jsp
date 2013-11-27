@@ -108,7 +108,7 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 									%>
 
 									<td width="20" align="center" class="borderdesign">
-									<td width="100" class="borderdesign">
+									<td width="200px" class="borderdesign">
 										<%
 											if (att.get(i).getPicturePath() != null) {
 										%> <img src="<%=att.get(i).getPicturePath()%>" class="profilepic" alt="Pilti ei leitud"> <%

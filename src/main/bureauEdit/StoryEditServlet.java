@@ -62,7 +62,11 @@ public class StoryEditServlet extends HttpServlet {
 			dateFix = date;
 		}
 //		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
-		String conclusion = req.getParameter("newConclusion");	
+		String conclusion = req.getParameter("newConclusion");
+		boolean tooLong = false;
+		if(conclusion.length() > 300){
+			tooLong = true;
+		}
 		
 		story.setSuccessStoryId(storyId);
 		// Initiate database connection
@@ -107,7 +111,7 @@ public class StoryEditServlet extends HttpServlet {
 			boolean referenceChanged = false;
 
 			// See if any of the values changed
-			if (!story.getConclusion().equals(conclusion)){
+			if (!story.getConclusion().equals(conclusion) && !tooLong){
 				conclusionChanged = true;
 				story.setConclusion(conclusion);
 			}

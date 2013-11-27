@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,91 +43,10 @@ public class FieldSearchServlet extends HttpServlet {
 
 		System.out.println("Welcome to FieldSearchServlet");
 
-		String fieldName = request.getParameter("param");
-		System.out.println(fieldName);
+				
+		int fieldId = Integer.parseInt(request.getParameter("param"));
 
-		int fieldId = 0;
-
-		switch (fieldName) {
-		case "CivilLaw":
-			fieldId = 1;
-			break;
-		case "Privitization":
-			fieldId = 2;
-			break;
-		case "DebtCollectionServices":
-			fieldId = 3;
-			break;
-		case "IntellectualProperty":
-			fieldId = 4;
-			break;
-		case "ITLaw":
-			fieldId = 5;
-			break;
-		case "EnvironmentalLaw":
-			fieldId = 6;
-			break;
-		case "InsuranceLaw":
-			fieldId = 7;
-			break;
-		case "NonMovableProperty":
-			fieldId = 8;
-			break;
-		case "CompetitionLaw":
-			fieldId = 9;
-			break;
-		case "CriminalLaw":
-			fieldId = 10;
-			break;
-		case "Divorce":
-			fieldId = 11;
-			break;
-		case "TrafficLaw":
-			fieldId = 12;
-			break;
-		case "EconomicLaw":
-			fieldId = 13;
-			break;
-		case "TaxLaw":
-			fieldId = 14;
-			break;
-		case "MedicineLaw":
-			fieldId = 15;
-			break;
-		case "MediaAndTelecommunicationLaw":
-			fieldId = 16;
-			break;
-		case "PropertyReform":
-			fieldId = 17;
-			break;
-		case "BankingAndFinancialFunds":
-			fieldId = 18;
-			break;
-		case "FamilyLaw":
-			fieldId = 19;
-			break;
-		case "HeritageLaw":
-			fieldId = 20;
-			break;
-		case "RestructingLaw":
-			fieldId = 21;
-			break;
-		case "SocialWelfareLaw":
-			fieldId = 22;
-			break;
-		case "TransportTradeAndSeaLaw":
-			fieldId = 23;
-			break;
-		case "LaborLaw":
-			fieldId = 24;
-			break;
-		case "AliensLaw":
-			fieldId = 25;
-			break;
-		case "MergersAndAcquisitions":
-			fieldId = 26;
-			break;
-		}
+		
 
 		System.out.println(fieldId);
 
@@ -158,8 +81,7 @@ public class FieldSearchServlet extends HttpServlet {
 				br.setEmail(rs.getString("email"));
 				br.setImage(rs.getString("image"));
 				br.setCity(rs.getString("cityname"));
-				br.setAveragePrice(rs.getInt("averageprice"));
-				br.setFieldName(fieldName);
+				br.setAveragePrice(rs.getInt("averageprice"));				
 
 				// br.setPassword(rs.getString("password"));
 				// br.setAveragePrice(rs.getInt("averagePrice"));
@@ -184,8 +106,6 @@ public class FieldSearchServlet extends HttpServlet {
 						.println("--------------------------------------------");
 
 			}
-
-			System.out.println(bureau.get(0).getBureauName());
 
 			
 
@@ -222,22 +142,30 @@ public class FieldSearchServlet extends HttpServlet {
 						
 					}
 				}
-				System.out.println("Last participants: " + earliest.getParticipants());
-				System.out.println("Last path: " + earliest.getFilepath());
-				
-				bureau.get(i).setLastStoryParticipants(earliest.getParticipants());
-				bureau.get(i).setLastStoryPath(earliest.getFilepath());
+				if (earliest != null){
+					System.out.println("Last participants: " + earliest.getParticipants());
+					System.out.println("Last path: " + earliest.getFilepath());
+					
+					bureau.get(i).setLastStoryParticipants(earliest.getParticipants());
+					bureau.get(i).setLastStoryPath(earliest.getFilepath());
+				}
 				
 			}
+			if (bureau.size() !=0){
+				rsstory.close();
+				sstory.close();
+			}
 			
-			rsstory.close();
-			sstory.close();
-			
-			
-			
+			Calendar dateTo = Calendar.getInstance();
+			Calendar dateFrom = Calendar.getInstance();  
+		    dateFrom.setTime(new Date());  
+		    Format f = new SimpleDateFormat("MM/dd/yyyy");
+		    dateFrom.add(Calendar.YEAR,-1);  
+		    System.out.println(f.format(dateFrom.getTime())); 
 			curConnection.close();
-			
-			request.setAttribute("fieldName", fieldName);
+			request.setAttribute("dateFrom", f.format(dateFrom.getTime()));
+			request.setAttribute("dateTo", f.format(dateTo.getTime()));
+			request.setAttribute("fieldId", fieldId);
 			request.setAttribute("bureau", bureau);
 			request.getRequestDispatcher("CatalogSearch.jsp").forward(request,
 					response);

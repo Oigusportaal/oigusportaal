@@ -32,6 +32,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/favicon.ico">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/jquery.Char.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/theme/widgetstyle.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/theme/style.css" />
@@ -49,6 +50,14 @@
   
 
  </script>
+ <script type="text/javascript">
+	$(document).ready(function(){			
+		$('#countable1').jqEasyCounter({
+			'maxChars': 300,
+			'maxCharsWarning': 280
+		});	
+});
+</script>
 <title>Õigusportaal</title>
 
 
@@ -82,12 +91,14 @@
 			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
 			<table>
 			<tr id="logo">			
-			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
+			  	<td><p>Lae üles uus dokument: <input type="file" name="img" ></p><br>
 			  	<input type="submit" class="button" value="Lae üles" id="upladIt">
 			  	<input type="hidden" name="generalId" value="<%= story.getSuccessStoryId()%>">
 			  	<input type="hidden" name="action" value="3">						  	
 			  	</td>
-			  	<td><a href="<%=story.getFilepath()%>">Lae alla</a></td>						  	
+			  	<% if (story.getFilepath() != null) { %>
+			  	<td><a href="<%=story.getFilepath()%>">Lae dokument alla</a></td>	
+			  	<% } %>					  	
 			 </tr>
 			 </table>
 			 </form>
@@ -101,7 +112,7 @@
 					<table id="storyProfileTable">
 						<tr>
 							<td><label for="storyParticipants">Osalejad</label></td>
-							<td><input type="text" id="newParticipants"
+							<td><input type="text" autofocus id="newParticipants"
 								name="newParticipants"
 								value="<%if (!isNew) {%><%=story.getParticipants()%><%}%>"></td>
 						</tr>
@@ -118,7 +129,7 @@
 						<tr>
 							<td><label for="storyConclusion">Kokkuvõte:</label>
 							<td>
-							<textarea rows="4" cols="50" name="newConclusion"><%if (!isNew) {%><%=story.getConclusion()%><%}%></textarea>
+							<textarea id="countable1" rows="4" cols="50" maxlength="300" name="newConclusion"><%if (!isNew) {%><%=story.getConclusion()%><%}%></textarea>
 							</td>
 						</tr>
 						</table>

@@ -28,14 +28,13 @@
 	    // and set some default parameters.
 	    $( "#slider" ).slider({
 	      range: "min",
-	      value: 50,
+	      value: <%if(request.getAttribute("averageprice") != null){%><%=request.getAttribute("averageprice")%><%} else {%>50<%}%>,
 	      min: 0,
 	      max: 100,
 	      slide: function( event, ui ) {
 	      
 	        // While sliding, update the value in the #amount div element
-	        $( "#amount" ).html( ui.value );
-	        console.log( ui.value );
+	        $( "#amount" ).html( ui.value );	        
 	        $("input[name='averageprice']").val( ui.value );
 	        
 	      }
@@ -109,54 +108,61 @@
 								
 								
 								<td>
-									<select name="regions" class="regSelect">
-										<option value="0">--Vali regioon--</option>
-										<option value="1" >Pıhja-Eesti</option>
-										<option value="2">Ida-Eesti</option>
-										<option value="3">L‰‰ne-Eesti</option>
-										<option value="4">Lıuna-Eesti</option>
-									</select>
+									<% int region = (Integer) request.getAttribute("regionValue");%> 
+									<select name="regions" id="editRegion" class="regSelect" onchange="validateRegion()">
+										<option value="0">-- Vali regioon --</option>
+										<option value="1" <%if (region == 1) {%> selected <%}%>>Pıhja-Eesti</option>
+										<!-- /*Harjumaa, , J‰rvamaa, Raplamaa */ -->
+										<option value="2" <%if (region == 2) {%> selected <%}%>>Ida-Eesti</option>
+										<!-- Ida-Virumaa, L‰‰ne-Virumaa, Jıgevamaa -->
+										<option value="3" <%if (region == 3) {%> selected <%}%>>L‰‰ne-Eesti</option>
+										<!--  L‰‰nemaa, Hiiumaa, Saaremaa, P‰rnumaa -->
+										<option value="4" <%if (region == 4) {%> selected <%}%>>Lıuna-Eesti</option>
+										<!--  Viljandimaa, Tartumaa, Pılvamaa, Valgamaa, Vırumaa -->
+									</select>									
 								</td>
 								
 								<td>
-									<select name="counties" class="countySelect" >
-										<option value="0" class="static">--Vali maakond--</option>
-										<option value="1" class="sub_1">Harjumaa</option>
-										<option value="2" class="sub_1">J‰rvamaa</option>
-										<option value="3" class="sub_1">Raplamaa</option>
-										<option value="4" class="sub_2">Ida-Virumaa</option>
-										<option value="5" class="sub_2">Jıgevamaa</option>
-										<option value="6" class="sub_2">L‰‰ne-Virumaa</option>
-										<option value="7" class="sub_3">Hiiumaa</option>
-										<option value="8" class="sub_3">L‰‰nemaa</option>
-										<option value="9" class="sub_3">P‰rnumaa</option>
-										<option value="10" class="sub_3">Saaremaa</option>
-										<option value="11" class="sub_4">Pılvamaa</option>
-										<option value="12" class="sub_4">Tartumaa</option>
-										<option value="13" class="sub_4">Valgamaa</option>
-										<option value="14" class="sub_4">Viljandimaa</option>
-										<option value="15" class="sub_4">Vırumaa</option>
+									<% int county = (Integer) request.getAttribute("countyValue");%> 
+									<select name="counties" id="editCounty" class="countySelect" onchange="validateCounty()">
+											<option value="0" class="static">--Vali maakond--</option>
+											<option value="1" class="sub_1" <%if (county == 1) {%> selected <%}%>>Harjumaa</option>
+											<option value="2" class="sub_1" <%if (county == 2) {%> selected <%}%>>J‰rvamaa</option>
+											<option value="3" class="sub_1" <%if (county == 3) {%> selected <%}%>>Raplamaa</option>
+											<option value="4" class="sub_2" <%if (county == 4) {%> selected <%}%>>Ida-Virumaa</option>
+											<option value="5" class="sub_2" <%if (county == 5) {%> selected <%}%>>Jıgevamaa</option>
+											<option value="6" class="sub_2" <%if (county == 6) {%> selected <%}%>>L‰‰ne-Virumaa</option>
+											<option value="7" class="sub_3" <%if (county == 7) {%> selected <%}%>>Hiiumaa</option>
+											<option value="8" class="sub_3" <%if (county == 8) {%> selected <%}%>>L‰‰nemaa</option>
+											<option value="9" class="sub_3" <%if (county == 9) {%> selected <%}%>>P‰rnumaa</option>
+											<option value="10" class="sub_3" <%if (county == 10) {%> selected <%}%>>Saaremaa</option>
+											<option value="11" class="sub_4" <%if (county == 11) {%> selected <%}%>>Pılvamaa</option>
+											<option value="12" class="sub_4" <%if (county == 12) {%> selected <%}%>>Tartumaa</option>
+											<option value="13" class="sub_4" <%if (county == 13) {%> selected <%}%>>Valgamaa</option>
+											<option value="14" class="sub_4" <%if (county == 14) {%> selected <%}%>>Viljandimaa</option>
+											<option value="15" class="sub_4" <%if (county == 15) {%> selected <%}%>>Vırumaa</option>
 									</select>
 								</td>
 								<td>
-									<select name="cities" class="citySelect" >
-										<option value="0" class="static">--Vali linn--</option>
-										<option value="1" class="sub_1">Tallinn</option>
-										<option value="2" class="sub_2">Paide</option>
-										<option value="3" class="sub_3">Rapla</option>
-										<option value="4" class="sub_4">Jıhvi</option>
-										<option value="5" class="sub_5">Jıgeva</option>
-										<option value="6" class="sub_6">Rakvere</option>
-										<option value="7" class="sub_7">K‰rdla</option>
-										<option value="8" class="sub_8">Haapsalu</option>
-										<option value="9" class="sub_9">P‰rnu</option>
-										<option value="10" class="sub_10">Kuressaare</option>
-										<option value="11" class="sub_11">Pılva</option>
-										<option value="12" class="sub_12">Tartu</option>
-										<option value="13" class="sub_13">Valga</option>
-										<option value="14" class="sub_14">Viljandi</option>
-										<option value="15" class="sub_15">Vıru</option> 
-									</select>		
+									<%int city = (Integer) request.getAttribute("cityValue");%> 
+									<select name="cities" id="editCity" class="citySelect" onblur="validateForm()" placeholder="Linn" onchange="validateCity()">
+											<option value="0" class="static">--Vali linn--</option>
+											<option value="1" class="sub_1" <%if (city == 1) {%> selected <%}%>>Tallinn</option>
+											<option value="2" class="sub_2" <%if (city == 2) {%> selected <%}%>>Paide</option>
+											<option value="3" class="sub_3" <%if (city == 3) {%> selected <%}%>>Rapla</option>
+											<option value="4" class="sub_4" <%if (city == 4) {%> selected <%}%>>Jıhvi</option>
+											<option value="5" class="sub_5" <%if (city == 5) {%> selected <%}%>>Jıgeva</option>
+											<option value="6" class="sub_6" <%if (city == 6) {%> selected <%}%>>Rakvere</option>
+											<option value="7" class="sub_7" <%if (city == 7) {%> selected <%}%>>K‰rdla</option>
+											<option value="8" class="sub_8" <%if (city == 8) {%> selected <%}%>>Haapsalu</option>
+											<option value="9" class="sub_9" <%if (city == 9) {%> selected <%}%>>P‰rnu</option>
+											<option value="10" class="sub_10" <%if (city == 10) {%> selected <%}%>>Kuressaare</option>
+											<option value="11" class="sub_11" <%if (city == 11) {%> selected <%}%>>Pılva</option>
+											<option value="12" class="sub_12" <%if (city == 12) {%> selected <%}%>>Tartu</option>
+											<option value="13" class="sub_13" <%if (city == 13) {%> selected <%}%>>Valga</option>
+											<option value="14" class="sub_14" <%if (city == 14) {%> selected <%}%>>Viljandi</option>
+											<option value="15" class="sub_15" <%if (city == 15) {%> selected <%}%>>Vıru</option>
+									</select>	
 								</td>
 							</tr>
 							<!--[if IE]>
@@ -185,16 +191,16 @@
 									<td><div id="price">
                                 		<div id="slider" style="margin-top:42px;"></div> 
                                 		<div id="amount" style="color:#777;font-size:20px;text-align:center;"></div>
-                                		<input type="hidden" name="averageprice" id="averageprice" value="50">
+                                		<input type="hidden" name="averageprice" id="averageprice" value="<%=request.getAttribute("averageprice")%>">
                                 		</div>
 	                                </td>    
 	                          		<td class="column_height" id="column_checkbox">
-										<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
+										<input type="checkbox" name="Price" value="Price" class="catalogCheckbox" <%if (request.getAttribute("priceChecked") != null) { %>checked<%} %>>   Kasuta otsingus.
 									</td>
 								</tr>
 							<!-- <![endif]-->
 							<tr>
-                                <td><input type="hidden" name="fieldName" value=" <%= request.getAttribute("fieldName") %>"></td>
+                                <td><input type="hidden" name="fieldId" value="<%= request.getAttribute("fieldId") %>"></td>
                             </tr>
                             
                             <tr>
@@ -203,12 +209,13 @@
                             	</td>
                                 <td> 
                                 	<div id="success_date">
-                                    	<p>Alates:<br> <input type="text" id="datepicker" name="From"/></p>
-                                   		<p>Kuni:<br> <input type="text" id="datepickerTwo" name="To" /></p>
+                                    	<p>Alates:<br> <input type="text" id="datepicker" name="From" value="<%=request.getAttribute("fromDate")%>"/></p>                                    	
+                                   		<p>Kuni:<br> <input type="text" id="datepickerTwo" name="To" value="<%=request.getAttribute("toDate")%>"/></p>
+                                   		
                                     </div>
                                 </td>
                                 <td>
-                                	<input type="checkbox" name="Date" value="Date" checked="checked" class="catalogCheckbox">  Kasuta otsingus
+                                	<input type="checkbox" name="Date" value="Date" class="catalogCheckbox" <%if (request.getAttribute("dateChecked") != null) { %>checked<%} %>>  Kasuta otsingus
                                 </td>
                              <tr>
                              	<td colspan="4" align="right" ><input type="submit" class="button" value="Otsi" id="searching"/></td>
@@ -235,7 +242,9 @@
 	                                        <p><a href="mailto:<%=br.get(i).getEmail()%>"><%=br.get(i).getEmail()%></a></p>
 	                                        <p><b>Linn: </b> <%=br.get(i).getCity()%></p>
 	                                        <p><b>Keskmine tunnihind: </b> <%=br.get(i).getAveragePrice()%>
+	                                        <% if (br.get(i).getLastStoryParticipants() != null) { %>
 	                                        <p><b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants() %> <a href="<%= br.get(i).getLastStoryPath() %>">Lae alla</a></p>
+	                                        <% } %>
 	                                	</td>
 								</tr>
                                 <%

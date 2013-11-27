@@ -24,7 +24,7 @@
 		<div class="page">
 			<div class="content">
 				<div class="regSuccess">
-					<p>Teie e-mailiga konto on juba loodud. Palun logige sisse. Kui te olete oma parooli unustanud, vajutage <a href="http://www.google.com">siia</a></p>
+					<p>Teie e-mailiga konto on juba loodud. Palun logige sisse. Kui te olete oma parooli unustanud, vajutage <a href="<%=request.getContextPath()%>/ForgotPassword.jsp">siia</a></p>
 					</div>
 				</div>
 		</div>

@@ -78,14 +78,16 @@
 			<% } %>
 			<% if (!isNew) { %>
 			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
-			<table>
+			<table>			
 			<tr id="logo">			
 			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
 			  	<input type="hidden" name="generalId" value="<%= attorney.getAttorneyId() %>">
 			  	<input type="hidden" name="action" value="2">	
 			  	<input type="submit" class="button" value="Lae üles" id="upladIt">			  						  	
 			  	</td>
-			  	<td><img src="<%if (!isNew) {%><%=attorney.getPicturePath() %><% } %>" class="profilepic" alt="Pilti ei leitud"></td>						  	
+			  	<% if (attorney.getPicturePath() != null) { %>
+			  	<td><img src="<%if (!isNew) {%><%=attorney.getPicturePath() %><% } %>" class="profilepic" alt="Pilti ei leitud"></td>
+			  	<% } %>						  	
 			 </tr>
 			 </table>
 			 </form>

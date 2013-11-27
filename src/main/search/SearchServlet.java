@@ -61,15 +61,15 @@ public class SearchServlet extends HttpServlet {
 
 		String averagePrice;
 		String SSDateFrom;
-		String SSDateFromFix;
 		String SSDateTo;
-		String SSDateToFix;
-		boolean checkBoxDate;
-		boolean checkBoxPrice;
+		
+		boolean checkBoxDate = false;
+		boolean checkBoxPrice = false;
 
 		int ap;
 
 		SSDateFrom = request.getParameter("From");
+		request.setAttribute("fromDate", SSDateFrom);
 		if (SSDateFrom.isEmpty())
 		{
 			SSDateFrom = "01-01-1000";
@@ -77,11 +77,22 @@ public class SearchServlet extends HttpServlet {
 		}
 		else 
 		{
-		SSDateFromFix = SSDateFrom.replaceAll("/", "-");
-		System.out.println(SSDateFromFix);
+			if (SSDateFrom.contains("/")){
+				String year = SSDateFrom.substring(6);
+				String day = SSDateFrom.substring(3,5);
+				String month = SSDateFrom.substring(0,2);
+				System.out.println("Aasta: " + year);
+				System.out.println("Kuu: " + month);
+				System.out.println("Päev: " + day);
+				SSDateFrom = year + "-" + month + "-" + day;
+			}
+			else {
+				
+			}
 		}
 		
 		SSDateTo = request.getParameter("To");
+		request.setAttribute("toDate", SSDateTo);
 		if (SSDateTo.isEmpty())
 		{
 			SSDateTo = "01-01-1010";
@@ -89,111 +100,34 @@ public class SearchServlet extends HttpServlet {
 		}
 		else 
 		{
-		SSDateToFix = SSDateTo.replaceAll("/", "-");
-		System.out.println(SSDateToFix);
+			if (SSDateTo.contains("/")){
+				String year = SSDateTo.substring(6);
+				String day = SSDateTo.substring(3,5);
+				String month = SSDateTo.substring(0,2);
+				System.out.println("Aasta: " + year);
+				System.out.println("Kuu: " + month);
+				System.out.println("Päev: " + day);
+				SSDateTo = year + "-" + month + "-" + day;
+			}
+			else {
+				
+			}
 		}
 		
 	
 
 		checkBoxDate = request.getParameter("Date") != null;
 		checkBoxPrice = request.getParameter("Price") != null;
-
-		fieldName = request.getParameter("fieldName");
-		System.out.println(fieldName);
-
-		String ffs = fieldName.replaceAll("\\s", "");
-		
-		
-		switch (ffs) {
-		case "CivilLaw":
-			fieldId = 1;
-			break;
-		case "Privitization":
-			fieldId = 2;
-			break;
-		case "DebtCollectionServices":
-			fieldId = 3;
-			break;
-		case "IntellectualProperty":
-			fieldId = 4;
-			break;
-		case "ITLaw":
-			fieldId = 5;
-			break;
-		case "EnvironmentalLaw":
-			fieldId = 6;
-			break;
-		case "InsuranceLaw":
-			fieldId = 7;
-			break;
-		case "NonMovableProperty":
-			fieldId = 8;
-			break;
-		case "CompetitionLaw":
-			fieldId = 9;
-			break;
-		case "CriminalLaw":
-			fieldId = 10;
-			break;
-		case "Divorce":
-			fieldId = 11;
-			break;
-		case "TrafficLaw":
-			fieldId = 12;
-			break;
-		case "EconomicLaw":
-			fieldId = 13;
-			break;
-		case "TaxLaw":
-			fieldId = 14;
-			break;
-		case "MedicineLaw":
-			fieldId = 15;
-			break;
-		case "MediaAndTelecommunicationLaw":
-			fieldId = 16;
-			break;
-		case "PropertyReform":
-			fieldId = 17;
-			break;
-		case "BankingAndFinancialFunds":
-			fieldId = 18;
-			break;
-		case "FamilyLaw":
-			fieldId = 19;
-			break;
-		case "HeritageLaw":
-			fieldId = 20;
-			break;
-		case "RestructingLaw":
-			fieldId = 21;
-			break;
-		case "SocialWelfareLaw":
-			fieldId = 22;
-			break;
-		case "TransportTradeAndSeaLaw":
-			fieldId = 23;
-			break;
-		case "LaborLaw":
-			fieldId = 24;
-			break;
-		case "AliensLaw":
-			fieldId = 25;
-			break;
-		case "MergersAndAcquisitions":
-			fieldId = 26;
-			break;
+		if (checkBoxDate){
+			request.setAttribute("dateChecked", true);
+		}
+		if (checkBoxPrice){
+			request.setAttribute("priceChecked", true);
 		}
 		
 		
-	System.out.println(fieldId);
 		
-		
-		
-		
-		
-
-		System.out.println(ffs);
+		fieldId = Integer.parseInt(request.getParameter("fieldId"));
 
 		cityId = Integer.parseInt(request.getParameter("cities"));
 		countyId = Integer.parseInt(request.getParameter("counties"));
@@ -203,9 +137,13 @@ public class SearchServlet extends HttpServlet {
 		city = names.getCityName();
 		county = names.getCountyName();
 		region = names.getRegionName();
+		request.setAttribute("regionValue", regionId);
+		request.setAttribute("cityValue", cityId);
+		request.setAttribute("countyValue", countyId);
 		
 
 		averagePrice = request.getParameter("averageprice");
+		request.setAttribute("averageprice", averagePrice);
 		System.out.println(averagePrice);
 
 
@@ -237,8 +175,11 @@ public class SearchServlet extends HttpServlet {
 				+ "' and bureau.regionname='"
 				+ region
 				+ "'"
-				+ " and bureau.averageprice="
+				+ " and bureau.averageprice BETWEEN '"
+				+ 0
+				+ "' and '"
 				+ ap
+				+ "' "
 				+ " and bureau.countyname='" + county + "' ;";
 
 		sql2 = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
@@ -306,7 +247,7 @@ public class SearchServlet extends HttpServlet {
 				String bureauImage = rs.getString("image");
 				
 				
-				br.setFieldName(fieldName);
+				
 				br.setName(bureauName);
 				br.setEmail(bureauEmail);
 				br.setAveragePrice(bureauAveragePrice);
@@ -329,8 +270,15 @@ public class SearchServlet extends HttpServlet {
 
 				System.out
 						.println("--------------------------------------------");
-
-				bureauSR.add(br);
+				boolean existsAlready = false;
+				for (int i = 0; i<bureauSR.size(); i++){
+					if (br.getBureauId() == bureauSR.get(i).getBureauId()){
+						existsAlready = true;
+					}
+				}
+				if (!existsAlready){
+					bureauSR.add(br);
+				}
 
 			}
 
@@ -383,7 +331,8 @@ public class SearchServlet extends HttpServlet {
 			}
 			curConnection.close();
 			
-			request.setAttribute("fieldName", fieldName);
+			
+			request.setAttribute("fieldId", fieldId);
 			request.setAttribute("bureauSR", bureauSR);
 			request.getRequestDispatcher("CatalogSearchDetailedResults.jsp")
 					.forward(request, response);
