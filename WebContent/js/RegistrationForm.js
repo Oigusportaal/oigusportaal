@@ -47,7 +47,7 @@ function confirmEmail(){
 		
 		if (email !== confirmEmail){
 				document.getElementById("confirmEmailPicture").innerHTML ="<img src='images/incorrect.png' alt= 'Email doesn\'t match!'>";
-				document.getElementById("confirmEmailMessage").innerHTML= "E-mailid ei ühti.";
+				document.getElementById("confirmEmailMessage").innerHTML= "E-mailid ei &#252hti.";
 				return false;
 		} else {
 			document.getElementById("confirmEmailPicture").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
@@ -74,13 +74,13 @@ function validatePassword(){
 	
 	if (password==null || password==""){
 		document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter password'>";
-		document.getElementById("passwordMessage").innerHTML= "Palun sisestage parool! Min 6 märki.";
+		document.getElementById("passwordMessage").innerHTML= "Palun sisestage parool! Minimaalselt 6 m&#228rki.";
 		return false;
 	} else {
 		
 		if (password.length <6){
 			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Passowrd must be atlest 6 characters long!'>";
-			document.getElementById("passwordMessage").innerHTML="Parool peab olema vähemalt 6 märki."
+			document.getElementById("passwordMessage").innerHTML="Parool peab olema v&#228hemalt 6 m&#228rki."
 			return false;
 		}else if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/)){		
 			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Symbols'>";
@@ -99,7 +99,7 @@ function validatePassword(){
 					return true;
 				}else {
 					document.getElementById("passwordPicture").innerHTML= "<img src='images/correctweak.png' alt= 'Weak'>";
-					document.getElementById("passwordMessage").innerHTML= "Lihtne";
+					document.getElementById("passwordMessage").innerHTML= "N&#245rk";
 					return true;
 				}
 		}
@@ -123,7 +123,7 @@ function confirmPassword(){
 		
 		if (confirmPassword!==password){
 				document.getElementById("confirmPasswordPicture").innerHTML = "<img src='images/incorrect.png' alt= 'Password doesn\'t match!'>";
-				document.getElementById("confirmPasswordMessage").innerHTML = "Paroolid ei ühti.";
+				document.getElementById("confirmPasswordMessage").innerHTML = "Paroolid ei &#252hti.";
 				return false;
 		} else {
 			document.getElementById("confirmPasswordPicture").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
@@ -141,7 +141,7 @@ function validateBureauName(){
 	var bureauname=document.forms["registration_form"]["registerBureauName"].value;
 	if (bureauname==null || bureauname==""){
 		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
-		document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage büroo nimi";
+		document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage b&#252roo nimi";
 		return false;
 	} else {
 		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
@@ -174,7 +174,7 @@ function validateRegistrycode(){
 						return true;
 					}else if(regcode.length<8){
 						document.getElementById("regcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Must contain 8 numbers!'>";
-						document.getElementById("regcodeMessage").innerHTML="Liiga lühike. Palun sisestage 8 numbriline kood.";
+						document.getElementById("regcodeMessage").innerHTML="Liiga l&#252hike. Palun sisestage 8 numbriline kood.";
 						return false;
 					}else {
 						document.getElementById("regcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Must contain 8 numbers!'>";
@@ -227,7 +227,7 @@ function validatePostalCode(){
 				return true;
 			} else if (postalcode.length<5){
 				document.getElementById("postalcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Enter 5 numbers!'>";
-				document.getElementById("postalcodeMessage").innerHTML="Liiga lühike! Palun sisestage 5 numbrit!";
+				document.getElementById("postalcodeMessage").innerHTML="Liiga l&#252hike! Palun sisestage 5 numbrit!";
 				return false;
 			} else {
 				document.getElementById("postalcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Enter 5 numbers!'>";
@@ -382,7 +382,7 @@ function validateForm(){ /*do you work?*/
 							document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 						}
 					} else {
-						document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage büroonimi.";
+						document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage b&#252roonimi.";
 						document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 					}
 				} else {
@@ -390,7 +390,7 @@ function validateForm(){ /*do you work?*/
 					document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 				}
 			} else{
-				document.getElementById("passwordMessage").innerHTML= "Parooli pikkus on vähemalt 6.";
+				document.getElementById("passwordMessage").innerHTML= "Parooli pikkus on v&#228hemalt 6.";
 				document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 			}
 		}else {
@@ -399,7 +399,7 @@ function validateForm(){ /*do you work?*/
 		}
 	} else {
 		document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
-		document.getElementById("emailErrorMessage").innerHTML= "Palun sisestage korrektne e-mail";
+		document.getElementById("emailErrorMessage").innerHTML= "Palun sisestage e-mail.";
 	}
 	return false;
 }
