@@ -310,21 +310,6 @@ td.column_height p {
   border: 1px solid #8F9297;
 }
 
-/*#registering {
-	margin: 0px 0px 5px 66px;
-	width: 100px;
-	height: 33px;
-}
-
-#registration_form {
-	display: inline-block;
-  background: #f0f0f0;
-  color: #333;
-}
-
-#registration_form input {
-  margin-bottom: 8px;
-}*/
 #avgprice {
 	position: absolute;
 	}
@@ -418,6 +403,13 @@ border: none;
 input#Registreeru{
 	height:25px;
 	width:205px;
+}
+
+.errorMessage{
+	color:#a6261b;
+	font-size:10px;
+	text-align:center;
+	width:150px;
 }
 
 

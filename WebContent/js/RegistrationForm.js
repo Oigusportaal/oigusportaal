@@ -13,17 +13,19 @@ function validateEmail(){
 		var email=document.forms["registration_form"]["registerEmail"].value;
 		
 		if (email==null || email==""){
-			document.getElementById("emailErrorMessage").innerHTML= "<img src='./images/incorrect.png' alt='Enter e-mail'>";
-			/*$('#email_error_message').replaceWith("Enter correct email address");  jquery */
+			document.getElementById("emailErrorPicture").innerHTML= "<img src='./images/incorrect.png' alt='Enter e-mail'>";
+			document.getElementById("emailErrorMessage").innerHTML= "Palun sisestage e-mail";
 			return false;
 		} else {
-			document.getElementById("emailErrorMessage").innerHTML= "";
+			document.getElementById("emailErrorPicture").innerHTML= "";
 			var emailExp =/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			if (!email.match(emailExp)){
-				document.getElementById("emailErrorMessage").innerHTML="<img src='./images/incorrect.png' alt='Incorrect'>";
+				document.getElementById("emailErrorPicture").innerHTML="<img src='./images/incorrect.png' alt='Incorrect'>";
+				document.getElementById("emailErrorMessage").innerHTML= "Palun sisestage korrektne e-mail";
 				return false;
 			} else {
-				document.getElementById("emailErrorMessage").innerHTML= "<img src='./images/correct.png' alt='Correct'>";
+				document.getElementById("emailErrorPicture").innerHTML= "<img src='./images/correct.png' alt='Correct'>";
+				document.getElementById("emailErrorMessage").innerHTML= "";
 				return true;
 			}
 		}
@@ -38,15 +40,18 @@ function confirmEmail(){
 	var confirmEmail=document.forms["registration_form"]["registerEmailConfirmation"].value;
 		
 	if (confirmEmail==null || confirmEmail==""){
-			document.getElementById("confirmEmailMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Confirm e-mail'>";
+			document.getElementById("confirmEmailPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Confirm e-mail'>";
+			document.getElementById("confirmEmailMessage").innerHTML= "Kinnitage e-mail!";
 			return false;
 	} else {
 		
 		if (email !== confirmEmail){
-				document.getElementById("confirmEmailMessage").innerHTML ="<img src='images/incorrect.png' alt= 'Email doesn\'t match!'>";
+				document.getElementById("confirmEmailPicture").innerHTML ="<img src='images/incorrect.png' alt= 'Email doesn\'t match!'>";
+				document.getElementById("confirmEmailMessage").innerHTML= "E-mailid ei ühti.";
 				return false;
 		} else {
-			document.getElementById("confirmEmailMessage").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
+			document.getElementById("confirmEmailPicture").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
+			document.getElementById("confirmEmailMessage").innerHTML = "";
 			return true;
 		}
 	}
@@ -68,27 +73,33 @@ function validatePassword(){
 	var password=document.forms["registration_form"]["registerPassword"].value;
 	
 	if (password==null || password==""){
-		document.getElementById("passwordMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Enter password'>";
+		document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter password'>";
+		document.getElementById("passwordMessage").innerHTML= "Palun sisestage parool! Min 6 märki.";
 		return false;
 	} else {
 		
 		if (password.length <6){
-			document.getElementById("passwordMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Passowrd must be atlest 6 characters long!'>";
+			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Passowrd must be atlest 6 characters long!'>";
+			document.getElementById("passwordMessage").innerHTML="Parool peab olema vähemalt 6 märki."
 			return false;
 		}else if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/)){		
-			document.getElementById("passwordMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Symbols'>";
+			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Symbols'>";
 			return false;
 		}else { if(password.match(/[a-z]/)&&password.match(/\d+/)&& password.match(/[A-Z]/)){
-					document.getElementById("passwordMessage").innerHTML= "<img src='images/correct.png' alt= 'Strong'>";
+					document.getElementById("passwordPicture").innerHTML= "<img src='images/correct.png' alt= 'Strong'>";
+					document.getElementById("passwordMessage").innerHTML= "Tugev";
 					return true;
 				}else if(password.match(/[0-9]/)&&password.match(/[a-z]/)){
-					document.getElementById("passwordMessage").innerHTML= "<img src='images/correctmedium.png' alt= 'Medium'>";
+					document.getElementById("passwordPicture").innerHTML= "<img src='images/correctmedium.png' alt= 'Medium'>";
+					document.getElementById("passwordMessage").innerHTML= "Keskmine";
 					return true;
 				}else if(password.match(/[0-9]/)&&password.match(/[A-Z]/)){
-					document.getElementById("passwordMessage").innerHTML= "<img src='images/correctmedium.png' alt= 'Medium'>";
+					document.getElementById("passwordPicture").innerHTML= "<img src='images/correctmedium.png' alt= 'Medium'>";
+					document.getElementById("passwordMessage").innerHTML= "Keskmine";
 					return true;
 				}else {
-					document.getElementById("passwordMessage").innerHTML= "<img src='images/correctmedium.png' alt= 'Weak'>";
+					document.getElementById("passwordPicture").innerHTML= "<img src='images/correctweak.png' alt= 'Weak'>";
+					document.getElementById("passwordMessage").innerHTML= "Lihtne";
 					return true;
 				}
 		}
@@ -105,15 +116,18 @@ function confirmPassword(){
 	var confirmPassword=document.forms["registration_form"]["registerPasswordConfirmation"].value;
 		
 	if (confirmPassword==null || confirmPassword==""){
-			document.getElementById("confirmPasswordError").innerHTML=  "<img src='images/incorrect.png' alt= 'Confirm password'>";
+			document.getElementById("confirmPasswordPicture").innerHTML=  "<img src='images/incorrect.png' alt= 'Confirm password'>";
+			document.getElementById("confirmPasswordMessage").innerHTML=" Palun kinnitage e-mail";
 			false;
 	} else {
 		
 		if (confirmPassword!==password){
-				document.getElementById("confirmPasswordError").innerHTML = "<img src='images/incorrect.png' alt= 'Password doesn\'t match!'>";
+				document.getElementById("confirmPasswordPicture").innerHTML = "<img src='images/incorrect.png' alt= 'Password doesn\'t match!'>";
+				document.getElementById("confirmPasswordMessage").innerHTML = "Paroolid ei ühti.";
 				return false;
 		} else {
-			document.getElementById("confirmPasswordError").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
+			document.getElementById("confirmPasswordPicture").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
+			document.getElementById("confirmPasswordMessage").innerHTML = "";
 			return true;
 		}
 	}
@@ -126,10 +140,12 @@ function confirmPassword(){
 function validateBureauName(){
 	var bureauname=document.forms["registration_form"]["registerBureauName"].value;
 	if (bureauname==null || bureauname==""){
-		document.getElementById("bureauNameMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
+		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
+		document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage büroo nimi";
 		return false;
 	} else {
-		document.getElementById("bureauNameMessage").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("bureauNameMessage").innerHTML= "";
 		return true;
 	}	
 }
@@ -141,24 +157,28 @@ function validateBureauName(){
 function validateRegistrycode(){	
 	var regcode=document.forms["registration_form"]["registerRegcode"].value;
 	if (regcode==null || regcode==""){
-		document.getElementById("regcodeMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Enter registrycode!'>";
+		document.getElementById("regcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter registrycode!'>";
+		document.getElementById("regcodeMessage").innerHTML= "Palun sisestage 8-numbriline registrikood!";
 			return false;
 	} else {
 			var numericExpression = /^[0-9]+$/;
 			if (isNaN(regcode)){
 				
-				document.getElementById("regcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect value! Must contain only numbers!'>";
+				document.getElementById("regcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect value! Must contain only numbers!'>";
+				document.getElementById("regcodeMessage").innerHTML= "Palun sisetage ainult numbreid!";
 				return false;
 			} else{
 					if (regcode.length==8){
-						document.getElementById("regcodeMessage").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
-						document.getElementById("regcodeMessage").style.color="green";
+						document.getElementById("regcodePicture").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
+						document.getElementById("regcodeMessage").innerHTML="";
 						return true;
 					}else if(regcode.length<8){
-						document.getElementById("regcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Must contain 8 numbers!'>";
+						document.getElementById("regcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Must contain 8 numbers!'>";
+						document.getElementById("regcodeMessage").innerHTML="Liiga lühike. Palun sisestage 8 numbriline kood.";
 						return false;
 					}else {
-						document.getElementById("regcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Must contain 8 numbers!'>";
+						document.getElementById("regcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Must contain 8 numbers!'>";
+						document.getElementById("regcodeMessage").innerHTML=" Liiga pikk. Palun sisestage ainult 8 numbrit.";
 						return false;
 					}
 			}
@@ -171,13 +191,15 @@ function validateRegistrycode(){
 
 function validateStreetAddress(){
 	var streetaddress=document.forms["registration_form"]["registerStreetAddress"].value;
-	
 	if (streetaddress==null || streetaddress==""){
 		
-		document.getElementById("streetAddressMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Enter street address!'>";
+		document.getElementById("streetAddressPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter street address!'>";
+		document.getElementById("streetAddressMessage").innerHTML="Palun sisesta firma aadress!";
 		return false;
+		
 	} else {
-		document.getElementById("streetAddressMessage").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("streetAddressPicture").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("streetAddressMessage").innerHTML="";
 		return true;
 	}
 }
@@ -190,21 +212,26 @@ function validatePostalCode(){
 	var postalcode = document.forms["registration_form"]["registerPostalcode"].value;
 	
 	if (postalcode==null || postalcode==""){
-		document.getElementById("postalcodeMessage").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("postalcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("postalcodeMessage").innerHTML="Palun sisestage 5-numbriline postiindeks.";
 		return false;
 	} else {
 		if (isNaN(postalcode)){
-			document.getElementById("postalcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect value! Enter 5 numbers!'>";
+			document.getElementById("postalcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect value! Enter 5 numbers!'>";
+			document.getElementById("postalcodeMessage").innerHTML="Palun sisestage 5-numbriline postiindeks";
 			return false;
 		} else{
 			if (postalcode.length==5){
-				document.getElementById("postalcodeMessage").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
+				document.getElementById("postalcodePicture").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
+				document.getElementById("postalcodeMessage").innerHTML="";
 				return true;
 			} else if (postalcode.length<5){
-				document.getElementById("postalcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Enter 5 numbers!'>";
+				document.getElementById("postalcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too short! Enter 5 numbers!'>";
+				document.getElementById("postalcodeMessage").innerHTML="Liiga lühike! Palun sisestage 5 numbrit!";
 				return false;
 			} else {
-				document.getElementById("postalcodeMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Enter 5 numbers!'>";
+				document.getElementById("postalcodePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Too long! Enter 5 numbers!'>";
+				document.getElementById("postalcodeMessage").innerHTML="Liiga pikk! Palun sisestage 5 numbrit!";
 			}
 		}
 	}
@@ -217,15 +244,18 @@ function validatePhoneNumber(){
 	
 	var phone = document.forms["registration_form"]["registerPhone"].value;
 	if (phone==null || phone==""){
-		document.getElementById("phoneMessage").innerHTML="<img src='images/incorrect.png' alt= 'Enter phone number!'>";
+		document.getElementById("phonePicture").innerHTML="<img src='images/incorrect.png' alt= 'Enter phone number!'>";
+		document.getElementById("phoneMessage").innerHTML="Palun sisestage telefoninumber";
 		return false;
 	} else {
 		/*var numericExpression = /^[0-9]+$/;*/
 		if (isNaN(phone)){
-			document.getElementById("phoneMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect phone number!'>";
+			document.getElementById("phonePicture").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect phone number!'>";
+			document.getElementById("phoneMessage").innerHTML="Palun sisestage ainult numbreid.";
 			return false;
 		} else{
-			document.getElementById("phoneMessage").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
+			document.getElementById("phonePicture").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
+			document.getElementById("phoneMessage").innerHTML="";
 			return true;
 		}
 	}
@@ -237,11 +267,13 @@ function validatePhoneNumber(){
 function validateRegion(){
 	var region  = document.forms["registration_form"]["registerRegion"].value;
 	if (region == "0") {
-		document.getElementById("registerRegionMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Select region!'>";
+		document.getElementById("registerRegionPicture").innerHTML = "<img src='images/incorrect.png' alt= 'Select region!'>";
+		document.getElementById("registerRegionMessage").innerHTML= "Palun valige regioon!";
 		return false;
 		
 	} else {
-		document.getElementById("registerRegionMessage").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerRegionPicture").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerRegionMessage").innerHTML="";
 		return true;
 	}
 	
@@ -255,10 +287,12 @@ function validateRegion(){
 function validateCounty(){
 	var county  = document.forms["registration_form"]["registerCounty"].value;
 	if (county == "0") {
-		document.getElementById("registerCountyMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Select county!'>";
+		document.getElementById("registerCountyPicture").innerHTML = "<img src='images/incorrect.png' alt= 'Select county!'>";
+		document.getElementById("registerCountyMessage").innerHTML= "Palun valige maakond!";
 		return false;
 	} else {
-		document.getElementById("registerCountyMessage").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerCountyPicture").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerCountyMessage").innerHTML="";
 		return true;
 	}
 	
@@ -271,11 +305,13 @@ function validateCounty(){
 function validateCity(){
 	var city = document.forms["registration_form"]["registerCity"].value;
 	if (city == "0") {
-		document.getElementById("registerCityMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Select city!'>";
+		document.getElementById("registerCityPicture").innerHTML = "<img src='images/incorrect.png' alt= 'Select city!'>";
+		document.getElementById("registerCityMessage").innerHTML= "Palun valige linn!";
 		
 		return false;
 	} else {
-		document.getElementById("registerCityMessage").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerCityPicture").innerHTML =  "<img src='images/correct.png' alt= 'Correct!'>";
+		document.getElementById("registerCityMessage").innerHTML="";
 		/*validateForm();*/
 		return true;
 	}
@@ -290,48 +326,81 @@ function validateCity(){
  */
 function validateForm(){ /*do you work?*/
 	if (validateEmail()){
-		document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+		document.getElementById("emailErrorMessage").innerHTML= "";
 		if (confirmEmail()){
-			document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+			document.getElementById("confirmEmailMessage").innerHTML= "";
 			if (validatePassword()){
-				document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+				document.getElementById("passwordMessage").innerHTML= "";
 				if (confirmPassword()){
-					document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+					document.getElementById("confirmPasswordMessage").innerHTML= "";
 					if (validateBureauName()){
-						document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+						document.getElementById("bureauNameMessage").innerHTML= "";
 						if (validateRegistrycode()){
-							document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+							document.getElementById("regcodeMessage").innerHTML= "";
 							if (validateStreetAddress()){
-								document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+								document.getElementById("streetAddressMessage").innerHTML= "";
 								if (validatePostalCode()){
-									document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+									document.getElementById("postalcodeMessage").innerHTML= "";
 									if (validatePhoneNumber()){
-										document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+										document.getElementById("phoneMessage").innerHTML= "";
 										var region = document.forms["registration_form"]["registerRegion"].value;
 										if (region != 0){
-											document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+											document.getElementById("registerRegionMessage").innerHTML= "";
 											var county = document.forms["registration_form"]["registerCounty"].value;
 											if(county != 0){
-												document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
-												/*document.getElementById("Registreeru").removeAttribute("disabled");*/
+												document.getElementById("registerCountyMessage").innerHTML= "";
 												var city = document.forms["registration_form"]["registerCity"].value;
 												if (city!= 0){
 													document.getElementById("confirmInput").innerHTML = "<img src='images/correct.png' alt= 'Correct'>";
-													//document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
+													document.getElementById("registerCityMessage").innerHTML= "";
 													return true;
+												} else{
+													document.getElementById("registerCityMessage").innerHTML= "Palun valige linn.";
+													document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 												}
+											} else{
+												document.getElementById("registerCountyMessage").innerHTML= "Palun valige maakond.";
+												document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 											}
+										} else {
+											document.getElementById("registerRegionMessage").innerHTML= "Palun valige regioon.";
 										}
+									} else {
+										document.getElementById("phoneMessage").innerHTML= "Palun sisestage telefoninumber.";
+										document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 									}
+								} else {
+									document.getElementById("postalcodeMessage").innerHTML= "Palun sisestage postiindeks.";
+									document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 								}
+							} else {
+								document.getElementById("streetAddressMessage").innerHTML= "Palun sisestage aadress.";
+								document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 							}
+						} else {
+							document.getElementById("regcodeMessage").innerHTML= "Palun sisestage registrikood.";
+							document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 						}
+					} else {
+						document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage büroonimi.";
+						document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 					}
+				} else {
+					document.getElementById("confirmPasswordMessage").innerHTML= "Palun kinnitage parool.";
+					document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 				}
+			} else{
+				document.getElementById("passwordMessage").innerHTML= "Parooli pikkus on vähemalt 6.";
+				document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 			}
+		}else {
+			document.getElementById("confirmEmailMessage").innerHTML= "Kinnitage e-mail!";
+			document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
 		}
-	} 
-//		document.getElementById("registration_form").setAttribute("action", "BureauRegistrationServlet");
-//		document.getElementById("Registreeru").setAttribute("disabled", "disabled");
+	} else {
+		document.getElementById("confirmInput").innerHTML = "<img src='images/incorrect.png' alt= ''>";
+		document.getElementById("emailErrorMessage").innerHTML= "Palun sisestage korrektne e-mail";
+	}
 	return false;
 }
+

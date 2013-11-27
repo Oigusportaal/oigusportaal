@@ -67,51 +67,96 @@
 				<h1>Registreerimine</h1>
 					<form action="BureauRegistrationServlet" method="post" class="cascade" id="registration_form" onsubmit="return validateForm()">
 					 	<table>
+					 		<!-- email -->
 						  	<tr>
 						 		<td><input type="text" name="email" id='registerEmail' placeholder="email@email.com" onchange="validateEmail()" onkeyup="validateEmail()"/></td>
-								<td><span id ="emailErrorMessage"></span></td> 
+								<td><span id ="emailErrorPicture" ></span></td> 
+							</tr>
+							<tr>
+								<td class="errorMessage"><span id="emailErrorMessage" ></span></td>
 							</tr>
 							
+							<!-- email confirm -->
 							<tr>
 								<td><input type="text" name="registerEmailConfirmation" placeholder="Kinnita E-mail!" id="registerEmailConfirmation" onkeyup="confirmEmail()" autocomplete="off"/></td>
-								<td><span id ="confirmEmailMessage"></span> </td>
+								<td><span id ="confirmEmailPicture"></span> </td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="confirmEmailMessage" ></span></td>
+							</tr>
+							
+							<!-- password -->
 							<tr>
 								<td><input type="password" name="password" id="registerPassword" placeholder="Parool" onkeyup="validatePassword()" /></td>
-								<td><span id = "passwordMessage"></span> </td>
+								<td><span id = "passwordPicture"></span> </td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="passwordMessage" ></span></td>
+							</tr>
+							
+							<!-- password confirm -->
 							<tr>
 								<td><input type="password" name="register_password_confirmation" placeholder="Parool uuesti" id="registerPasswordConfirmation" onkeyup="confirmPassword()" /></td>
-								<td><span id="confirmPasswordError"></span> </td>
+								<td><span id="confirmPasswordPicture"></span> </td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="confirmPasswordMessage" ></span></td>
+							</tr>
+							
+							<!-- Bureau name -->
 							<tr>
 								<td><input type="text" name="bureauname" id="registerBureauName" placeholder="Büroo nimi" onkeyup="validateBureauName()" autocomplete= "off"/></td>
-								<td><span id="bureauNameMessage"></span> </td>
+								<td><span id="bureauNamePicture"></span> </td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="bureauNameMessage" ></span></td>
+							</tr>
+							
+							<!-- registrycode -->
 							<tr>
 								<td><input type="text" name="regcode" id="registerRegcode" placeholder="Registrikood" onkeyup="validateRegistrycode()" autocomplete="off"/></td>
-								<td><span id="regcodeMessage"></span> </td>
+								<td><span id="regcodePicture"></span> </td>
 							</tr>
-	
+							
 							<tr>
-								<td><input type="text" name="street_address" id="registerStreetAddress"  placeholder="Tänav" onkeyup="validateStreetAddress()" autocomplete="off"/></td>
-								<td><span id="streetAddressMessage"></span></td>
+								<td class="errorMessage"><span id="regcodeMessage"></span></td>
 							</tr>
 	
+							<!-- address -->
+							<tr>
+								<td><input type="text" name="street_address" id="registerStreetAddress"  placeholder="Aadress" onkeyup="validateStreetAddress()" autocomplete="off"/></td>
+								<td><span id="streetAddressPicture"></span></td>
+							</tr>
+							
+							<tr>
+								<td class="errorMessage"><span id="streetAddressMessage" ></span></td>
+							</tr>
+							
+							<!-- postalcode -->
 							<tr>
 								<td><input type="text" name="postal_code" id="registerPostalcode" placeholder="Postiindeks" onkeyup="validatePostalCode()" autocomplete="off"/></td>
-								<td><span id="postalcodeMessage"></span> </td>
+								<td><span id="postalcodePicture"></span> </td>
 							</tr>
 							
 							<tr>
-								<td><input type="text" name="phone" id="registerPhone" placeholder="Telefoninumber" onkeyup="validatePhoneNumber()" autocomplete="off"/></td>
-								<td><span id="phoneMessage"></span> </td>
+								<td class="errorMessage"><span id="postalcodeMessage" ></span></td>
 							</tr>
 							
+							<!-- Phone -->
+							<tr>
+								<td><input type="text" name="phone" id="registerPhone" placeholder="Telefoninumber" onkeyup="validatePhoneNumber()" autocomplete="off"/></td>
+								<td><span id="phonePicture"></span> </td>
+							</tr>
+							
+							<tr>
+								<td class="errorMessage"><span id="phoneMessage" ></span></td>
+							</tr>
+							
+							<!-- Region -->
 							<tr>
 								<td>
 									<select name="regions" id="registerRegion" class="regSelect" placeholder="Regioon" onchange="validateRegion()" >
@@ -122,9 +167,14 @@
 	 										<option value="4">Lõuna-Eesti</option> <!--  Viljandimaa, Tartumaa, Põlvamaa, Valgamaa, Võrumaa -->
 									</select>
 								</td>
-								<td><span id="registerRegionMessage"></span></td>
+								<td><span id="registerRegionPicture"></span></td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="registerRegionMessage" ></span></td>
+							</tr>
+							
+							<!-- County -->
 							<tr>
 								<td>
 									<select name="counties" id="registerCounty" class="countySelect" placeholder="Maakond" onchange="validateCounty()" >
@@ -146,9 +196,14 @@
 										<option value="15" class="sub_4">Võrumaa</option>
    									</select>
 								</td>
-								<td><span id="registerCountyMessage"></span></td>
+								<td><span id="registerCountyPicture"></span></td>
 							</tr>
 							
+							<tr>
+								<td class="errorMessage"><span id="registerCountyMessage" ></span></td>
+							</tr>
+							
+							<!-- Country -->
 							<tr>
 								<td>
 									<select name="cities" id="registerCity" class="citySelect" onblur="validateForm()" placeholder="Linn" onchange="validateCity()" >
@@ -170,9 +225,14 @@
 										<option value="15" class="sub_15">Võru</option> 
 									</select>
 								</td>
-								<td><span id = "registerCityMessage"></span></td>
-							</tr>								
-						
+								<td><span id = "registerCityPicture"></span></td>
+							</tr>
+							
+							<tr>
+								<td class="errorMessage"><span id="registerCityMessage" ></span></td>
+							</tr>						
+							
+							<!-- Submit -->
 							<tr>
 								<td><input type="submit" value="Registreeru" class="button" name="submit" id="Registreeru" /></td>
 								<td><span id="confirmInput"></span></tr>
