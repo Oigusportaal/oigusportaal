@@ -1,11 +1,16 @@
  /*
 Srchstyle
 */
+#header {
+	position: relative;
+	background: url(../images/main_header_bg.png) no-repeat center top;
+	height:150px;
+	}
 
 #wrapper {
 	width: 1024px;
 	margin: 0px auto;
-	/*background: url(images/main_bg.png) no-repeat center top;*/
+	/*background: url(./images/main_bg.png) no-repeat center top;*/
 	background-color:#f4f4f4;
 }
 
@@ -46,54 +51,62 @@ a img
   border:none;
 }
 
-
-#firstPageWelcomeText{
-	float:left;
-	color:#ffffff;
-	margin-top:0px;
-	margin-left:50px;
-	padding-top:50px;
-}
-
-#firstPageWelcomeText p:FIRST-CHILD{
-	font-size:20px;
-}
-#firstPageWelcomeText2{
-	color: #ffffff;
-	float:right;
-	margin-right:110px;
-	margin-top: 145px;
-}
+/*Main page welcoming content*/
+#firstPageWelcome{
+	background-image: url("../images/welcoming.png") ;
+	background-repeat:no-repeat;
+	height:288px;
+	margin-top:20px;
+	}
+	
 /*Main page fields*/
-.image div{
-	float:left;
-}
-.image {
-	background-image:url("images/foe_bc.png");
+
+.valdkonnad {
+	background-image:url('../images/foe_bc.png');
 	background-repeat: no-repeat;
 	height:350px;
 	margin-left:17px;
-}
 
-
-.image .text ul {
-	list-style-type:none;
 }
-#valdkonnad1{
-	margin-top:0px;
-}
-#valdkonnad1 h2 {
+.valdkonnadHeading{
+	position:relative;
 	
-	padding-top:10px;
+	
+}
+.valdkonnadHeading td {
+	width:100%;
+	vertical-align: bottom;
+}
+
+.valdkonnadHeading h2{
+	position:relative;
+	top:25px;
 	margin-left:40px;
 	color: #BA0606;
 	font-size:25px;
 }
-#valdkonnad2{
-	margin-top:30px;
+.firstLinks {
+	padding-left:30px;
+	width:28%;
 }
-#valdkonnad3{
-	margin-top:30px;
+.secondLinks{
+	padding-left:10px;
+	width:30%;
+}
+
+.thirdLinks{
+	width:28%;
+
+}
+/*.valdkonnadLinks td{
+	width:33%;
+}*/
+#valdkonnadTabel a{
+	list-style-type:none;
+	/*color: #AC1028;*/
+	font-family: sans-serif;
+	text-size:16px;
+	font-weight:bold;
 }
 /*Main page fields END*/
 
