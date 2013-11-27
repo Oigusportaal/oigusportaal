@@ -60,6 +60,9 @@ public class BureauViewServlet extends HttpServlet {
 		Statement statementFields = null;
 		ResultSet resultSetFields = null;
 		
+		Statement statementFieldName = null;
+		ResultSet resultSetFieldName = null;
+		
 		UserBean user = new UserBean();
 		
 			
@@ -142,12 +145,23 @@ public class BureauViewServlet extends HttpServlet {
 				story.setReference(resultSetStories.getString("reference"));
 				story.setSuccessStoryId(resultSetStories.getInt("ssid"));
 				story.setDate(resultSetStories.getDate("date"));
+				story.setFilepath(resultSetStories.getString("filepath"));
 				
 				successStories.add(story);
 			}
 			
 			statementStories.close();
 			resultSetStories.close();
+			
+			
+			
+			for (int i = 0; i<successStories.size(); i++){
+				statementFieldName = curConnection.createStatement();
+				resultSetFieldName = statementFieldName.executeQuery("SELECT fieldname FROM field WHERE fieldid='" + successStories.get(i).getFieldId() + "';");
+				while (resultSetFieldName.next()){
+					successStories.get(i).setFieldName(resultSetFieldName.getString("fieldname"));
+				}
+			}
 			
 			
 			curConnection.close();

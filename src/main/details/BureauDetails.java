@@ -12,6 +12,9 @@ public class BureauDetails {
 	public int postalcode;
 	public String image;
 	public int active ;
+	public String city;
+	public String lastStoryParticipants;
+	public String lastStoryPath;
 	
 	
 	public int getActive() {
@@ -80,6 +83,24 @@ public class BureauDetails {
 	}
 	public void setPostalcode(int postalcode) {
 		this.postalcode = postalcode;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getLastStoryParticipants() {
+		return lastStoryParticipants;
+	}
+	public void setLastStoryParticipants(String lastStoryParticipants) {
+		this.lastStoryParticipants = lastStoryParticipants;
+	}
+	public String getLastStoryPath() {
+		return lastStoryPath;
+	}
+	public void setLastStoryPath(String lastStoryPath) {
+		this.lastStoryPath = lastStoryPath;
 	}
 
 	

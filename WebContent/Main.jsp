@@ -32,40 +32,40 @@
 						</tr>
 						<tr class="valdkonnadLinks">
 							<td class="firstLinks">					  
-									<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CivilLaw" title="Detailplaneeringud. Ehitus- ja kasutuslubade väljastus. Vastavate haldusaktide vaidlustamine">Ehitus- ja planeerimisõigus</a> <br>
-									<a name="Privitization" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=Privitization" title="maa tagastamise ja erastamisega seotud küsimused; ostueesõigusega erastamine">Erastamine</a><br>
-									<a name="DebtCollectionServices" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=DebtCollectionServices" title="mulle ollakse võlgu; mina olen võlgu; sissenõutavate intressid võimalikkus ja suurused ">Inkassoteenused</a><br>
-									<a name="IntellectualProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=IntellectualProperty" title="autoriõigusega seotud küsimused; kaubamärgid; domeeninimed; disainilahendused">Intellektuaalneomand</a><br>
-									<a name="ITLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=ITLaw" title="autoriõiguste kaitse ja sellest loobumine nii töösuhtes kui ka töövõtulepinguga loodavatele programmidele ja andmebaasidele">IT-õigus</a><br>
-									<a name="EnvironmentalLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=EnvironmentalLaw" title="keskkonnale tekitatud kahju; keskkonnamõjude hindamine; kaevandamisõigused; ">Keskkonnaõigus</a><br>
-									<a name="InsuranceLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=InsuranceLaw" title="kohustusliku (nt sõidukikindlustus) ja vabatahtlik (nt KASKO) kindlustus; kindlustushüvitiste vähendamine; ">Kindlustusõigus</a><br>
-									<a name="NonMovableProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=NonMovableProperty" title="kinnisvaraga seotud tehingud (võõrandamine, üürimine); õigusauditite läbiviimine">Kinnisvaraõigus</a><br>
-									<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=CompetitionLaw" title="koondumised; keelatud kokkulepped; turgu valitseva seisundi kuritarvitamine">Konkurentsiõigus</a><br>
+									<a name="CivilLaw"        				href="<%=request.getContextPath()%>/FieldSearchServlet?param=1" title="Detailplaneeringud. Ehitus- ja kasutuslubade väljastus. Vastavate haldusaktide vaidlustamine">Ehitus- ja planeerimisõigus</a> <br>
+									<a name="Privitization" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=2" title="Maa tagastamise ja erastamisega seotud küsimused; Ostueesõigusega erastamine">Erastamine</a><br>
+									<a name="DebtCollectionServices" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=3" title="Mulle ollakse võlgu; Mina olen võlgu; Sissenõutavate intressid võimalikkus ja suurused ">Inkassoteenused</a><br>
+									<a name="IntellectualProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=4" title="Autoriõigusega seotud küsimused; Kaubamärgid; Domeeninimed; Disainilahendused">Intellektuaalneomand</a><br>
+									<a name="ITLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=5" title="Autoriõiguste kaitse ja sellest loobumine nii töösuhtes kui ka töövõtulepinguga loodavatele programmidele ja andmebaasidele">IT-õigus</a><br>
+									<a name="EnvironmentalLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=6" title="Keskkonnale tekitatud kahju; Keskkonnamõjude hindamine; Kaevandamisõigused; ">Keskkonnaõigus</a><br>
+									<a name="InsuranceLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=7" title="Kohustuslik (nt sõidukikindlustus) ja vabatahtlik (nt KASKO) kindlustus; Kindlustushüvitiste vähendamine; ">Kindlustusõigus</a><br>
+									<a name="NonMovableProperty" 			href="<%=request.getContextPath()%>/FieldSearchServlet?param=8" title="Kinnisvaraga seotud tehingud (võõrandamine, üürimine); Õigusauditite läbiviimine">Kinnisvaraõigus</a><br>
+									<a name="CompetitionLaw" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=9" title="Koondumised; Keelatud kokkulepped; Turgu valitseva seisundi kuritarvitamine">Konkurentsiõigus</a><br>
 									
 							</td>
 							
 							<td class="secondLinks">
-									<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=CriminalLaw" title="viivistasuotstsuste vaidlustamine; kriminaalmenetlus; kohtuasjade uuesti läbivaatamine">Kriminaal-ja väärteoõigus</a><br>
-									<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=Divorce" title="Abielu lahutamise võimalused, vara jagamine ja lapse hooldusõigus">Lahutus</a><br>
-									<a name="TrafficLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TrafficLaw" title="liiklustrahvid; joobeseisund ja selle tuvastamine; mootorsõidukite juhtimiskeelud">Liiklusõigus</a><br>
-									<a name="EconomicLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=EconomicLaw" title="äriühingute loomine; äriühingu juhtkonna vastutus; osa ja aktsia võõrandamine (sh ostueesõigus); osanike ja aktsionäride vahelised vaidlused; ">Majandusõigus</a><br>
-									<a name="TaxLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=TaxLaw" title="maksusoodustused; maksuvaidlused; maksukohustused välisriikides">Maksuõigus</a> <br>
-									<a name="MedicineLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MedicineLaw" title="meditsiiniteenustega seotud vaidlused; ravivead; load ja litsentsid; raviteenuse osutaja vastutus/andmekaitse/ravimiost">Meditsiin ja ravimid</a><br> 
-									<a name="MediaAndTelecommunicationLaw" 	href="<%=request.getContextPath()%>/FieldSearchServlet?param=MediaAndTelecommunicationLaw" title="au ja väärikuse riivamine avalikus meedias; telekommunikatsiooni teenust pakkuvate operaatorite vahelised õigused; kasutajate õigused">Meedia- ja telekommunikatsiooniõigus</a><br> 
-									<a name="PropertyReform" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=PropertyReform" title="maade tagastamine; sundüürnikud">Omandireform</a> <br>
-									<a name="BankingAndFinancialFunds" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=BankingAndFinancialFunds" title="laenu- ja liisinglepingud krediidiasutustega; kinnisasjade finantseerimine (sh käendamine ja hüpoteek) ; võlakirjade emissioon; ">Pangandus- ja finantsõigus, kapitaliturud</a><br>
+									<a name="CriminalLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=10" title="Viivistasuotstsuste vaidlustamine; Kriminaalmenetlus; Kohtuasjade uuesti läbivaatamine">Kriminaal-ja väärteoõigus</a><br>
+									<a name="Divorce"  						href="<%=request.getContextPath()%>/FieldSearchServlet?param=11" title="Abielu lahutamise võimalused, Vara jagamine ja lapse hooldusõigus">Lahutus</a><br>
+									<a name="TrafficLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=12" title="Liiklustrahvid; Joobeseisund ja selle tuvastamine; Mootorsõidukite juhtimiskeelud">Liiklusõigus</a><br>
+									<a name="EconomicLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=13" title="Äriühingute loomine; Äriühingu juhtkonna vastutus; Osa ja aktsia võõrandamine (sh ostueesõigus); Osanike ja aktsionäride vahelised vaidlused; ">Majandusõigus</a><br>
+									<a name="TaxLaw" 						href="<%=request.getContextPath()%>/FieldSearchServlet?param=14" title="Maksusoodustused; Maksuvaidlused; Maksukohustused välisriikides">Maksuõigus</a> <br>
+									<a name="MedicineLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=15" title="Meditsiiniteenustega seotud vaidlused; Ravivead; Load ja litsentsid; Raviteenuse osutaja vastutus/andmekaitse/ravimiost">Meditsiin ja ravimid</a><br> 
+									<a name="MediaAndTelecommunicationLaw" 	href="<%=request.getContextPath()%>/FieldSearchServlet?param=16" title="Au ja väärikuse riivamine avalikus meedias; Telekommunikatsiooni teenust pakkuvate operaatorite vahelised õigused; Kasutajate õigused">Meedia- ja telekommunikatsiooniõigus</a><br> 
+									<a name="PropertyReform" 				href="<%=request.getContextPath()%>/FieldSearchServlet?param=17" title="Maade tagastamine; Sundüürnikud">Omandireform</a> <br>
+									<a name="BankingAndFinancialFunds" 		href="<%=request.getContextPath()%>/FieldSearchServlet?param=18" title="Laenu- ja liisinglepingud krediidiasutustega; Kinnisasjade finantseerimine (sh käendamine ja hüpoteek) ; Võlakirjade emissioon; ">Pangandus- ja finantsõigus, kapitaliturud</a><br>
 									
 									
 							</td>
 							<td class="thirdLinks">
-									<a name="FamilyLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=FamilyLaw" title="isaduse tuvastamine; lapse eeskoste; ülalpidamiskohustus; abieluvaralepingud; elatise nõuded ">Perekonnaõigus</a><br>
-									<a name="HeritageLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=HeritageLaw" title="pärandist loobumine; seadusjärgne pärimine; testament ja selle vaidlustamine; sundosa; pärandvaralepingud; riigilõivud pärimismenetluses">Pärimisõigus</a> <br>
-									<a name="RestructingLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=RestructingLaw" title="ettevõtte saneerimis protsess; pankrotiavalduse esitamine; restruktureerimisplaan ">Restruktureerimine, saneerimine ja maksejõuetus (pankrot)</a><br> 
-									<a name="SocialWelfareLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=SocialWelfareLaw" title="sotsiaaltoetused; hoolekandeteenused - rehabiliteerimine, ööpäevaringne hooldamine, töötamise toetamine">Sotsiaalhoolekandeõigus</a><br>
-									<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=TransportTradeAndSeaLaw" title="rahvusvaheliste kaupade autoveolepingud (CRM); vedaja vastutus; merinõuded ja merivõlad">Transpordi-, kaubandus- ja mereõigus</a><br> 
-									<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=LaborLaw" title="töölepingu sõlmimine; tähtajalised ja tähtajatud töölepingud; töölepingu lõpetamine (koondamine, poolte kokkuleppel, ülesütlemine); töötuskindlustus hüvitis; vähendatud palgaga töö">Tööõigus</a> <br>
-									<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=AliensLaw" title="välismaalaste viibimine Eestis; elamis- ja töölubade väljastamine; kodakondsuse tekkimine ja andmine ">Välismaalasteõigus</a><br> 
-									<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=MergersAndAcquisitions" title="You can create a web page HTML mouseover text description, similar to an image alt tag, that will be viewed when your mouse is placed over the text link. ">Ühinemised- ja ülevõtmised</a><br>
+									<a name="FamilyLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=19" title="Isaduse tuvastamine; Lapse eeskoste; Ülalpidamiskohustus; Abieluvaralepingud; Elatise nõuded ">Perekonnaõigus</a><br>
+									<a name="HeritageLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=20" title="Pärandist loobumine; Seadusjärgne pärimine; Testament ja selle vaidlustamine; Sundosa; Pärandvaralepingud; Riigilõivud pärimismenetluses">Pärimisõigus</a> <br>
+									<a name="RestructingLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=21" title="Ettevõtte saneerimis protsess; Pankrotiavalduse esitamine; Restruktureerimisplaan ">Restruktureerimine, saneerimine ja maksejõuetus (pankrot)</a><br> 
+									<a name="SocialWelfareLaw" 							href="<%=request.getContextPath()%>/FieldSearchServlet?param=22" title="Sotsiaaltoetused; Hoolekandeteenused - rehabiliteerimine, ööpäevaringne hooldamine, töötamise toetamine">Sotsiaalhoolekandeõigus</a><br>
+									<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=23" title="Rahvusvaheliste kaupade autoveolepingud (CRM); Vedaja vastutus; Merinõuded ja merivõlad">Transpordi-, kaubandus- ja mereõigus</a><br> 
+									<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=24" title="Töölepingu sõlmimine; Tähtajalised ja tähtajatud töölepingud; töölepingu lõpetamine (koondamine, poolte kokkuleppel, ülesütlemine); Töötuskindlustus hüvitis; Vähendatud palgaga töö">Tööõigus</a> <br>
+									<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=25" title="Välismaalaste viibimine Eestis; Elamis- ja töölubade väljastamine; Kodakondsuse tekkimine ja andmine ">Välismaalasteõigus</a><br> 
+									<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=26" title="You can create a web page HTML mouseover text description, similar to an image alt tag, that will be viewed when your mouse is placed over the text link. ">Ühinemised- ja ülevõtmised</a><br>
 							</td>
 						</tr>
 					</table>

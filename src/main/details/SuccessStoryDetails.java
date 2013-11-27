@@ -16,6 +16,7 @@ public class SuccessStoryDetails {
 	int fieldid;
 	String filepath;
 	String dateString;
+	String fieldName;
 		
 	public int getSuccessStoryId() {
 		return SuccessStoryId;
@@ -76,6 +77,12 @@ public class SuccessStoryDetails {
 		System.out.println(date.toString());
 		String text = df.format(date);
 		return text;
+	}
+	public String getFieldName() {
+		return fieldName;
+	}
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
 }

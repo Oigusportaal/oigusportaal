@@ -48,11 +48,15 @@
 				<div class="entry">
 					<div class="viewProfile">
 						<table>
-						<% if (user.getImage() != null) { %>
+							<%
+								if (user.getImage() != null) {
+							%>
 							<tr>
-								<td colspan="2"><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>
+								<td colspan="2"><img src="<%=user.getImage()%>" class="profilepic" alt="Pilti ei leitud!"></td>
 							</tr>
-						<% } %>
+							<%
+								}
+							%>
 							<tr>
 								<td><label for="profileBureauRegistycode"><b>Registrikood:</b></label></td>
 								<td><%=user.getRegistryCode()%></td>
@@ -100,22 +104,21 @@
 
 
 								<%
-									ArrayList<String> fields = (ArrayList<String>) request
-											.getAttribute("fields");
+									ArrayList<String> fields = (ArrayList<String>) request.getAttribute("fields");
 								%>
 
 								<td>
 									<%
 										for (int i = 0; i < fields.size(); i++) {
-									%> <%=fields.get(i)%><br> 
-									<% } %>
+									%> <%=fields.get(i)%><br> <%
+ 	}
+ %>
 								</td>
 							</tr>
 						</table>
 					</div>
 					<%
-						ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request
-								.getAttribute("attorneys");
+						ArrayList<AttorneyDetails> att = (ArrayList<AttorneyDetails>) request.getAttribute("attorneys");
 					%>
 					<div class="viewAttorneys">
 						<table>
@@ -128,13 +131,23 @@
 								for (int i = 0; i < att.size(); i++) {
 							%>
 							<tr>
-							<td>
-							<% if (att.get(i).getPicturePath() != null) { %> 
-								<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
-								<% } %>
-									<h3><%=att.get(i).getName()%></h3>
-									<p><a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a></p></td>
+								<td>
+									<div class="viewpic">
+										<%
+											if (att.get(i).getPicturePath() != null) {
+										%>
+										<img src="<%=att.get(i).getPicturePath()%>" class="profilepic" alt="Pilti ei leitud!">
+										<%
+											}
+										%>
+										<h3><%=att.get(i).getName()%></h3>
+										<p>
+											<a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a>
+										</p>
+									</div>
+								</td>
 							</tr>
+
 							<%
 								}
 							%>
@@ -142,36 +155,41 @@
 					</div>
 				</div>
 				<%
-				ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request
-						.getAttribute("successStories");				
-			%>
-			<div class="stories">
-				<p>
-				<h2 class="centerHeading">Edulood:</h2>
-				</p>
-				<div class="viewStories" id="accordion">
+					ArrayList<SuccessStoryDetails> stor = (ArrayList<SuccessStoryDetails>) request.getAttribute("successStories");
+				%>
+				<div class="stories">
+					<p>
+					<h2 class="centerHeading">Edulood:</h2>
+					</p>
+					<div class="viewStories" id="accordion">
 
-					<%
-						for (int i = 0; i < stor.size(); i++) {
-					%>
-					<h3><%=stor.get(i).getParticipants()%></h3>
-					<div>
-						<p>
-							<b>Kuupäev: </b>
-							<%=stor.get(i).getDateString()%></p>
-						<p>
-							<b>Kokkuvõte: </b>
-							<%=stor.get(i).getConclusion()%></p>
-						<p>
-							<b>Fail:</b> <a href="<%=stor.get(i).getFilepath()%>">Lae alla</a>
-						</p>
+						<%
+							for (int i = 0; i < stor.size(); i++) {
+						%>
+						<h3><%=stor.get(i).getParticipants()%></h3>
+						<div>
+							<p>
+								<b>Kuupäev: </b>
+								<%=stor.get(i).getDateString()%></p>
+							<p>
+								<b>Valdkond: </b>
+								<%=stor.get(i).getFieldName()%></p>
+							<p>
+								<b>Kokkuvõte: </b>
+								<%=stor.get(i).getConclusion()%></p>
+							<p>
+								<b>Viide: </b> <a href="<%=stor.get(i).getReference()%>">Vaata</a>
+							</p>
+							<p>
+								<b>Fail:</b> <a href="<%=stor.get(i).getFilepath()%>">Lae alla</a>
+							</p>
+						</div>
+						<%
+							}
+						%>
 					</div>
-					<%
-						}
-					%>
 				</div>
 			</div>
-			</div>			
 		</div>
 
 

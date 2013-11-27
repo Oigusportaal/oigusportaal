@@ -114,6 +114,7 @@ public class BureauProfileServlet extends HttpServlet {
 				attorney.setName(resultSetAttorneys.getString("name"));
 				attorney.setEmail(resultSetAttorneys.getString("email"));
 				attorney.setAttorneyId(resultSetAttorneys.getInt("attorneyid"));
+				attorney.setPicturePath(resultSetAttorneys.getString("imgpath"));
 				
 				attorneys.add(attorney);
 				
@@ -136,6 +137,7 @@ public class BureauProfileServlet extends HttpServlet {
 				story.setParticipants(resultSetStories.getString("participants"));
 				story.setReference(resultSetStories.getString("reference"));
 				story.setSuccessStoryId(resultSetStories.getInt("ssid"));
+				story.setFilepath(resultSetStories.getString("filepath"));
 				
 				successStories.add(story);
 				

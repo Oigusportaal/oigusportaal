@@ -46,16 +46,27 @@ public class StoryEditServlet extends HttpServlet {
 		String participants = req.getParameter("newParticipants");
 		String reference = req.getParameter("newReference");
 		String date = req.getParameter("newDate");
+		int field = Integer.parseInt(req.getParameter("fields"));
 		System.out.println("Selline ta näeb välja: " + date);
-		String year = date.substring(6);
-		String day = date.substring(3,5);
-		String month = date.substring(0,2);
-		System.out.println("Aasta: " + year);
-		System.out.println("Kuu: " + month);
-		System.out.println("Päev: " + day);
-		String dateFix = year + "-" + month + "-" + day;
+		String dateFix = "";
+		if (date.contains("/")){
+			String year = date.substring(6);
+			String day = date.substring(3,5);
+			String month = date.substring(0,2);
+			System.out.println("Aasta: " + year);
+			System.out.println("Kuu: " + month);
+			System.out.println("Päev: " + day);
+			dateFix = year + "-" + month + "-" + day;
+		}
+		else {
+			dateFix = date;
+		}
 //		Date date = java.sql.Date.valueOf(req.getParameter("newDate"));
-		String conclusion = req.getParameter("newConclusion");	
+		String conclusion = req.getParameter("newConclusion");
+		boolean tooLong = false;
+		if(conclusion.length() > 300){
+			tooLong = true;
+		}
 		
 		story.setSuccessStoryId(storyId);
 		// Initiate database connection
@@ -100,9 +111,13 @@ public class StoryEditServlet extends HttpServlet {
 			boolean referenceChanged = false;
 
 			// See if any of the values changed
-			if (!story.getConclusion().equals(conclusion)){
+			if (!story.getConclusion().equals(conclusion) && !tooLong){
 				conclusionChanged = true;
 				story.setConclusion(conclusion);
+			}
+			if (story.getFieldId() != field){
+				fieldIdChanged = true;
+				story.setFieldId(field);
 			}
 			
 			if (!story.getDate().equals(date)){
@@ -127,11 +142,13 @@ public class StoryEditServlet extends HttpServlet {
 				if (conclusionChanged)
 					sql = sql.concat("conclusion='" + conclusion + "', ");
 				if (dateChanged)
-					sql = sql.concat("date='" + date + "'");				
+					sql = sql.concat("date='" + date + "', ");				
 				if (participantsChanged)
-					sql = sql.concat("participants='" + participants + "'");
+					sql = sql.concat("participants='" + participants + "', ");
 				if (referenceChanged)
-					sql = sql.concat("reference='" + reference + "'");
+					sql = sql.concat("reference='" + reference + "', ");
+				if (fieldIdChanged)
+					sql = sql.concat("fieldid='" + field + "', ");
 				if (sql.endsWith(", ")) {
 					sql = sql.substring(0, sql.length() - 2);
 				}

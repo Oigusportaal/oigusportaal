@@ -61,22 +61,33 @@
 			if (attorney == null) {				
 				isNew = true;
 			}
+			
 		%>
 
 		<!-- end #menu -->
 		<div class="page">
+		<form action="<%=request.getContextPath()%>/BureauProfileServlet" method="post" id="back">
+		<input type="submit" class="button" value="Tagasi" id="backButton">
+		</form>
 			<h1>Redigeerimine</h1>
 			<div class="entry">
+			<% if (request.getAttribute("fail") != null){ %>
+			<div class="failure">
+			<h3>Pilti ei salvestatud! See peab olema .png, .jpg, .jpeg või .gif faililaiendiga!</h3>
+			</div>
+			<% } %>
 			<% if (!isNew) { %>
 			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
-			<table>
+			<table>			
 			<tr id="logo">			
 			  	<td><p>Lae üles uus logo: <input type="file" name="img" ></p><br>
-			  	<input type="submit" class="button" value="Lae üles" id="upladIt">
 			  	<input type="hidden" name="generalId" value="<%= attorney.getAttorneyId() %>">
-			  	<input type="hidden" name="action" value="2">						  	
+			  	<input type="hidden" name="action" value="2">	
+			  	<input type="submit" class="button" value="Lae üles" id="upladIt">			  						  	
 			  	</td>
-			  	<td><img src="<%if (!isNew) {%><%=attorney.getPicturePath() %><% } %>" height="150px" alt="Pilti ei leitud"></td>						  	
+			  	<% if (attorney.getPicturePath() != null) { %>
+			  	<td><img src="<%if (!isNew) {%><%=attorney.getPicturePath() %><% } %>" class="profilepic" alt="Pilti ei leitud"></td>
+			  	<% } %>						  	
 			 </tr>
 			 </table>
 			 </form>
