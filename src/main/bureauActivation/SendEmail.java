@@ -12,7 +12,7 @@ public class SendEmail {
 	String username = "suivalli";
 	String password = "civic173MBP";
 	// Õigusportaali koduleht
-	String homepage = "http://ec2-54-226-188-89.compute-1.amazonaws.com:8080/oigusportaal/";
+	String homepage = "http://ec2-54-205-219-27.compute-1.amazonaws.com:8080/oigusportaal/";
 	
 	//Localhost variant
 //	String homepage = "http://localhost:8080/oigusportaal/";

@@ -76,7 +76,9 @@ if (!currentUser.isValid()){System.out.println("Not from this session");}
 		<!-- end #menu -->
 		<div class="page">
 			<div class="contentBureau">
-				<h1>Redigeerimine</h1>
+				<div class="centerHeading">
+				<h2>Redigeerimine</h2>
+				</div>
 				<%
 					if (request.getAttribute("passChanged") != null) {
 				%>

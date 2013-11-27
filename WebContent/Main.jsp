@@ -65,7 +65,7 @@
 									<a name="TransportTradeAndSeaLaw" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=23" title="Rahvusvaheliste kaupade autoveolepingud (CRM); Vedaja vastutus; Merinõuded ja merivõlad">Transpordi-, kaubandus- ja mereõigus</a><br> 
 									<a name="LaborLaw" 									href="<%=request.getContextPath()%>/FieldSearchServlet?param=24" title="Töölepingu sõlmimine; Tähtajalised ja tähtajatud töölepingud; töölepingu lõpetamine (koondamine, poolte kokkuleppel, ülesütlemine); Töötuskindlustus hüvitis; Vähendatud palgaga töö">Tööõigus</a> <br>
 									<a name="AliensLaw" 								href="<%=request.getContextPath()%>/FieldSearchServlet?param=25" title="Välismaalaste viibimine Eestis; Elamis- ja töölubade väljastamine; Kodakondsuse tekkimine ja andmine ">Välismaalasteõigus</a><br> 
-									<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=26" title="You can create a web page HTML mouseover text description, similar to an image alt tag, that will be viewed when your mouse is placed over the text link. ">Ühinemised- ja ülevõtmised</a><br>
+									<a name="MergersAndAcquisitions" 					href="<%=request.getContextPath()%>/FieldSearchServlet?param=26" title="You can create a web page HTML mouseover text description, similar to an image alt tag, that will be viewed when your mouse is placed over the text link. ">Ühinemised ja ülevõtmised</a><br>
 							</td>
 						</tr>
 					</table>

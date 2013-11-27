@@ -191,7 +191,7 @@ td.column_height p {
 	width: 1024px;
 	padding-top: 5px;
 	color: #AC1028;
-	font-family: Modern;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	padding-top: 20 px;
 }
 
@@ -548,7 +548,7 @@ input#Registreeru{
 	width: 980px;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #6B6B6B;
+	border-color: #AC1028;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -562,6 +562,7 @@ input#Registreeru{
 
 .entrys {
 	margin-left: 20px;
+	text-align: center;
 }
 
 .failure {

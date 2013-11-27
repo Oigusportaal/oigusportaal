@@ -300,29 +300,30 @@ public class SearchServlet extends HttpServlet {
 					stories.add(story);
 				}
 				StorySearch earliest = null;
-				for (int j=0; i<stories.size(); j++){
-					if (stories.get(j).getDate() != null){
-						earliest = stories.get(j);
-						System.out.println("Earliest date at beginning: " + earliest.getDate().toString());
-						break;
+				if (stories.size() !=0){
+					for (int j=0; i<stories.size(); j++){
+						if (stories.get(j).getDate() != null){
+							earliest = stories.get(j);
+							System.out.println("Earliest date at beginning: " + earliest.getDate().toString());
+							break;
+						}
 					}
+					for (int k=0; k<(stories.size()-1); k++){
+						try{
+						if(stories.get(k+1).getDate().after(stories.get(k).getDate())){
+							System.out.println("Date " + stories.get(k).getDate().toString() + " is changed to " + stories.get(k+1).getDate().toString());
+							earliest = stories.get(k+1);
+						}
+						}
+						catch (NullPointerException e){
+							
+						}
+					}
+					System.out.println("Last participants: " + earliest.getParticipants());
+					System.out.println("Last path: " + earliest.getFilepath());
+					bureauSR.get(i).setLastStoryParticipants(earliest.getParticipants());
+					bureauSR.get(i).setLastStoryPath(earliest.getFilepath());
 				}
-				for (int k=0; k<(stories.size()-1); k++){
-					try{
-					if(stories.get(k+1).getDate().after(stories.get(k).getDate())){
-						System.out.println("Date " + stories.get(k).getDate().toString() + " is changed to " + stories.get(k+1).getDate().toString());
-						earliest = stories.get(k+1);
-					}
-					}
-					catch (NullPointerException e){
-						
-					}
-				}
-				System.out.println("Last participants: " + earliest.getParticipants());
-				System.out.println("Last path: " + earliest.getFilepath());
-				bureauSR.get(i).setLastStoryParticipants(earliest.getParticipants());
-				bureauSR.get(i).setLastStoryPath(earliest.getFilepath());
-				
 			}
 			
 			if (bureauSR.size() != 0){
