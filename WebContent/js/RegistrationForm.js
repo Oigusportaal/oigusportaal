@@ -9,7 +9,6 @@
  * have problems with entry suffix different from .com and .ee  
  * */
 function validateEmail(){
-		
 		var email=document.forms["registration_form"]["registerEmail"].value;
 		
 		if (email==null || email==""){
@@ -76,16 +75,21 @@ function validatePassword(){
 		document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter password'>";
 		document.getElementById("passwordMessage").innerHTML= "Palun sisestage parool! Minimaalselt 6 m&#228rki.";
 		return false;
+	} else if( password.indexOf(" ") !== -1 ){
+		document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Symbols'>";
+		document.getElementById("passwordMessage").innerHTML="T&#252hikud pole lubatud!";
+		return false; 
+	} else if (password.match(/.[!,@,#,$,%,^,&,*,?,_,+,~,-,£,(,)]/)){
+		document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
+		document.getElementById("passwordMessage").innerHTML="S&#252mbolid pole lubatud!";
+		return false;
 	} else {
 		
 		if (password.length <6){
 			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Passowrd must be atlest 6 characters long!'>";
-			document.getElementById("passwordMessage").innerHTML="Parool peab olema v&#228hemalt 6 m&#228rki."
+			document.getElementById("passwordMessage").innerHTML="Parool peab olema v&#228hemalt 6 m&#228rki.";
 			return false;
-		}else if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/)){		
-			document.getElementById("passwordPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Symbols'>";
-			return false;
-		}else { if(password.match(/[a-z]/)&&password.match(/\d+/)&& password.match(/[A-Z]/)){
+		} else { if(password.match(/[a-z]/)&&password.match(/\d+/)&& password.match(/[A-Z]/)){
 					document.getElementById("passwordPicture").innerHTML= "<img src='images/correct.png' alt= 'Strong'>";
 					document.getElementById("passwordMessage").innerHTML= "Tugev";
 					return true;
@@ -143,6 +147,14 @@ function validateBureauName(){
 		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
 		document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage b&#252roo nimi";
 		return false;
+	} /*else if(bureauname.indexof("+")!== -1){
+		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
+		document.getElementById("bureauNameMessage").innerHTML= "Palun sisestage korrektne b&#252roo nimi";
+		return false;
+	} */else if (bureauname.match(/.[!,@,#,$,%,^,&,*,?,_,+,~,-,£,(,)]/)){
+		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter bureauname!'>";
+		document.getElementById("bureauNameMessage").innerHTML="S&#252mbolid pole lubatud!";
+		return false;
 	} else {
 		document.getElementById("bureauNamePicture").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
 		document.getElementById("bureauNameMessage").innerHTML= "";
@@ -160,6 +172,14 @@ function validateRegistrycode(){
 		document.getElementById("regcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter registrycode!'>";
 		document.getElementById("regcodeMessage").innerHTML= "Palun sisestage 8-numbriline registrikood!";
 			return false;
+	} else if( regcode.indexOf(" ") !== -1){
+		document.getElementById("regcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter registrycode!'>";
+		document.getElementById("regcodeMessage").innerHTML= "T&#252hikud pole lubatud!";
+		return false;
+	} else if (regcode.indexOf("+") !== -1){
+		document.getElementById("regcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("regcodeMessage").innerHTML="S&#252mbolid pole lubatud!";
+		return false;
 	} else {
 			var numericExpression = /^[0-9]+$/;
 			if (isNaN(regcode)){
@@ -197,7 +217,11 @@ function validateStreetAddress(){
 		document.getElementById("streetAddressMessage").innerHTML="Palun sisesta firma aadress!";
 		return false;
 		
-	} else {
+	} else if (streetaddress.match(/.[!,@,#,$,%,^,&,*,?,_,+,~,-,£,(,)]/)){
+		document.getElementById("streetAddressPicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("streetAddressMessage").innerHTML="S&#252mbolid pole lubatud!";
+		return false;
+	} 	else {
 		document.getElementById("streetAddressPicture").innerHTML= "<img src='images/correct.png' alt= 'Correct!'>";
 		document.getElementById("streetAddressMessage").innerHTML="";
 		return true;
@@ -214,6 +238,14 @@ function validatePostalCode(){
 	if (postalcode==null || postalcode==""){
 		document.getElementById("postalcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
 		document.getElementById("postalcodeMessage").innerHTML="Palun sisestage 5-numbriline postiindeks.";
+		return false;
+	} else if( postalcode.indexOf(" ") !== -1 ){
+		document.getElementById("postalcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("postalcodeMessage").innerHTML="T&#252hikud pole lubatud!";
+		return false;
+	} else if (postalcode.indexOf("+") !== -1 ){
+		document.getElementById("postalcodePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("postalcodeMessage").innerHTML="S&#252mbolid pole lubatud!";
 		return false;
 	} else {
 		if (isNaN(postalcode)){
@@ -246,6 +278,14 @@ function validatePhoneNumber(){
 	if (phone==null || phone==""){
 		document.getElementById("phonePicture").innerHTML="<img src='images/incorrect.png' alt= 'Enter phone number!'>";
 		document.getElementById("phoneMessage").innerHTML="Palun sisestage telefoninumber";
+		return false;
+	} else if( phone.indexOf(" ") !== -1 ){
+		document.getElementById("phonePicture").innerHTML="<img src='images/incorrect.png' alt= 'Enter phone number!'>";
+		document.getElementById("phoneMessage").innerHTML="T&#252hikud pole lubatud!";
+		return false;
+	} else if (phone.indexOf("+")!== -1){
+		document.getElementById("phonePicture").innerHTML= "<img src='images/incorrect.png' alt= 'Enter postal code! Must contain 5 numbers!'>";
+		document.getElementById("phoneMessage").innerHTML="S&#252mbolid pole lubatud!";
 		return false;
 	} else {
 		/*var numericExpression = /^[0-9]+$/;*/
