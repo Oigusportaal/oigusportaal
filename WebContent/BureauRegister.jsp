@@ -235,8 +235,8 @@
 							<!-- Submit -->
 							<tr>
 								<td><input type="submit" value="Registreeru" class="button" name="submit" id="Registreeru" /></td>
-								<td><span id="confirmInput"></span></tr>
-							<tr>
+								<td><span id="confirmInput"></span></td>
+							</tr>
 						</table>
 					</form>
 				

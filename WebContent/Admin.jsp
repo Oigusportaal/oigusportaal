@@ -91,21 +91,21 @@ if (!currentUser.isValid() ){
 					</td>
 				
 					<td width="100" class="lastColumn">				
-						<a href="<%=request.getContextPath()%>/DeleteBureauServlet?param=<%=br.get(i).getEmail() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#FE062F;">Delete <%=br.get(i).getBureauName() %></span></a>
+						<a href="<%=request.getContextPath()%>/DeleteBureauServlet?param=<%=br.get(i).getEmail() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#FE062F;">Delete</span></a>
 				
 						<% 	
 							if(br.get(i).active==1) {
 							dummy="Active";
 						%>
 						
-						<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#4C06FE;">Inactivate</span></a>
+						<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#4C06FE;">Inactivate <%=br.get(i).getBureauName() %></span></a>
 				
 						<% } %>
 				
 						<%	if(br.get(i).active==0) {
 							dummy="Inactive";
 				 		%>		
-				 		<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#12FE06;">Activate</span></a>
+				 		<a href="<%=request.getContextPath()%>/ActivateInActivateServlet?param=<%=br.get(i).getActive() %>&paramTwo=<%=br.get(i).getBureauId() %>" ><span style="color:#12FE06;">Activate <%=br.get(i).getBureauName() %></span></a>
 						<% } %>
 						 
 					</td>

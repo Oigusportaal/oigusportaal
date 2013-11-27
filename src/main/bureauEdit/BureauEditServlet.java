@@ -171,7 +171,7 @@ public class BureauEditServlet extends HttpServlet {
 
 			int newPrice = Integer.parseInt(request
 					.getParameter("profileBureauAveragePrize"));
-			if (newPrice != price) {
+			if (newPrice != price || newPrice < 0) {
 				priceChanged = true;
 //				System.out.println("Price: " + price + " " + newPrice);
 

@@ -46,7 +46,7 @@
 							
 					
 						<tr>
-							<td><input type="submit" class="button" value="Logi sisse"  class="loginInputSpecial"/></td>
+							<td><input type="submit" class="button" id="loginInputSpecial" value="Logi sisse" /></td>
 						</tr>
 						<br>		
 						<tr>

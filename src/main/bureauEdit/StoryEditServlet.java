@@ -68,6 +68,8 @@ public class StoryEditServlet extends HttpServlet {
 			tooLong = true;
 		}
 		
+		conclusion = conclusion.replaceAll("'", "\"");
+		
 		story.setSuccessStoryId(storyId);
 		// Initiate database connection
 

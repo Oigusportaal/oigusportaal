@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class Otsi {
+public class TestSearchingBureaus {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,31 +18,36 @@ public class Otsi {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://ec2-54-205-219-27.compute-1.amazonaws.com:8080";
+    baseUrl = "http://ec2-54-205-219-27.compute-1.amazonaws.com:8080/oigusportaal/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testOigusOtsi() throws Exception {
+  public void test2SearchingBureaus() throws Exception {
     driver.get(baseUrl + "/oigusportaal/");
-    driver.findElement(By.cssSelector("a.amenu > img")).click();
     driver.findElement(By.linkText("Lahutus")).click();
     new Select(driver.findElement(By.name("regions"))).selectByVisibleText("Põhja-Eesti");
-    new Select(driver.findElement(By.name("counties"))).selectByVisibleText("Harjumaa");
-    new Select(driver.findElement(By.name("cities"))).selectByVisibleText("Tallinn");
-    //driver.findElement(By.name("averageprice")).clear();
-    //driver.findElement(By.name("averageprice")).sendKeys("100");
-    //driver.findElement(By.name("Date")).click();
+    new Select(driver.findElement(By.name("regions"))).selectByVisibleText("Lõuna-Eesti");
+    new Select(driver.findElement(By.name("counties"))).selectByVisibleText("Valgamaa");
+    new Select(driver.findElement(By.name("cities"))).selectByVisibleText("Valga");
     driver.findElement(By.id("searching")).click();
-    //driver.findElement(By.name("Date")).click();
-    //driver.findElement(By.id("searching")).click();
-    //driver.findElement(By.name("averageprice")).clear();
-    //driver.findElement(By.name("averageprice")).sendKeys("100");
-    //new Select(driver.findElement(By.name("regions"))).selectByVisibleText("Lõuna-Eesti");
-    //new Select(driver.findElement(By.name("counties"))).selectByVisibleText("Tartumaa");
-    //new Select(driver.findElement(By.name("cities"))).selectByVisibleText("Tartu");
-    //driver.findElement(By.name("Date")).click();
-    //driver.findElement(By.id("searching")).click();
+    new Select(driver.findElement(By.id("editRegion"))).selectByVisibleText("Põhja-Eesti");
+    new Select(driver.findElement(By.id("editCounty"))).selectByVisibleText("Harjumaa");
+    new Select(driver.findElement(By.id("editCounty"))).selectByVisibleText("Järvamaa");
+    new Select(driver.findElement(By.id("editCity"))).selectByVisibleText("Paide");
+    driver.findElement(By.name("Price")).click();
+    driver.findElement(By.name("Date")).click();
+    driver.findElement(By.id("searching")).click();
+    driver.findElement(By.name("Price")).click();
+    driver.findElement(By.name("Date")).click();
+    driver.findElement(By.id("searching")).click();
+    driver.findElement(By.linkText("Law abiding citizen")).click();
+    driver.findElement(By.id("ui-accordion-accordion-header-1")).click();
+    driver.findElement(By.id("ui-accordion-accordion-header-0")).click();
+    driver.findElement(By.cssSelector("a > img")).click();
+    driver.findElement(By.linkText("Erastamine")).click();
+    driver.findElement(By.linkText("Kalevi Õigusbüroo")).click();
+    driver.findElement(By.cssSelector("a > img")).click();
   }
 
   @After

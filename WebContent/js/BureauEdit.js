@@ -176,7 +176,12 @@ function validateAveragePrice(){
 		if (isNaN(price)){
 			document.getElementById("priceMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect price!'>";
 			return false;
-		} else{
+		}
+		if (price < 0){
+			document.getElementById("priceMessage").innerHTML = "<img src='images/incorrect.png' alt= 'Incorrect price!'>";
+			return false;
+		}
+		else{
 			document.getElementById("priceMessage").innerHTML = "<img src='images/correct.png' alt= 'Correct!'>";
 			return true;
 		}
