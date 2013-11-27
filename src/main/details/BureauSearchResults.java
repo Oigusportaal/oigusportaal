@@ -14,7 +14,8 @@ public String name;
 public String image;
 public int bureauId;
 public String bureauName;
-
+public String lastStoryParticipants;
+public String lastStoryPath;
 
 
 
@@ -90,6 +91,18 @@ public String getBureauName() {
 }
 public void setBureauName(String bureauName) {
 	this.bureauName = bureauName;
+}
+public String getLastStoryParticipants() {
+	return lastStoryParticipants;
+}
+public void setLastStoryParticipants(String lastStoryParticipants) {
+	this.lastStoryParticipants = lastStoryParticipants;
+}
+public String getLastStoryPath() {
+	return lastStoryPath;
+}
+public void setLastStoryPath(String lastStoryPath) {
+	this.lastStoryPath = lastStoryPath;
 }
 
 

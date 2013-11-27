@@ -22,6 +22,30 @@
   $(function() {
     $( "#datepickerTwo" ).datepicker();
   });
+  $(function() {
+	  
+	    // Create a new jQuery UI Slider element
+	    // and set some default parameters.
+	    $( "#slider" ).slider({
+	      range: "min",
+	      value: 50,
+	      min: 0,
+	      max: 100,
+	      slide: function( event, ui ) {
+	      
+	        // While sliding, update the value in the #amount div element
+	        $( "#amount" ).html( ui.value );
+	        console.log( ui.value );
+	        $("input[name='averageprice']").val( ui.value );
+	        
+	      }
+	    });
+	    
+	    // Set the initial slider amount in the #amount div element
+	    var value = $( "#slider" ).slider( "value" );
+	    $( "#amount" ).html( value );
+	    
+	  });
   </script>
         <script type="text/javascript" defer="defer">
                 function cascadeSelect(parent, child){
@@ -158,11 +182,11 @@
 										<p>Keskmine tunnihind:</p>
 									</td>
 								
-									<td>
-                                		<div id="avgprice">
-                                    		<input name="averageprice" type="range" min=1 max=100 value=50 >
-	                                        <output for="foo">1</output>
-	                                    </div>
+									<td><div id="price">
+                                		<div id="slider" style="margin-top:42px;"></div> 
+                                		<div id="amount" style="color:#777;font-size:20px;text-align:center;"></div>
+                                		<input type="hidden" name="averageprice" id="averageprice" value="50">
+                                		</div>
 	                                </td>    
 	                          		<td class="column_height" id="column_checkbox">
 										<input type="checkbox" name="Price" value="Price" checked="checked" class="catalogCheckbox">   Kasuta otsingus.
@@ -202,12 +226,16 @@
                                 %>
                                 
 								<tr class="borderdesign"  >								
-								<td width="100" class="firstColumn"><img height="150px" src="<%=br.get(i).getImage()%>"/></td>
+								<td width="100" class="firstColumn">
+								<% if (br.get(i).getImage() != null) { %>
+								<img class="profilepic" src="<%=br.get(i).getImage()%>"/><%} %></td>
 	                                <td width="20" align="center" class="middleColumn">
 	                                	<td width="100" class="lastColumn">
 	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getName()%></a></h3>
 	                                        <p><a href="mailto:<%=br.get(i).getEmail()%>"><%=br.get(i).getEmail()%></a></p>
-	                                        <p><b>Aadress: </b> <%=br.get(i).getStreet()%></p>
+	                                        <p><b>Linn: </b> <%=br.get(i).getCity()%></p>
+	                                        <p><b>Keksmine tunnihind: </b> <%=br.get(i).getAveragePrice()%>
+	                                        <p><b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants() %> <a href="<%= br.get(i).getLastStoryPath() %>">Lae alla</a></p>
 	                                	</td>
 								</tr>
                                 <%

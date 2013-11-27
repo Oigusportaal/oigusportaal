@@ -50,7 +50,7 @@
 						<table>
 						<% if (user.getImage() != null) { %>
 							<tr>
-								<td colspan="2"><img src="<%=user.getImage()%>" height="150px" alt="Pilti ei leitud!"></td>
+								<td colspan="2"><img src="<%=user.getImage()%>" class="profilepic" alt="Pilti ei leitud!"></td>
 							</tr>
 						<% } %>
 							<tr>
@@ -130,7 +130,7 @@
 							<tr>
 							<td>
 							<% if (att.get(i).getPicturePath() != null) { %> 
-								<img src="<%=att.get(i).getPicturePath()%>" height="150px" alt="Pilti ei leitud!">
+								<img src="<%=att.get(i).getPicturePath()%>" class="profilepic" alt="Pilti ei leitud!">
 								<% } %>
 									<h3><%=att.get(i).getName()%></h3>
 									<p><a href="mailto:<%=att.get(i).getEmail()%>"><%=att.get(i).getEmail()%></a></p></td>
@@ -160,8 +160,14 @@
 							<b>Kuupäev: </b>
 							<%=stor.get(i).getDateString()%></p>
 						<p>
+							<b>Valdkond: </b>
+							<%=stor.get(i).getFieldName() %></p>
+						<p>
 							<b>Kokkuvõte: </b>
 							<%=stor.get(i).getConclusion()%></p>
+						<p>
+							<b>Viide: </b>
+							<a href="<%=stor.get(i).getReference()%>">Vaata</a></p>
 						<p>
 							<b>Fail:</b> <a href="<%=stor.get(i).getFilepath()%>">Lae alla</a>
 						</p>

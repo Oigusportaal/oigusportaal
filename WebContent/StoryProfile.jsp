@@ -69,7 +69,15 @@
 
 		<!-- end #menu -->
 		<div class="page">
+			<form action="<%=request.getContextPath()%>/BureauProfileServlet" method="post" id="back">
+			<input type="submit" class="button" value="Tagasi" id="backButton">
+			</form>
 			<h1>Redigeerimine</h1>
+			<% if (request.getAttribute("fail") != null){ %>
+			<div class="failure">
+			<h3>Faili ei salvestatud! See peab olema .odt, .pdf, .doc või .docx faililaiendiga!</h3>
+			</div>
+			<% } %>
 			<% if (!isNew) { %>
 			<form action="<%=request.getContextPath()%>/ImageUploadServlet" method="post" enctype="multipart/form-data" id="upload">
 			<table>
@@ -113,8 +121,28 @@
 							<textarea rows="4" cols="50" name="newConclusion"><%if (!isNew) {%><%=story.getConclusion()%><%}%></textarea>
 							</td>
 						</tr>
-							 
 						</table>
+						<div id="fieldsCheckBox">
+	                        <p><b>Valdkonnad</b></p>
+	                        <table>
+	                        <tr>
+	                        <td>
+	                        <%
+	                                ArrayList<String> fields = (ArrayList<String>) request
+	                                        .getAttribute("fieldRows");
+	                        
+	                                for (int i=0; i<fields.size(); i++){
+	                        %>
+	                        
+	                        <%= fields.get(i) %>
+	                        <% if ((i+1) == (fields.size()/2)) { %>
+	                        </td>
+	                        <td>
+	                        <% }} %>
+	                        </td>        
+	                        </tr>                                                                  
+	                        </table>
+	                	</div>
 											
 					<input type="hidden" name="bureauId"
 						value="<%=request.getParameter("bureauId")%>" /> <input type="hidden"

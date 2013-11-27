@@ -2,7 +2,6 @@ package main.search;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.bureauEdit.NameToValueDecrypter;
 import main.details.BureauSearchResults;
+import main.details.StorySearch;
 
 /**
  * Servlet implementation class SearchServlet
@@ -219,6 +219,9 @@ public class SearchServlet extends HttpServlet {
 
 		Statement stmt = null;
 		ResultSet rs = null;
+		
+		Statement sstory = null;
+		ResultSet rsstory = null;
 
 		sql = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
@@ -331,14 +334,59 @@ public class SearchServlet extends HttpServlet {
 
 			}
 
+			
+			rs.close();
+			stmt.close();
+			
+			for (int i = 0; i < bureauSR.size(); i++) {	
+				ArrayList<StorySearch> stories = new ArrayList<StorySearch>();
+				sstory = curConnection.createStatement();
+				rsstory = sstory
+						.executeQuery("SELECT successstory.filepath, successstory.participants, successstory.date FROM successstory WHERE bureauid='"
+								+ bureauSR.get(i).getBureauId() + "';");
+				while (rsstory.next()){
+					StorySearch story = new StorySearch();
+					story.setDate(rsstory.getDate("date"));
+					story.setFilepath(rsstory.getString("filepath"));
+					story.setParticipants(rsstory.getString("participants"));
+					stories.add(story);
+				}
+				StorySearch earliest = null;
+				for (int j=0; i<stories.size(); j++){
+					if (stories.get(j).getDate() != null){
+						earliest = stories.get(j);
+						System.out.println("Earliest date at beginning: " + earliest.getDate().toString());
+						break;
+					}
+				}
+				for (int k=0; k<(stories.size()-1); k++){
+					try{
+					if(stories.get(k+1).getDate().after(stories.get(k).getDate())){
+						System.out.println("Date " + stories.get(k).getDate().toString() + " is changed to " + stories.get(k+1).getDate().toString());
+						earliest = stories.get(k+1);
+					}
+					}
+					catch (NullPointerException e){
+						
+					}
+				}
+				System.out.println("Last participants: " + earliest.getParticipants());
+				System.out.println("Last path: " + earliest.getFilepath());
+				bureauSR.get(i).setLastStoryParticipants(earliest.getParticipants());
+				bureauSR.get(i).setLastStoryPath(earliest.getFilepath());
+				
+			}
+			
+			if (bureauSR.size() != 0){
+				rsstory.close();
+				sstory.close();
+			}
+			curConnection.close();
+			
 			request.setAttribute("fieldName", fieldName);
 			request.setAttribute("bureauSR", bureauSR);
 			request.getRequestDispatcher("CatalogSearchDetailedResults.jsp")
 					.forward(request, response);
-
-			rs.close();
-			stmt.close();
-			curConnection.close();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
