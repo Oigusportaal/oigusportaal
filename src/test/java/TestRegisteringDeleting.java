@@ -21,7 +21,7 @@ public class TestRegisteringDeleting {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://ec2-54-205-219-27.compute-1.amazonaws.com:8080/oigusportaal/";
+    baseUrl = "http://ec2-54-205-219-27.compute-1.amazonaws.com:8080";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -68,10 +68,14 @@ public class TestRegisteringDeleting {
     driver.findElement(By.id("lawyer")).click();
     driver.findElement(By.id("newName")).clear();
     driver.findElement(By.id("newName")).sendKeys("Esimene Karu");
+    driver.findElement(By.id("newEmail")).clear();
+    driver.findElement(By.id("newEmail")).sendKeys("esimene@karu.ee");
     driver.findElement(By.id("addEdit")).click();
     driver.findElement(By.id("lawyer")).click();
     driver.findElement(By.id("newName")).clear();
     driver.findElement(By.id("newName")).sendKeys("Teine Karu");
+    driver.findElement(By.id("newEmail")).clear();
+    driver.findElement(By.id("newEmail")).sendKeys("teine@karu.ee");
     driver.findElement(By.id("addEdit")).click();
     driver.findElement(By.xpath("(//input[@id='lawyer'])[3]")).click();
     driver.findElement(By.id("newEmail")).clear();
@@ -82,7 +86,8 @@ public class TestRegisteringDeleting {
     driver.findElement(By.id("newParticipants")).sendKeys("kaks karu");
     driver.findElement(By.id("newReference")).clear();
     driver.findElement(By.id("newReference")).sendKeys("www.google.ee");
-    driver.findElement(By.linkText("3")).click();
+    driver.findElement(By.id("datepicker")).clear();
+    driver.findElement(By.id("datepicker")).sendKeys("11/04/2013");
     driver.findElement(By.id("countable1")).click();
     driver.findElement(By.id("countable1")).clear();
     driver.findElement(By.id("countable1")).sendKeys("Kaks karu läksid kaklema, kes saab suurema koopa.");
@@ -106,7 +111,7 @@ public class TestRegisteringDeleting {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("9999");
     driver.findElement(By.cssSelector("input.button")).click();
-    driver.findElement(By.xpath("//table[@id='adminSearchResults']/tbody/tr[26]/td[3]/a/span")).click();
+    driver.findElement(By.linkText("Delete SeleniumIDE")).click();
   }
 
   @After
