@@ -234,7 +234,7 @@
 	                                        <h3><a href="<%=request.getContextPath()%>/BureauViewServlet?bureauId=<%=br.get(i).getBureauId()%>"><%=br.get(i).getBureauName()%></a></h3>
 	                                        <p><a href="mailto:<%=br.get(i).getEmail()%>"><%=br.get(i).getEmail()%></a></p>
 	                                        <p><b>Linn: </b> <%=br.get(i).getCity()%></p>
-	                                        <p><b>Keksmine tunnihind: </b> <%=br.get(i).getAveragePrice()%>
+	                                        <p><b>Keskmine tunnihind: </b> <%=br.get(i).getAveragePrice()%>
 	                                        <p><b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants() %> <a href="<%= br.get(i).getLastStoryPath() %>">Lae alla</a></p>
 	                                	</td>
 								</tr>
