@@ -36,6 +36,7 @@ public class LawyerProfileServlet extends HttpServlet {
 		}
 		catch (NumberFormatException e){
 			attorneyId = (int) req.getAttribute("attorneyId");
+			e.printStackTrace();
 		}
 //		System.out.println("Attorney's id: " + attorneyId);
 

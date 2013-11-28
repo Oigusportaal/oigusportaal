@@ -51,13 +51,13 @@ public class BureauEditServlet extends HttpServlet {
 
 		curConnection = connect.getConnection();
 
-		String email = (String) request.getParameter("oldEmail");
+		String email = request.getParameter("oldEmail");
 //		System.out.println(email);
-		String password = (String) request.getParameter("oldPassword");
+		String password = request.getParameter("oldPassword");
 //		System.out.println(password);
 		int phone = Integer.parseInt(request.getParameter("oldPhone"));
 		int price = Integer.parseInt(request.getParameter("oldPrice"));
-		String address = (String) request.getParameter("oldAddress");
+		String address = request.getParameter("oldAddress");
 		int regCode = Integer.parseInt(request.getParameter("oldRegistryCode"));
 		int zipCode = Integer.parseInt(request.getParameter("oldPostalCode"));
 		int region = Integer.parseInt(request.getParameter("oldRegion"));
@@ -162,7 +162,7 @@ public class BureauEditServlet extends HttpServlet {
 
 			}
 
-			String newAddress = (String) request
+			String newAddress = request
 					.getParameter("profileBureauAddress");
 			if (!newAddress.equals(address)) {
 				addressChanged = true;
@@ -184,16 +184,16 @@ public class BureauEditServlet extends HttpServlet {
 
 
 
-			String newEmail = (String) request
+			String newEmail = request
 					.getParameter("profileBureauEmail");
 			if (!newEmail.equals(email)) {
 				emailChanged = true;
 //				System.out.println("Email: " + email + " " + newEmail);
 			}
 
-			String newPassword = (String) request
+			String newPassword = request
 					.getParameter("newPass");
-			String newPasswordConfirm = (String) request.getParameter("newPassConfirm");
+			String newPasswordConfirm = request.getParameter("newPassConfirm");
 			if (newPassword.equals(newPasswordConfirm)){
 				if (!newPassword.equals(password) && !newPassword.equals("")
 						&& newPassword != null) {

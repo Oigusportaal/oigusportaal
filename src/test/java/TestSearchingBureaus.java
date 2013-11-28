@@ -1,10 +1,9 @@
 package test.java;
 
-import java.util.regex.Pattern;
+
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -64,6 +63,7 @@ public class TestSearchingBureaus {
       driver.findElement(by);
       return true;
     } catch (NoSuchElementException e) {
+    	e.printStackTrace();
       return false;
     }
   }
@@ -73,6 +73,7 @@ public class TestSearchingBureaus {
       driver.switchTo().alert();
       return true;
     } catch (NoAlertPresentException e) {
+    	e.printStackTrace();
       return false;
     }
   }

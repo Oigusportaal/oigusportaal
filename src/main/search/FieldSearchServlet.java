@@ -142,7 +142,7 @@ public class FieldSearchServlet extends HttpServlet {
 					}
 					}
 					catch (NullPointerException e){
-						
+						e.printStackTrace();
 					}
 				}
 				if (earliest != null){

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import main.details.SuccessStoryDetails;
 import main.login.UserBean;
 import main.search.DBConnection;
-import main.bureauEdit.FieldsMaker;
 
 public class StoryProfileServlet extends HttpServlet {
 
@@ -41,10 +39,12 @@ public class StoryProfileServlet extends HttpServlet {
 			
 		}
 		catch(NumberFormatException e){
+			e.printStackTrace();
 			try{
 				storyId = (Integer) req.getAttribute("storyId");
 			}
 			catch (NullPointerException i){
+				i.printStackTrace();
 				gotStory = true;
 				story = (SuccessStoryDetails) req.getAttribute("story");
 			}

@@ -77,6 +77,7 @@ public class UserDAO {
 					rs.close();
 
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 				rs = null;
 
@@ -86,6 +87,7 @@ public class UserDAO {
 				try {
 					stmt.close();
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 				stmt = null;
 			}
@@ -94,6 +96,7 @@ public class UserDAO {
 				try {
 					currentCon.close();
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 
 				currentCon = null;

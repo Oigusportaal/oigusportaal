@@ -126,6 +126,7 @@ public class ImageUploadServlet extends HttpServlet {
 							item.write(savedFile);
 						}
 					} catch (Exception e) {
+						e.printStackTrace();
 					}
 					if (action == 2) {
 						request.setAttribute("attorneyId", generalId);

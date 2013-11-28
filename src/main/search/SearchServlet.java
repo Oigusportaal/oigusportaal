@@ -224,13 +224,13 @@ public class SearchServlet extends HttpServlet {
 		try {
 			stmt = curConnection.createStatement();
 
-			if (checkBoxDate == true && checkBoxPrice == true)
+			if (checkBoxDate  && checkBoxPrice )
 				rs = stmt.executeQuery(sql);
-			else if (checkBoxDate == true && checkBoxPrice == false)
+			else if (checkBoxDate  && checkBoxPrice )
 				rs = stmt.executeQuery(sql2);
-			else if (checkBoxDate == false && checkBoxPrice == true)
+			else if (!checkBoxDate  && checkBoxPrice )
 				rs = stmt.executeQuery(sql3);
-			else if (checkBoxDate == false && checkBoxPrice == false)
+			else if (!checkBoxDate  && !checkBoxPrice )
 				rs = stmt.executeQuery(sql4);
 
 			while (rs.next()) {
@@ -317,7 +317,7 @@ public class SearchServlet extends HttpServlet {
 						}
 						}
 						catch (NullPointerException e){
-							
+							e.printStackTrace();
 						}
 					}
 					System.out.println("Last participants: " + earliest.getParticipants());

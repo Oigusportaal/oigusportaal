@@ -58,7 +58,6 @@ public class LawyerAddServlet extends HttpServlet {
 			statement.executeUpdate();
 
 			attorney.setBureauId(bureauId);
-			;
 			attorney.setName(name);
 			attorney.setEmail(email);
 

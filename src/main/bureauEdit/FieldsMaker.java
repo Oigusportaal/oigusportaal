@@ -85,9 +85,6 @@ public class FieldsMaker {
 		
 //		System.out.println("Codes size: " + codes.size());
 //		System.out.println("Names size: " + names.size());
-		for (int i = 0; i < codes.size(); i++) {
-//			System.out.println("Sellised numbrid: " + codes.get(i));
-		}
 		if (!isStory) {
 			for (int i = 1; i < names.size()+1; i++) {
 				String row = "<input type=\"checkbox\" id=\"cbox" + i
