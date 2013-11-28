@@ -63,6 +63,9 @@ public class FieldSearchServlet extends HttpServlet {
 
 		Statement sstory = null;
 		ResultSet rsstory = null;
+		
+		Statement sfield = null;
+		ResultSet rsfield = null;
 
 		try {
 			stmt = curConnection.createStatement();
@@ -155,6 +158,17 @@ public class FieldSearchServlet extends HttpServlet {
 				rsstory.close();
 				sstory.close();
 			}
+			
+			sfield = curConnection.createStatement();
+			rsfield = sfield.executeQuery("SELECT fieldname FROM field where fieldid='" + fieldId +"';");
+			
+			while(rsfield.next()){
+				request.setAttribute("fieldname", rsfield.getString("fieldname"));
+			}
+			
+			rsfield.close();
+			sfield.close();
+					
 			
 			Calendar dateTo = Calendar.getInstance();
 			Calendar dateFrom = Calendar.getInstance();  

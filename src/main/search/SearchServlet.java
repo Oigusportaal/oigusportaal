@@ -48,8 +48,6 @@ public class SearchServlet extends HttpServlet {
 		String sql3;
 		String sql4;
 
-		String fieldName;
-
 		String county = null;
 		int countyId;
 
@@ -160,6 +158,9 @@ public class SearchServlet extends HttpServlet {
 		
 		Statement sstory = null;
 		ResultSet rsstory = null;
+		
+		Statement sfield = null;
+		ResultSet rsfield = null;
 
 		sql = "SELECT bureau.bureauid, bureau.name, bureau.email, bureau.averageprice, "
 				+ "bureau.street, bureau.postalcode, bureau.phone, bureau.cityname, bureau.image"
@@ -330,6 +331,15 @@ public class SearchServlet extends HttpServlet {
 				rsstory.close();
 				sstory.close();
 			}
+			sfield = curConnection.createStatement();
+			rsfield = sfield.executeQuery("SELECT fieldname FROM field where fieldid='" + fieldId +"';");
+			
+			while(rsfield.next()){
+				request.setAttribute("fieldname", rsfield.getString("fieldname"));
+			}
+			
+			rsfield.close();
+			sfield.close();
 			curConnection.close();
 			
 			

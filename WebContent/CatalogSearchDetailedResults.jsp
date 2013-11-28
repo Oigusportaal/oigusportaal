@@ -98,6 +98,7 @@
                         
                         <div class="page">
                                 <h2>Otsing</h2>
+                                <h3>Valdkond: <%=request.getAttribute("fieldname")%></h3>
                                 <div class="content" style="background-color:#f0f0f0;">
 					<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
 						<table id="catalogSearch">
@@ -243,7 +244,9 @@
 	                                        <p><b>Linn: </b> <%=br.get(i).getCity()%></p>
 	                                        <p><b>Keskmine tunnihind: </b> <%=br.get(i).getAveragePrice()%>
 	                                        <% if (br.get(i).getLastStoryParticipants() != null) { %>
-	                                        <p><b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants() %> <a href="<%= br.get(i).getLastStoryPath() %>">Lae alla</a></p>
+	                                        <p><b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants() %>
+	                                        <%if (br.get(i).getLastStoryPath()!=null){ %><a href="<%=br.get(i).getLastStoryPath()%>">Lae alla</a><% } %>
+	                                        </p>
 	                                        <% } %>
 	                                	</td>
 								</tr>

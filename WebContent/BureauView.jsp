@@ -177,12 +177,16 @@
 							<p>
 								<b>Kokkuvõte: </b>
 								<%=stor.get(i).getConclusion()%></p>
+							<%if (stor.get(i).getReference() != null){ %>
 							<p>
 								<b>Viide: </b> <a href="<%=stor.get(i).getReference()%>">Vaata</a>
 							</p>
+							<%} %>
+							<%if (stor.get(i).getFilepath()!= null){ %>
 							<p>
 								<b>Fail:</b> <a href="<%=stor.get(i).getFilepath()%>">Lae alla</a>
 							</p>
+							<%} %>
 						</div>
 						<%
 							}

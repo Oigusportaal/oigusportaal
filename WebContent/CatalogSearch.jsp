@@ -95,6 +95,7 @@
 
 		<div class="page">
 			<h2>Otsing</h2>
+			<h3>Valdkond: <%=request.getAttribute("fieldname")%></h3>
 			<div class="content">
 				<form action="<%=request.getContextPath()%>/SearchServlet" method="get" class="cascade">
 					<table id="catalogSearch">
@@ -242,7 +243,7 @@
 								%>
 							<p>
 								<b>Viimane edulugu: </b><%=br.get(i).getLastStoryParticipants()%>
-								<a href="<%=br.get(i).getLastStoryPath()%>">Lae alla</a>
+								<%if (br.get(i).getLastStoryPath()!=null){ %><a href="<%=br.get(i).getLastStoryPath()%>">Lae alla</a><% } %>
 							</p> <%	} %>
 						</td>
 					</tr>
